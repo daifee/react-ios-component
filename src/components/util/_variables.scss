@@ -1,0 +1,33 @@
+/**
+ * sass 全局共享变量
+ */
+
+/**
+ * 样式命名空间
+ */
+$namespace: "rc-ios-";
+
+/**
+ * 颜色
+ */
+$blue:#007aff;
+$red: #ff3b30;
+$white: #fff;
+$black: #000;
+$lightblue: #5ac8fa;
+$yellow: #ffcc00;
+$orange: #ff9500;
+$pink: #ff2d55;
+$green: #4cd964;
+$gray: #8e8e93;
+
+$primaryColor: $blue;
+
+$colors: (blue: $blue, red: $red, white: $white, 
+	black: $black, lightblue: $lightblue, yellow: $yellow, 
+	orange: $orange, green: $green, gray: $gray);
+
+// 层级
+$z-index-navbar: 900;
+$z-index-tabbar: 900;
+$z-index-mask: 990;

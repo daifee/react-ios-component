@@ -1,0 +1,18 @@
+/**
+ * @author haw
+ * 常用颜色
+ */
+
+@import "../util/variables";
+
+@each $name, $value in $colors {
+	.#{$namespace}color-#{$name} {
+		color: $value !important;
+	}
+
+	.#{$namespace}bg-#{$name} {
+		background-color: $value !important;
+	}
+}
+
+

@@ -1,0 +1,55 @@
+/**
+ * @author haw
+ */
+
+@import "../util/variables";
+@import "../util/mixin";
+
+$alertSelector: ".#{$namespace}alert";
+
+#{$alertSelector} {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 72%;
+	line-height: 1.2;
+	text-align: center;
+	background-color: $white;
+	border-radius: .5rem;
+	overflow: hidden;
+	transform: translate3d(-50%, -50%, 0);
+
+	&-header {
+		padding: 1rem .75rem .4rem;
+		font-size: .85rem;
+	}
+
+	&-body {
+		padding: 0 .75rem 1rem;
+		font-size: .65rem;
+	}
+
+	&-footer {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+
+		@include hairline-top();
+	}
+
+	&-button {
+		position: relative;
+		flex: 1;
+		padding: .6rem .75rem;
+		color: $primaryColor;
+		font-size: .85rem;
+
+		&:not(:first-child) {
+			@include hairline-top();
+		}
+
+		&:active {
+			background-color: rgba(0, 0, 0, .1);
+		}
+	}
+}

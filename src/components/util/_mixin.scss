@@ -1,0 +1,101 @@
+/**
+ * @author haw
+ */
+
+@import "./variables";
+
+$hairline-color: #c4c4c4;
+
+/* 线条 */
+@mixin hairline-base() {
+	content: " ";
+	z-index: 20;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: .05rem;
+	background-color: $hairline-color;
+}
+
+@mixin hairline-top($color: $hairline-color) {
+	&:before {
+		@include hairline-base();
+		bottom: auto;
+		transform: scaleY(.5);
+	}
+}
+
+@mixin hairline-right($color: $hairline-color) {
+	&:after {
+		@include hairline-base();
+		left: auto;
+		width: .05rem;
+		height: 100%;
+		transform: scaleX(.5);
+	}
+}
+
+@mixin hairline-bottom($color: $hairline-color) {
+	&:after {
+		@include hairline-base();
+		top: auto;
+		transform: scaleY(.5);
+	}
+}
+
+@mixin hairline-left($color: $hairline-color) {
+	&:before {
+		@include hairline-base();
+		right: auto;
+		width: .05rem;
+		height: 100%;
+		transform: scaleX(.5);
+	}
+}
+/* /线条 */
+
+
+/* listview 右箭头 */
+
+@mixin arrow-right() {
+	&:after {
+		content: " ";
+		position: relative;
+		// top: -.05rem;
+		display: inline-block;
+		width: .35rem;
+		height: .35rem;
+		margin-left: .35rem;
+		border-top: .1rem solid $gray;
+		border-right: .1rem solid $gray;
+		transform: rotate(45deg);
+	}
+}
+
+/* /listview 右箭头 */
+
+/* text ellipsis */
+
+@mixin text-ellipsis() {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/* /text ellipsis */
+
+/* 动画 */
+
+@mixin opacity-enter() {
+	opacity: .01;
+}
+@mixin opacity-leave() {
+	opacity: 1;
+}
+
+/*/ /动画 */
+

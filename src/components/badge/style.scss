@@ -1,0 +1,19 @@
+/**
+ * @author haw
+ */
+
+@import "../util/variables";
+
+$badge-height: .9rem;
+
+.#{$namespace}badge {
+	display: inline-block;
+	height: $badge-height;
+	line-height: $badge-height;
+	padding: 0 .3rem;
+	color: #fff;
+	font-size: .65rem;
+	text-align: center;
+	background-color: $primaryColor;
+	border-radius: $badge-height;
+}

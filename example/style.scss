@@ -1,0 +1,51 @@
+/**
+ * @author haw
+ */
+
+@import "../src/components/util/variables";
+@import "../src/components/util/mixin";
+
+.header {
+	padding: 1.5rem 0;
+	text-align: center;
+
+	h1 {
+		color: $primaryColor;
+		font-size: 1.7rem;
+	}
+	p {
+		color: $gray;
+	}
+}
+
+.grids {
+	position: relative;
+	width: 90%;
+	margin: 0 auto;
+	overflow: auto;
+
+	@include hairline-bottom();
+	@include hairline-left();
+}
+.grid {
+	position: relative;
+	float: left;
+	width: 33.333333333333%;
+	padding: 1.5rem 0;
+	text-align: center;
+
+	@include hairline-top();
+	@include hairline-right();
+
+	[class*="#{$namespace}icon"] {
+		font-size: 1.2rem;
+	}
+	span {
+		display: block;
+		margin-top: .3rem;
+		color: $black;
+	}
+}
+a.grid:active {
+	background-color: rgba(0, 0, 0, .1);
+}

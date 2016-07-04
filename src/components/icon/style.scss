@@ -1,0 +1,319 @@
+@import "../util/variables";
+
+$icon: ".#{$namespace}icon";
+
+@font-face {
+  font-family: "rcios";
+  src: url('./fonts/iconfont.eot?t=1464948157');
+  /* IE9*/
+  src: url('./fonts/iconfont.eot?t=1464948157#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./fonts/iconfont.woff?t=1464948157') format('woff'), /* chrome, firefox */
+  url('./fonts/iconfont.ttf?t=1464948157') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('./fonts/iconfont.svg?t=1464948157#iconfont') format('svg');
+  /* iOS 4.1- */
+}
+
+[class*="#{$namespace}icon"] {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  font-family: "rcios" !important;
+  font-size: inherit;
+  font-style: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#{$icon}-arrowforward:before {
+  content: "\e600";
+}
+
+#{$icon}-bookoutline:before {
+  content: "\e601";
+}
+
+#{$icon}-at:before {
+  content: "\e602";
+}
+
+#{$icon}-book:before {
+  content: "\e603";
+}
+
+#{$icon}-checkmarkoutline:before {
+  content: "\e604";
+}
+
+#{$icon}-clock:before {
+  content: "\e605";
+}
+
+#{$icon}-eyeoutline:before {
+  content: "\e607";
+}
+
+#{$icon}-help:before {
+  content: "\e608";
+}
+
+#{$icon}-keypadoutline:before {
+  content: "\e609";
+}
+
+#{$icon}-more:before {
+  content: "\e60a";
+}
+
+#{$icon}-moreoutline:before {
+  content: "\e60b";
+}
+
+#{$icon}-navigateoutline:before {
+  content: "\e60c";
+}
+
+#{$icon}-paperplane:before {
+  content: "\e60d";
+}
+
+#{$icon}-recording:before {
+  content: "\e60e";
+}
+
+#{$icon}-redo:before {
+  content: "\e60f";
+}
+
+#{$icon}-searchstrong:before {
+  content: "\e610";
+}
+
+#{$icon}-settings:before {
+  content: "\e611";
+}
+
+#{$icon}-settingsstrong:before {
+  content: "\e612";
+}
+
+#{$icon}-trashoutline:before {
+  content: "\e613";
+}
+
+#{$icon}-undo:before {
+  content: "\e614";
+}
+
+#{$icon}-book1:before {
+  content: "\e615";
+}
+
+#{$icon}-closeoutline:before {
+  content: "\e616";
+}
+
+#{$icon}-close:before {
+  content: "\e617";
+}
+
+#{$icon}-contact:before {
+  content: "\e618";
+}
+
+#{$icon}-heart:before {
+  content: "\e619";
+}
+
+#{$icon}-informationoutline:before {
+  content: "\e61a";
+}
+
+#{$icon}-locationoutline:before {
+  content: "\e61b";
+}
+
+#{$icon}-pricetag:before {
+  content: "\e61c";
+}
+
+#{$icon}-atoutline:before {
+  content: "\e61d";
+}
+
+#{$icon}-chatboxesoutline:before {
+  content: "\e61e";
+}
+
+#{$icon}-circleoutline:before {
+  content: "\e620";
+}
+
+#{$icon}-composeoutline:before {
+  content: "\e621";
+}
+
+#{$icon}-copy:before {
+  content: "\e622";
+}
+
+#{$icon}-heartoutline:before {
+  content: "\e623";
+}
+
+#{$icon}-loop:before {
+  content: "\e625";
+}
+
+#{$icon}-minus:before {
+  content: "\e626";
+}
+
+#{$icon}-personaddoutline:before {
+  content: "\e627";
+}
+
+#{$icon}-plusempty:before {
+  content: "\e628";
+}
+
+#{$icon}-reload:before {
+  content: "\e629";
+}
+
+#{$icon}-staroutline:before {
+  content: "\e62a";
+}
+
+#{$icon}-arrowback:before {
+  content: "\e62b";
+}
+
+#{$icon}-chatbubble:before {
+  content: "\e62c";
+}
+
+#{$icon}-checkmark:before {
+  content: "\e62d";
+}
+
+#{$icon}-eye:before {
+  content: "\e62e";
+}
+
+#{$icon}-homeoutline:before {
+  content: "\e62f";
+}
+
+#{$icon}-location:before {
+  content: "\e630";
+}
+
+#{$icon}-minusoutline:before {
+  content: "\e631";
+}
+
+#{$icon}-helpoutline:before {
+  content: "\e633";
+}
+
+#{$icon}-calendar:before {
+  content: "\e634";
+}
+
+#{$icon}-browsersoutline:before {
+  content: "\e635";
+}
+
+#{$icon}-checkmarkempty:before {
+  content: "\e61f";
+}
+
+#{$icon}-circlefilled:before {
+  content: "\e637";
+}
+
+#{$icon}-copyoutline:before {
+  content: "\e638";
+}
+
+#{$icon}-drag:before {
+  content: "\e639";
+}
+
+#{$icon}-minus1:before {
+  content: "\e63b";
+}
+
+#{$icon}-uploadoutline:before {
+  content: "\e63c";
+}
+
+#{$icon}-browsers:before {
+  content: "\e63d";
+}
+
+#{$icon}-calendaroutline:before {
+  content: "\e63e";
+}
+
+#{$icon}-chatbubbleoutline:before {
+  content: "\e63f";
+}
+
+#{$icon}-compose:before {
+  content: "\e640";
+}
+
+#{$icon}-clouddownload:before {
+  content: "\e641";
+}
+
+#{$icon}-contactoutline:before {
+  content: "\e642";
+}
+
+#{$icon}-home:before {
+  content: "\e643";
+}
+
+#{$icon}-information:before {
+  content: "\e644";
+}
+
+#{$icon}-trash:before {
+  content: "\e646";
+}
+
+#{$icon}-arrowdown:before {
+  content: "\e647";
+}
+
+#{$icon}-cameraoutline:before {
+  content: "\e648";
+}
+
+#{$icon}-camera:before {
+  content: "\e649";
+}
+
+#{$icon}-refreshempty:before {
+  content: "\e64b";
+}
+
+#{$icon}-search:before {
+  content: "\e64c";
+}
+
+#{$icon}-star:before {
+  content: "\e64e";
+}
+
+#{$icon}-arrowup:before {
+  content: "\e64f";
+}
+
+#{$icon}-closeempty:before {
+  content: "\e650";
+}
