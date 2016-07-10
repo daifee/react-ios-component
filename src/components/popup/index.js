@@ -5,5 +5,6 @@
 import '../base';
 import './style';
 
-export Alert from './Alert';
-export Confirm from './Confirm';
+import Popup from './Popup';
+
+export default Popup;

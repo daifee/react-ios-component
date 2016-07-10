@@ -1,15 +1,18 @@
 /**
  * @author haw
  */
-import {render} from 'react-dom';
 
-export function createPortalEl(container = document.body) {
+export function getContainer(container = document.body) {
+	if(typeof container === 'function') {
+		container = container();
+	}
+	return container;
+}
+
+export function createPortalEl(container) {
 	const portalEl = document.createElement('div');
 
 	container.appendChild(portalEl);
 	return portalEl;
 }
 
-export function createInstance(Component, wrapper) {
-	return render();
-}

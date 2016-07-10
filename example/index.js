@@ -40,6 +40,7 @@ import TabBarPage from './views/tabbar';
 import SegmentedPage from './views/segmented';
 import CellsPage from './views/cells';
 import AlertPage from './views/alert';
+import ActionSheetPage from './views/actionsheet';
 import './style';
 
 function Home(props) {
@@ -72,9 +73,9 @@ function Home(props) {
 						<Icon value="bookoutline" />
 						<span>Alert</span>
 					</Link>
-					<Link className="grid" to="/button">
+					<Link className="grid" to="/actionsheet">
 						<Icon value="bookoutline" />
-						<span>SearchBar</span>
+						<span>ActionSheet</span>
 					</Link>
 					<Link className="grid" to="/button">
 						<Icon value="bookoutline" />
@@ -118,6 +119,7 @@ ReactDOM.render((
 			<Route path="segmented" component={SegmentedPage} />
 			<Route path="cells" component={CellsPage} />
 			<Route path="alert" component={AlertPage} />
+			<Route path="actionsheet" component={ActionSheetPage} />
 		</Route>
 	</Router>
 ), document.getElementById('app-container'));

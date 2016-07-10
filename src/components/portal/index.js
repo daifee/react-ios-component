@@ -2,6 +2,6 @@
  * @author haw
  */
 
-import Portal from './portal';
+import Portal from './Portal';
 
 export default Portal;

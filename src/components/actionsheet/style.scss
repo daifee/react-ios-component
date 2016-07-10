@@ -1,0 +1,51 @@
+/**
+ * @author haw
+ */
+
+@import "../util/variables";
+@import "../util/mixin";
+
+$selector: ".#{$namespace}actionsheet";
+
+#{$selector} {
+	// position: absolute;
+	// bottom: 0;
+	width: 100%;
+	padding: 0 .5rem .5rem;
+
+	&-buttons {
+		
+		& :first-child {
+			border-top-left-radius: .5rem;
+			border-top-right-radius: .5rem;
+		}
+		& :last-child {
+			border-bottom-left-radius: .5rem;
+			border-bottom-right-radius: .5rem;
+		}
+	}
+
+	&-desc,
+	&-button {
+		display: block;
+		color: $gray;
+		line-height: 2.65rem;
+		font-size: .65rem;
+		text-align: center;
+		background-color: $white;
+	}
+
+	&-button {
+		color: $primaryColor;
+		font-size: 1rem;
+
+		&:active {
+			background-color: rgba(0, 0, 0, .1);
+		}
+	}
+
+	& > &-button {
+		margin-top: .5rem;
+		border-radius: .5rem;
+	}
+}

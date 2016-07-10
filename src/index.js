@@ -30,5 +30,8 @@ export {
 } from './components/cell';
 export Mask from './components/mask';
 export {
-	Alert
+	Alert,
+	Confirm
 } from './components/alert';
+export ActionSheet from './components/actionsheet';
+

@@ -14,6 +14,7 @@ export default function Animate(props) {
 	const {
 		component,
 		duration,
+		timeout,
 		timingFunction,
 		children,
 		...rest
@@ -30,8 +31,8 @@ export default function Animate(props) {
 	return (
 		<ReactCSSTransitionGroup
 			component={component}
-			transitionEnterTimeout={duration}
-			transitionLeaveTimeout={duration}
+			transitionEnterTimeout={timeout}
+			transitionLeaveTimeout={timeout}
 			{...rest}
 		>
 			{cloneElement(children, {
@@ -47,11 +48,13 @@ Animate.propTypes = {
 		PropTypes.func
 	]),
 	duration: PropTypes.number,
+	timeout: PropTypes.number,
 	timingFunction: PropTypes.string
 };
 
 Animate.defaultProps = {
 	component: 'span',
-	duration: 3000,
+	duration: 300,
+	timeout: 3000,
 	timingFunction: 'ease'
 };
