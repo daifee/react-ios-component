@@ -34,4 +34,5 @@ export {
 	Confirm
 } from './components/alert';
 export ActionSheet from './components/actionsheet';
+export Indicator from './components/indicator';
 

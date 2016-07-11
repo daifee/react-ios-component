@@ -6,7 +6,6 @@ import React, {
 	PropTypes,
 	Component
 } from 'react';
-import Animate from '../animate';
 import Popup from '../popup';
 import Portal from '../portal';
 import {classNames} from '../util';

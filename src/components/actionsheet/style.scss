@@ -19,11 +19,17 @@ $selector: ".#{$namespace}actionsheet";
 
 	&-desc,
 	&-button {
+		position: relative;
 		display: block;
 		color: $gray;
 		line-height: 2.65rem;
 		font-size: .65rem;
 		text-align: center;
+	}
+
+	&-desc,
+	&-button:not(:last-child) {
+		@include hairline-bottom();
 	}
 
 	&-button {

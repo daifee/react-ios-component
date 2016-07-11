@@ -41,6 +41,7 @@ import SegmentedPage from './views/segmented';
 import CellsPage from './views/cells';
 import AlertPage from './views/alert';
 import ActionSheetPage from './views/actionsheet';
+import IndicatorPage from './views/indicator';
 import './style';
 
 function Home(props) {
@@ -77,9 +78,9 @@ function Home(props) {
 						<Icon value="bookoutline" />
 						<span>ActionSheet</span>
 					</Link>
-					<Link className="grid" to="/button">
+					<Link className="grid" to="/indicator">
 						<Icon value="bookoutline" />
-						<span>Badge</span>
+						<span>Indicator</span>
 					</Link>
 					<Link className="grid" to="/button">
 						<Icon value="bookoutline" />
@@ -120,6 +121,7 @@ ReactDOM.render((
 			<Route path="cells" component={CellsPage} />
 			<Route path="alert" component={AlertPage} />
 			<Route path="actionsheet" component={ActionSheetPage} />
+			<Route path="indicator" component={IndicatorPage} />
 		</Route>
 	</Router>
 ), document.getElementById('app-container'));

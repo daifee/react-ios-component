@@ -21,6 +21,7 @@ export default function Popup(props) {
 		position,
 		duration,
 		timingFunction,
+		transitionName,
 		className,
 		style,
 		onClick,
@@ -35,7 +36,7 @@ export default function Popup(props) {
 		transitionDuration: `${duration}ms`,
 		transitionTimingFunction: timingFunction
 	};
-	const transitionName = classNames(`${prefix}`);
+	const newTransitionName = classNames(transitionName || `${prefix}`);
 	const onPopupClick = (e) => {
 		onClick && onClick(e);
 		e.stopPropagation();
@@ -47,7 +48,7 @@ export default function Popup(props) {
 			transitionAppearTimeout={duration}
 			transitionEnterTimeout={duration}
 			transitionLeaveTimeout={duration}
-			transitionName={transitionName}
+			transitionName={newTransitionName}
 			transitionAppear={true}
 		>
 			{visible ? (
@@ -76,7 +77,11 @@ Popup.propTypes = {
 	close: PropTypes.func,
 	position: PropTypes.oneOf(['center', 'top', 'right', 'bottom', 'left']),
 	duration: PropTypes.number,
-	timingFunction: PropTypes.string
+	timingFunction: PropTypes.string,
+	transitionName: PropTypes.oneOf([
+		PropTypes.string,
+		PropTypes.func
+	])
 };
 
 Popup.defaultProps = {
