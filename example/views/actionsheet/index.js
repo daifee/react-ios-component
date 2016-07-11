@@ -67,12 +67,15 @@ export default class ActionSheetPage extends Component {
 						{
 							children: 'ok btn',
 							onClick: () => {
-								this.setState({visible: !visible});
+								// this.setState({visible: !visible});
 							}
 						}
 					]}
 					onCancelHide={() => {
-						this.setState({visible: !visible});
+						// this.setState({visible: !visible});
+					}}
+					close={(e) => {
+						this.setState({visible: false});
 					}}
 				/>
 			</Layout>

@@ -9,6 +9,10 @@ import {classNames} from '../util';
 
 const prefix = 'page';
 
+/**
+ * Page 页面基本结构
+ * @param {object} props @see Page.propTypes
+ */
 export default function Page(props) {
 	const {
 		hasNavBar,
@@ -38,6 +42,14 @@ export default function Page(props) {
 	);
 }
 
+/**
+ * Page 组件所使用的属性
+ * @type {Object}
+ * hasNavBar: 页面是否有导航栏 (`NavBar`) 组件，默认值为 `false`
+ * hasTabBar: 页面是否有标签栏 (`TabBar`) 组件，默认值为 `false`
+ * duration: 页面过场动画时间，默认值为 `300`
+ * timingFunction: 页面过场动画的过渡函数，默认值为 `ease`
+ */
 Page.propTypes = {
 	hasNavBar: PropTypes.bool,
 	hasTabBar: PropTypes.bool,

@@ -17,11 +17,13 @@ function ChildContainer(props) {
 export default function Popup(props) {
 	let {
 		visible,
+		close,
 		position,
 		duration,
 		timingFunction,
 		className,
 		style,
+		onClick,
 		children,
 		...rest
 	} = props;
@@ -34,6 +36,10 @@ export default function Popup(props) {
 		transitionTimingFunction: timingFunction
 	};
 	const transitionName = classNames(`${prefix}`);
+	const onPopupClick = (e) => {
+		onClick && onClick(e);
+		e.stopPropagation();
+	}
 
 	return (
 		<ReactCSSTransitionGroup
@@ -49,10 +55,12 @@ export default function Popup(props) {
 					className={classNames(prefix)}
 					style={newStyle}
 					key={'popup'}
+					onClick={close}
 				>
 					<div 
 						className={clazz} 
 						style={{...newStyle, ...style}}
+						onClick={onPopupClick}
 						{...rest}
 					>
 						{children}
@@ -65,6 +73,7 @@ export default function Popup(props) {
 
 Popup.propTypes = {
 	visible: PropTypes.bool,
+	close: PropTypes.func,
 	position: PropTypes.oneOf(['center', 'top', 'right', 'bottom', 'left']),
 	duration: PropTypes.number,
 	timingFunction: PropTypes.string

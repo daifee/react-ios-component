@@ -65,13 +65,17 @@ export default function ActionSheet(props) {
 
 		btnProps.onClick = (e) => {
 			onClick && onClick(e);
-			close && close();
+			close && close(e);
 		}
 		return <Button {...btnProps} key={i}/>
 	});
 
 	return (
-		<Popup visible={visible} position="bottom">
+		<Popup 
+			visible={visible} 
+			close={close} 
+			position="bottom"
+		>
 			<div className={clazz} {...rest}>
 				<div className={buttonsClazz}>
 					{description ? (
@@ -80,7 +84,9 @@ export default function ActionSheet(props) {
 					{buttonEls}
 				</div>
 				{hasCancelButton ? (
-					<Button onClick={onCancel}>{cancelText}</Button>
+					<div className={buttonsClazz}>
+						<Button onClick={onCancel}>{cancelText}</Button>
+					</div>
 				) : null}
 			</div>
 		</Popup>

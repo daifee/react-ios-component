@@ -1,0 +1,3365 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/actionsheet/ActionSheet.js",
+    "memberof": null,
+    "longname": "src/components/actionsheet/ActionSheet.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes,\n\tComponent\n} from 'react';\nimport Animate from '../animate';\nimport Popup from '../popup';\nimport Portal from '../portal';\nimport {classNames} from '../util';\nimport config from '../util/config';\n\nconst prefix = 'actionsheet';\n\nfunction Button(props) {\n\tconst {\n\t\tcolor,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(`${prefix}-button`, {\n\t\t[className]: className,\n\t\t[`color-${color}`]: !!color\n\t});\n\n\treturn (\n\t\t<a className={clazz} {...rest}>{children}</a>\n\t);\n}\n\nButton.propTypes = {\n\tcolor: PropTypes.oneOf(config.colors)\n};\nButton.defaultProps = {\n\tcolor: ''\n};\n\nexport default function ActionSheet(props) {\n\tconst {\n\t\tvisible,\n\t\tdescription,\n\t\tbuttons,\n\t\thasCancelButton,\n\t\tonCancelHide,\n\t\tcancelText,\n\t\tclose,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\tlet buttonsClazz = classNames(`${prefix}-buttons`);\n\tlet descClazz = classNames(`${prefix}-desc`);\n\tlet onCancel = (e) => {\n\t\tonCancelHide && onCancelHide(e);\n\t\tclose && close();\n\t};\n\tlet buttonEls = buttons.map((btnProps, i) => {\n\t\tconst onClick = btnProps.onClick;\n\n\t\tbtnProps.onClick = (e) => {\n\t\t\tonClick && onClick(e);\n\t\t\tclose && close();\n\t\t}\n\t\treturn <Button {...btnProps} key={i}/>\n\t});\n\n\treturn (\n\t\t<Popup visible={visible} position=\"bottom\">\n\t\t\t<div className={clazz} {...rest}>\n\t\t\t\t<div className={buttonsClazz}>\n\t\t\t\t\t{description ? (\n\t\t\t\t\t\t<span className={descClazz}>{description}</span>\n\t\t\t\t\t) : null}\n\t\t\t\t\t{buttonEls}\n\t\t\t\t</div>\n\t\t\t\t{hasCancelButton ? (\n\t\t\t\t\t<div className={buttonsClazz}>\n\t\t\t\t\t\t<Button onClick={onCancel}>{cancelText}</Button>\n\t\t\t\t\t</div>\n\t\t\t\t) : null}\n\t\t\t</div>\n\t\t</Popup>\n\t);\n}\n\nActionSheet.propTypes = {\n\tvisible: PropTypes.bool,\n\tdescription: PropTypes.node,\n\tbuttons: PropTypes.arrayOf(PropTypes.object),\n\thasCancelButton: PropTypes.bool,\n\tonCancelHide: PropTypes.func,\n\tcancelText: PropTypes.node,\n\tclose: PropTypes.func\n};\n\nActionSheet.defaultProps = {\n\thasCancelButton: true,\n\tonCancelHide: () => {},\n\tcancelText: '取消'\n};\n\nActionSheet.show = (props, container) => {\n\tPortal.show(ActionSheet, props, container);\n};"
+  },
+  {
+    "__docId__": 1,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/actionsheet/ActionSheet.js",
+    "longname": "src/components/actionsheet/ActionSheet.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/actionsheet/ActionSheet.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 2,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Button",
+    "memberof": "src/components/actionsheet/ActionSheet.js",
+    "longname": "src/components/actionsheet/ActionSheet.js~Button",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/actionsheet/ActionSheet.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 3,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "ActionSheet",
+    "memberof": "src/components/actionsheet/ActionSheet.js",
+    "longname": "src/components/actionsheet/ActionSheet.js~ActionSheet",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/actionsheet/ActionSheet.js",
+    "importStyle": "ActionSheet",
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 4,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/actionsheet/index.js",
+    "memberof": null,
+    "longname": "src/components/actionsheet/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport '../base';\nimport './style';\n\nimport ActionSheet from './ActionSheet';\n\nexport default ActionSheet;"
+  },
+  {
+    "__docId__": 5,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/alert/Alert.js",
+    "memberof": null,
+    "longname": "src/components/alert/Alert.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes,\n\tComponent,\n\tcloneElement\n} from 'react';\nimport Animate from '../animate';\nimport Popup from '../popup';\nimport Portal from '../portal';\nimport AlertHeader from './AlertHeader';\nimport AlertBody from './AlertBody';\nimport AlertFooter from './AlertFooter';\nimport AlertButton from './AlertButton';\nimport {classNames} from '../util';\nimport {render} from 'react-dom';\n\nconst prefix = 'alert';\n\nexport default function Alert(props) {\n\tconst {\n\t\tvisible,\n\t\ttitle,\n\t\tbody,\n\t\tbuttons,\n\t\tclose,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\tconst buttonEls = buttons.map((btnProps, i) => {\n\t\tconst onClick = btnProps.onClick;\n\n\t\tbtnProps.onClick = (e) => {\n\t\t\tconst bool = onClick && onClick(e);\n\n\t\t\tif(!bool) {\n\t\t\t\tclose && close();\n\t\t\t}\n\t\t}\n\t\treturn (\n\t\t\t<AlertButton {...btnProps} key={i} />\n\t\t);\n\t});\n\n\treturn (\n\t\t<Popup visible={visible}>\n\t\t\t<div className={clazz} {...rest}>\n\t\t\t\t<AlertHeader>{title}</AlertHeader>\n\t\t\t\t<AlertBody>{body}</AlertBody>\n\t\t\t\t<AlertFooter>\n\t\t\t\t\t{buttonEls}\n\t\t\t\t</AlertFooter>\n\t\t\t</div>\n\t\t</Popup>\n\t);\n}\n\nAlert.show = (props, container) => {\n\tPortal.show(Alert, props, container);\n};\n\nAlert.propTypes = {\n\tvisible: PropTypes.bool,\n\ttitle: PropTypes.node,\n\tbody: PropTypes.node,\n\tbuttons: PropTypes.arrayOf(PropTypes.object),\n\tclose: PropTypes.func\n};"
+  },
+  {
+    "__docId__": 6,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/alert/Alert.js",
+    "longname": "src/components/alert/Alert.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/alert/Alert.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 7,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Alert",
+    "memberof": "src/components/alert/Alert.js",
+    "longname": "src/components/alert/Alert.js~Alert",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/alert/Alert.js",
+    "importStyle": "Alert",
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 8,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/alert/AlertBody.js",
+    "memberof": null,
+    "longname": "src/components/alert/AlertBody.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'alert-body';\n\nexport default function AlertBody(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</div>\n\t);\n} "
+  },
+  {
+    "__docId__": 9,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/alert/AlertBody.js",
+    "longname": "src/components/alert/AlertBody.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/alert/AlertBody.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 10,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "AlertBody",
+    "memberof": "src/components/alert/AlertBody.js",
+    "longname": "src/components/alert/AlertBody.js~AlertBody",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/alert/AlertBody.js",
+    "importStyle": "AlertBody",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 11,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/alert/AlertButton.js",
+    "memberof": null,
+    "longname": "src/components/alert/AlertButton.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'alert-button';\n\nexport default function AlertFooter(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<a className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</a>\n\t);\n} "
+  },
+  {
+    "__docId__": 12,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/alert/AlertButton.js",
+    "longname": "src/components/alert/AlertButton.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/alert/AlertButton.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 13,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "AlertFooter",
+    "memberof": "src/components/alert/AlertButton.js",
+    "longname": "src/components/alert/AlertButton.js~AlertFooter",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/alert/AlertButton.js",
+    "importStyle": "AlertFooter",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 14,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/alert/AlertFooter.js",
+    "memberof": null,
+    "longname": "src/components/alert/AlertFooter.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'alert-footer';\n\nexport default function AlertFooter(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</div>\n\t);\n} "
+  },
+  {
+    "__docId__": 15,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/alert/AlertFooter.js",
+    "longname": "src/components/alert/AlertFooter.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/alert/AlertFooter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 16,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "AlertFooter",
+    "memberof": "src/components/alert/AlertFooter.js",
+    "longname": "src/components/alert/AlertFooter.js~AlertFooter",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/alert/AlertFooter.js",
+    "importStyle": "AlertFooter",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 17,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/alert/AlertHeader.js",
+    "memberof": null,
+    "longname": "src/components/alert/AlertHeader.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'alert-header';\n\nexport default function AlertHeader(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</div>\n\t);\n} "
+  },
+  {
+    "__docId__": 18,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/alert/AlertHeader.js",
+    "longname": "src/components/alert/AlertHeader.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/alert/AlertHeader.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 19,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "AlertHeader",
+    "memberof": "src/components/alert/AlertHeader.js",
+    "longname": "src/components/alert/AlertHeader.js~AlertHeader",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/alert/AlertHeader.js",
+    "importStyle": "AlertHeader",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 20,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/alert/Confirm.js",
+    "memberof": null,
+    "longname": "src/components/alert/Confirm.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes,\n\tcloneElement\n} from 'react';\nimport Alert from './Alert';\nimport {classNames} from '../util';\n\nconst prefix = 'alert-confirm';\n\nfunction decorateProps(props) {\n\tconst {\n\t\tonOkHide = () => {},\n\t\tonCancelHide = () => {},\n\t\tokText = '确定',\n\t\tcancelText = '取消',\n\t\tclassName,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\tlet buttons = [{\n\t\tchildren: cancelText,\n\t\tonClick: onCancelHide\n\t}, {\n\t\tchildren: okText,\n\t\tonClick: onOkHide\n\t}];\n\n\treturn {\n\t\tclassName: clazz,\n\t\tbuttons: buttons,\n\t\t...rest\n\t};\n}\n\nexport default function Confirm(props) {\n\tconst {\n\t\tchildren,\n\t\t...alertProps\n\t} = decorateProps(props);\n\n\treturn (\n\t\t<Alert \n\t\t\t{...alertProps}\n\t\t>\n\t\t\t{children}\n\t\t</Alert>\n\t);\n}\n\nConfirm.show = (props) => {\n\tconst alertProps = decorateProps(props);\n\n\tAlert.show(alertProps);\n};\n\nConfirm.propTypes = {\n\tonOkHide: PropTypes.func,\n\tonCancelHide: PropTypes.func,\n\tokText: PropTypes.node,\n\tcancelText: PropTypes.node\n};\n// Confirm.defaultProps = {\n// \tonOkHide: () => {},\n// \tonCancelHide: () => {},\n// \tokText: '确定',\n// \tcancelText: '取消'\n// };"
+  },
+  {
+    "__docId__": 21,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/alert/Confirm.js",
+    "longname": "src/components/alert/Confirm.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/alert/Confirm.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 22,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "decorateProps",
+    "memberof": "src/components/alert/Confirm.js",
+    "longname": "src/components/alert/Confirm.js~decorateProps",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/alert/Confirm.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 23,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Confirm",
+    "memberof": "src/components/alert/Confirm.js",
+    "longname": "src/components/alert/Confirm.js~Confirm",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/alert/Confirm.js",
+    "importStyle": "Confirm",
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 24,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/alert/index.js",
+    "memberof": null,
+    "longname": "src/components/alert/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport '../base';\nimport './style';\n\nexport Alert from './Alert';\nexport Confirm from './Confirm';"
+  },
+  {
+    "__docId__": 25,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/animate/Animate.js",
+    "memberof": null,
+    "longname": "src/components/animate/Animate.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tChildren,\n\tPropTypes,\n\tcloneElement\n} from 'react';\nimport ReactCSSTransitionGroup from 'react-addons-css-transition-group';\nimport {classNames} from '../util';\n\nexport default function Animate(props) {\n\tconst {\n\t\tcomponent,\n\t\tduration,\n\t\ttimeout,\n\t\ttimingFunction,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet style = children.props.style;\n\tlet newStyle = {\n\t\ttransitionDuration: `${duration}ms`,\n\t\ttransitionTimingFunction: timingFunction,\n\t\t...style\n\t};\n\n\tconsole.log(children);\n\n\treturn (\n\t\t<ReactCSSTransitionGroup\n\t\t\tcomponent={component}\n\t\t\ttransitionEnterTimeout={timeout}\n\t\t\ttransitionLeaveTimeout={timeout}\n\t\t\t{...rest}\n\t\t>\n\t\t\t{cloneElement(children, {\n\t\t\t\tstyle: newStyle\n\t\t\t})}\n\t\t</ReactCSSTransitionGroup>\n\t);\n}\n\nAnimate.propTypes = {\n\tcomponent: PropTypes.oneOfType([\n\t\tPropTypes.string,\n\t\tPropTypes.func\n\t]),\n\tduration: PropTypes.number,\n\ttimeout: PropTypes.number,\n\ttimingFunction: PropTypes.string\n};\n\nAnimate.defaultProps = {\n\tcomponent: 'span',\n\tduration: 300,\n\ttimeout: 3000,\n\ttimingFunction: 'ease'\n};"
+  },
+  {
+    "__docId__": 26,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Animate",
+    "memberof": "src/components/animate/Animate.js",
+    "longname": "src/components/animate/Animate.js~Animate",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/animate/Animate.js",
+    "importStyle": "Animate",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 27,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/animate/index.js",
+    "memberof": null,
+    "longname": "src/components/animate/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport Animate from './Animate';\n\nexport default Animate;"
+  },
+  {
+    "__docId__": 28,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/badge/Badge.js",
+    "memberof": null,
+    "longname": "src/components/badge/Badge.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 徽章\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\n\nconst prefix = 'badge';\n\nexport default function Badge(props) {\n\tconst {\n\t\tbgColor,\n\t\tchildren,\n\t\tclassName,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[`bg-${bgColor}`]: !!bgColor\n\t});\n\n\treturn (\n\t\t<span className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</span>\n\t);\n}\n\nBadge.propTypes = {\n\tbgColor: PropTypes.oneOf(config.colors)\n};\n\nBadge.defaultProps = {\n\tbgColor: ''\n};"
+  },
+  {
+    "__docId__": 29,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/badge/Badge.js",
+    "longname": "src/components/badge/Badge.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/badge/Badge.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 30,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Badge",
+    "memberof": "src/components/badge/Badge.js",
+    "longname": "src/components/badge/Badge.js~Badge",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/badge/Badge.js",
+    "importStyle": "Badge",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 31,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/badge/index.js",
+    "memberof": null,
+    "longname": "src/components/badge/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\nimport '../base'; \nimport './style';\n\nimport Badge from './Badge';\n\nexport default Badge;"
+  },
+  {
+    "__docId__": 32,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/base/index.js",
+    "memberof": null,
+    "longname": "src/components/base/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport './base';\nimport './color';"
+  },
+  {
+    "__docId__": 33,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/button/Button.js",
+    "memberof": null,
+    "longname": "src/components/button/Button.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 按钮\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\n\nconst prefix = 'button';\n\nexport default function Button(props) {\n\tconst {\n\t\tcomponent,\n\t\tsize,\n\t\tfill,\n\t\tcolor,\n\t\tactive,\n\t\tdisabled,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tconst Component = component;\n\tlet clazz = classNames(prefix, {\n\t\t[`${prefix}-${size}`]: !!size,\n\t\t[`${prefix}-fill`]: fill,\n\t\t[`${prefix}-${color}`]: !!color,\n\t\t[`${prefix}-disabled`]: disabled,\n\t\t[className]: className,\n\t\tactive: active ? 'active' : false\n\t});\n\n\treturn (\n\t\t<Component className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</Component>\n\t);\n}\n\nButton.propTypes = {\n\tcomponent: PropTypes.oneOf(['a', 'button']),\n\tsize: PropTypes.oneOf(['', 'lg']),\n\tfill: PropTypes.bool,\n\tdisabled: PropTypes.bool,\n\tcolor: PropTypes.oneOf(config.colors)\n};\n\nButton.defaultProps = {\n\tcomponent: 'a',\n\tsize: '',\n\tfill: false,\n\tdisabled: false,\n\tcolor: ''\n};\n\n"
+  },
+  {
+    "__docId__": 34,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/button/Button.js",
+    "longname": "src/components/button/Button.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/button/Button.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 35,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Button",
+    "memberof": "src/components/button/Button.js",
+    "longname": "src/components/button/Button.js~Button",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/button/Button.js",
+    "importStyle": "Button",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 36,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/button/index.js",
+    "memberof": null,
+    "longname": "src/components/button/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\nimport '../base'; \nimport './style';\n\nimport Button from './Button';\n\nexport default Button;"
+  },
+  {
+    "__docId__": 37,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/cell/Cell.js",
+    "memberof": null,
+    "longname": "src/components/cell/Cell.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'cell';\n\nexport default function Cell(props) {\n\tconst {\n\t\thasArrow,\n\t\thref,\n\t\tcomponent,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet Component = href ? 'a' : component;\n\tlet clazz = classNames(prefix, {\n\t\t[`${prefix}-arrow`]: Component === 'a' || hasArrow,\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<Component className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</Component>\n\t);\n}\n\nCell.propTypes = {\n\thasArrow: PropTypes.bool,\n\thref: PropTypes.string,\n\tcomponent: PropTypes.oneOf(['a', 'label', 'div'])\n};\n\nCell.defaultProps = {\n\tcomponent: 'div'\n};"
+  },
+  {
+    "__docId__": 38,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/cell/Cell.js",
+    "longname": "src/components/cell/Cell.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/cell/Cell.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 39,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Cell",
+    "memberof": "src/components/cell/Cell.js",
+    "longname": "src/components/cell/Cell.js~Cell",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/cell/Cell.js",
+    "importStyle": "Cell",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 40,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/cell/CellBody.js",
+    "memberof": null,
+    "longname": "src/components/cell/CellBody.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'cell-body';\n\nexport default function CellBody(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</div>\n\t);\n}"
+  },
+  {
+    "__docId__": 41,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/cell/CellBody.js",
+    "longname": "src/components/cell/CellBody.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/cell/CellBody.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 42,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "CellBody",
+    "memberof": "src/components/cell/CellBody.js",
+    "longname": "src/components/cell/CellBody.js~CellBody",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/cell/CellBody.js",
+    "importStyle": "CellBody",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 43,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/cell/CellDesc.js",
+    "memberof": null,
+    "longname": "src/components/cell/CellDesc.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'cell-desc';\n\nexport default function CellBody(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</div>\n\t);\n}"
+  },
+  {
+    "__docId__": 44,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/cell/CellDesc.js",
+    "longname": "src/components/cell/CellDesc.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/cell/CellDesc.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 45,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "CellBody",
+    "memberof": "src/components/cell/CellDesc.js",
+    "longname": "src/components/cell/CellDesc.js~CellBody",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/cell/CellDesc.js",
+    "importStyle": "CellBody",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 46,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/cell/CellFooter.js",
+    "memberof": null,
+    "longname": "src/components/cell/CellFooter.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'cell-footer';\n\nexport default function CellFooter(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</div>\n\t);\n}"
+  },
+  {
+    "__docId__": 47,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/cell/CellFooter.js",
+    "longname": "src/components/cell/CellFooter.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/cell/CellFooter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 48,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "CellFooter",
+    "memberof": "src/components/cell/CellFooter.js",
+    "longname": "src/components/cell/CellFooter.js~CellFooter",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/cell/CellFooter.js",
+    "importStyle": "CellFooter",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 49,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/cell/CellHeader.js",
+    "memberof": null,
+    "longname": "src/components/cell/CellHeader.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'cell-header';\n\nexport default function CellHeader(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</div>\n\t);\n}"
+  },
+  {
+    "__docId__": 50,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/cell/CellHeader.js",
+    "longname": "src/components/cell/CellHeader.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/cell/CellHeader.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 51,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "CellHeader",
+    "memberof": "src/components/cell/CellHeader.js",
+    "longname": "src/components/cell/CellHeader.js~CellHeader",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/cell/CellHeader.js",
+    "importStyle": "CellHeader",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 52,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/cell/Cells.js",
+    "memberof": null,
+    "longname": "src/components/cell/Cells.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 表格视图\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'cells';\n\nexport default function Cells(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</div>\n\t);\n}"
+  },
+  {
+    "__docId__": 53,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/cell/Cells.js",
+    "longname": "src/components/cell/Cells.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/cell/Cells.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 54,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Cells",
+    "memberof": "src/components/cell/Cells.js",
+    "longname": "src/components/cell/Cells.js~Cells",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/cell/Cells.js",
+    "importStyle": "Cells",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 55,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/cell/CellsTitle.js",
+    "memberof": null,
+    "longname": "src/components/cell/CellsTitle.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 表格视图\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'cells-title';\n\nexport default function CellsTitle(props) {\n\tconst {\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children}\n\t\t</div>\n\t);\n}"
+  },
+  {
+    "__docId__": 56,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/cell/CellsTitle.js",
+    "longname": "src/components/cell/CellsTitle.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/cell/CellsTitle.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "CellsTitle",
+    "memberof": "src/components/cell/CellsTitle.js",
+    "longname": "src/components/cell/CellsTitle.js~CellsTitle",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/cell/CellsTitle.js",
+    "importStyle": "CellsTitle",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 58,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/cell/index.js",
+    "memberof": null,
+    "longname": "src/components/cell/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport '../base'; \nimport './style';\n\nexport CellsTitle from './CellsTitle';\nexport Cells from './Cells';\nexport Cell from './Cell';\nexport CellHeader from './CellHeader';\nexport CellBody from './CellBody';\nexport CellDesc from './CellDesc';\nexport CellFooter from './CellFooter';"
+  },
+  {
+    "__docId__": 59,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/icon/Icon.js",
+    "memberof": null,
+    "longname": "src/components/icon/Icon.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'icon-';\n\nexport default function Icon(props) {\n\tconst {\n\t\tvalue,\n\t\tsizeType, \n\t\tsize,\n\t\tchildren, \n\t\tclassName,\n\t\t...rest\n\t} = props;\n\tlet clazz = {\n\t\t[prefix + value]: true,\n\t\t[prefix + sizeType]: !!sizeType,\n\t\t[className]: className\n\t};\n\tlet style = {};\n\n\tif(size) {\n\t\tstyle = {\n\t\t\twidth: size,\n\t\t\theight: size,\n\t\t\tfontSize: size\n\t\t};\n\t}\n\n\treturn (\n\t\t<i className={classNames(clazz)} style={style} {...rest}>\n\t\t\t{children}\n\t\t</i>\n\t);\n}\n\nIcon.propTypes = {\n\tvalue: PropTypes.string.isRequired,\n\tsizeType: PropTypes.string,\n\tsize: PropTypes.string\n};\n\nIcon.defaultProps = {\n\tsizeType: ''\n};"
+  },
+  {
+    "__docId__": 60,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/icon/Icon.js",
+    "longname": "src/components/icon/Icon.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/icon/Icon.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Icon",
+    "memberof": "src/components/icon/Icon.js",
+    "longname": "src/components/icon/Icon.js~Icon",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/icon/Icon.js",
+    "importStyle": "Icon",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 62,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/icon/index.js",
+    "memberof": null,
+    "longname": "src/components/icon/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\nimport '../base'; \nimport './style';\nimport './iconsize';\n\nimport Icon from './Icon';\n\nexport default Icon;"
+  },
+  {
+    "__docId__": 63,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/mask/Mask.js",
+    "memberof": null,
+    "longname": "src/components/mask/Mask.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'mask';\n\nexport default function Mask(props) {\n\tconst {\n\t\ttransparent,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[`${prefix}-transparent`]: transparent,\n\t\tclassName: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>{children}</div>\n\t);\n}\n\nMask.propTypes = {\n\ttransparent: PropTypes.bool\n};\n\nMask.defaultProps = {\n\ttransparent: false\n};\n"
+  },
+  {
+    "__docId__": 64,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/mask/Mask.js",
+    "longname": "src/components/mask/Mask.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/mask/Mask.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Mask",
+    "memberof": "src/components/mask/Mask.js",
+    "longname": "src/components/mask/Mask.js~Mask",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/mask/Mask.js",
+    "importStyle": "Mask",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 66,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/mask/index.js",
+    "memberof": null,
+    "longname": "src/components/mask/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport '../base';\nimport './style';\n\nimport Mask from './Mask';\n\nexport default Mask;"
+  },
+  {
+    "__docId__": 67,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/navbar/Navbar.js",
+    "memberof": null,
+    "longname": "src/components/navbar/Navbar.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 导航栏标题\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\nimport NavBarItem from './NavbarItem';\n\nconst prefix = 'navbar';\n\nexport default function NavBar(props) {\n\tconst {\n\t\tleftElement,\n\t\trightElement,\n\t\tcenterElement,\n\t\tchildren,\n\t\tclassName,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\tlet nodes;\n\n\tif(!children) {\n\t\tnodes = [leftElement, centerElement, rightElement].map((el, i) => {\n\t\t\treturn <NavBarItem key={i} />;\n\t\t})\n\t}\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children || nodes}\n\t\t</div>\n\t);\n}\n\nNavBar.propTypes = {\n\tleftElement: PropTypes.node,\n\tcenterElement: PropTypes.node,\n\trightElement: PropTypes.node\n};"
+  },
+  {
+    "__docId__": 68,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/navbar/Navbar.js",
+    "longname": "src/components/navbar/Navbar.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/navbar/Navbar.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "NavBar",
+    "memberof": "src/components/navbar/Navbar.js",
+    "longname": "src/components/navbar/Navbar.js~NavBar",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/navbar/Navbar.js",
+    "importStyle": "NavBar",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 70,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/navbar/NavbarItem.js",
+    "memberof": null,
+    "longname": "src/components/navbar/NavbarItem.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 导航栏标题\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'navbar-item';\n\nexport default function NavBarItem(props) {\n\tconst {\n\t\tlabel,\n\t\tchildren,\n\t\tclassName,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{children || label}\n\t\t</div>\n\t);\n}\n\nNavBarItem.propTypes = {\n\tlabel: PropTypes.string\n};"
+  },
+  {
+    "__docId__": 71,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/navbar/NavbarItem.js",
+    "longname": "src/components/navbar/NavbarItem.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/navbar/NavbarItem.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "NavBarItem",
+    "memberof": "src/components/navbar/NavbarItem.js",
+    "longname": "src/components/navbar/NavbarItem.js~NavBarItem",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/navbar/NavbarItem.js",
+    "importStyle": "NavBarItem",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 73,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/navbar/index.js",
+    "memberof": null,
+    "longname": "src/components/navbar/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\nimport '../base'; \nimport './style';\n\nexport NavBar from './Navbar';\nexport NavBarItem from './NavbarItem';"
+  },
+  {
+    "__docId__": 74,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/page/Page.js",
+    "memberof": null,
+    "longname": "src/components/page/Page.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes,\n\tComponent\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'page';\n\n/**\n * Page 页面基本结构\n * @param {object} props @see Page.propTypes\n */\nexport default class Page extends Component {\n\n\t/**\n\t * Page 组件所使用的属性\n\t * @type {Object}\n\t * @property {PropTypes.bool} propTypes.hasNavBar 页面是否有导航栏 (`NavBar`) 组件，默认值为 `false`\n\t * hasTabBar: 页面是否有标签栏 (`TabBar`) 组件，默认值为 `false`\n\t * duration: 页面过场动画时间，默认值为 `300`\n\t * timingFunction: 页面过场动画的过渡函数，默认值为 `ease`\n\t */\n\tstatic propTypes = {\n\t\thasNavBar: PropTypes.bool,\n\t\thasTabBar: PropTypes.bool,\n\t\tduration: PropTypes.number,\n\t\ttimingFunction: PropTypes.string\n\t};\n\n\tstatic defaultProps = {\n\t\thasNavBar: false,\n\t\thasTabBar: false,\n\t\tduration: 300,\n\t\ttimingFunction: 'ease'\n\t};\n\n\trender() {\n\t\tconst {\n\t\t\thasNavBar,\n\t\t\thasTabBar,\n\t\t\tduration,\n\t\t\ttimingFunction,\n\t\t\tclassName,\n\t\t\tstyle,\n\t\t\tchildren,\n\t\t\t...rest\n\t\t} = this.props;\n\t\tlet clazz = classNames(prefix, {\n\t\t\t'navbar-fixed': hasNavBar,\n\t\t\t'tabbar-fixed': hasTabBar,\n\t\t\t[className]: className\n\t\t});\n\t\tlet newStyle = {\n\t\t\tstyle,\n\t\t\ttransitionDuration: `${duration}ms`,\n\t\t\ttransitionTimingFunction: timingFunction\n\t\t};\n\n\t\treturn (\n\t\t\t<div className={clazz} style={newStyle} {...rest}>\n\t\t\t\t{children}\n\t\t\t</div>\n\t\t);\n\t}\n}\n// export default function Page(props) {\n// \tconst {\n// \t\thasNavBar,\n// \t\thasTabBar,\n// \t\tduration,\n// \t\ttimingFunction,\n// \t\tclassName,\n// \t\tstyle,\n// \t\tchildren,\n// \t\t...rest\n// \t} = props;\n// \tlet clazz = classNames(prefix, {\n// \t\t'navbar-fixed': hasNavBar,\n// \t\t'tabbar-fixed': hasTabBar,\n// \t\t[className]: className\n// \t});\n// \tlet newStyle = {\n// \t\tstyle,\n// \t\ttransitionDuration: `${duration}ms`,\n// \t\ttransitionTimingFunction: timingFunction\n// \t};\n\n// \treturn (\n// \t\t<div className={clazz} style={newStyle} {...rest}>\n// \t\t\t{children}\n// \t\t</div>\n// \t);\n// }\n\n/**\n * Page 组件所使用的属性\n * @type {Object}\n * @property {boolean} Page.propTypes.hasNavBar 页面是否有导航栏 (`NavBar`) 组件，默认值为 `false`\n * hasTabBar: 页面是否有标签栏 (`TabBar`) 组件，默认值为 `false`\n * duration: 页面过场动画时间，默认值为 `300`\n * timingFunction: 页面过场动画的过渡函数，默认值为 `ease`\n */\nPage.propTypes = {\n\thasNavBar: PropTypes.bool,\n\thasTabBar: PropTypes.bool,\n\tduration: PropTypes.number,\n\ttimingFunction: PropTypes.string\n};\n\nPage.defaultProps = {\n\thasNavBar: false,\n\thasTabBar: false,\n\tduration: 300,\n\ttimingFunction: 'ease'\n};"
+  },
+  {
+    "__docId__": 75,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/page/Page.js",
+    "longname": "src/components/page/Page.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/page/Page.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 76,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Page",
+    "memberof": "src/components/page/Page.js",
+    "longname": "src/components/page/Page.js~Page",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/page/Page.js",
+    "importStyle": "Page",
+    "description": "Page 页面基本结构",
+    "lineNumber": 17,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "@see Page.propTypes"
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "react~Component"
+    ]
+  },
+  {
+    "__docId__": 77,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/page/Page.js~Page",
+    "longname": "src/components/page/Page.js~Page#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 78,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/page/Scene.js",
+    "memberof": null,
+    "longname": "src/components/page/Scene.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes,\n\tcloneElement\n} from 'react';\nimport {classNames} from '../util';\nimport ReactCSSTransitionGroup from 'react-addons-css-transition-group';\n\nconst prefix = 'scene';\nconst animations = ['push', 'pop', 'replace', \n\t'PUSH', 'POP', 'REPLACE'];\n\nexport default function Scene(props) {\n\tlet {\n\t\tanimation,\n\t\ttimeout,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tconst clazz = classNames(prefix);\n\tconst transitionName = classNames(`${prefix}-${animation.toLowerCase()}`);\n\n\treturn (\n\t\t<ReactCSSTransitionGroup\n\t\t\tcomponent=\"div\"\n\t\t\ttransitionName={transitionName}\n\t\t\ttransitionEnterTimeout={timeout}\n\t\t\ttransitionLeaveTimeout={timeout}\n\t\t\tclassName={clazz}\n\t\t\t{...rest}\n\t\t>\n\t\t\t{children}\n\t\t</ReactCSSTransitionGroup>\n\t);\n}\n\nScene.propTypes = {\n\tanimation: PropTypes.oneOf(animations),\n\ttimeout: PropTypes.number\n};\nScene.defaultProps = {\n\ttimeout: 400\n};"
+  },
+  {
+    "__docId__": 79,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/page/Scene.js",
+    "longname": "src/components/page/Scene.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/page/Scene.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "animations",
+    "memberof": "src/components/page/Scene.js",
+    "longname": "src/components/page/Scene.js~animations",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/page/Scene.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 81,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Scene",
+    "memberof": "src/components/page/Scene.js",
+    "longname": "src/components/page/Scene.js~Scene",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/page/Scene.js",
+    "importStyle": "Scene",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 82,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/page/index.js",
+    "memberof": null,
+    "longname": "src/components/page/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport '../base';\nimport './style';\n\nexport Page from './Page';\nexport Scene from './Scene';"
+  },
+  {
+    "__docId__": 83,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/popup/Popup.js",
+    "memberof": null,
+    "longname": "src/components/popup/Popup.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport ReactCSSTransitionGroup from 'react-addons-css-transition-group';\nimport {classNames} from '../util';\n\nconst prefix = 'popup';\n\nfunction ChildContainer(props) {\n  return props.children[0] ? props.children[0] : null;\n}\n\nexport default function Popup(props) {\n\tlet {\n\t\tvisible,\n\t\tposition,\n\t\tduration,\n\t\ttimingFunction,\n\t\tclassName,\n\t\tstyle,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(`${prefix}-content`, {\n\t\t[`${prefix}-${position}`]: !!position,\n\t\tclassName: className\n\t});\n\tlet newStyle = {\n\t\ttransitionDuration: `${duration}ms`,\n\t\ttransitionTimingFunction: timingFunction\n\t};\n\tconst transitionName = classNames(`${prefix}`);\n\n\treturn (\n\t\t<ReactCSSTransitionGroup\n\t\t\tcomponent={ChildContainer}\n\t\t\ttransitionAppearTimeout={duration}\n\t\t\ttransitionEnterTimeout={duration}\n\t\t\ttransitionLeaveTimeout={duration}\n\t\t\ttransitionName={transitionName}\n\t\t\ttransitionAppear={true}\n\t\t>\n\t\t\t{visible ? (\n\t\t\t\t<div\n\t\t\t\t\tclassName={classNames(prefix)}\n\t\t\t\t\tstyle={newStyle}\n\t\t\t\t\tkey={'popup'}\n\t\t\t\t>\n\t\t\t\t\t<div \n\t\t\t\t\t\tclassName={clazz} \n\t\t\t\t\t\tstyle={{...newStyle, ...style}}\n\t\t\t\t\t\t{...rest}\n\t\t\t\t\t>\n\t\t\t\t\t\t{children}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t) : null}\n\t\t</ReactCSSTransitionGroup>\n\t);\n}\n\nPopup.propTypes = {\n\tvisible: PropTypes.bool,\n\tposition: PropTypes.oneOf(['center', 'top', 'right', 'bottom', 'left']),\n\tduration: PropTypes.number,\n\ttimingFunction: PropTypes.string\n};\n\nPopup.defaultProps = {\n\tvisible: false,\n\tposition: 'center',\n\tduration: 400,\n\ttimingFunction: 'ease'\n};\n"
+  },
+  {
+    "__docId__": 84,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/popup/Popup.js",
+    "longname": "src/components/popup/Popup.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/popup/Popup.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 85,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "ChildContainer",
+    "memberof": "src/components/popup/Popup.js",
+    "longname": "src/components/popup/Popup.js~ChildContainer",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/popup/Popup.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 86,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Popup",
+    "memberof": "src/components/popup/Popup.js",
+    "longname": "src/components/popup/Popup.js~Popup",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/popup/Popup.js",
+    "importStyle": "Popup",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 87,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/popup/index.js",
+    "memberof": null,
+    "longname": "src/components/popup/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport '../base';\nimport './style';\n\nimport Popup from './Popup';\n\nexport default Popup;"
+  },
+  {
+    "__docId__": 88,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/portal/Portal.js",
+    "memberof": null,
+    "longname": "src/components/portal/Portal.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n\tPropTypes,\n\tComponent,\n\tcloneElement\n} from 'react';\nimport ReactDom, {\n\trender\n} from 'react-dom';\nimport {\n\tcreatePortalEl,\n\tgetContainer\n} from '../util/dom';\n\nexport default class Portal extends Component {\n\n\tconstructor(props, context) {\n\t\tsuper(props, context);\n\n\t\tthis.state = {\n\t\t\tvisible: props.visible\n\t\t};\n\t}\n\n\tcomponentWillReceiveProps(nextProps) {\n\t\tthis._setVisible(nextProps.visible);\n\t}\n\n\tclose() {\n\t\tthis._setVisible(false);\n\t}\n\n\t_setVisible(visible) {\n\t\tthis.setState({\n\t\t\tvisible\n\t\t});\n\t}\n\n\trender() {\n\t\tlet {\n\t\t\tchildren\n\t\t} = this.props;\n\n\t\tif(children) {\n\t\t\tchildren = cloneElement(children, {\n\t\t\t\tvisible: this.state.visible,\n\t\t\t\tclose: this.close.bind(this)\n\t\t\t});\n\t\t}\n\t\treturn children || null;\n\t}\n}\n\nPortal.show = (Component, props, container) => {\n\tcontainer = getContainer(container);\n\tComponent.portalEl = Component.portalEl || createPortalEl(container);\n\n\treturn render((\n\t\t<Portal \n\t\t\tvisible={true}\n\t\t>\n\t\t\t<Component {...props} />\n\t\t</Portal>\n\t), Component.portalEl);\n};\n\nPortal.propTypes = {\n\tvisible: PropTypes.bool\n};\n\nPortal.defaultProps = {\n\tvisible: false\n};"
+  },
+  {
+    "__docId__": 89,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Portal",
+    "memberof": "src/components/portal/Portal.js",
+    "longname": "src/components/portal/Portal.js~Portal",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/portal/Portal.js",
+    "importStyle": "Portal",
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~Component"
+    ]
+  },
+  {
+    "__docId__": 90,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/components/portal/Portal.js~Portal",
+    "longname": "src/components/portal/Portal.js~Portal#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "context",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 91,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "src/components/portal/Portal.js~Portal",
+    "longname": "src/components/portal/Portal.js~Portal#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 92,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentWillReceiveProps",
+    "memberof": "src/components/portal/Portal.js~Portal",
+    "longname": "src/components/portal/Portal.js~Portal#componentWillReceiveProps",
+    "access": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "params": [
+      {
+        "name": "nextProps",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 93,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "close",
+    "memberof": "src/components/portal/Portal.js~Portal",
+    "longname": "src/components/portal/Portal.js~Portal#close",
+    "access": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 94,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_setVisible",
+    "memberof": "src/components/portal/Portal.js~Portal",
+    "longname": "src/components/portal/Portal.js~Portal#_setVisible",
+    "access": null,
+    "description": null,
+    "lineNumber": 36,
+    "undocument": true,
+    "params": [
+      {
+        "name": "visible",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 95,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/portal/Portal.js~Portal",
+    "longname": "src/components/portal/Portal.js~Portal#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 96,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/portal/index.js",
+    "memberof": null,
+    "longname": "src/components/portal/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport Portal from './Portal';\n\nexport default Portal;"
+  },
+  {
+    "__docId__": 97,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/searchbar/Searchbar.js",
+    "memberof": null,
+    "longname": "src/components/searchbar/Searchbar.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 搜索栏\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\nimport '../base'; \nimport './style';\n\nconst prefix = 'searchbar';\n\nexport default function SearchBar(props) {\n\n\n\treturn (\n\t\t<form>\n\t\t</form>\n\t);\n}\n\n"
+  },
+  {
+    "__docId__": 98,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/searchbar/Searchbar.js",
+    "longname": "src/components/searchbar/Searchbar.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/searchbar/Searchbar.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "SearchBar",
+    "memberof": "src/components/searchbar/Searchbar.js",
+    "longname": "src/components/searchbar/Searchbar.js~SearchBar",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/searchbar/Searchbar.js",
+    "importStyle": "SearchBar",
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 100,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/searchbar/index.js",
+    "memberof": null,
+    "longname": "src/components/searchbar/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport SearchBar from './Searchbar';\n\nexport default SearchBar;"
+  },
+  {
+    "__docId__": 101,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/segmented/Segmented.js",
+    "memberof": null,
+    "longname": "src/components/segmented/Segmented.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 分段控件\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\nimport Button from '../button';\n\nconst prefix = 'segmented';\n\nexport default function Segmented(props) {\n\tconst {\n\t\telements,\n\t\tsize,\n\t\tcolor,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet renderNode = children;\n\tlet clazz = classNames(prefix, {\n\t\t[`${prefix}-${size}`]: !!size,\n\t\t[className]: className\n\t});\n\n\tif(elements) {\n\t\trenderNode = elements.map((item, i) => {\n\t\t\tconst {\n\t\t\t\tchildren,\n\t\t\t\t...rest\n\t\t\t} = item;\n\n\t\t\treturn (\n\t\t\t\t<Button {...rest} color={color} key={i}>\n\t\t\t\t\t{children}\n\t\t\t\t</Button>\n\t\t\t);\n\t\t});\n\t}\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{renderNode}\n\t\t</div>\n\t);\n}\n\nSegmented.propTypes = {\n\telements: PropTypes.arrayOf(PropTypes.object),\n\tcolor: PropTypes.oneOf(config.colors),\n\tsize: PropTypes.oneOf(['', 'small'])\n};\nSegmented.defaultProps = {\n\tcolor: '',\n\tsize: ''\n};"
+  },
+  {
+    "__docId__": 102,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/segmented/Segmented.js",
+    "longname": "src/components/segmented/Segmented.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/segmented/Segmented.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 103,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "Segmented",
+    "memberof": "src/components/segmented/Segmented.js",
+    "longname": "src/components/segmented/Segmented.js~Segmented",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/segmented/Segmented.js",
+    "importStyle": "Segmented",
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 104,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/segmented/index.js",
+    "memberof": null,
+    "longname": "src/components/segmented/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\nimport '../base'; \nimport './style';\n\nimport Segmented from './Segmented';\n\nexport default Segmented;"
+  },
+  {
+    "__docId__": 105,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/tabbar/Tabbar.js",
+    "memberof": null,
+    "longname": "src/components/tabbar/Tabbar.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 标签栏\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\nimport TabbarItem from './TabbarItem';\n\nconst prefix = 'tabbar';\n\nexport default function TabBar(props) {\n\tconst {\n\t\tlinkColor,\n\t\tactiveColor,\n\t\ttabs,\n\t\tchildren,\n\t\tclassName,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\tconst nodes = tabs && tabs.map((tab, i) => {\n\t\treturn (\n\t\t\t<TabbarItem \n\t\t\t\tlinkColor={linkColor}\n\t\t\t\tactiveColor={activeColor}\n\t\t\t\t{...tab} \n\t\t\t\tkey={i}\n\t\t\t/>\n\t\t);\n\t});\n\tconst childrens = children && React.Children.map(children, (child, i) => {\n\t\treturn React.cloneElement(child, {\n\t\t\tlinkColor,\n\t\t\tactiveColor\n\t\t});\n\t})\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{tabs && tabs.length > 0 ? nodes : childrens}\n\t\t</div>\n\t);\n}\n\nTabBar.propTypes = {\n\ttabs: PropTypes.arrayOf(PropTypes.object),\n\tlinkColor: PropTypes.oneOf(config.colors),\t// 每个标签栏项的字体颜色\n\tactiveColor: PropTypes.oneOf(config.colors)\t// 每个标签栏项被激活时的字体颜色\n};\n\nTabBar.defaultProps = {\n\tlinkColor: 'gray',\n\tactiveColor: ''\n};"
+  },
+  {
+    "__docId__": 106,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/tabbar/Tabbar.js",
+    "longname": "src/components/tabbar/Tabbar.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/tabbar/Tabbar.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 107,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "TabBar",
+    "memberof": "src/components/tabbar/Tabbar.js",
+    "longname": "src/components/tabbar/Tabbar.js~TabBar",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/tabbar/Tabbar.js",
+    "importStyle": "TabBar",
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 108,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/tabbar/TabbarIcon.js",
+    "memberof": null,
+    "longname": "src/components/tabbar/TabbarIcon.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 标签栏\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\nimport Badge from '../badge';\nimport Icon from '../icon';\n\nconst prefix = 'tabbar-icon';\n\nexport default function TabBarIcon(props) {\n\tconst {\n\t\ticon,\n\t\tbadge,\n\t\tbadgeColor,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>\n\t\t\t{icon ? (\n\t\t\t\t<Icon value={icon}>\n\t\t\t\t\t{badge ? (\n\t\t\t\t\t\t<Badge bgColor={badgeColor}>{badge}</Badge>\n\t\t\t\t\t) : null}\n\t\t\t\t</Icon>\n\t\t\t) : children}\n\t\t</div>\n\t);\n}\n\nTabBarIcon.propTypes = {\n\ticon: PropTypes.string,\n\tbadge: PropTypes.oneOfType([\n\t\tPropTypes.number,\n\t\tPropTypes.string\n\t]),\n\tbadgeColor: PropTypes.oneOf(config.colors)\n}\n\nTabBarIcon.defaultProps = {\n\tbadgeColor: 'red'\n};"
+  },
+  {
+    "__docId__": 109,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/tabbar/TabbarIcon.js",
+    "longname": "src/components/tabbar/TabbarIcon.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/tabbar/TabbarIcon.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 110,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "TabBarIcon",
+    "memberof": "src/components/tabbar/TabbarIcon.js",
+    "longname": "src/components/tabbar/TabbarIcon.js~TabBarIcon",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/tabbar/TabbarIcon.js",
+    "importStyle": "TabBarIcon",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 111,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/tabbar/TabbarItem.js",
+    "memberof": null,
+    "longname": "src/components/tabbar/TabbarItem.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 标签栏\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\nimport TabbarIcon from './TabbarIcon';\nimport TabbarLabel from './TabbarLabel';\n\nconst prefix = 'tabbar-item';\n\nexport default function TabBarItem(props) {\n\tconst {\n\t\ticon,\n\t\tbadge,\n\t\tlabel,\n\t\tactive,\n\t\tlinkColor,\n\t\tactiveColor,\n\t\tbadgeColor,\n\t\tcomponent,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tconst Component = component;\n\tconst theme = active ? activeColor : linkColor;\n\tlet clazz = classNames(prefix, {\n\t\t[`color-${theme}`]: !!theme,\n\t\t[className]: className\n\t});\n\tlet labelClazz = classNames('tabbar-label');\n\n\treturn (\n\t\t<Component className={clazz} {...rest}>\n\t\t\t{icon ? (\n\t\t\t\t<TabbarIcon \n\t\t\t\t\ticon={icon}\n\t\t\t\t\tbadge={badge}\n\t\t\t\t\tbadgeColor={badgeColor}\n\t\t\t\t/>\n\t\t\t) : null}\n\t\t\t{label ? (\n\t\t\t\t<TabbarLabel>{label}</TabbarLabel>\n\t\t\t) : null}\n\t\t\t{!icon && !label ? children : null}\n\t\t</Component>\n\t);\n}\n\nTabBarItem.propTypes = {\n\tcomponent: PropTypes.oneOfType([\n\t\tPropTypes.string,\n\t\tPropTypes.element,\n\t\tPropTypes.func\n\t]),\n\tlinkColor: PropTypes.oneOf(config.colors),\n\tbadgeColor: PropTypes.oneOf(config.colors),\n\tactiveColor: PropTypes.oneOf(config.colors),\n\tactive: PropTypes.bool\n};\n\nTabBarItem.defaultProps = {\n\tcomponent: 'a',\n\tlinkColor: 'gray',\n\tbadgeColor: 'red',\n\tactiveColor: '',\n\tactive: false\n};"
+  },
+  {
+    "__docId__": 112,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/tabbar/TabbarItem.js",
+    "longname": "src/components/tabbar/TabbarItem.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/tabbar/TabbarItem.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 113,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "TabBarItem",
+    "memberof": "src/components/tabbar/TabbarItem.js",
+    "longname": "src/components/tabbar/TabbarItem.js~TabBarItem",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/tabbar/TabbarItem.js",
+    "importStyle": "TabBarItem",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 114,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/tabbar/TabbarLabel.js",
+    "memberof": null,
+    "longname": "src/components/tabbar/TabbarLabel.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 标签栏\n */\n\nimport React, {\n\tPropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'tabbar-label';\n\nexport default function TabBarLabel(props) {\n\tconst {\n\t\tlabel,\n\t\tclassName,\n\t\tchildren,\n\t\t...rest\n\t} = props;\n\tlet clazz = classNames(prefix, {\n\t\t[className]: className\n\t});\n\n\treturn (\n\t\t<div className={clazz} {...rest}>{children || label}</div>\n\t);\n}\n\nTabBarLabel.propTypes = {\n\tlabel: PropTypes.string\n}"
+  },
+  {
+    "__docId__": 115,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/tabbar/TabbarLabel.js",
+    "longname": "src/components/tabbar/TabbarLabel.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/tabbar/TabbarLabel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 116,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "TabBarLabel",
+    "memberof": "src/components/tabbar/TabbarLabel.js",
+    "longname": "src/components/tabbar/TabbarLabel.js~TabBarLabel",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/tabbar/TabbarLabel.js",
+    "importStyle": "TabBarLabel",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 117,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/tabbar/index.js",
+    "memberof": null,
+    "longname": "src/components/tabbar/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\nimport '../base'; \nimport './style';\n\nexport TabBar from './Tabbar';\nexport TabBarItem from './TabbarItem';\nexport TabBarLabel from './TabbarLabel';\nexport TabBarIcon from './TabbarIcon';\n"
+  },
+  {
+    "__docId__": 118,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/util/config.js",
+    "memberof": null,
+    "longname": "src/components/util/config.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\n/**\n * 项目默认的配置参数\n * @type {Object}\t数据配置对象\n * @property {String}\tconfig.namespace='rc-ios'\tcss 默认的命名空间\n */\nconst config = {\n\tnamespace: 'rc-ios-',\n\tcolors: [\n\t\t'', \n\t\t'blue', \n\t\t'red', \n\t\t'black', \n\t\t'lightblue', \n\t\t'yellow', \n\t\t'orange', \n\t\t'pink', \n\t\t'green', \n\t\t'gray'\n\t]\n};\n\nexport default config;"
+  },
+  {
+    "__docId__": 119,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "config",
+    "memberof": "src/components/util/config.js",
+    "longname": "src/components/util/config.js~config",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/util/config.js",
+    "importStyle": "config",
+    "description": "项目默认的配置参数",
+    "lineNumber": 10,
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "defaultValue": "'rc-ios'",
+        "defaultRaw": "'rc-ios'",
+        "name": "config.namespace",
+        "description": "css 默认的命名空间"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 120,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/util/dom.js",
+    "memberof": null,
+    "longname": "src/components/util/dom.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nexport function getContainer(container = document.body) {\n\tif(typeof container === 'function') {\n\t\tcontainer = container();\n\t}\n\treturn container;\n}\n\nexport function createPortalEl(container) {\n\tconst portalEl = document.createElement('div');\n\n\tcontainer.appendChild(portalEl);\n\treturn portalEl;\n}\n\n"
+  },
+  {
+    "__docId__": 121,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "getContainer",
+    "memberof": "src/components/util/dom.js",
+    "longname": "src/components/util/dom.js~getContainer",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/util/dom.js",
+    "importStyle": "{getContainer}",
+    "description": "",
+    "lineNumber": 5,
+    "unknown": [
+      {
+        "tagName": "@author",
+        "tagValue": "haw"
+      }
+    ],
+    "params": [
+      {
+        "name": "container",
+        "optional": true,
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 122,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "createPortalEl",
+    "memberof": "src/components/util/dom.js",
+    "longname": "src/components/util/dom.js~createPortalEl",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/util/dom.js",
+    "importStyle": "{createPortalEl}",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "container",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 123,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/util/index.js",
+    "memberof": null,
+    "longname": "src/components/util/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\nimport config from './config';\n\nconst hasOwn = Object.hasOwnProperty;\nconst {\n\tnamespace\n} = config;\n\nexport function createClassNames(prename = namespace) {\n\treturn (...args) => {\n\t\tlet classes = [];\n\n\t\targs.forEach(arg => {\n\t\t\tlet type = typeof arg;\n\t\t\tlet prop;\n\n\t\t\tif(!arg || type === 'boolean') {\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tswitch(type) {\n\t\t\t\tcase 'string':\n\t\t\t\tcase 'number':\n\t\t\t\t\tclasses.push(`${prename}${arg}`);\n\t\t\t\t\tbreak;\n\t\t\t\tcase 'object':\n\t\t\t\t\tif(Array.isArray(arg)) {\n\t\t\t\t\t\tclasses.push(classNames.apply(null, arg));\n\t\t\t\t\t} else {\n\t\t\t\t\t\tfor(prop in arg) {\n\t\t\t\t\t\t\tif(!hasOwn.call(arg, prop) || !arg[prop]) {\n\t\t\t\t\t\t\t\tcontinue;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tif(arg[prop] === true) {\n\t\t\t\t\t\t\t\tclasses.push(`${prename}${prop}`);\n\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\tclasses.push(prop);\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbreak;\n\t\t\t}\n\t\t});\n\n\t\treturn classes.join(' ');\n\t}\n}\n\nexport const classNames = createClassNames();"
+  },
+  {
+    "__docId__": 124,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "hasOwn",
+    "memberof": "src/components/util/index.js",
+    "longname": "src/components/util/index.js~hasOwn",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/util/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 125,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "namespace",
+    "memberof": "src/components/util/index.js",
+    "longname": "src/components/util/index.js~namespace",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/util/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 126,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "createClassNames",
+    "memberof": "src/components/util/index.js",
+    "longname": "src/components/util/index.js~createClassNames",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/util/index.js",
+    "importStyle": "{createClassNames}",
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [
+      {
+        "name": "prename",
+        "optional": true,
+        "types": [
+          "*"
+        ],
+        "defaultRaw": "namespace",
+        "defaultValue": "namespace"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 127,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "classNames",
+    "memberof": "src/components/util/index.js",
+    "longname": "src/components/util/index.js~classNames",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/util/index.js",
+    "importStyle": "{classNames}",
+    "description": null,
+    "lineNumber": 51,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 128,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/index.js",
+    "memberof": null,
+    "longname": "src/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nexport Animate from './components/animate';\nexport {\n\tPage,\n\tScene\n} from './components/page';\nexport Badge from './components/badge';\nexport Icon from './components/icon';\nexport Button from './components/button';\nexport Segmented from './components/segmented';\nexport {NavBar, NavBarItem} from './components/navbar';\nexport {\n\tTabBar,\n\tTabBarItem,\n\tTabBarLabel,\n\tTabBarIcon\n} from './components/tabbar';\nexport SearchBar from './components/searchbar';\nexport {\n\tCellsTitle,\n\tCells,\n\tCell,\n\tCellHeader,\n\tCellBody,\n\tCellDesc,\n\tCellFooter\n} from './components/cell';\nexport Mask from './components/mask';\nexport {\n\tAlert,\n\tConfirm\n} from './components/alert';\nexport ActionSheet from './components/actionsheet';\n\n"
+  },
+  {
+    "__docId__": 130,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 131,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 132,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 133,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 134,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 135,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 136,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 137,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 138,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 139,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 140,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 141,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 142,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 143,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 144,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 145,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 146,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 147,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 148,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 149,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 150,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 151,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 152,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 153,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 154,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 155,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 156,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 157,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 158,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 159,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 160,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 161,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 162,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 163,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 164,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 165,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 166,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 167,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 168,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 169,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 170,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 171,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 172,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 173,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 174,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 175,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 176,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 178,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 179,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 180,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 181,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 182,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 183,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 184,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 185,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  }
+]

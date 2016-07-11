@@ -1,0 +1,249 @@
+{
+  "coverage": "7.14%",
+  "expectCount": 42,
+  "actualCount": 3,
+  "files": {
+    "src/components/actionsheet/ActionSheet.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        41
+      ]
+    },
+    "src/components/alert/Alert.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        22
+      ]
+    },
+    "src/components/alert/AlertBody.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/alert/AlertButton.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/alert/AlertFooter.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/alert/AlertHeader.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/animate/Animate.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "src/components/badge/Badge.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        14
+      ]
+    },
+    "src/components/button/Button.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        14
+      ]
+    },
+    "src/components/cell/Cell.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/cell/CellBody.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/cell/CellDesc.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/cell/CellFooter.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/cell/CellHeader.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/cell/Cells.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "src/components/cell/CellsTitle.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "src/components/alert/Confirm.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        41
+      ]
+    },
+    "src/components/icon/Icon.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/mask/Mask.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/navbar/Navbar.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        14
+      ]
+    },
+    "src/components/navbar/NavbarItem.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "src/components/page/Page.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        41
+      ]
+    },
+    "src/components/popup/Popup.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        17
+      ]
+    },
+    "src/components/portal/Portal.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        18,
+        32,
+        28,
+        20,
+        42,
+        23
+      ]
+    },
+    "src/components/page/Scene.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        16
+      ]
+    },
+    "src/components/searchbar/Searchbar.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        15
+      ]
+    },
+    "src/components/segmented/Segmented.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        15
+      ]
+    },
+    "src/components/tabbar/Tabbar.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        15
+      ]
+    },
+    "src/components/tabbar/TabbarIcon.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        16
+      ]
+    },
+    "src/components/tabbar/TabbarItem.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        16
+      ]
+    },
+    "src/components/tabbar/TabbarLabel.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "src/components/util/index.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        51,
+        11
+      ]
+    },
+    "src/components/util/config.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/components/util/dom.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        12
+      ]
+    }
+  }
+}

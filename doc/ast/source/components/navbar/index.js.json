@@ -1,0 +1,241 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 130,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 8,
+      "column": 38
+    }
+  },
+  "sourceType": "module",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "start": 23,
+      "end": 40,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 17
+        }
+      },
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "start": 30,
+        "end": 39,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 7
+          },
+          "end": {
+            "line": 4,
+            "column": 16
+          }
+        },
+        "value": "../base",
+        "rawValue": "../base",
+        "raw": "'../base'",
+        "leadingComments": null
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * @author haw\n ",
+          "start": 0,
+          "end": 22,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 3
+            }
+          },
+          "range": [
+            0,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 42,
+      "end": 59,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 17
+        }
+      },
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "start": 49,
+        "end": 58,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 7
+          },
+          "end": {
+            "line": 5,
+            "column": 16
+          }
+        },
+        "value": "./style",
+        "rawValue": "./style",
+        "raw": "'./style'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 61,
+      "end": 91,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 30
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 68,
+          "end": 74,
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 7
+            },
+            "end": {
+              "line": 7,
+              "column": 13
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 68,
+            "end": 74,
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 7
+              },
+              "end": {
+                "line": 7,
+                "column": 13
+              }
+            },
+            "name": "NavBar"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 80,
+        "end": 90,
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 19
+          },
+          "end": {
+            "line": 7,
+            "column": 29
+          }
+        },
+        "value": "./Navbar",
+        "rawValue": "./Navbar",
+        "raw": "'./Navbar'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 92,
+      "end": 130,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 38
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 99,
+          "end": 109,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 7
+            },
+            "end": {
+              "line": 8,
+              "column": 17
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 99,
+            "end": 109,
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 7
+              },
+              "end": {
+                "line": 8,
+                "column": 17
+              }
+            },
+            "name": "NavBarItem"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 115,
+        "end": 129,
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 23
+          },
+          "end": {
+            "line": 8,
+            "column": 37
+          }
+        },
+        "value": "./NavbarItem",
+        "rawValue": "./NavbarItem",
+        "raw": "'./NavbarItem'"
+      }
+    }
+  ]
+}
