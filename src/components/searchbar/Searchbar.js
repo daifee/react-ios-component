@@ -7,17 +7,26 @@ import React, {
 	PropTypes
 } from 'react';
 import {classNames} from '../util';
-import '../base'; 
-import './style';
 
 const prefix = 'searchbar';
 
 export default function SearchBar(props) {
-
+	const {
+		theme,
+		className,
+		children,
+		...rest
+	} = props;
+	let clazz = classNames(prefix, {
+		[className]: className,
+		[theme]: theme
+	});
 
 	return (
-		<form>
-		</form>
+		<form className={clazz} {...rest}>{children}</form>
 	);
 }
 
+SearchBar.propTypes = {
+	theme: PropTypes.string
+};

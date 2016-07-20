@@ -9,7 +9,7 @@ $badge-height: .9rem;
 .#{$namespace}badge {
 	display: inline-block;
 	height: $badge-height;
-	line-height: $badge-height;
+	line-height: 1.6;
 	padding: 0 .3rem;
 	color: #fff;
 	font-size: .65rem;

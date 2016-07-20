@@ -51,8 +51,13 @@ export default function Alert(props) {
 	return (
 		<Popup visible={visible}>
 			<div className={clazz} {...rest}>
-				<AlertHeader>{title}</AlertHeader>
-				<AlertBody>{body}</AlertBody>
+				{title ? (
+					<AlertHeader>{title}</AlertHeader>
+				) : null}
+				{body ? (
+					<AlertBody>{body}</AlertBody>
+				) : null}
+				{children}
 				<AlertFooter>
 					{buttonEls}
 				</AlertFooter>

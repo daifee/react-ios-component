@@ -1,0 +1,181 @@
+/**
+ * @author haw
+ */
+
+@import "../util/variables";
+
+$checkbox: '.#{$namespace}checkbox';
+$radio: '.#{$namespace}radio';
+$input: '.#{$namespace}input';
+$switch: '.#{$namespace}switch';
+$textarea: '.#{$namespace}textarea';
+$stepper: '.#{$namespace}stepper';
+
+// checkbox and radio style
+#{$checkbox},
+#{$radio} {
+	width: 1.1rem;
+	height: 1.1rem;
+	position: relative;
+  appearance: none;
+
+	&:after {
+		content: " ";
+		position: absolute;
+		top: 45%;
+		left: 50%;
+		display: none;
+		width: .55rem;
+		height: .25rem;
+		border-left: .1rem solid $white;
+		border-bottom: .1rem solid $white;
+		transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+	}
+}
+
+#{$checkbox} {
+	border: .05rem solid #c7c7cd;
+	border-radius: 50%;
+
+  &:checked {
+  	background-color: $primaryColor;
+  	border-color: $primaryColor;
+
+  	&:after {
+  		display: inline-block;
+  	}
+  }
+}
+
+#{$radio} {
+  &:checked {
+  	&:after {
+  		display: inline-block;
+  		width: .65rem;
+			height: .25rem;
+  		border-color: $primaryColor;
+  	}
+  }
+}
+
+
+// input style
+#{$input} {
+  width: 100%;
+	padding-left: .25rem;
+	line-height: 1.17647059;
+	// line-height: 1.41176471;
+	font-size: .85rem;
+	background: none;
+	border: none;
+  appearance: none;
+}
+
+
+// switch style
+#{$switch} {
+	position: relative;
+	display: inline-block;
+	width: 2.6rem;
+	height: 1.6rem;
+	vertical-align: middle;
+	// background-color: $white;
+	background-color: #fdfdfd;
+	border: 1px solid rgba(0, 0, 0, .1);
+	border-radius: .8rem;
+  appearance: none;
+
+  &:before,
+  &:after {
+  	content: " ";
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	height: 1.5rem;
+		// box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.05), 0px 2px 2px 0px rgba(0,0,0,0.10), 0px 3px 3px 0px rgba(0,0,0,0.05);
+  	transition: transform .3s;
+  }
+
+  &:before {
+  	width: 2.5rem;
+  	border-radius: .75rem;
+		background-color: #fdfdfd;
+  }
+
+  &:after {
+  	width: 1.5rem;
+		background-color: $white;
+  	border-radius: 50%;
+  	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  &:checked {
+  	background-color: $green;
+  	border-color: $green;
+
+  	&:before {
+  		transform: scale(0);
+  	}
+
+  	&:after {
+  		transform: translate3d(1rem, 0, 0);
+  	}
+  }
+}
+
+
+// textarea style
+#{$textarea} {
+  width: 100%;
+	// line-height: 1.17647059;
+	line-height: 1.41176471;
+	font-size: .75rem;
+	background: none;
+	border: none;
+  appearance: none;
+  resize: none;
+}
+
+
+// stepper style 
+#{$stepper} {
+	display: flex;
+	border: .05rem solid $primaryColor;
+	border-radius: .2rem;
+
+	& > a {
+		position: relative;
+		width: 2.25rem;
+		height: 1.4rem;
+
+		&:before {
+			content: " ";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: .8rem;
+			height: .1rem;
+			margin-top: -.05rem;
+			margin-left: -.4rem;
+			background-color: $primaryColor;
+		}
+	}
+
+	&-cut {
+		border-right: .05rem solid $primaryColor;
+	}
+
+	&-add {
+		&:after {
+			content: " ";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: .1rem;
+			height: .8rem;
+			margin-top: -.4rem;
+			margin-left: -.05rem;
+			background-color: $primaryColor;
+		}
+	}
+}

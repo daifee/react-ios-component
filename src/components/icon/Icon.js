@@ -12,15 +12,14 @@ const prefix = 'icon-';
 export default function Icon(props) {
 	const {
 		value,
-		sizeType, 
 		size,
+		prefix,
 		children, 
 		className,
 		...rest
 	} = props;
 	let clazz = {
 		[prefix + value]: true,
-		[prefix + sizeType]: !!sizeType,
 		[className]: className
 	};
 	let style = {};
@@ -42,10 +41,10 @@ export default function Icon(props) {
 
 Icon.propTypes = {
 	value: PropTypes.string.isRequired,
-	sizeType: PropTypes.string,
-	size: PropTypes.string
+	size: PropTypes.string,
+	prefix: PropTypes.string
 };
 
 Icon.defaultProps = {
-	sizeType: ''
+	prefix: prefix
 };

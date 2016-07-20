@@ -10,7 +10,8 @@ import Layout from '../../components/layout';
 import {
 	Button,
 	Alert,
-	Confirm
+	Confirm,
+	Prompt
 } from 'component';
 
 export default class AlertPage extends Component {
@@ -20,7 +21,8 @@ export default class AlertPage extends Component {
 
 		this.state = {
 			alertVisible: false,
-			confirmVisible: false
+			confirmVisible: false,
+			promptValue: ''
 		}
 	}
 	
@@ -30,7 +32,8 @@ export default class AlertPage extends Component {
 		} = this.props;
 		const {
 			alertVisible,
-			confirmVisible
+			confirmVisible,
+			promptValue
 		} = this.state;
 
 		return (
@@ -111,6 +114,31 @@ export default class AlertPage extends Component {
 					okText={'好的'}
 					cancelText={'不要啊'}
 				/>
+
+				<br />
+				<Button size="lg" onClick={() => {
+					Prompt.show({
+						title: 'prompt',
+						body: 'are you ready?',
+						inputProps: {
+							value: promptValue,
+							placeholder: 'haha',
+							onChange: (e) => {
+								this.setState({
+									promptValue: e.target.value
+								});
+							}
+						},
+						onOkHide: () => {
+							console.log('onOkHide');
+						},
+						onCancelHide: () => {
+							console.log('onCancelHide');
+						},
+						okText: '好的',
+						cancelText: '不要啊'
+					});
+				}}>API 调用 Prompt</Button>
 				
 			</Layout>
 		);

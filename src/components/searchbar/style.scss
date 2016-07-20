@@ -3,3 +3,165 @@
  */
 
 @import "../util/variables";
+
+$selector: '.#{$namespace}searchbar';
+
+#{$selector} {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: .35rem 0 .35rem .4rem;
+	background-color: #c9c9ce;
+	box-shadow: inset 0px 0px 0px 0px #b5b5b5;
+	overflow: hidden;
+
+	&-header {
+		padding-right: .5rem;
+		color: $primaryColor;
+		font-size: .85rem;
+	}
+
+	&-footer {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		width: 2.2rem;
+		padding-left: .1rem;
+		padding-right: .4rem;
+		color: $primaryColor;
+		font-size: .85rem;
+		transform: translate3d(100%, -50%, 0);
+		transition: transform .3s;
+	}
+
+	&-input {
+		position: relative;
+		flex-grow: 1;
+		margin-right: .4rem;
+		background-color: $white;
+		border-radius: .2rem;
+		transition: margin .3s;
+
+		& > input {
+			z-index: 2;
+			position: relative;
+			width: 100%;
+			padding: .2rem 0 .2rem 1.45rem;
+			font-size: .7rem;
+			line-height: 1.6;
+			background: none;
+			border: none;
+			-webkit-appearance: none;
+		}
+
+		& > a {
+			z-index: 3;
+			position: absolute;
+			top: .4rem;
+			right: .5rem;
+			width: .7rem;
+			height: .7rem;
+			background-color: #8f8e94;
+			border-radius: 50%;
+			opacity: 0;
+			transition: opacity .3s;
+
+			&:before,
+			&:after {
+				content: " ";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: .4rem;
+				height: .1rem;
+				background-color: #fff;
+			}
+
+			&:before {
+				transform: translate3d(-50%, -50%, 0) rotate(45deg);
+			}
+			&:after {
+				transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+			}
+
+			&.active {
+				opacity: 1;
+			}
+		}
+
+		&.active {
+			&.has-footer {
+				margin-right: 2.6rem;
+			}
+
+			#{$selector}-placeholder {
+				left: 0;
+				transform: translate3d(.4rem, -50%, 0);
+			}
+
+			& + #{$selector}-footer {
+				transform: translate3d(0, -50%, 0);
+			}
+
+			// & > a {
+			// 	opacity: 1;
+			// }
+		}
+
+	}
+
+	&-placeholder {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0);
+		transition: all .3s;
+
+		& > i {
+			position: relative;
+			display: inline-block;
+			vertical-align: -.1rem;;
+			width: .65rem;
+			height: .65rem;
+			margin-right: .4rem;
+
+			&:before {
+				content: " ";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: .3rem;
+				height: .3rem;
+				border: .1rem solid $gray;
+				border-radius: 50%;
+			}
+
+			&:after {
+				content: " ";
+				position: absolute;
+				right: 0;
+				bottom: .1rem;
+				width: .3rem;
+				height: .1rem;
+				background-color: $gray;
+				transform: rotate(45deg);
+			}
+		}
+
+		& > span {
+			color: $gray;
+		}
+	}
+
+	&.white {
+		background: rgba(250, 250, 250, .9);
+		box-shadow: 0px 0px 0px 0px #b2b2b2;
+
+		#{$selector}-input {
+			background-color: rgba(3,3,3,0.09);
+		}
+	}
+}
+
+
+

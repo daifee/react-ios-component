@@ -6,6 +6,9 @@ import React, {
 	PropTypes,
 	Component
 } from 'react';
+import {
+	IconLoading
+} from '../icon';
 import Popup from '../popup';
 import Portal from '../portal';
 import {classNames} from '../util';
@@ -65,7 +68,7 @@ export default class Indicator extends Component {
 		return (
 			<div className={clazz} {...rest}>
 				{icon ? (
-					<div></div>
+					<div><IconLoading /></div>
 				) : null}
 				<p>{content || children}</p>
 			</div>

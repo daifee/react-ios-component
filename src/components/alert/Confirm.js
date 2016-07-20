@@ -60,6 +60,9 @@ Confirm.show = (props) => {
 };
 
 Confirm.propTypes = {
+	visible: PropTypes.bool,
+	title: PropTypes.node,
+	body: PropTypes.node,
 	onOkHide: PropTypes.func,
 	onCancelHide: PropTypes.func,
 	okText: PropTypes.node,

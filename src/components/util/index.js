@@ -49,3 +49,9 @@ export function createClassNames(prename = namespace) {
 }
 
 export const classNames = createClassNames();
+
+export function px2rem(px) {
+	const base = 20;
+
+	return px / base;
+}

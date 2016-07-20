@@ -2,13 +2,15 @@
  * @author haw
  */
 
-export Animate from './components/animate';
 export {
 	Page,
 	Scene
 } from './components/page';
 export Badge from './components/badge';
-export Icon from './components/icon';
+export {
+	Icon,
+	IconLoading
+} from './components/icon';
 export Button from './components/button';
 export Segmented from './components/segmented';
 export {NavBar, NavBarItem} from './components/navbar';
@@ -18,7 +20,12 @@ export {
 	TabBarLabel,
 	TabBarIcon
 } from './components/tabbar';
-export SearchBar from './components/searchbar';
+export {
+	SearchBar,
+	SearchBarHeader,
+	SearchBarInput,
+	SearchBarFooter
+} from './components/searchbar';
 export {
 	CellsTitle,
 	Cells,
@@ -28,10 +35,19 @@ export {
 	CellDesc,
 	CellFooter
 } from './components/cell';
+export {
+	Checkbox,
+	Radio,
+	Input,
+	Switch,
+	Textarea,
+	Stepper
+} from './components/form';
 export Mask from './components/mask';
 export {
 	Alert,
-	Confirm
+	Confirm,
+	Prompt
 } from './components/alert';
 export ActionSheet from './components/actionsheet';
 export Indicator from './components/indicator';

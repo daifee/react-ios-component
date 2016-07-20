@@ -42,6 +42,7 @@ import CellsPage from './views/cells';
 import AlertPage from './views/alert';
 import ActionSheetPage from './views/actionsheet';
 import IndicatorPage from './views/indicator';
+import SearchBarPage from './views/searchbar';
 import './style';
 
 function Home(props) {
@@ -82,9 +83,9 @@ function Home(props) {
 						<Icon value="bookoutline" />
 						<span>Indicator</span>
 					</Link>
-					<Link className="grid" to="/button">
+					<Link className="grid" to="/searchbar">
 						<Icon value="bookoutline" />
-						<span>Button</span>
+						<span>SearchBar</span>
 					</Link>
 					<Link className="grid" to="/button">
 						<Icon value="bookoutline" />
@@ -122,6 +123,7 @@ ReactDOM.render((
 			<Route path="alert" component={AlertPage} />
 			<Route path="actionsheet" component={ActionSheetPage} />
 			<Route path="indicator" component={IndicatorPage} />
+			<Route path="searchbar" component={SearchBarPage} />
 		</Route>
 	</Router>
 ), document.getElementById('app-container'));

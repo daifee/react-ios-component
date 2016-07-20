@@ -2,6 +2,10 @@
  * @author haw
  */
 
-import SearchBar from './Searchbar';
+import '../base'; 
+import './style';
 
-export default SearchBar;
+export SearchBar from './SearchBar';
+export SearchBarHeader from './SearchBarHeader';
+export SearchBarInput from './SearchBarInput';
+export SearchBarFooter from './SearchBarFooter';

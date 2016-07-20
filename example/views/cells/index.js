@@ -15,15 +15,19 @@ import {
 	CellHeader,
 	CellBody,
 	CellDesc,
-	CellFooter
+	CellFooter,
+	Checkbox,
+	Radio,
+	Input,
+	Switch,
+	Textarea,
+	Stepper
 } from 'component';
 
 export default class SegmentedPage extends Component {
 
 	constructor(props, context) {
 		super(props, context);
-
-		
 	}
 
 	render() {
@@ -59,6 +63,79 @@ export default class SegmentedPage extends Component {
 							<CellDesc>the desc the desc the desc the desc the desc</CellDesc>
 						</CellBody>
 						<CellFooter>footer</CellFooter>
+					</Cell>
+				</Cells>
+
+				<CellsTitle>stepper</CellsTitle>
+				<Cells>
+					<Cell>
+						<CellBody>我是标题</CellBody>
+						<CellFooter>
+							<Stepper onChange={(current, preValue, step) => {
+								console.log(current, preValue, step);
+							}} />
+						</CellFooter>
+					</Cell>
+				</Cells>
+
+				<CellsTitle>switch</CellsTitle>
+				<Cells>
+					<Cell>
+						<CellBody>我是标题</CellBody>
+						<CellFooter>
+							<Switch />
+						</CellFooter>
+					</Cell>
+				</Cells>
+
+				<CellsTitle>checkbox</CellsTitle>
+				<Cells>
+					<Cell component="label">
+						<CellHeader>
+							<Checkbox name="checkbox" defaultChecked/>
+						</CellHeader>
+						<CellBody>我是标题</CellBody>
+					</Cell>
+					<Cell component="label">
+						<CellHeader>
+							<Checkbox name="checkbox" />
+						</CellHeader>
+						<CellBody>我是标题</CellBody>
+					</Cell>
+				</Cells>
+
+				<CellsTitle>radio</CellsTitle>
+				<Cells>
+					<Cell component="label">
+						<CellHeader>
+							<Radio name="radio" defaultChecked/>
+						</CellHeader>
+						<CellBody>我是标题</CellBody>
+					</Cell>
+					<Cell component="label">
+						<CellHeader>
+							<Radio name="radio" />
+						</CellHeader>
+						<CellBody>我是标题</CellBody>
+					</Cell>
+				</Cells>
+
+				<CellsTitle>input</CellsTitle>
+				<Cells>
+					<Cell>
+						<CellHeader>手机号码</CellHeader>
+						<CellBody>
+							<Input placeholder="请输入手机号码" />
+						</CellBody>
+					</Cell>
+				</Cells>
+
+				<CellsTitle>textarea</CellsTitle>
+				<Cells>
+					<Cell>
+						<CellBody>
+							<Textarea placeholder="请输入手机号码" />
+						</CellBody>
 					</Cell>
 				</Cells>
 			</Layout>

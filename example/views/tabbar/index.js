@@ -105,7 +105,7 @@ export default class TabBarPage extends Component {
 					activeColor="red"
 					tabs={[
 						{
-							icon: 'home',
+							icon: 'at',
 							badge: 3,
 							label: 'home',
 							active: index === 0,

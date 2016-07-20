@@ -9,7 +9,7 @@ import React, {
 import config from '../util/config';
 import {classNames} from '../util';
 import Badge from '../badge';
-import Icon from '../icon';
+import {Icon} from '../icon';
 
 const prefix = 'tabbar-icon';
 
@@ -26,6 +26,7 @@ export default function TabBarIcon(props) {
 		[className]: className
 	});
 
+	console.log(props);
 	return (
 		<div className={clazz} {...rest}>
 			{icon ? (

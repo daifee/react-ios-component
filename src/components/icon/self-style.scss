@@ -1,0 +1,149 @@
+/**
+ * @author haw
+ */
+
+@import "../util/variables";
+
+/**
+ * loading icon style
+ * @type {String}
+ */
+$selector: '.#{$namespace}icon-loading';
+$keyframes-loading: '#{$namespace}icon-loading-leaf-';
+$count: 12;
+$rotateDeg: 30;
+$opacityUnit: 0.04;
+
+#{$selector} {
+	display: inline-flex;
+  justify-content: center;
+  align-items: center;
+	width: 1.7rem;
+	height: 1.7rem;
+  vertical-align: middle;
+
+  & > div {
+    position: relative;
+    width: 1.7rem;
+    height: 1.7rem;
+    overflow: hidden;
+  }
+
+	&-leaf {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: inline-block;
+    width: 10px;
+    height: 3px;
+    background-color: #d1d1d5;
+    border-radius: 1px;
+    transform-origin: -7px 0;
+
+    @for $i from 0 to $count {
+			&-#{$i} {
+				transform: rotate(#{$i * $rotateDeg}deg);
+				opacity: (1 - $i * $opacityUnit);
+  			animation: #{$keyframes-loading}#{$i} 1.25s linear infinite;
+			}
+		}
+	}
+}
+
+// animation
+@keyframes #{$keyframes-loading}0 {
+  0% {opacity: .25;}
+  0.01% {opacity: .25;}
+  0.02% {opacity: 1;}
+  60.01% {opacity: .25;}
+  to {opacity: .25;}
+}
+
+@keyframes #{$keyframes-loading}1 {
+  0% {opacity: .25;}
+  8.34333% {opacity: .25;}
+  8.35333% {opacity: 1;}
+  68.3433% {opacity: .25;}
+  to {opacity: .25;}
+}
+
+@keyframes #{$keyframes-loading}2 {
+  0% {opacity: .25;}
+  16.6767% {opacity: .25;}
+  16.6867% {opacity: 1;}
+  76.6767% {opacity: .25;}
+  to {opacity: .25;}
+}
+
+@keyframes #{$keyframes-loading}3 {
+  0% {opacity: .25;}
+  25.01% {opacity: .25;}
+  25.02% {opacity: 1;}
+  85.01% {opacity: .25;}
+  to {opacity: .25;}
+}
+
+@keyframes #{$keyframes-loading}4 {
+  0% {opacity: .25;}
+  33.3433% {opacity: .25;}
+  33.3533% {opacity: 1;}
+  93.3433% {opacity: .25;}
+  to {opacity: .25;}
+}
+
+@keyframes #{$keyframes-loading}5 {
+  0% {opacity: .270958333333333;}
+  41.6767% {opacity: .25;}
+  41.6867% {opacity: 1;}
+  1.67667% {opacity: .25;}
+  to {opacity: .270958333333333;}
+}
+
+@keyframes #{$keyframes-loading}6 {
+  0% {opacity: .375125;}
+  50.01% {opacity: .25;}
+  50.02% {opacity: 1;}
+  10.01% {opacity: .25;}
+  to {opacity: .375125;}
+}
+
+@keyframes #{$keyframes-loading}7 {
+  0% {opacity: .479291666666667;}
+  58.3433% {opacity: .25;}
+  58.3533% {opacity: 1;}
+  18.3433% {opacity: .25;}
+  to {opacity: .479291666666667;}
+}
+
+@keyframes #{$keyframes-loading}8 {
+  0% {opacity: .583458333333333;}
+  66.6767% {opacity: .25;}
+  66.6867% {opacity: 1;}
+  26.6767% {opacity: .25;}
+  to {opacity: .583458333333333;}
+}
+
+@keyframes #{$keyframes-loading}9 {
+  0% {opacity: .687625;}
+  75.01% {opacity: .25;}
+  75.02% {opacity: 1;}
+  35.01% {opacity: .25;}
+  to {opacity: .687625;}
+}
+
+@keyframes #{$keyframes-loading}10 {
+  0% {opacity: .791791666666667;}
+  83.3433% {opacity: .25;}
+  83.3533% {opacity: 1;}
+  43.3433% {opacity: .25;}
+  to {opacity: .791791666666667;}
+}
+
+@keyframes #{$keyframes-loading}11 {
+  0% {opacity: .895958333333333;}
+  91.6767% {opacity: .25;}
+  91.6867% {opacity: 1;}
+  51.6767% {opacity: .25;}
+  to {opacity: .895958333333333;}
+}
+

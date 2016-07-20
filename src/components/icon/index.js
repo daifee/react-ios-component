@@ -3,8 +3,7 @@
  */
 import '../base'; 
 import './style';
-import './iconsize';
+import './self-style';
 
-import Icon from './Icon';
-
-export default Icon;
+export Icon from './Icon';
+export IconLoading from './IconLoading';

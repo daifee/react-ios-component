@@ -18,7 +18,7 @@ export default class IndicatorPage extends Component {
 		super(props, context);
 
 		this.state = {
-			visible: false
+			visible: true
 		}
 	}
 
@@ -52,7 +52,7 @@ export default class IndicatorPage extends Component {
 				>
 					只有文案
 				</Button>
-				<Indicator visible={visible}>加载中...</Indicator>
+				<Indicator icon="loading" visible={visible}>加载中...</Indicator>
 			</Layout>
 		);
 	}
