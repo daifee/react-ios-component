@@ -51,4 +51,9 @@ export {
 } from './components/alert';
 export ActionSheet from './components/actionsheet';
 export Indicator from './components/indicator';
+export {
+	Options,
+	InlinePicker,
+	Picker
+} from './components/picker';
 

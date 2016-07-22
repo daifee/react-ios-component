@@ -26,7 +26,6 @@ export default function TabBarIcon(props) {
 		[className]: className
 	});
 
-	console.log(props);
 	return (
 		<div className={clazz} {...rest}>
 			{icon ? (

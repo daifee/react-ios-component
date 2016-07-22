@@ -7,7 +7,6 @@ import React, {
 	Component,
 	cloneElement
 } from 'react';
-import Animate from '../animate';
 import Popup from '../popup';
 import Portal from '../portal';
 import AlertHeader from './AlertHeader';

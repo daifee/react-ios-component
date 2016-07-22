@@ -36,11 +36,11 @@ module.exports = {
 			'component': '../../../src'
 		}
 	},
-	externals: {
-		react: 'React',
-		'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup',
-		'react-dom': 'ReactDOM'
-	},
+	// externals: {
+	// 	react: 'React',
+	// 	'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup',
+	// 	'react-dom': 'ReactDOM'
+	// },
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, 'example/index.html'),

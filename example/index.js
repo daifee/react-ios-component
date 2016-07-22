@@ -43,6 +43,7 @@ import AlertPage from './views/alert';
 import ActionSheetPage from './views/actionsheet';
 import IndicatorPage from './views/indicator';
 import SearchBarPage from './views/searchbar';
+import PickerPage from './views/picker';
 import './style';
 
 function Home(props) {
@@ -87,9 +88,9 @@ function Home(props) {
 						<Icon value="bookoutline" />
 						<span>SearchBar</span>
 					</Link>
-					<Link className="grid" to="/button">
+					<Link className="grid" to="/picker">
 						<Icon value="bookoutline" />
-						<span>Button</span>
+						<span>Picker</span>
 					</Link>
 				</div>
 			</section>
@@ -103,6 +104,7 @@ function App(props) {
 		children
 	} = props;
 
+	console.log(location.action);
 	return (
 		<Scene animation={location.action}>
 			{cloneElement(children, {
@@ -124,6 +126,7 @@ ReactDOM.render((
 			<Route path="actionsheet" component={ActionSheetPage} />
 			<Route path="indicator" component={IndicatorPage} />
 			<Route path="searchbar" component={SearchBarPage} />
+			<Route path="picker" component={PickerPage} />
 		</Route>
 	</Router>
 ), document.getElementById('app-container'));
