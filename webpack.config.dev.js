@@ -6,7 +6,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
-
 	context: path.resolve(__dirname, 'example'),
 	entry: {
 		app: './index.js'
@@ -22,7 +21,8 @@ module.exports = {
 				loader: 'babel'
 			}, {
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
+				loader: 'style!css!postcss!sass'
+				// loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
 			},
 			{
         test: /\.(eot|ttf|woff|svg)(\?.*)?(#.*)?$/,
@@ -46,12 +46,11 @@ module.exports = {
 			template: path.resolve(__dirname, 'example/index.html'),
 			chunks: ['app']
 		}),
-		new ExtractTextPlugin('app.css'),
+		// new ExtractTextPlugin('app.css'),
     new OpenBrowserPlugin({
     	url: 'http://localhost:8088'
     })
 	],
   postcss: [autoprefixer],
   devtool: 'eval'
-
 };
