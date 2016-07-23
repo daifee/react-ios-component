@@ -15,12 +15,26 @@ import {classNames} from '../util';
 export default function Picker(props) {
 	const {
 		visible,
+		hasHeader = true,
+		onConfirm,
+		onCancel,
+		close,
 		...rest
 	} = props;
 
 	return (
-		<Popup>
-			<InlinePicker {...rest} />
+		<Popup 
+			visible={visible}
+			close={close} 
+			position="bottom"
+		>
+			<InlinePicker 
+				onConfirm={(e) => {
+					onConfirm && onConfirm(e);
+				}}
+				hasHeader={hasHeader} 
+				{...rest} 
+			/>
 		</Popup>
 	);
 }

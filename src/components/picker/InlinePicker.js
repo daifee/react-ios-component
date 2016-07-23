@@ -16,10 +16,13 @@ export default class InlinePicker extends Component {
 
 	render() {
 		const {
+			hasHeader,
 			title,
 			okText,
 			cancelText,
 			optionsList,
+			onConfirm,
+			onCancel,
 			className,
 			children,
 			...rest
@@ -29,17 +32,25 @@ export default class InlinePicker extends Component {
 		let bodyClazz = classNames(`${prefix}-body`);
 		let optionsNodes = optionsList.map((options, i) => {
 			return (
-				<Options options={options} key={i} />
+				<Options 
+					options={options} 
+					key={i} 
+					onChange={(selectedIndex) => {
+
+					}}
+				/>
 			);
 		});
 
 		return (
 			<div className={clazz}>
-				<div className={headerClazz}>
-					<a>{cancelText}</a>
-					<span>{title}</span>
-					<a>{okText}</a>
-				</div>
+				{hasHeader ? (
+					<div className={headerClazz}>
+						<a onClick={onCancel}>{cancelText}</a>
+						<span>{title}</span>
+						<a onClick={onConfirm}>{okText}</a>
+					</div>
+				) : null}
 				<div className={bodyClazz}>
 					{optionsNodes}
 				</div>
@@ -49,13 +60,17 @@ export default class InlinePicker extends Component {
 }
 
 InlinePicker.propTypes = {
+	hasHeader: PropTypes.bool,
 	title: PropTypes.node,
 	okText: PropTypes.node,
 	cancelText: PropTypes.node,
-	optionsList: PropTypes.array
+	optionsList: PropTypes.array,
+	onConfirm: PropTypes.func,
+	onCancel: PropTypes.func
 };
 
 InlinePicker.defaultProps = {
+	hasHeader: false,
 	okText: '确定',
 	cancelText: '取消',
 	optionsList: [

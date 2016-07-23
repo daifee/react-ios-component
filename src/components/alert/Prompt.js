@@ -69,8 +69,8 @@ Prompt.propTypes = {
 	title: PropTypes.node,
 	body: PropTypes.node,
 	inputProps: PropTypes.object,
-	onOkHide: PropTypes.func,
-	onCancelHide: PropTypes.func,
+	onConfirm: PropTypes.func,
+	onCancel: PropTypes.func,
 	okText: PropTypes.node,
 	cancelText: PropTypes.node
 };

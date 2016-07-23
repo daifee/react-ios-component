@@ -27,18 +27,19 @@ export default class PickerPage extends Component {
 		return (
 			<Layout title="indicator" history={history}>
 				<br/>
-
-				<Button size="lg" onClick={() => {
-					
-				}}>
-					API 调用 Picker
-				</Button>
-				<br/>
 				
 				<InlinePicker title="选择器">
 				</InlinePicker>
 				
 				<br/>
+
+				<Button size="lg" onClick={() => {
+					Picker.show({
+						
+					});
+				}}>
+					API 调用 Picker
+				</Button>
 				
 			</Layout>
 		);

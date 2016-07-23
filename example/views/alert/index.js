@@ -84,11 +84,11 @@ export default class AlertPage extends Component {
 					Confirm.show({
 						title: 'confirm',
 						body: 'are you sure?',
-						onOkHide: () => {
-							console.log('onOkHide');
+						onConfirm: () => {
+							console.log('onConfirm');
 						},
-						onCancelHide: () => {
-							console.log('onCancelHide');
+						onCancel: () => {
+							console.log('onCancel');
 						},
 						okText: '好的',
 						cancelText: '不要啊'
@@ -103,12 +103,12 @@ export default class AlertPage extends Component {
 					visible={confirmVisible}
 					title={'go to hell'}
 					body={'are you ready?'}
-					onOkHide={() => {
-						console.log('onOkHide');
+					onConfirm={() => {
+						console.log('onConfirm');
 						this.setState({confirmVisible: !confirmVisible});
 					}}
-					onCancelHide={() => {
-						console.log('onCancelHide');
+					onCancel={() => {
+						console.log('onCancel');
 						this.setState({confirmVisible: !confirmVisible});
 					}}
 					okText={'好的'}
@@ -129,11 +129,11 @@ export default class AlertPage extends Component {
 								});
 							}
 						},
-						onOkHide: () => {
-							console.log('onOkHide');
+						onConfirm: () => {
+							console.log('onConfirm');
 						},
-						onCancelHide: () => {
-							console.log('onCancelHide');
+						onCancel: () => {
+							console.log('onCancel');
 						},
 						okText: '好的',
 						cancelText: '不要啊'

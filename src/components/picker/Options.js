@@ -28,21 +28,22 @@ export default class Options extends Component {
 		} = this.props;
 		const wraper = this.refs.wraper;
 
-		this.iScroll = new IScroll(wraper, {
-			probeType: 2,
-			...iScrollOptions
-		});
+		setTimeout(() => {
+			this.iScroll = new IScroll(wraper, {
+				probeType: 2,
+				...iScrollOptions
+			});
 
-		this.iScroll.on('scrollEnd', () => {
-			const index = Math.round(-this.iScroll.y / optionHeight);
+			this.iScroll.on('scrollEnd', () => {
+				const index = Math.round(-this.iScroll.y / optionHeight);
 
-			onChange && onChange(index);
-			this.setPosition(index);
-		});
-
-		console.log(this.iScroll);
-
-		this.setPosition();
+				onChange && onChange(index);
+				this.setPosition(index);
+			});
+			
+			console.log(this.iScroll);
+			this.setPosition();
+		}, 0);
 	}
 
 	componentDidUpdate() {

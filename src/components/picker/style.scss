@@ -58,6 +58,7 @@ $pickerSelector: '.#{$namespace}picker';
 
 #{$pickerSelector} {
 	position: relative;
+	background-color: $white;
 	@include hairline-top();
 
 	&-header {

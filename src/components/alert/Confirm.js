@@ -13,8 +13,8 @@ const prefix = 'alert-confirm';
 
 function decorateProps(props) {
 	const {
-		onOkHide = () => {},
-		onCancelHide = () => {},
+		onConfirm = () => {},
+		onCancel = () => {},
 		okText = '确定',
 		cancelText = '取消',
 		className,
@@ -25,10 +25,10 @@ function decorateProps(props) {
 	});
 	let buttons = [{
 		children: cancelText,
-		onClick: onCancelHide
+		onClick: onCancel
 	}, {
 		children: okText,
-		onClick: onOkHide
+		onClick: onConfirm
 	}];
 
 	return {
@@ -63,14 +63,14 @@ Confirm.propTypes = {
 	visible: PropTypes.bool,
 	title: PropTypes.node,
 	body: PropTypes.node,
-	onOkHide: PropTypes.func,
-	onCancelHide: PropTypes.func,
+	onConfirm: PropTypes.func,
+	onCancel: PropTypes.func,
 	okText: PropTypes.node,
 	cancelText: PropTypes.node
 };
 // Confirm.defaultProps = {
-// 	onOkHide: () => {},
-// 	onCancelHide: () => {},
+// 	onConfirm: () => {},
+// 	onCancel: () => {},
 // 	okText: '确定',
 // 	cancelText: '取消'
 // };

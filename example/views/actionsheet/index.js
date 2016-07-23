@@ -71,7 +71,7 @@ export default class ActionSheetPage extends Component {
 							}
 						}
 					]}
-					onCancelHide={() => {
+					onCancel={() => {
 						// this.setState({visible: !visible});
 					}}
 					close={(e) => {

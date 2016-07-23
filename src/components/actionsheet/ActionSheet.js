@@ -43,7 +43,7 @@ export default function ActionSheet(props) {
 		description,
 		buttons,
 		hasCancelButton,
-		onCancelHide,
+		onCancel,
 		cancelText,
 		close,
 		className,
@@ -55,10 +55,6 @@ export default function ActionSheet(props) {
 	});
 	let buttonsClazz = classNames(`${prefix}-buttons`);
 	let descClazz = classNames(`${prefix}-desc`);
-	let onCancel = (e) => {
-		onCancelHide && onCancelHide(e);
-		close && close();
-	};
 	let buttonEls = buttons.map((btnProps, i) => {
 		const onClick = btnProps.onClick;
 
@@ -84,7 +80,10 @@ export default function ActionSheet(props) {
 				</div>
 				{hasCancelButton ? (
 					<div className={buttonsClazz}>
-						<Button onClick={onCancel}>{cancelText}</Button>
+						<Button onClick={(e) => {
+							onCancel && onCancel(e);
+							close && close();
+						}}>{cancelText}</Button>
 					</div>
 				) : null}
 			</div>
@@ -97,14 +96,14 @@ ActionSheet.propTypes = {
 	description: PropTypes.node,
 	buttons: PropTypes.arrayOf(PropTypes.object),
 	hasCancelButton: PropTypes.bool,
-	onCancelHide: PropTypes.func,
+	onCancel: PropTypes.func,
 	cancelText: PropTypes.node,
 	close: PropTypes.func
 };
 
 ActionSheet.defaultProps = {
 	hasCancelButton: true,
-	onCancelHide: () => {},
+	onCancel: () => {},
 	cancelText: '取消'
 };
 
