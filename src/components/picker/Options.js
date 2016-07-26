@@ -37,41 +37,47 @@ export default class Options extends Component {
 			this.iScroll.on('scrollEnd', () => {
 				const index = Math.round(-this.iScroll.y / optionHeight);
 
-				onChange && onChange(index);
-				this.setPosition(index);
+				onChange && onChange(Math.abs(index));
+				// this.setPosition(index, 100);
 			});
 			
-			console.log(this.iScroll);
 			this.setPosition();
 		}, 0);
 	}
 
 	componentDidUpdate() {
-		this.iScroll.refresh();
-		this.setPosition();
+		setTimeout(() => {
+			this.iScroll.refresh();
+			this.setPosition();
+		}, 0);
 	}
 
-	setPosition(index) {
+	componentWillUnmount() {
+		this.iScroll.destroy();
+		this.iScroll = null;
+	}
+
+	setPosition(index, time = 0) {
 		const {selectedIndex} = this.props;
 
 		index = index || selectedIndex;
-		this.iScroll.scrollTo(0, -index * optionHeight);
+		this.iScroll.scrollTo(0, -index * optionHeight, time);
 	}
 
 	render() {
 		const {
 			options,
 			selectedIndex,
-			name,
+			labelName,
 			className,
 			children,
 			...rest
 		} = this.props;
-		let clazz = classNames(prefix);
-		let maskClazz = classNames(`${prefix}-mask`);
-		let indicatorClazz = classNames(`${prefix}-indicator`);
+		const clazz = classNames(prefix);
+		const maskClazz = classNames(`${prefix}-mask`);
+		const indicatorClazz = classNames(`${prefix}-indicator`);
 		let nodes = options.map((item, i) => {
-			const text = typeof item === 'object' ? item[name] : item;
+			const text = typeof item === 'object' ? item[labelName] : item;
 
 			return (
 				<li key={i + text}>{text}</li>
@@ -97,13 +103,13 @@ export default class Options extends Component {
 
 Options.propTypes = {
   options: PropTypes.array.isRequired,
-  name: PropTypes.string,
+  labelName: PropTypes.string,
 	selectedIndex: PropTypes.number,
   onChange: PropTypes.func,
 	iScrollOptions: PropTypes.object
 };
 
 Options.defaultProps = {
-	name: 'name',
+	labelName: 'name',
 	selectedIndex: 0
 };

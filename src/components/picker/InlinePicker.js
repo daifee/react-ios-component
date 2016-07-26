@@ -10,70 +10,73 @@ import ReactDOM from 'react-dom';
 import Options from './Options';
 import {classNames} from '../util';
 
-const prefix = 'picker';
+const prefix = 'picker-body';
 
 export default class InlinePicker extends Component {
 
+	onChange(selectedIndex, i) {
+		const {
+			selectedList,
+			onChange
+		} = this.props;
+		let currentList = selectedList.map((value, index) => {
+			if(index > i) {
+				return 0;
+			}
+			return value;
+		});
+		currentList[i] = selectedIndex;
+		onChange && onChange(currentList);
+	}
+
 	render() {
 		const {
-			hasHeader,
-			title,
-			okText,
-			cancelText,
+			selectedList,
 			optionsList,
-			onConfirm,
-			onCancel,
+			labelName,
+			nextName,
+			onChange,
 			className,
 			children,
 			...rest
 		} = this.props;
-		let clazz = classNames(prefix);
-		let headerClazz = classNames(`${prefix}-header`);
-		let bodyClazz = classNames(`${prefix}-body`);
-		let optionsNodes = optionsList.map((options, i) => {
+		const clazz = classNames(prefix);
+		let options = optionsList;
+		const optionsNodes = selectedList.map((selectedIndex, i) => {
+			options = i === 0 ? options : options[selectedList[i - 1]][nextName];
+
+			if(!options) {
+				return null;
+			}
 			return (
 				<Options 
+					selectedIndex={selectedIndex}
 					options={options} 
 					key={i} 
+					labelName={labelName}
 					onChange={(selectedIndex) => {
-
+						this.onChange(selectedIndex, i);
 					}}
 				/>
 			);
 		});
 
 		return (
-			<div className={clazz}>
-				{hasHeader ? (
-					<div className={headerClazz}>
-						<a onClick={onCancel}>{cancelText}</a>
-						<span>{title}</span>
-						<a onClick={onConfirm}>{okText}</a>
-					</div>
-				) : null}
-				<div className={bodyClazz}>
-					{optionsNodes}
-				</div>
+			<div className={clazz} {...rest}>
+				{optionsNodes}
 			</div>
 		);
 	}
 }
 
 InlinePicker.propTypes = {
-	hasHeader: PropTypes.bool,
-	title: PropTypes.node,
-	okText: PropTypes.node,
-	cancelText: PropTypes.node,
-	optionsList: PropTypes.array,
-	onConfirm: PropTypes.func,
-	onCancel: PropTypes.func
+	labelName: PropTypes.string,
+	nextName: PropTypes.string,
+	selectedList: PropTypes.array.isRequired,
+	optionsList: PropTypes.array.isRequired,
+	onChange: PropTypes.func
 };
 
 InlinePicker.defaultProps = {
-	hasHeader: false,
-	okText: '确定',
-	cancelText: '取消',
-	optionsList: [
-		[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-	]
+	nextName: 'childs'
 };
