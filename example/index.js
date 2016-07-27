@@ -44,6 +44,7 @@ import ActionSheetPage from './views/actionsheet';
 import IndicatorPage from './views/indicator';
 import SearchBarPage from './views/searchbar';
 import PickerPage from './views/picker';
+import DatePickerPage from './views/datepicker';
 import './style';
 
 function Home(props) {
@@ -92,6 +93,10 @@ function Home(props) {
 						<Icon value="bookoutline" />
 						<span>Picker</span>
 					</Link>
+					<Link className="grid" to="/datepicker">
+						<Icon value="bookoutline" />
+						<span>DatePicker</span>
+					</Link>
 				</div>
 			</section>
 		</Page>
@@ -127,6 +132,7 @@ ReactDOM.render((
 			<Route path="indicator" component={IndicatorPage} />
 			<Route path="searchbar" component={SearchBarPage} />
 			<Route path="picker" component={PickerPage} />
+			<Route path="datepicker" component={DatePickerPage} />
 		</Route>
 	</Router>
 ), document.getElementById('app-container'));

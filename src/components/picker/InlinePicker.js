@@ -6,7 +6,6 @@ import React, {
 	PropTypes,
 	Component
 } from 'react';
-import ReactDOM from 'react-dom';
 import Options from './Options';
 import {classNames} from '../util';
 
@@ -14,7 +13,7 @@ const prefix = 'picker-body';
 
 export default class InlinePicker extends Component {
 
-	onChange(selectedIndex, i) {
+	_onChange(selectedIndex, i) {
 		const {
 			selectedList,
 			onChange
@@ -55,7 +54,7 @@ export default class InlinePicker extends Component {
 					key={i} 
 					labelName={labelName}
 					onChange={(selectedIndex) => {
-						this.onChange(selectedIndex, i);
+						this._onChange(selectedIndex, i);
 					}}
 				/>
 			);

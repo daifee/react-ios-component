@@ -55,3 +55,8 @@ export function px2rem(px) {
 
 	return px / base;
 }
+
+// time related
+export function date2str(date) {
+	
+}

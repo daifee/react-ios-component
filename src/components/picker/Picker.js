@@ -24,6 +24,39 @@ export default class Picker extends Component {
 		};
 	}
 
+	componentWillReceiveProps({selectedList}) {
+		this.setState({selectedList})
+	}
+
+	_onCancel = (e) => {
+		const {
+			close,
+			onCancel
+		} = this.props;
+
+		close && close();
+		onCancel && onCancel(e);
+	};
+
+	_onChange = (selectedList) => {
+		const {
+			onChange
+		} = this.props;
+
+		this.setState({selectedList});
+		onChange && onChange(selectedList);
+	}
+
+	_onConfirm = (e) => {
+		const {
+			close,
+			onConfirm
+		} = this.props;
+
+		close && close()
+		onConfirm && onConfirm(this.state.selectedList, e);
+	};
+
 	render() {
 		let {
 			visible,
@@ -44,7 +77,6 @@ export default class Picker extends Component {
 		});
 		const headerClazz = classNames(`${prefix}-header`);
 
-		selectedList = this.state.selectedList;
 		return (
 			<Popup 
 				visible={visible}
@@ -53,23 +85,14 @@ export default class Picker extends Component {
 			>
 				<div className={clazz} {...rest}>
 					<div className={headerClazz}>
-						<a onClick={(e) => {
-							close && close();
-							onCancel && onCancel(e);
-						}}>{cancelText}</a>
+						<a onClick={this._onCancel}>{cancelText}</a>
 						<span>{title}</span>
-						<a onClick={(e) => {
-							close && close()
-							onConfirm && onConfirm(this.state.selectedList, e);
-						}}>{confirmText}</a>
+						<a onClick={this._onConfirm}>{confirmText}</a>
 					</div>
 					<InlinePicker 
-						selectedList={selectedList}
+						selectedList={this.state.selectedList}
 						optionsList={optionsList}
-						onChange={(selectedList) => {
-							this.setState({selectedList});
-							onChange && onChange();
-						}}
+						onChange={this._onChange}
 					/>
 				</div>
 			</Popup>

@@ -90,7 +90,7 @@ export default class AlertPage extends Component {
 						onCancel: () => {
 							console.log('onCancel');
 						},
-						okText: '好的',
+						confirmText: '好的',
 						cancelText: '不要啊'
 					});
 				}}>API 调用 Confirm</Button>
@@ -111,7 +111,7 @@ export default class AlertPage extends Component {
 						console.log('onCancel');
 						this.setState({confirmVisible: !confirmVisible});
 					}}
-					okText={'好的'}
+					confirmText={'好的'}
 					cancelText={'不要啊'}
 				/>
 
@@ -135,7 +135,7 @@ export default class AlertPage extends Component {
 						onCancel: () => {
 							console.log('onCancel');
 						},
-						okText: '好的',
+						confirmText: '好的',
 						cancelText: '不要啊'
 					});
 				}}>API 调用 Prompt</Button>

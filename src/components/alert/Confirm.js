@@ -15,7 +15,7 @@ function decorateProps(props) {
 	const {
 		onConfirm = () => {},
 		onCancel = () => {},
-		okText = '确定',
+		confirmText = '确定',
 		cancelText = '取消',
 		className,
 		...rest
@@ -27,7 +27,7 @@ function decorateProps(props) {
 		children: cancelText,
 		onClick: onCancel
 	}, {
-		children: okText,
+		children: confirmText,
 		onClick: onConfirm
 	}];
 
@@ -65,12 +65,12 @@ Confirm.propTypes = {
 	body: PropTypes.node,
 	onConfirm: PropTypes.func,
 	onCancel: PropTypes.func,
-	okText: PropTypes.node,
+	confirmText: PropTypes.node,
 	cancelText: PropTypes.node
 };
 // Confirm.defaultProps = {
 // 	onConfirm: () => {},
 // 	onCancel: () => {},
-// 	okText: '确定',
+// 	confirmText: '确定',
 // 	cancelText: '取消'
 // };

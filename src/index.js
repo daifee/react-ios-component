@@ -54,6 +54,7 @@ export Indicator from './components/indicator';
 export {
 	Options,
 	InlinePicker,
-	Picker
+	Picker,
+	InlineDatePicker
 } from './components/picker';
 
