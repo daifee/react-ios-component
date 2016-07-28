@@ -8,23 +8,26 @@ import React, {
 } from 'react';
 import Portal from '../portal';
 import Popup from '../popup';
-import InlinePicker from './InlinePicker';
-import {classNames} from '../util';
+import InlineDatePicker from './InlineDatePicker';
+import {
+	classNames, 
+	date2str
+	} from '../util';
 
 const prefix = 'picker';
 
-export default class Picker extends Component {
+export default class DatePicker extends Component {
 
 	constructor(props, context) {
 		super(props, context);
 
 		this.state = {
-			selectedList: props.selectedList
+			selectedDate: props.selectedDate
 		};
 	}
 
-	componentWillReceiveProps({selectedList}) {
-		this.setState({selectedList})
+	componentWillReceiveProps({selectedDate}) {
+		this.setState({selectedDate})
 	}
 
 	_onCancel = (e) => {
@@ -37,13 +40,13 @@ export default class Picker extends Component {
 		onCancel && onCancel(e);
 	};
 
-	_onChange = (selectedList) => {
+	_onChange = (selectedDate) => {
 		const {
 			onChange
 		} = this.props;
 
-		this.setState({selectedList});
-		onChange && onChange(selectedList);
+		this.setState({selectedDate});
+		onChange && onChange(selectedDate);
 	}
 
 	_onConfirm = (e) => {
@@ -53,19 +56,23 @@ export default class Picker extends Component {
 		} = this.props;
 
 		close && close()
-		onConfirm && onConfirm(this.state.selectedList, e);
+		onConfirm && onConfirm(this.state.selectedDate, e);
 	};
 
 	render() {
 		let {
 			visible,
-			title,
+			title = date2str(this.state.selectedDate),
 			confirmText,
 			cancelText,
 			onConfirm,
 			onCancel,
-			selectedList,
-			optionsList,
+			selectedDate,
+			minDate,
+			maxDate,
+			yearUnit,
+			monthUnit,
+			dateUnit,
 			onChange,
 			close,
 			className,
@@ -88,9 +95,13 @@ export default class Picker extends Component {
 						<span>{title}</span>
 						<a onClick={this._onConfirm}>{confirmText}</a>
 					</div>
-					<InlinePicker 
-						selectedList={this.state.selectedList}
-						optionsList={optionsList}
+					<InlineDatePicker 
+						selectedDate={this.state.selectedDate}
+						minDate={minDate}
+						maxDate={maxDate}
+						yearUnit={yearUnit}
+						monthUnit={monthUnit}
+						dateUnit={dateUnit}
 						onChange={this._onChange}
 					/>
 				</div>
@@ -99,13 +110,18 @@ export default class Picker extends Component {
 	}
 }
 
-Picker.show = (props, container) => {
-	Portal.show(Picker, props, container);
+DatePicker.show = (props, container) => {
+	Portal.show(DatePicker, props, container);
 };
 
-Picker.propTypes = {
-	selectedList: PropTypes.array.isRequired,
-	optionsList: PropTypes.array.isRequired,
+DatePicker.propTypes = {
+	selectedDate: PropTypes.instanceOf(Date),
+	minDate: PropTypes.instanceOf(Date),
+	maxDate: PropTypes.instanceOf(Date),
+	yearUnit: PropTypes.string,
+	monthUnit: PropTypes.string,
+	dateUnit: PropTypes.string,
+	onChange: PropTypes.func,
 	visible: PropTypes.bool,
 	title: PropTypes.node,
 	confirmText: PropTypes.node,
@@ -115,7 +131,7 @@ Picker.propTypes = {
 	onChange: PropTypes.func
 };
 
-Picker.defaultProps = {
+DatePicker.defaultProps = {
 	confirmText: '确定',
 	cancelText: '取消'
 };

@@ -56,7 +56,39 @@ export function px2rem(px) {
 	return px / base;
 }
 
+// Options component
+export function generateOptions(max, min, unit = '') {
+	let results = [];
+	let current = min;
+
+	while(current <= max) {
+		results.push({
+			name: `${current < 10 ? '0' + current : current}${unit}`,
+			value: current
+		});
+		current++;
+	}
+
+	return results;
+}
+
+export function indexOfOptions(value, options) {
+	let len = options.length;
+
+	for(let i = 0; i < len; i++) {
+		if(options[i].value === value) {
+			return i;
+		}
+	}
+
+	return len;
+}
+
 // time related
 export function date2str(date) {
-	
+	const year = date.getFullYear();
+	const month = date.getMonth() + 1;
+	const d = date.getDate();
+
+	return `${year}-${month < 10 ? ('0' + month) : month}-${d < 10 ? ('0' + d) : d}`;
 }

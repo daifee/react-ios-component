@@ -45,6 +45,7 @@ import IndicatorPage from './views/indicator';
 import SearchBarPage from './views/searchbar';
 import PickerPage from './views/picker';
 import DatePickerPage from './views/datepicker';
+import TimePickerPage from './views/timepicker';
 import './style';
 
 function Home(props) {
@@ -97,6 +98,10 @@ function Home(props) {
 						<Icon value="bookoutline" />
 						<span>DatePicker</span>
 					</Link>
+					<Link className="grid" to="/timepicker">
+						<Icon value="bookoutline" />
+						<span>TimePicker</span>
+					</Link>
 				</div>
 			</section>
 		</Page>
@@ -133,6 +138,7 @@ ReactDOM.render((
 			<Route path="searchbar" component={SearchBarPage} />
 			<Route path="picker" component={PickerPage} />
 			<Route path="datepicker" component={DatePickerPage} />
+			<Route path="timepicker" component={TimePickerPage} />
 		</Route>
 	</Router>
 ), document.getElementById('app-container'));

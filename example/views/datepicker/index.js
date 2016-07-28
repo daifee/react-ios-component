@@ -9,10 +9,11 @@ import React, {
 import Layout from '../../components/layout';
 import {
 	Button,
-	InlineDatePicker
+	InlineDatePicker,
+	DatePicker
 } from 'component';
 
-export default class PickerPage extends Component {
+export default class DatePickerPage extends Component {
 
 	constructor(props, context) {
 		super(props, context);
@@ -32,7 +33,7 @@ export default class PickerPage extends Component {
 		console.log(selectedDate);
 
 		return (
-			<Layout title="indicator" history={history}>
+			<Layout title="datepicker" history={history}>
 				<br/>
 				
 				<InlineDatePicker 
@@ -47,7 +48,14 @@ export default class PickerPage extends Component {
 				<br/>
 
 				<Button size="lg" onClick={() => {
-					
+					DatePicker.show({
+						maxDate: new Date('2020-10-10'),
+						minDate: new Date('1970-01-01'),
+						selectedDate: selectedDate,
+						onConfirm: selectedDate => {
+							this.setState({selectedDate});
+						}
+					});
 				}}>
 					API 调用 Picker
 				</Button>

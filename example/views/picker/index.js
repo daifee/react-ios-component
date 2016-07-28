@@ -56,7 +56,7 @@ export default class PickerPage extends Component {
 	console.log(address);
 
 		return (
-			<Layout title="indicator" history={history}>
+			<Layout title="picker" history={history}>
 				<br/>
 				
 				<InlinePicker 

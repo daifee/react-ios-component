@@ -7,7 +7,11 @@ import React, {
 	Component
 } from 'react';
 import Options from './Options';
-import {classNames} from '../util';
+import {
+	classNames,
+	generateOptions,
+	indexOfOptions
+} from '../util';
 
 const prefix = 'picker-body';
 let now = new Date();
@@ -114,18 +118,6 @@ function copyDate(date) {
 	return new Date(date.getTime());
 }
 
-function indexOfOptions(value, options) {
-	let len = options.length;
-
-	for(let i = 0; i < len; i++) {
-		if(options[i].value === value) {
-			return i;
-		}
-	}
-
-	return len;
-}
-
 function createYearOptions(maxDate, minDate, yearUnit) {
 	const max = maxDate.getFullYear();
 	const min = minDate.getFullYear();
@@ -146,21 +138,6 @@ function createDateOptions(maxDate, minDate, selectedDate, dateUnit) {
 	let min = isEqualYearMonth(minDate, selectedDate) ? minDate.getDate() : 1;
 
 	return generateOptions(max, min, dateUnit);
-}
-
-function generateOptions(max, min, unit = '') {
-	let results = [];
-	let current = min;
-
-	while(current <= max) {
-		results.push({
-			name: `${current}${unit}`,
-			value: current
-		});
-		current++;
-	}
-
-	return results;
 }
 
 function getMonth(date) {
