@@ -6,29 +6,37 @@ import React, {
 	PropTypes,
 	Component
 } from 'react';
-import Portal from '../portal';
+import InlineTimePicker from './InlineTimePicker';
 import Popup from '../popup';
-import InlineDatePicker from './InlineDatePicker';
+import Portal from '../portal';
 import {
-	classNames, 
-	date2str
-	} from '../util';
+	classNames
+} from '../util';
 
 const prefix = 'picker';
 
-export default class DatePicker extends Component {
+export default class TimePicker extends Component {
 
 	constructor(props, context) {
 		super(props, context);
 
 		this.state = {
-			selectedDate: props.selectedDate
+			selectedTime: props.selectedTime
 		};
 	}
 
-	componentWillReceiveProps({selectedDate}) {
-		this.setState({selectedDate})
+	componentWillReceiveProps({selectedTime}) {
+		this.setState({selectedTime});
 	}
+
+	_onChange = (selectedTime) => {
+		const {
+			onChange
+		} = this.props;
+
+		this.setState({selectedTime});
+		onChange && onChange(selectedTime);
+	};
 
 	_onCancel = (e) => {
 		const {
@@ -37,16 +45,7 @@ export default class DatePicker extends Component {
 		} = this.props;
 
 		close && close();
-		onCancel && onCancel(this.state.selectedDate, e);
-	};
-
-	_onChange = (selectedDate) => {
-		const {
-			onChange
-		} = this.props;
-
-		this.setState({selectedDate});
-		onChange && onChange(selectedDate);
+		onCancel && onCancel(this.state.selectedTime, e);
 	};
 
 	_onConfirm = (e) => {
@@ -55,24 +54,24 @@ export default class DatePicker extends Component {
 			onConfirm
 		} = this.props;
 
-		close && close()
-		onConfirm && onConfirm(this.state.selectedDate, e);
+		close && close();
+		onConfirm && onConfirm(this.state.selectedTime, e);
 	};
 
 	render() {
-		let {
+		const {
 			visible,
-			title = date2str(this.state.selectedDate),
+			title = this.state.selectedTime,
 			confirmText,
 			cancelText,
 			onConfirm,
 			onCancel,
-			selectedDate,
-			minDate,
-			maxDate,
-			yearUnit,
-			monthUnit,
-			dateUnit,
+			selectedTime,
+			maxTime,
+			minTime,
+			hourUnit,
+			minuteUnit,
+			secondUnit,
 			onChange,
 			close,
 			className,
@@ -95,13 +94,13 @@ export default class DatePicker extends Component {
 						<span>{title}</span>
 						<a onClick={this._onConfirm}>{confirmText}</a>
 					</div>
-					<InlineDatePicker 
-						selectedDate={this.state.selectedDate}
-						minDate={minDate}
-						maxDate={maxDate}
-						yearUnit={yearUnit}
-						monthUnit={monthUnit}
-						dateUnit={dateUnit}
+					<InlineTimePicker 
+						selectedTime={this.state.selectedTime}
+						minTime={minTime}
+						maxTime={maxTime}
+						hourUnit={hourUnit}
+						minuteUnit={minuteUnit}
+						secondUnit={secondUnit}
 						onChange={this._onChange}
 					/>
 				</div>
@@ -110,17 +109,17 @@ export default class DatePicker extends Component {
 	}
 }
 
-DatePicker.show = (props, container) => {
-	Portal.show(DatePicker, props, container);
-};
+TimePicker.show = (props, container) => {
+	Portal.show(TimePicker, props, container);
+}
 
-DatePicker.propTypes = {
-	selectedDate: PropTypes.instanceOf(Date),
-	minDate: PropTypes.instanceOf(Date),
-	maxDate: PropTypes.instanceOf(Date),
-	yearUnit: PropTypes.string,
-	monthUnit: PropTypes.string,
-	dateUnit: PropTypes.string,
+TimePicker.propTypes = {
+	selectedTime: PropTypes.string,
+	minTime: PropTypes.string,
+	maxTime: PropTypes.string,
+	hourUnit: PropTypes.string,
+	minuteUnit: PropTypes.string,
+	secondUnit: PropTypes.string,
 	onChange: PropTypes.func,
 	visible: PropTypes.bool,
 	title: PropTypes.node,
@@ -131,7 +130,7 @@ DatePicker.propTypes = {
 	onChange: PropTypes.func
 };
 
-DatePicker.defaultProps = {
+TimePicker.defaultProps = {
 	confirmText: '确定',
 	cancelText: '取消'
 };

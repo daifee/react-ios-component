@@ -57,6 +57,7 @@ export {
 	Picker,
 	InlineDatePicker,
 	DatePicker,
-	InlineTimePicker
+	InlineTimePicker,
+	TimePicker
 } from './components/picker';
 

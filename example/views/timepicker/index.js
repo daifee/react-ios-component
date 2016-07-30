@@ -9,7 +9,8 @@ import React, {
 import Layout from '../../components/layout';
 import {
 	Button,
-	InlineTimePicker
+	InlineTimePicker,
+	TimePicker
 } from 'component';
 
 export default class TimePickerPage extends Component {
@@ -47,7 +48,12 @@ export default class TimePickerPage extends Component {
 				<br/>
 
 				<Button size="lg" onClick={() => {
-					
+					TimePicker.show({
+						selectedTime: selectedTime,
+						onConfirm: (selectedTime, e) => {
+							this.setState({selectedTime});
+						}
+					});
 				}}>
 					API 调用 Picker
 				</Button>

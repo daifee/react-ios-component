@@ -13,3 +13,4 @@ export InlineDatePicker from './InlineDatePicker';
 export DatePicker from './DatePicker';
 
 export InlineTimePicker from './InlineTimePicker';
+export TimePicker from './TimePicker';
