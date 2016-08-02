@@ -10,6 +10,7 @@ $input: '.#{$namespace}input';
 $switch: '.#{$namespace}switch';
 $textarea: '.#{$namespace}textarea';
 $stepper: '.#{$namespace}stepper';
+$slider: '.#{$namespace}slider';
 
 // checkbox and radio style
 #{$checkbox},
@@ -159,6 +160,10 @@ $stepper: '.#{$namespace}stepper';
 			margin-left: -.4rem;
 			background-color: $primaryColor;
 		}
+
+		&.disabled:before {
+			background-color: $gray;
+		}
 	}
 
 	&-cut {
@@ -176,6 +181,61 @@ $stepper: '.#{$namespace}stepper';
 			margin-top: -.4rem;
 			margin-left: -.05rem;
 			background-color: $primaryColor;
+		}
+
+		&.disabled:after {
+			background-color: $gray;
+		}
+	}
+}
+
+// slider style
+#{$slider} {
+	display: flex;
+	align-items: center;
+
+	&-left {
+		margin-right: .5rem;
+	}
+
+	&-right {
+		margin-left: .5rem;
+	}
+
+	& > span {
+		width: 1.5rem;
+		height: .1rem;
+		background-color: $gray;
+		border-radius: 0 .2rem .2rem 0;
+	}
+
+	&-bar {
+		position: relative;
+		flex: 1;
+		height: .1rem;
+		background-color: $gray;
+		border-radius: .2rem 0 0 .2rem;
+
+		& > a {
+			z-index: 1;
+			position: absolute;
+			top: -.7rem;
+			left: 0;
+			width: 1.5rem;
+			height: 1.5rem;
+			background-color: $white;
+			border: 0 solid rgba(0, 0, 0, .15);
+			border-radius: 50%;
+			box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .3);
+		}
+
+		& > span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: .1rem;
+			background-color: $primaryColor;
+			border-radius: 4px 0px 0px 4px;
 		}
 	}
 }

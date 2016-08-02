@@ -21,19 +21,29 @@ import {
 	Input,
 	Switch,
 	Textarea,
-	Stepper
+	Stepper,
+	Slider
 } from 'component';
 
 export default class SegmentedPage extends Component {
 
 	constructor(props, context) {
 		super(props, context);
+
+		this.state = {
+			stepValue: 0,
+			sliderValue: 0,
+		};
 	}
 
 	render() {
 		const {
 			history
 		} = this.props;
+		const {
+			stepValue,
+			sliderValue
+		} = this.state;
 
 		return (
 			<Layout
@@ -69,12 +79,33 @@ export default class SegmentedPage extends Component {
 				<CellsTitle>stepper</CellsTitle>
 				<Cells>
 					<Cell>
-						<CellBody>我是标题</CellBody>
+						<CellBody>我是 {stepValue}</CellBody>
 						<CellFooter>
-							<Stepper onChange={(current, preValue, step) => {
-								console.log(current, preValue, step);
-							}} />
+							<Stepper
+								value={stepValue}
+								min={0}
+								max={10}
+								onChange={(current, preValue, step) => {
+									this.setState({
+										stepValue: current
+									})
+								}}
+							/>
 						</CellFooter>
+					</Cell>
+				</Cells>
+
+				<CellsTitle>Slider</CellsTitle>
+				<Cells>
+					<Cell>
+						<CellHeader>我是{sliderValue}</CellHeader>
+						<CellBody>
+							<Slider 
+								value={sliderValue} 
+								onChange={(value) => {
+									this.setState({sliderValue: parseInt(value)});
+								}}/>
+						</CellBody>
 					</Cell>
 				</Cells>
 

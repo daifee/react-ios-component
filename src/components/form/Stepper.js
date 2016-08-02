@@ -22,8 +22,12 @@ export default function Stepper(props) {
 	let clazz = classNames(prefix, {
 		[className]: className
 	});
-	let cutClazz = classNames(`${prefix}-cut`);
-	let addClazz = classNames(`${prefix}-add`);
+	let cutClazz = classNames(`${prefix}-cut`, {
+		disabled: value === min ? 'disabled' : ''
+	});
+	let addClazz = classNames(`${prefix}-add`, {
+		disabled: value === max ? 'disabled' : ''
+	});
 
 	return (
 		<div className={clazz} {...rest}>

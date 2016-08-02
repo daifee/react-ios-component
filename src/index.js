@@ -41,7 +41,8 @@ export {
 	Input,
 	Switch,
 	Textarea,
-	Stepper
+	Stepper,
+	Slider
 } from './components/form';
 export Mask from './components/mask';
 export {
