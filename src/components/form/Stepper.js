@@ -9,6 +9,15 @@ import {classNames} from '../util';
 
 const prefix = 'stepper';
 
+/**
+ * 步进器
+ * @param {Object} props 组件所使用的属性
+ * @param {number} [props.value=0] 滑块的值
+ * @param {number} [props.min=-Infinity] 滑块的最小值
+ * @param {number} [props.max=Infinity] 滑块的最大值
+ * @param {number} [props.step=1] 步进数
+ * @param {function} [props.onChange] 步进器改变值时触发的函数回调
+ */
 export default function Stepper(props) {
 	const {
 		value,

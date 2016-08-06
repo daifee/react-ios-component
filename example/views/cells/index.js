@@ -107,6 +107,17 @@ export default class SegmentedPage extends Component {
 								}}/>
 						</CellBody>
 					</Cell>
+					<Cell>
+						<CellHeader>我是20</CellHeader>
+						<CellBody>
+							<Slider 
+								value={20} 
+								disabled={true}
+								onChange={(value) => {
+									
+								}}/>
+						</CellBody>
+					</Cell>
 				</Cells>
 
 				<CellsTitle>switch</CellsTitle>

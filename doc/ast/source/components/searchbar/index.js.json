@@ -1,15 +1,15 @@
 {
   "type": "Program",
   "start": 0,
-  "end": 87,
+  "end": 243,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 7,
-      "column": 25
+      "line": 11,
+      "column": 48
     }
   },
   "sourceType": "module",
@@ -17,7 +17,7 @@
     {
       "type": "ImportDeclaration",
       "start": 24,
-      "end": 60,
+      "end": 41,
       "loc": {
         "start": {
           "line": 5,
@@ -25,62 +25,28 @@
         },
         "end": {
           "line": 5,
-          "column": 36
+          "column": 17
         }
       },
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "start": 31,
-          "end": 40,
-          "loc": {
-            "start": {
-              "line": 5,
-              "column": 7
-            },
-            "end": {
-              "line": 5,
-              "column": 16
-            }
-          },
-          "local": {
-            "type": "Identifier",
-            "start": 31,
-            "end": 40,
-            "loc": {
-              "start": {
-                "line": 5,
-                "column": 7
-              },
-              "end": {
-                "line": 5,
-                "column": 16
-              }
-            },
-            "name": "SearchBar",
-            "leadingComments": null
-          },
-          "leadingComments": null
-        }
-      ],
-      "importKind": "value",
+      "specifiers": [],
       "source": {
         "type": "Literal",
-        "start": 46,
-        "end": 59,
+        "start": 31,
+        "end": 40,
         "loc": {
           "start": {
             "line": 5,
-            "column": 22
+            "column": 7
           },
           "end": {
             "line": 5,
-            "column": 35
+            "column": 16
           }
         },
-        "value": "./Searchbar",
-        "rawValue": "./Searchbar",
-        "raw": "'./Searchbar'"
+        "value": "../base",
+        "rawValue": "../base",
+        "raw": "'../base'",
+        "leadingComments": null
       },
       "leadingComments": [
         {
@@ -106,36 +72,301 @@
       ]
     },
     {
-      "type": "ExportDefaultDeclaration",
-      "start": 62,
-      "end": 87,
+      "type": "ImportDeclaration",
+      "start": 43,
+      "end": 60,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 6,
           "column": 0
         },
         "end": {
-          "line": 7,
-          "column": 25
+          "line": 6,
+          "column": 17
         }
       },
-      "declaration": {
-        "type": "Identifier",
-        "start": 77,
-        "end": 86,
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "start": 50,
+        "end": 59,
         "loc": {
           "start": {
-            "line": 7,
-            "column": 15
+            "line": 6,
+            "column": 7
           },
           "end": {
-            "line": 7,
-            "column": 24
+            "line": 6,
+            "column": 16
           }
         },
-        "name": "SearchBar",
-        "leadingComments": [],
-        "trailingComments": []
+        "value": "./style",
+        "rawValue": "./style",
+        "raw": "'./style'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 62,
+      "end": 98,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 36
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 69,
+          "end": 78,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 7
+            },
+            "end": {
+              "line": 8,
+              "column": 16
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 69,
+            "end": 78,
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 7
+              },
+              "end": {
+                "line": 8,
+                "column": 16
+              }
+            },
+            "name": "SearchBar"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 84,
+        "end": 97,
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 22
+          },
+          "end": {
+            "line": 8,
+            "column": 35
+          }
+        },
+        "value": "./SearchBar",
+        "rawValue": "./SearchBar",
+        "raw": "'./SearchBar'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 99,
+      "end": 147,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 48
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 106,
+          "end": 121,
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 7
+            },
+            "end": {
+              "line": 9,
+              "column": 22
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 106,
+            "end": 121,
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 7
+              },
+              "end": {
+                "line": 9,
+                "column": 22
+              }
+            },
+            "name": "SearchBarHeader"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 127,
+        "end": 146,
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 28
+          },
+          "end": {
+            "line": 9,
+            "column": 47
+          }
+        },
+        "value": "./SearchBarHeader",
+        "rawValue": "./SearchBarHeader",
+        "raw": "'./SearchBarHeader'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 148,
+      "end": 194,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 46
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 155,
+          "end": 169,
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 7
+            },
+            "end": {
+              "line": 10,
+              "column": 21
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 155,
+            "end": 169,
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 7
+              },
+              "end": {
+                "line": 10,
+                "column": 21
+              }
+            },
+            "name": "SearchBarInput"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 175,
+        "end": 193,
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 27
+          },
+          "end": {
+            "line": 10,
+            "column": 45
+          }
+        },
+        "value": "./SearchBarInput",
+        "rawValue": "./SearchBarInput",
+        "raw": "'./SearchBarInput'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 195,
+      "end": 243,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 48
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 202,
+          "end": 217,
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 7
+            },
+            "end": {
+              "line": 11,
+              "column": 22
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 202,
+            "end": 217,
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 7
+              },
+              "end": {
+                "line": 11,
+                "column": 22
+              }
+            },
+            "name": "SearchBarFooter"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 223,
+        "end": 242,
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 28
+          },
+          "end": {
+            "line": 11,
+            "column": 47
+          }
+        },
+        "value": "./SearchBarFooter",
+        "rawValue": "./SearchBarFooter",
+        "raw": "'./SearchBarFooter'"
       }
     }
   ]

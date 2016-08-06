@@ -9,6 +9,10 @@ import {classNames} from '../util';
 
 const prefix = 'alert-header';
 
+/**
+ * AlertHeader 警告框头部组件
+ * @param {Object} props 组件所使用的属性
+ */
 export default function AlertHeader(props) {
 	const {
 		className,

@@ -12,13 +12,34 @@ import {
 
 const prefix = 'slider';
 
+/**
+ * 滑块
+ */
 export default class Slider extends Component {
 
+	/**
+	 * 构造函数
+	 * @param {Object} props 组件所使用的属性
+	 * @param {number} [props.value=0] 滑块的值
+	 * @param {number} [props.min=0] 滑块的最小值
+	 * @param {number} [props.max=100] 滑块的最大值
+	 * @param {PropTypes.node} [minLabel=0] 最小值的显示文案
+	 * @param {PropTypes.node} [maxLabel=0] 最大值的显示文案
+	 * @param {boolean} [props.disabled=false] 是否不可用
+	 * @param {function} [props.onChange] 滑块滑动改变值时触发的函数回调
+	 * @param {Object} context 
+	 */
 	constructor(props, context) {
 		super(props, context);
 
 		this.isInSliding = false;
 		this.start = 0;
+
+		/**
+		 * 组件内部状态值
+		 * @type {Object}
+		 * @property {number} state.percent 当前值占滑块的百分比
+		 */
 		this.state = {
 			percent: this.caclInitPosition(this.props.value)
 		};
@@ -96,7 +117,7 @@ export default class Slider extends Component {
 			max,
 			minLabel,
 			maxLabel,
-			step,
+			disabled,
 			onChange,
 			className,
 			...rest
@@ -104,8 +125,10 @@ export default class Slider extends Component {
 		const {
 			percent
 		} = this.state;
+		const width = `${percent * 100}%`;
 		let clazz = classNames(prefix, {
-			[className]: className
+			[className]: className,
+			disabled: disabled ? 'disabled' : ''
 		});
 		let leftClazz = classNames(`${prefix}-left`);
 		let rightClazz = classNames(`${prefix}-right`);
@@ -115,19 +138,27 @@ export default class Slider extends Component {
 			<div className={clazz} {...rest}>
 				<div className={leftClazz}>{minLabel}</div>
 				<div className={barClazz} ref="sliderBar">
-					<a 
-						style={{
-							left: `${percent * 100}%`
-						}}
-						onTouchStart={this._startSlide}
-						onTouchMove={this._sliding}
-						onTouchEnd={this._endSlide}
-					></a>
+					{disabled ? (
+						<a 
+							style={{
+								left: width
+							}}
+						/>
+					) : (
+						<a 
+							style={{
+								left: width
+							}}
+							onTouchStart={this._startSlide}
+							onTouchMove={this._sliding}
+							onTouchEnd={this._endSlide}
+						/>
+					)}
 					<span style={{
-						width: `${percent * 100}%`
-					}}></span>
+						width: width
+					}}/>
 				</div>
-				<span></span>
+				<span/>
 				<div className={rightClazz}>{maxLabel}</div>
 			</div>
 		);
@@ -140,15 +171,15 @@ Slider.propTypes = {
 	max: PropTypes.number,
 	minLabel: PropTypes.node,
 	maxLabel: PropTypes.node,
-	step: PropTypes.number,
+	disabled: PropTypes.bool,
 	onChange: PropTypes.func
 };
 
 Slider.defaultProps = {
 	value: 0,
-	step: 1,
 	min: 0,
 	max: 100,
 	minLabel: 0,
-	maxLabel: 100
+	maxLabel: 100,
+	disabled: false
 };

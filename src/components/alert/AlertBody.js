@@ -9,6 +9,10 @@ import {classNames} from '../util';
 
 const prefix = 'alert-body';
 
+/**
+ * AlertBody 警告框内容组件
+ * @param {Object} props 组件所使用的属性
+ */
 export default function AlertBody(props) {
 	const {
 		className,

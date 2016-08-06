@@ -40,7 +40,7 @@ export default function Popup(props) {
 	const onPopupClick = (e) => {
 		onClick && onClick(e);
 		e.stopPropagation();
-	}
+	};
 
 	return (
 		<ReactCSSTransitionGroup

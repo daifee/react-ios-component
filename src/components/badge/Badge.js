@@ -11,6 +11,11 @@ import {classNames} from '../util';
 
 const prefix = 'badge';
 
+/**
+ * 徽章
+ * @param {Object} props 组件所使用的属性
+ * @param {string} [props.bgColor] 徽章的背景颜色，默认为主题颜色
+ */
 export default function Badge(props) {
 	const {
 		bgColor,

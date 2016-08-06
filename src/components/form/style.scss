@@ -194,6 +194,10 @@ $slider: '.#{$namespace}slider';
 	display: flex;
 	align-items: center;
 
+	&.disabled {
+		opacity: .5;
+	}
+
 	&-left {
 		margin-right: .5rem;
 	}

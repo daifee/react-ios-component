@@ -11,7 +11,11 @@ const prefix = 'page';
 
 /**
  * Page 页面基本结构
- * @param {object} props @see Page.propTypes
+ * @param {Object} props 组件所使用的属性
+ * @param {boolean} [props.hasNavBar=false] 页面是否有导航栏 (`NavBar`) 组件
+ * @param {boolean} [props.hasTabBar=false] 页面是否有标签栏 (`TabBar`) 组件
+ * @param {number} [props.duration=300] 页面的过场动画时间
+ * @param {string} [props.timingFunction='ease'] 页面过场动画的过渡函数
  */
 export default function Page(props) {
 	const {

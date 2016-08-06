@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --hot --inline --colors --port 8088 --config webpack.config.dev.js",
     "lint": "eslint src/",
     "lint:watch": "esw -w src/",
+    "doc": "esdoc -c esdoc.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

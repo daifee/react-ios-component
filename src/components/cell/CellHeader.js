@@ -9,6 +9,10 @@ import {classNames} from '../util';
 
 const prefix = 'cell-header';
 
+/**
+ * 表格视图列表项的头部
+ * @param {Object} props 组件所使用的属性
+ */
 export default function CellHeader(props) {
 	const {
 		className,

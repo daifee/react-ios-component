@@ -10,6 +10,10 @@ import {classNames} from '../util';
 
 const prefix = 'cells';
 
+/**
+ * 表格视图
+ * @param {Object} props 组件所使用的属性
+ */
 export default function Cells(props) {
 	const {
 		className,

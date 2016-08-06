@@ -9,6 +9,10 @@ import {classNames} from '../util';
 
 const prefix = 'cell-body';
 
+/**
+ * 表格视图列表项的内容区
+ * @param {Object} props 组件所使用的属性
+ */
 export default function CellBody(props) {
 	const {
 		className,

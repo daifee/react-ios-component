@@ -11,6 +11,13 @@ import NavBarItem from './NavbarItem';
 
 const prefix = 'navbar';
 
+/**
+ * 导航条
+ * @param {Object} props 组件所使用的属性
+ * @param {PropTypes.node} [props.leftElement] 导航条左边位置的内容
+ * @param {PropTypes.node} [props.centerElement] 导航条中间位置的内容
+ * @param {PropTypes.node} [props.rightElement] 导航条右边位置的内容
+ */
 export default function NavBar(props) {
 	const {
 		leftElement,

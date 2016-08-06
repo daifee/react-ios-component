@@ -9,7 +9,11 @@ import {classNames} from '../util';
 
 const prefix = 'alert-button';
 
-export default function AlertFooter(props) {
+/**
+ * AlertButton 警告框按钮组件
+ * @param {Object} props 组件所使用的属性
+ */
+export default function AlertButton(props) {
 	const {
 		className,
 		children,

@@ -16,8 +16,21 @@ import config from '../util/config';
 
 const prefix = 'indicator';
 
+/**
+ * 活动指示器
+ */
 export default class Indicator extends Component {
 
+	/**
+	 * 构造函数
+	 * @param {Object} props 组件所使用的属性
+	 * @param {PropTypes.node} [props.icon] 指示器要显示的图标
+	 * @param {PropTypes.node} [props.content] 指示器要显示的内容
+	 * @param {boolean} [props.visible] 活动指示器是否显示
+	 * @param {number} [props.timeout] 活动指示器自动关闭的时间
+	 * @param {function} props.close 关闭指示器的回调（配合 API 调用来使用，一般不用手动传）
+	 * @param {Object} context
+	 */
 	constructor(props, context) {
 		super(props, context);
 
@@ -84,6 +97,11 @@ Indicator.propTypes = {
 	close: PropTypes.func
 };
 
+/**
+ * 活动指示器组件的 API 调用方法
+ * @param  {Object} props     @see Indicator 组件属性
+ * @param  {Node} container 活动指示器的容器节点
+ */
 Indicator.show = (props, container) => {
 	props.timeout = props.timeout || 1500;
 	Portal.show(Indicator, props, container);

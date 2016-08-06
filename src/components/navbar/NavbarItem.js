@@ -10,6 +10,11 @@ import {classNames} from '../util';
 
 const prefix = 'navbar-item';
 
+/**
+ * 导航条子项
+ * @param {Object} props 组件所使用的属性
+ * @param {string} [props.label] 导航条子项显示的内容
+ */
 export default function NavBarItem(props) {
 	const {
 		label,

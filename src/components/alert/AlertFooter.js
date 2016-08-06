@@ -9,6 +9,10 @@ import {classNames} from '../util';
 
 const prefix = 'alert-footer';
 
+/**
+ * AlertFooter 警告框尾部组件
+ * @param {Object} props 组件所使用的属性
+ */
 export default function AlertFooter(props) {
 	const {
 		className,

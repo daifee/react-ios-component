@@ -9,6 +9,10 @@ import {classNames} from '../util';
 
 const prefix = 'cell-footer';
 
+/**
+ * 表格视图列表项的尾部
+ * @param {Object} props 组件所使用的属性
+ */
 export default function CellFooter(props) {
 	const {
 		className,

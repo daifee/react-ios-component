@@ -11,6 +11,15 @@ import {classNames} from '../util';
 
 const prefix = 'button';
 
+/**
+ * 按钮
+ * @param {Object} props 组件所使用的属性
+ * @param {string} [props.component='a'] 按钮的 `html` 标签
+ * @param {string} [props.size] 按钮的大小，默认为正常按钮，设置为 `lg` 是大按钮
+ * @param {boolean} [props.fill=false] 是否填充背景色
+ * @param {boolean} [props.disabled=false] 是否不可用
+ * @param {boolean} [props.color] 按钮文案的颜色，默认为主题颜色
+ */
 export default function Button(props) {
 	const {
 		component,
