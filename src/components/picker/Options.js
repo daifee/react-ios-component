@@ -13,8 +13,21 @@ import {classNames} from '../util';
 const prefix = 'options';
 const optionHeight = 34;
 
+/**
+ * 单选择器
+ */
 export default class Options extends Component {
 
+	/**
+	 * 构造函数
+	 * @param {Object} props 组件所使用的属性
+	 * @param {Object[]|string[]|number[]} props.options 进行选择的数据列表
+	 * @param {string} [props.labelName='name'] 当可选择的数据列表的项是对象(obj)时，`obj[labelName]` 就是选择器显示的文案
+	 * @param {number} [props.selectedIndex=0] 当前选中的数据列表项的下标
+	 * @param {function} props.onChange 选中某一个项时触发的函数回调
+	 * @param {Object} [props.iScrollOptions] `iscroll` 的配置对象
+	 * @param {Object} context
+	 */
 	constructor(props, context) {
 		super(props, context);
 

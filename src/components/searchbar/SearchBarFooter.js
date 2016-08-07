@@ -10,6 +10,10 @@ import {classNames} from '../util';
 
 const prefix = 'searchbar-footer';
 
+/**
+ * 搜索栏尾部内容
+ * @param {Object} props 组件所使用的属性
+ */
 export default function SearchBarFooter(props) {
 	const {
 		children,

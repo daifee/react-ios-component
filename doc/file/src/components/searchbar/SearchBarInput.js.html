@@ -109,11 +109,32 @@ import {classNames} from &apos;../util&apos;;
 
 const prefix = &apos;searchbar-input&apos;;
 
+/**
+ * &#x641C;&#x7D22;&#x680F;&#x8F93;&#x5165;&#x6846;
+ */
 export default class SearchBarInput extends Component {
 
+	/**
+	 * &#x6784;&#x9020;&#x51FD;&#x6570;
+	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+	 * @param {string} [props.type=&apos;text&apos;] &#x8F93;&#x5165;&#x6846;&#x7C7B;&#x578B;
+	 * @param {boolean} [props.hasFooter=true] &#x662F;&#x5426;&#x6709;&#x5C3E;&#x90E8;
+	 * @param {boolean} [props.hasClear=true] &#x662F;&#x5426;&#x6709;&#x6E05;&#x9664;&#x56FE;&#x6807;
+	 * @param {string} [props.placeholder] &#x8F93;&#x5165;&#x6846; placeholder
+	 * @param {function} [props.onBlur] &#x8F93;&#x5165;&#x6846;&#x5931;&#x7126;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
+	 * @param {function} [props.onFocus] &#x8F93;&#x5165;&#x6846;&#x6FC0;&#x6D3B;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
+	 * @param {function} [props.onChange] &#x8F93;&#x5165;&#x6846;&#x503C;&#x6539;&#x53D8;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
+	 * @param {function} [props.onClear] &#x6E05;&#x695A;&#x8F93;&#x5165;&#x6846;&#x5185;&#x5BB9;&#x7684;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
+	 * @param {Object} context
+	 */
 	constructor(props, context) {
 		super(props, context);
 
+		/**
+		 * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
+		 * @type {Object}
+		 * @property {boolean} state.active &#x5F53;&#x524D;&#x8F93;&#x5165;&#x6846;&#x662F;&#x5426;&#x662F;&#x6FC0;&#x6D3B;&#x72B6;&#x6001;
+		 */
 		this.state = {
 			active: false
 		};

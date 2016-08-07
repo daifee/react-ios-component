@@ -11,11 +11,32 @@ import {classNames} from '../util';
 
 const prefix = 'searchbar-input';
 
+/**
+ * 搜索栏输入框
+ */
 export default class SearchBarInput extends Component {
 
+	/**
+	 * 构造函数
+	 * @param {Object} props 组件所使用的属性
+	 * @param {string} [props.type='text'] 输入框类型
+	 * @param {boolean} [props.hasFooter=true] 是否有尾部
+	 * @param {boolean} [props.hasClear=true] 是否有清除图标
+	 * @param {string} [props.placeholder] 输入框 placeholder
+	 * @param {function} [props.onBlur] 输入框失焦事件函数
+	 * @param {function} [props.onFocus] 输入框激活事件函数
+	 * @param {function} [props.onChange] 输入框值改变事件函数
+	 * @param {function} [props.onClear] 清楚输入框内容的事件函数
+	 * @param {Object} context
+	 */
 	constructor(props, context) {
 		super(props, context);
 
+		/**
+		 * 组件内部状态值
+		 * @type {Object}
+		 * @property {boolean} state.active 当前输入框是否是激活状态
+		 */
 		this.state = {
 			active: false
 		};

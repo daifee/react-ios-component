@@ -110,13 +110,34 @@ import {
 
 const prefix = &apos;slider&apos;;
 
+/**
+ * &#x6ED1;&#x5757;
+ */
 export default class Slider extends Component {
 
+	/**
+	 * &#x6784;&#x9020;&#x51FD;&#x6570;
+	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+	 * @param {number} [props.value=0] &#x6ED1;&#x5757;&#x7684;&#x503C;
+	 * @param {number} [props.min=0] &#x6ED1;&#x5757;&#x7684;&#x6700;&#x5C0F;&#x503C;
+	 * @param {number} [props.max=100] &#x6ED1;&#x5757;&#x7684;&#x6700;&#x5927;&#x503C;
+	 * @param {PropTypes.node} [minLabel=0] &#x6700;&#x5C0F;&#x503C;&#x7684;&#x663E;&#x793A;&#x6587;&#x6848;
+	 * @param {PropTypes.node} [maxLabel=0] &#x6700;&#x5927;&#x503C;&#x7684;&#x663E;&#x793A;&#x6587;&#x6848;
+	 * @param {boolean} [props.disabled=false] &#x662F;&#x5426;&#x4E0D;&#x53EF;&#x7528;
+	 * @param {function} [props.onChange] &#x6ED1;&#x5757;&#x6ED1;&#x52A8;&#x6539;&#x53D8;&#x503C;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+	 * @param {Object} context 
+	 */
 	constructor(props, context) {
 		super(props, context);
 
 		this.isInSliding = false;
 		this.start = 0;
+
+		/**
+		 * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
+		 * @type {Object}
+		 * @property {number} state.percent &#x5F53;&#x524D;&#x503C;&#x5360;&#x6ED1;&#x5757;&#x7684;&#x767E;&#x5206;&#x6BD4;
+		 */
 		this.state = {
 			percent: this.caclInitPosition(this.props.value)
 		};

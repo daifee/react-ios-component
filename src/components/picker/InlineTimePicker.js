@@ -15,7 +15,26 @@ import {
 
 const prefix = 'picker-body';
 
+/**
+ * 內联时间选择器
+ */
 export default class InlineTimePicker extends Component {
+
+	/**
+	 * 构造函数
+	 * @param {Object} props 组件所使用的属性
+	 * @param {string} [props.selectedTime] 当前选中的日期
+	 * @param {string} [props.minDate='00:00:00'] 最小可选择的日期
+	 * @param {string} [props.maxDate='23:59:59'] 最大可选择的日期
+	 * @param {string} [props.hourUnit=''] 小时的单位文案
+	 * @param {string} [props.minuteUnit=''] 分钟的单位文案
+	 * @param {string} [props.secondUnit=''] 秒的单位文案
+	 * @param {function} props.onChange 选中某一个项时触发的函数回调
+	 * @param {Object} context
+	 */
+	constructor(props, context) {
+		super(props, context);
+	}
 
 	_setHours = (hourOptions, selectedIndex) => {
 		const value = hourOptions[selectedIndex].value;
@@ -152,7 +171,8 @@ InlineTimePicker.propTypes = {
 	maxTime: PropTypes.string,
 	hourUnit: PropTypes.string,
 	minuteUnit: PropTypes.string,
-	secondUnit: PropTypes.string
+	secondUnit: PropTypes.string,
+	onChange: PropTypes.func
 };
 
 InlineTimePicker.defaultProps = {

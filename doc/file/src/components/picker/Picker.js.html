@@ -111,8 +111,27 @@ import {classNames} from &apos;../util&apos;;
 
 const prefix = &apos;picker&apos;;
 
+/**
+ * &#x5F39;&#x7A97;&#x9009;&#x62E9;&#x5668;
+ */
 export default class Picker extends Component {
 
+	/**
+	 * &#x6784;&#x9020;&#x51FD;&#x6570;
+	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+	 * @param {boolean} [props.visible] &#x5F39;&#x7A97;&#x9009;&#x62E9;&#x5668;&#x662F;&#x5426;&#x663E;&#x793A;
+	 * @param {Object[]|string[]|number[]} props.optionsList &#x8FDB;&#x884C;&#x9009;&#x62E9;&#x7684;&#x6570;&#x636E;&#x5217;&#x8868;
+	 * @param {number[]} [props.selectedList] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5217;&#x8868;&#x9879;&#x4E0B;&#x6807;&#x7EC4;&#x6210;&#x7684;&#x6570;&#x7EC4;
+	 * @param {string} [props.labelName=&apos;name&apos;] &#x5F53;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x6570;&#x636E;&#x5217;&#x8868;&#x7684;&#x9879;&#x662F;&#x5BF9;&#x8C61;(obj)&#x65F6;&#xFF0C;`obj[labelName]` &#x5C31;&#x662F;&#x9009;&#x62E9;&#x5668;&#x663E;&#x793A;&#x7684;&#x6587;&#x6848;
+	 * @param {string} [props.nextName=&apos;childs&apos;] &#x67D0;&#x4E2A;&#x5217;&#x8868;&#x9879;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x9009;&#x62E9;&#x5217;&#x8868;&#x6570;&#x636E;&#x591A;&#x5BF9;&#x5E94;&#x7684; `key`
+	 * @param {PropTypes.node} [props.title] &#x5F39;&#x7A97;&#x6807;&#x9898;
+	 * @param {PropTypes.node} [props.confirmText=&apos;&#x786E;&#x5B9A;&apos;] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x6587;&#x6848;
+	 * @param {PropTypes.node} [props.cancelText=&apos;&#x53D6;&#x6D88;&apos;] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x6587;&#x6848;
+	 * @param {function} props.onConfirm &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+	 * @param {function} [props.onCancel] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+	 * @param {function} [props.onChange] &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+	 * @param {Object} context
+	 */
 	constructor(props, context) {
 		super(props, context);
 
@@ -165,6 +184,8 @@ export default class Picker extends Component {
 			selectedList,
 			optionsList,
 			onChange,
+			labelName,
+			nextName,
 			close,
 			className,
 			...rest
@@ -187,6 +208,8 @@ export default class Picker extends Component {
 						&lt;a onClick={this._onConfirm}&gt;{confirmText}&lt;/a&gt;
 					&lt;/div&gt;
 					&lt;InlinePicker 
+						labelName={labelName}
+						nextName={nextName}
 						selectedList={this.state.selectedList}
 						optionsList={optionsList}
 						onChange={this._onChange}
@@ -197,6 +220,11 @@ export default class Picker extends Component {
 	}
 }
 
+/**
+ * &#x5F39;&#x7A97;&#x9009;&#x62E9;&#x5668;&#x7EC4;&#x4EF6;&#x7684; API &#x8C03;&#x7528;&#x65B9;&#x6CD5;
+ * @param  {Object} props     @see Picker &#x7EC4;&#x4EF6;&#x5C5E;&#x6027;
+ * @param  {Node} container &#x5F39;&#x7A97;&#x9009;&#x62E9;&#x5668;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
+ */
 Picker.show = (props, container) =&gt; {
 	Portal.show(Picker, props, container);
 };

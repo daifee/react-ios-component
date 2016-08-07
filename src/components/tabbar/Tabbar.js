@@ -12,6 +12,13 @@ import TabbarItem from './TabbarItem';
 
 const prefix = 'tabbar';
 
+/**
+ * 标签栏
+ * @param {Object} props 组件所使用的属性
+ * @param {Object[]} [props.tabs] 标签项组件的属性对象列表
+ * @param {string} [props.linkColor='gray'] 每个标签栏项的字体颜色
+ * @param {string} [props.activeColor=''] 每个标签栏项被激活时的字体颜色，默认为主题颜色
+ */
 export default function TabBar(props) {
 	const {
 		linkColor,

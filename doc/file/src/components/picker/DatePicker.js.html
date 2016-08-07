@@ -114,11 +114,37 @@ import {
 
 const prefix = &apos;picker&apos;;
 
+/**
+ * &#x65E5;&#x671F;&#x5F39;&#x7A97;&#x9009;&#x62E9;&#x5668;
+ */
 export default class DatePicker extends Component {
 
+	/**
+	 * &#x6784;&#x9020;&#x51FD;&#x6570;
+	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+	 * @param {Date} [props.selectedDate=new Date()] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
+	 * @param {Date} [props.minDate=new Date()] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+	 * @param {Date} [props.maxDate=new Date()] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+	 * @param {string} [props.yearUnit=&apos;&apos;] &#x5E74;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+	 * @param {string} [props.monthUnit=&apos;&apos;] &#x6708;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+	 * @param {string} [props.dateUnit=&apos;&apos;] &#x5929;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+	 * @param {boolean} [props.visible] &#x9009;&#x62E9;&#x5668;&#x662F;&#x5426;&#x663E;&#x793A;
+	 * @param {PropTypes.node} [props.title] &#x9009;&#x62E9;&#x5668;&#x6807;&#x9898;
+	 * @param {PropTypes.node} [props.confirmText=&apos;&#x786E;&#x5B9A;&apos;] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x6587;&#x6848;
+	 * @param {PropTypes.node} [props.cancelText=&apos;&#x53D6;&#x6D88;&apos;] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x6587;&#x6848;
+	 * @param {function} [props.onConfirm] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
+	 * @param {function} [props.onCancel] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
+	 * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+	 * @param {Object} context
+	 */
 	constructor(props, context) {
 		super(props, context);
 
+		/**
+		 * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
+		 * @type {Object}
+		 * @property {Date} state.selectedDate &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
+		 */
 		this.state = {
 			selectedDate: props.selectedDate
 		};
@@ -208,6 +234,11 @@ export default class DatePicker extends Component {
 	}
 }
 
+/**
+ * &#x65E5;&#x671F;&#x5F39;&#x7A97;&#x9009;&#x62E9;&#x5668;&#x7EC4;&#x4EF6;&#x7684; API &#x8C03;&#x7528;&#x65B9;&#x6CD5;
+ * @param  {Object} props     @see DatePicker &#x7EC4;&#x4EF6;&#x5C5E;&#x6027;
+ * @param  {Node} container &#x65E5;&#x671F;&#x5F39;&#x7A97;&#x9009;&#x62E9;&#x5668;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
+ */
 DatePicker.show = (props, container) =&gt; {
 	Portal.show(DatePicker, props, container);
 };

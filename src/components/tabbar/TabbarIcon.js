@@ -13,6 +13,13 @@ import {Icon} from '../icon';
 
 const prefix = 'tabbar-icon';
 
+/**
+ * 标签项图标
+ * @param {Object} props 组件所使用的属性
+ * @param {string} [props.icon] 标签项图标
+ * @param {string} [props.badge] 徽章的文案
+ * @param {string} [props.badgeColor='red'] 徽章的背景颜色
+ */
 export default function TabBarIcon(props) {
 	const {
 		icon,

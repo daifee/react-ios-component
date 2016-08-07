@@ -14,6 +14,16 @@ function ChildContainer(props) {
   return props.children[0] ? props.children[0] : null;
 }
 
+/**
+ * 弹窗组件，本身并不包含内容，但是其他弹窗相关的组件都依赖该组件和 `Portal` 组件实现弹窗效果
+ * @param {Object} props 组件所使用的属性
+ * @param {boolean} [props.visible=false] 弹窗是否显示
+ * @param {function} [props.close] 控制弹窗关闭的函数，由 `Portal` 组件传进来，一般不用手动指定，不传的话点击弹窗组件阴影的地方不会自动关闭弹窗
+ * @param {string} [props.position='center'] 弹窗里内容的位置
+ * @param {number} [props.duration=400] 弹窗的动画持续时间
+ * @param {string} [props.timingFunction='ease'] 动画过度函数
+ * @param {string|function} [props.transitionName] 动画过度名称，传给`ReactCSSTransitionGroup` 使用
+ */
 export default function Popup(props) {
 	let {
 		visible,

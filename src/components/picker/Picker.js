@@ -13,8 +13,27 @@ import {classNames} from '../util';
 
 const prefix = 'picker';
 
+/**
+ * 弹窗选择器
+ */
 export default class Picker extends Component {
 
+	/**
+	 * 构造函数
+	 * @param {Object} props 组件所使用的属性
+	 * @param {boolean} [props.visible] 弹窗选择器是否显示
+	 * @param {Object[]|string[]|number[]} props.optionsList 进行选择的数据列表
+	 * @param {number[]} [props.selectedList] 当前选中的数据列表项下标组成的数组
+	 * @param {string} [props.labelName='name'] 当可选择的数据列表的项是对象(obj)时，`obj[labelName]` 就是选择器显示的文案
+	 * @param {string} [props.nextName='childs'] 某个列表项的下一个选择列表数据多对应的 `key`
+	 * @param {PropTypes.node} [props.title] 弹窗标题
+	 * @param {PropTypes.node} [props.confirmText='确定'] 确认按钮文案
+	 * @param {PropTypes.node} [props.cancelText='取消'] 取消按钮文案
+	 * @param {function} props.onConfirm 确认按钮的函数回调
+	 * @param {function} [props.onCancel] 取消按钮的函数回调
+	 * @param {function} [props.onChange] 选中某一个项时触发的函数回调
+	 * @param {Object} context
+	 */
 	constructor(props, context) {
 		super(props, context);
 
@@ -67,6 +86,8 @@ export default class Picker extends Component {
 			selectedList,
 			optionsList,
 			onChange,
+			labelName,
+			nextName,
 			close,
 			className,
 			...rest
@@ -89,6 +110,8 @@ export default class Picker extends Component {
 						<a onClick={this._onConfirm}>{confirmText}</a>
 					</div>
 					<InlinePicker 
+						labelName={labelName}
+						nextName={nextName}
 						selectedList={this.state.selectedList}
 						optionsList={optionsList}
 						onChange={this._onChange}
@@ -99,6 +122,11 @@ export default class Picker extends Component {
 	}
 }
 
+/**
+ * 弹窗选择器组件的 API 调用方法
+ * @param  {Object} props     @see Picker 组件属性
+ * @param  {Node} container 弹窗选择器的容器节点
+ */
 Picker.show = (props, container) => {
 	Portal.show(Picker, props, container);
 };

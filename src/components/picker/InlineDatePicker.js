@@ -16,7 +16,26 @@ import {
 const prefix = 'picker-body';
 let now = new Date();
 
+/**
+ * 內联日期选择器
+ */
 export default class InlineDatePicker extends Component {
+
+	/**
+	 * 构造函数
+	 * @param {Object} props 组件所使用的属性
+	 * @param {Date} [props.selectedDate=new Date()] 当前选中的日期
+	 * @param {Date} [props.minDate=new Date()] 最小可选择的日期
+	 * @param {Date} [props.maxDate=new Date()] 最大可选择的日期
+	 * @param {string} [props.yearUnit=''] 年份的单位文案
+	 * @param {string} [props.monthUnit=''] 月份的单位文案
+	 * @param {string} [props.dateUnit=''] 天的单位文案
+	 * @param {function} props.onChange 选中某一个项时触发的函数回调
+	 * @param {Object} context
+	 */
+	constructor(props, context) {
+		super(props, context);
+	}
 
 	_setYear(yearOptions, selectedIndex) {
 		const {

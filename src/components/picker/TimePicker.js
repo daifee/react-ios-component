@@ -15,11 +15,37 @@ import {
 
 const prefix = 'picker';
 
+/**
+ * 时间弹窗选择器
+ */
 export default class TimePicker extends Component {
 
+	/**
+	 * 构造函数
+	 * @param {Object} props 组件所使用的属性
+	 * @param {string} [props.selectedTime] 当前选中的日期
+	 * @param {string} [props.minDate='00:00:00'] 最小可选择的日期
+	 * @param {string} [props.maxDate='23:59:59'] 最大可选择的日期
+	 * @param {string} [props.hourUnit=''] 小时的单位文案
+	 * @param {string} [props.minuteUnit=''] 分钟的单位文案
+	 * @param {string} [props.secondUnit=''] 秒的单位文案
+	 * @param {boolean} [props.visible] 选择器是否显示
+	 * @param {PropTypes.node} [props.title] 选择器标题
+	 * @param {PropTypes.node} [props.confirmText='确定'] 确认按钮文案
+	 * @param {PropTypes.node} [props.cancelText='取消'] 取消按钮文案
+	 * @param {function} [props.onConfirm] 确认按钮的回调函数
+	 * @param {function} [props.onCancel] 取消按钮的回调函数
+	 * @param {function} props.onChange 选中某一个项时触发的函数回调
+	 * @param {Object} context
+	 */
 	constructor(props, context) {
 		super(props, context);
 
+		/**
+		 * 组件内部状态值
+		 * @type {Object}
+		 * @property {Date} state.selectedTime 当前选中的时间
+		 */
 		this.state = {
 			selectedTime: props.selectedTime
 		};
@@ -109,6 +135,11 @@ export default class TimePicker extends Component {
 	}
 }
 
+/**
+ * 时间弹窗选择器组件的 API 调用方法
+ * @param  {Object} props     @see TimePicker 组件属性
+ * @param  {Node} container 时间弹窗选择器的容器节点
+ */
 TimePicker.show = (props, container) => {
 	Portal.show(TimePicker, props, container);
 }

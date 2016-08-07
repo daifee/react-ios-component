@@ -111,6 +111,17 @@ import TabbarLabel from &apos;./TabbarLabel&apos;;
 
 const prefix = &apos;tabbar-item&apos;;
 
+/**
+ * &#x6807;&#x7B7E;&#x9879;
+ * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+ * @param {string|PropTypes.element|function} [props.component=&apos;a&apos;] &#x6807;&#x7B7E;&#x9879;&#x7684; `html` &#x5305;&#x88F9;&#x5143;&#x7D20;
+ * @param {string} [props.icon] &#x6807;&#x7B7E;&#x9879;&#x56FE;&#x6807;
+ * @param {string} [props.badge] &#x5FBD;&#x7AE0;&#x7684;&#x6587;&#x6848;
+ * @param {string} [props.linkColor=&apos;gray&apos;] &#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x680F;&#x9879;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;
+ * @param {string} [props.badgeColor=&apos;red&apos;] &#x5FBD;&#x7AE0;&#x7684;&#x80CC;&#x666F;&#x989C;&#x8272;
+ * @param {string} [props.activeColor=&apos;&apos;] &#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x680F;&#x9879;&#x88AB;&#x6FC0;&#x6D3B;&#x65F6;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E3B;&#x9898;&#x989C;&#x8272;
+ * @param {string} [props.active=false] &#x6807;&#x7B7E;&#x9879;&#x662F;&#x5426;&#x6FC0;&#x6D3B;
+ */
 export default function TabBarItem(props) {
 	const {
 		icon,
@@ -155,6 +166,11 @@ TabBarItem.propTypes = {
 		PropTypes.string,
 		PropTypes.element,
 		PropTypes.func
+	]),
+	icon: PropTypes.string,
+	badge: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string
 	]),
 	linkColor: PropTypes.oneOf(config.colors),
 	badgeColor: PropTypes.oneOf(config.colors),

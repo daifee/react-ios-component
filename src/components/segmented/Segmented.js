@@ -12,6 +12,13 @@ import Button from '../button';
 
 const prefix = 'segmented';
 
+/**
+ * 分段控件
+ * @param {Object} props 组件所使用的属性
+ * @param {Object[]} [props.elements] 分段控件的元素项列表（每一项都应该是 `Button` 组件的 props）
+ * @param {string} [props.color=''] 分段控件的样式，默认为主题颜色
+ * @param {string} [props.size=''] 分段控件的大小，默认为正常的按钮大小
+ */
 export default function Segmented(props) {
 	const {
 		elements,

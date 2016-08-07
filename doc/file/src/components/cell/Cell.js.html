@@ -107,6 +107,13 @@ import {classNames} from &apos;../util&apos;;
 
 const prefix = &apos;cell&apos;;
 
+/**
+ * &#x8868;&#x683C;&#x89C6;&#x56FE;&#x5217;&#x8868;&#x9879;
+ * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+ * @param {boolean} [props.hasArrow] &#x662F;&#x5426;&#x6709;&#x8BBF;&#x95EE;&#x7BAD;&#x5934;
+ * @param {string} [props.href] &#x8BBF;&#x95EE;&#x8DF3;&#x8F6C;&#x94FE;&#x63A5;
+ * @param {string} [props.component=&apos;div&apos;] &#x5217;&#x8868;&#x9879;&#x7684; `html` &#x6807;&#x7B7E;&#xFF0C;&#x53EF;&#x9009;&#x7684;&#x6709; `[&apos;a&apos;, &apos;label&apos;, &apos;div&apos;]`
+ */
 export default function Cell(props) {
 	const {
 		hasArrow,

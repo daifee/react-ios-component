@@ -107,6 +107,15 @@ import {classNames} from &apos;../util&apos;;
 
 const prefix = &apos;stepper&apos;;
 
+/**
+ * &#x6B65;&#x8FDB;&#x5668;
+ * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+ * @param {number} [props.value=0] &#x6ED1;&#x5757;&#x7684;&#x503C;
+ * @param {number} [props.min=-Infinity] &#x6ED1;&#x5757;&#x7684;&#x6700;&#x5C0F;&#x503C;
+ * @param {number} [props.max=Infinity] &#x6ED1;&#x5757;&#x7684;&#x6700;&#x5927;&#x503C;
+ * @param {number} [props.step=1] &#x6B65;&#x8FDB;&#x6570;
+ * @param {function} [props.onChange] &#x6B65;&#x8FDB;&#x5668;&#x6539;&#x53D8;&#x503C;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+ */
 export default function Stepper(props) {
 	const {
 		value,

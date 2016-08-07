@@ -112,6 +112,16 @@ function ChildContainer(props) {
   return props.children[0] ? props.children[0] : null;
 }
 
+/**
+ * &#x5F39;&#x7A97;&#x7EC4;&#x4EF6;&#xFF0C;&#x672C;&#x8EAB;&#x5E76;&#x4E0D;&#x5305;&#x542B;&#x5185;&#x5BB9;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x4ED6;&#x5F39;&#x7A97;&#x76F8;&#x5173;&#x7684;&#x7EC4;&#x4EF6;&#x90FD;&#x4F9D;&#x8D56;&#x8BE5;&#x7EC4;&#x4EF6;&#x548C; `Portal` &#x7EC4;&#x4EF6;&#x5B9E;&#x73B0;&#x5F39;&#x7A97;&#x6548;&#x679C;
+ * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+ * @param {boolean} [props.visible=false] &#x5F39;&#x7A97;&#x662F;&#x5426;&#x663E;&#x793A;
+ * @param {function} [props.close] &#x63A7;&#x5236;&#x5F39;&#x7A97;&#x5173;&#x95ED;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x7531; `Portal` &#x7EC4;&#x4EF6;&#x4F20;&#x8FDB;&#x6765;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x7528;&#x624B;&#x52A8;&#x6307;&#x5B9A;&#xFF0C;&#x4E0D;&#x4F20;&#x7684;&#x8BDD;&#x70B9;&#x51FB;&#x5F39;&#x7A97;&#x7EC4;&#x4EF6;&#x9634;&#x5F71;&#x7684;&#x5730;&#x65B9;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x5173;&#x95ED;&#x5F39;&#x7A97;
+ * @param {string} [props.position=&apos;center&apos;] &#x5F39;&#x7A97;&#x91CC;&#x5185;&#x5BB9;&#x7684;&#x4F4D;&#x7F6E;
+ * @param {number} [props.duration=400] &#x5F39;&#x7A97;&#x7684;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;
+ * @param {string} [props.timingFunction=&apos;ease&apos;] &#x52A8;&#x753B;&#x8FC7;&#x5EA6;&#x51FD;&#x6570;
+ * @param {string|function} [props.transitionName] &#x52A8;&#x753B;&#x8FC7;&#x5EA6;&#x540D;&#x79F0;&#xFF0C;&#x4F20;&#x7ED9;`ReactCSSTransitionGroup` &#x4F7F;&#x7528;
+ */
 export default function Popup(props) {
 	let {
 		visible,

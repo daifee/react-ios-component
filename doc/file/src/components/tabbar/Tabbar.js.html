@@ -110,6 +110,13 @@ import TabbarItem from &apos;./TabbarItem&apos;;
 
 const prefix = &apos;tabbar&apos;;
 
+/**
+ * &#x6807;&#x7B7E;&#x680F;
+ * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+ * @param {Object[]} [props.tabs] &#x6807;&#x7B7E;&#x9879;&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x5BF9;&#x8C61;&#x5217;&#x8868;
+ * @param {string} [props.linkColor=&apos;gray&apos;] &#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x680F;&#x9879;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;
+ * @param {string} [props.activeColor=&apos;&apos;] &#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x680F;&#x9879;&#x88AB;&#x6FC0;&#x6D3B;&#x65F6;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E3B;&#x9898;&#x989C;&#x8272;
+ */
 export default function TabBar(props) {
 	const {
 		linkColor,

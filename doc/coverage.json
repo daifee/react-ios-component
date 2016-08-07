@@ -1,7 +1,7 @@
 {
-  "coverage": "12.38%",
-  "expectCount": 113,
-  "actualCount": 14,
+  "coverage": "56.89%",
+  "expectCount": 116,
+  "actualCount": 66,
   "files": {
     "src/components/actionsheet/ActionSheet.js": {
       "expectCount": 1,
@@ -35,73 +35,53 @@
     },
     "src/components/badge/Badge.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        14
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/button/Button.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        14
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/cell/Cell.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/cell/CellBody.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/cell/CellDesc.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/cell/CellFooter.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/cell/CellHeader.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/cell/Cells.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        13
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/cell/CellsTitle.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        13
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/form/Checkbox.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/alert/Confirm.js": {
       "expectCount": 1,
@@ -110,13 +90,10 @@
     },
     "src/components/picker/DatePicker.js": {
       "expectCount": 5,
-      "actualCount": 0,
+      "actualCount": 3,
       "undocumentLines": [
-        19,
-        29,
-        21,
-        62,
-        24
+        55,
+        88
       ]
     },
     "src/components/icon/Icon.js": {
@@ -135,48 +112,41 @@
     },
     "src/components/indicator/Indicator.js": {
       "expectCount": 6,
-      "actualCount": 0,
+      "actualCount": 2,
       "undocumentLines": [
-        19,
-        27,
-        31,
-        21,
-        50,
-        24
+        40,
+        44,
+        63,
+        37
       ]
     },
     "src/components/picker/InlineDatePicker.js": {
-      "expectCount": 3,
-      "actualCount": 0,
+      "expectCount": 4,
+      "actualCount": 2,
       "undocumentLines": [
-        19,
-        55,
-        63
+        74,
+        82
       ]
     },
     "src/components/picker/InlinePicker.js": {
-      "expectCount": 2,
-      "actualCount": 0,
+      "expectCount": 3,
+      "actualCount": 2,
       "undocumentLines": [
-        14,
-        31
+        48
       ]
     },
     "src/components/picker/InlineTimePicker.js": {
-      "expectCount": 3,
-      "actualCount": 0,
+      "expectCount": 4,
+      "actualCount": 2,
       "undocumentLines": [
-        18,
-        38,
-        50
+        57,
+        69
       ]
     },
     "src/components/form/Input.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/mask/Mask.js": {
       "expectCount": 1,
@@ -187,30 +157,24 @@
     },
     "src/components/navbar/Navbar.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        14
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/navbar/NavbarItem.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        13
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/picker/Options.js": {
       "expectCount": 8,
-      "actualCount": 0,
+      "actualCount": 2,
       "undocumentLines": [
-        16,
-        24,
-        48,
-        55,
-        18,
-        21,
-        67,
-        60
+        37,
+        61,
+        68,
+        34,
+        80,
+        73
       ]
     },
     "src/components/page/Page.js": {
@@ -220,32 +184,26 @@
     },
     "src/components/picker/Picker.js": {
       "expectCount": 5,
-      "actualCount": 0,
+      "actualCount": 2,
       "undocumentLines": [
-        16,
-        26,
-        18,
-        59,
-        21
+        45,
+        78,
+        40
       ]
     },
     "src/components/popup/Popup.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        17
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/portal/Portal.js": {
       "expectCount": 6,
-      "actualCount": 0,
+      "actualCount": 2,
       "undocumentLines": [
-        18,
-        32,
-        28,
-        20,
-        42,
-        23
+        41,
+        37,
+        51,
+        32
       ]
     },
     "src/components/alert/Prompt.js": {
@@ -258,10 +216,8 @@
     },
     "src/components/form/Radio.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/page/Scene.js": {
       "expectCount": 1,
@@ -270,120 +226,89 @@
     },
     "src/components/searchbar/SearchBar.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        13
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/searchbar/SearchBarFooter.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        13
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/searchbar/SearchBarHeader.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        13
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/searchbar/SearchBarInput.js": {
       "expectCount": 8,
-      "actualCount": 0,
+      "actualCount": 3,
       "undocumentLines": [
-        14,
-        16,
-        24,
-        42,
-        49,
-        33,
-        57,
-        19
+        45,
+        63,
+        70,
+        54,
+        78
       ]
     },
     "src/components/segmented/Segmented.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        15
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/form/Slider.js": {
       "expectCount": 10,
-      "actualCount": 0,
+      "actualCount": 3,
       "undocumentLines": [
-        15,
-        74,
-        84,
-        54,
-        27,
-        17,
-        20,
-        93,
-        21,
-        22
+        95,
+        105,
+        75,
+        48,
+        35,
+        114,
+        36
       ]
     },
     "src/components/form/Stepper.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/form/Switch.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/tabbar/Tabbar.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        15
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/tabbar/TabbarIcon.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        16
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/tabbar/TabbarItem.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        16
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/tabbar/TabbarLabel.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        13
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/form/Textarea.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        12
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/components/picker/TimePicker.js": {
       "expectCount": 5,
-      "actualCount": 0,
+      "actualCount": 3,
       "undocumentLines": [
-        18,
-        28,
-        20,
-        61,
-        23
+        54,
+        87
       ]
     },
     "src/components/util/index.js": {

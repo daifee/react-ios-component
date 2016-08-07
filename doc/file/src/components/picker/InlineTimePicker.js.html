@@ -113,7 +113,26 @@ import {
 
 const prefix = &apos;picker-body&apos;;
 
+/**
+ * &#x5167;&#x8054;&#x65F6;&#x95F4;&#x9009;&#x62E9;&#x5668;
+ */
 export default class InlineTimePicker extends Component {
+
+	/**
+	 * &#x6784;&#x9020;&#x51FD;&#x6570;
+	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+	 * @param {string} [props.selectedTime] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
+	 * @param {string} [props.minDate=&apos;00:00:00&apos;] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+	 * @param {string} [props.maxDate=&apos;23:59:59&apos;] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+	 * @param {string} [props.hourUnit=&apos;&apos;] &#x5C0F;&#x65F6;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+	 * @param {string} [props.minuteUnit=&apos;&apos;] &#x5206;&#x949F;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+	 * @param {string} [props.secondUnit=&apos;&apos;] &#x79D2;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+	 * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+	 * @param {Object} context
+	 */
+	constructor(props, context) {
+		super(props, context);
+	}
 
 	_setHours = (hourOptions, selectedIndex) =&gt; {
 		const value = hourOptions[selectedIndex].value;
@@ -250,7 +269,8 @@ InlineTimePicker.propTypes = {
 	maxTime: PropTypes.string,
 	hourUnit: PropTypes.string,
 	minuteUnit: PropTypes.string,
-	secondUnit: PropTypes.string
+	secondUnit: PropTypes.string,
+	onChange: PropTypes.func
 };
 
 InlineTimePicker.defaultProps = {

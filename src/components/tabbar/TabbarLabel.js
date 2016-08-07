@@ -10,6 +10,11 @@ import {classNames} from '../util';
 
 const prefix = 'tabbar-label';
 
+/**
+ * 标签项文案
+ * @param {Object} props 组件所使用的属性
+ * @param {string} [props.label] 标签项的文案
+ */
 export default function TabBarLabel(props) {
 	const {
 		label,

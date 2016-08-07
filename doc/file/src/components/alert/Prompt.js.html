@@ -179,6 +179,11 @@ export default class Prompt extends Component {
 	}
 }
 
+/**
+ * &#x63D0;&#x793A;&#x8F93;&#x5165;&#x6846;&#x7EC4;&#x4EF6;&#x7684; API &#x8C03;&#x7528;&#x65B9;&#x6CD5;
+ * @param  {Object} props     @see Prompt &#x7EC4;&#x4EF6;&#x5C5E;&#x6027;
+ * @param  {Node} container &#x63D0;&#x793A;&#x8F93;&#x5165;&#x6846;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
+ */
 Prompt.show = (props, container) =&gt; {
 	Portal.show(Prompt, props, container);
 };

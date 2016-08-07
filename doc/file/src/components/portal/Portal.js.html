@@ -113,8 +113,17 @@ import {
 	getContainer
 } from &apos;../util/dom&apos;;
 
+/**
+ * &#x4E3A;&#x6240;&#x6709;&#x5F39;&#x7A97;&#x7EC4;&#x4EF6;&#x63D0;&#x4F9B;&#x5305;&#x88F9;&#x5BB9;&#x5668;&#xFF0C;&#x5E76;&#x63A7;&#x5236;&#x662F;&#x5426;&#x663E;&#x793A;
+ */
 export default class Portal extends Component {
 
+	/**
+	 * &#x6784;&#x9020;&#x51FD;&#x6570;
+	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+	 * @param {boolean} props.visible &#x662F;&#x5426;&#x663E;&#x793A;&#x5F39;&#x7A97;
+	 * @param {Object} context
+	 */
 	constructor(props, context) {
 		super(props, context);
 
@@ -152,6 +161,12 @@ export default class Portal extends Component {
 	}
 }
 
+/**
+ * &#x663E;&#x793A;&#x5F39;&#x7A97;&#x7684; API &#x8C03;&#x7528;&#x65B9;&#x6CD5;
+ * @param {PropTypes.element} Component &#x5F39;&#x7A97;&#x7EC4;&#x4EF6;
+ * @param  {Object} props     @see Component &#x7EC4;&#x4EF6;&#x5C5E;&#x6027;
+ * @param  {Node} container &#x5F39;&#x7A97;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
+ */
 Portal.show = (Component, props, container) =&gt; {
 	container = getContainer(container);
 	Component.portalEl = Component.portalEl || createPortalEl(container);
