@@ -18,6 +18,8 @@ const {
 
 
 describe('ActionSheet 组件', () => {
+	let okNum = 0;
+	let cancelNum = 0;
 	const actionsheet = (<ActionSheet 
 		visible={true}
 		description="my description" 
@@ -25,10 +27,13 @@ describe('ActionSheet 组件', () => {
 			{
 				children: 'ok btn',
 				onClick: () => {
-					// this.setState({visible: !visible});
+					okNum++;
 				}
 			}
 		]}
+		onCancel={() => {
+			cancelNum++;
+		}}
 	/>);
 
 	it('测试 description 的值', () => {
@@ -48,13 +53,15 @@ describe('ActionSheet 组件', () => {
 		// expect(ActionSheet.prototype.componentDidMount.calledOnce).to.equal(true);
 	});
 
-	// it('test click cancel button', () => {
-	// 	const wrapper = mount(actionsheet);
-	// 	const buttons = wrapper.find('Button');
+	it('test click cancel and ok button', () => {
+		const wrapper = mount(actionsheet);
+		const buttons = wrapper.find('Button');
 
-	// 	// console.log(buttons.at(1).find(`.${namespace}actionsheet-button`).text())
-	// 	buttons.at(1).find(`.${namespace}actionsheet-button`).at(0).simulate('click');
-	// 	// buttons.at(1).simulate('click');
-	// 	expect(wrapper.prop('visible')).to.equal(false);
-	// });
+		// console.log(buttons.at(1).find(`.${namespace}actionsheet-button`).text())
+		// buttons.at(0).find(`.${namespace}actionsheet-button`).at(0).simulate('click');
+		buttons.at(0).simulate('click');
+		expect(okNum).to.equal(1);
+		buttons.at(1).simulate('click');
+		expect(cancelNum).to.equal(1);
+	});
 });
