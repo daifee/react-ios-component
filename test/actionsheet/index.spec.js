@@ -8,26 +8,28 @@ import ActionSheet from '../../src/components/actionsheet';
 describe('ActionSheet 组件', () => {
   let okNum = 0;
   let cancelNum = 0;
-  const actionsheet = (<ActionSheet 
-    visible={true}
-    description="my description" 
-    buttons={[
-      {
-        children: 'ok btn',
-        onClick: () => {
-          okNum++;
+  const actionsheet = (
+    <ActionSheet
+      visible
+      description='my description'
+      buttons={[
+        {
+          children: 'ok btn',
+          onClick: () => {
+            okNum++;
+          }
         }
-      }
-    ]}
-    onCancel={() => {
-      cancelNum++;
-    }}
-  />);
+      ]}
+      onCancel={() => {
+        cancelNum++;
+      }}
+    />
+  );
 
   it('测试 description 的值', () => {
     const wrapper = shallow(actionsheet);
     // const buttons = wrapper.find(`.${namespace}actionsheet-button`);
-    
+
     expect(wrapper.find(`.${namespace}actionsheet-desc`).text()).to.equal('my description');
   });
 

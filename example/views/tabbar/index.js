@@ -32,9 +32,9 @@ export default class TabBarPage extends Component {
     } = this.state;
 
     return (
-      <Layout 
-        hasTabBar={true}
-        title="tabbar"
+      <Layout
+        hasTabBar
+        title='tabbar'
         history={history}
       >
         <div>
@@ -44,8 +44,8 @@ export default class TabBarPage extends Component {
           <div style={{display: index === 3 ? 'block' : 'none'}}>more</div>
         </div>
         {/*
-        <TabBar activeColor="red">
-          <TabBarItem 
+        <TabBar activeColor='red'>
+          <TabBarItem
             active={index === 0}
             onClick={() => {
               this.setState({
@@ -53,10 +53,10 @@ export default class TabBarPage extends Component {
               });
             }}
           >
-            <TabBarIcon icon="homeoutline" />
+            <TabBarIcon icon='homeoutline' />
             <TabBarLabel>home</TabBarLabel>
           </TabBarItem>
-          <TabBarItem 
+          <TabBarItem
             active={index === 1}
             onClick={() => {
               this.setState({
@@ -64,7 +64,7 @@ export default class TabBarPage extends Component {
               });
             }}
           >
-            <TabBarIcon icon="contactoutline" />
+            <TabBarIcon icon='contactoutline' />
             <TabBarLabel>contact</TabBarLabel>
           </TabBarItem>
           <TabBarItem
@@ -75,8 +75,8 @@ export default class TabBarPage extends Component {
               });
             }}
           >
-            <TabBarIcon 
-              icon="staroutline" 
+            <TabBarIcon
+              icon='staroutline'
               badge={3}
               badgeColor={'green'}
             />
@@ -90,8 +90,8 @@ export default class TabBarPage extends Component {
               });
             }}
           >
-            <TabBarIcon 
-              icon="moreoutline" 
+            <TabBarIcon
+              icon='moreoutline'
               badge={1}
               badgeColor={'red'}
             />
@@ -99,10 +99,10 @@ export default class TabBarPage extends Component {
           </TabBarItem>
         </TabBar>
         */}
-        
-        <TabBar 
-          linkColor="gray"
-          activeColor="red"
+
+        <TabBar
+          linkColor='gray'
+          activeColor='red'
           tabs={[
             {
               icon: 'at',
@@ -156,5 +156,8 @@ export default class TabBarPage extends Component {
       </Layout>
     );
   }
-
 }
+
+TabBarPage.propTypes = {
+  history: PropTypes.object
+};

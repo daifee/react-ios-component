@@ -36,7 +36,7 @@ extensions.forEach(ext => {
 global.document = jsdom('');
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach(prop => {
-  if(typeof global[prop] === 'undefined') {
+  if (typeof global[prop] === 'undefined') {
     exposedProps.push(prop);
     global[prop] = document.defaultView[prop];
   }

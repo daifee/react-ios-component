@@ -23,9 +23,9 @@ export default class AlertPage extends Component {
       alertVisible: false,
       confirmVisible: false,
       promptValue: ''
-    }
+    };
   }
-  
+
   render() {
     const {
       history
@@ -37,13 +37,13 @@ export default class AlertPage extends Component {
     } = this.state;
 
     return (
-      <Layout title="alert" history={history}>
-        <br/>
+      <Layout title='alert' history={history}>
+        <br />
 
-        <Button size="lg" onClick={() => {
+        <Button size='lg' onClick={() => {
           Alert.show({
-            title: "title title title title title title title title title", 
-            body: "测试 body",
+            title: 'title title title title title title title title title',
+            body: '测试 body',
             buttons: [
               {
                 children: 'first btn'
@@ -59,16 +59,16 @@ export default class AlertPage extends Component {
         }}>
           API 调用 Alert
         </Button>
-        
-        <br/>
+
+        <br />
         {/**/}
-        <Button size="lg" onClick={() => {
+        <Button size='lg' onClick={() => {
           this.setState({alertVisible: !alertVisible});
         }}>alert</Button>
-        <Alert 
+        <Alert
           visible={alertVisible}
-          title="title title title title title title title title title" 
-          body="测试 body"
+          title='title title title title title title title title title'
+          body='测试 body'
           buttons={[
             {
               children: 'ok btn',
@@ -79,8 +79,8 @@ export default class AlertPage extends Component {
           ]}
         />
 
-        <br/>
-        <Button size="lg" onClick={() => {
+        <br />
+        <Button size='lg' onClick={() => {
           Confirm.show({
             title: 'confirm',
             body: 'are you sure?',
@@ -95,8 +95,8 @@ export default class AlertPage extends Component {
           });
         }}>API 调用 Confirm</Button>
 
-        <br/>
-        <Button size="lg" onClick={() => {
+        <br />
+        <Button size='lg' onClick={() => {
           this.setState({confirmVisible: !confirmVisible});
         }}>confirm</Button>
         <Confirm
@@ -116,7 +116,7 @@ export default class AlertPage extends Component {
         />
 
         <br />
-        <Button size="lg" onClick={() => {
+        <Button size='lg' onClick={() => {
           Prompt.show({
             title: 'prompt',
             body: 'are you ready?',
@@ -139,8 +139,11 @@ export default class AlertPage extends Component {
             cancelText: '不要啊'
           });
         }}>API 调用 Prompt</Button>
-        
       </Layout>
     );
   }
 }
+
+AlertPage.propTypes = {
+  history: PropTypes.object
+};

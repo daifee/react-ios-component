@@ -16,9 +16,8 @@ const {
   namespace
 } = config;
 
-describe('util 模块的公用方法', () => {
 
-  // classNames
+describe('util 模块的公用方法', () => {
   it('classNames 方法返回拼装好的多个类名', () => {
     const clazz = classNames('page', ['scene', 'tabbar'], {
       navbar: 'navbar',
@@ -29,12 +28,11 @@ describe('util 模块的公用方法', () => {
     expect(clazz.indexOf(`${namespace}page`)).to.not.equal(-1);
     expect(clazz.indexOf(`${namespace}scene`)).to.not.equal(-1);
     expect(clazz.indexOf(`${namespace}tabbar`)).to.not.equal(-1);
-    expect(clazz.indexOf(`navbar`)).to.not.equal(-1);
+    expect(clazz.indexOf('navbar')).to.not.equal(-1);
     expect(clazz.indexOf(`${namespace}search`)).to.not.equal(-1);
     expect(clazz.indexOf(`${namespace}btn`)).to.equal(-1);
   });
 
-  // generateOptions
   it('generateOptions 生成日期时间的选择数据对象列表', () => {
     const min = 2000;
     const max = 2016;
@@ -46,7 +44,6 @@ describe('util 模块的公用方法', () => {
     expect(options[max - min].value).to.equal(max);
   });
 
-  // indexOfOptions
   it('indexOfOptions 返回当前值在日期时间的选择列表中的下标', () => {
     const options = [
       { name: '2010年', value: 2010 },
@@ -62,7 +59,6 @@ describe('util 模块的公用方法', () => {
     expect(indexOfOptions(2017, options)).to.equal(options.length);
   });
 
-  // date2str
   it('date2str 方法返回日期字符串', () => {
     const date = '2016-08-08';
     const dateStr = date2str(new Date(date));

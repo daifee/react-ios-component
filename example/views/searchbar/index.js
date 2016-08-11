@@ -21,9 +21,9 @@ export default class SearchBarPage extends Component {
 
     this.state = {
       firstValue: ''
-    }
+    };
   }
-  
+
   render() {
     const {
       history
@@ -33,14 +33,14 @@ export default class SearchBarPage extends Component {
     } = this.state;
 
     return (
-      <Layout title="searchbar" history={history}>
+      <Layout title='searchbar' history={history}>
         <div style={{background: '#000'}}>
-          <SearchBar theme="white">
+          <SearchBar theme='white'>
             <SearchBarHeader>label</SearchBarHeader>
-            <SearchBarInput 
+            <SearchBarInput
               value={firstValue}
-              placeholder="search" 
-              hasClear={true}
+              placeholder='search'
+              hasClear
               onClear={(e) => {
                 console.log(e);
                 this.setState({firstValue: ''});
@@ -52,22 +52,22 @@ export default class SearchBarPage extends Component {
             <SearchBarFooter onClick={() => {
               this.setState({firstValue: ''});
             }}>取消</SearchBarFooter>
-          </SearchBar>  
+          </SearchBar>
         </div>
-
         <br />
-
         <SearchBar>
-          <SearchBarInput placeholder="search"/>
+          <SearchBarInput placeholder='search' />
           <SearchBarFooter>取消</SearchBarFooter>
         </SearchBar>
-
         <br />
-
         <SearchBar>
-          <SearchBarInput hasFooter={false} placeholder="search"/>
-        </SearchBar>      
+          <SearchBarInput hasFooter={false} placeholder='search' />
+        </SearchBar>
       </Layout>
     );
   }
 }
+
+SearchBarPage.propTypes = {
+  history: PropTypes.object
+};

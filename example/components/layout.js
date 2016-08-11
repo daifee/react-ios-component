@@ -30,12 +30,12 @@ export default function Layout(props) {
         <NavBarItem onClick={() => {
           history.goBack();
         }}>
-          <Icon value="arrowback" />
+          <Icon value='arrowback' />
         </NavBarItem>
         <NavBarItem label={title} />
-        <NavBarItem/>
+        <NavBarItem />
       </NavBar>
-      <div className="rc-ios-content">
+      <div className='rc-ios-content'>
         {children}
       </div>
     </Page>
@@ -43,5 +43,9 @@ export default function Layout(props) {
 }
 
 Layout.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  history: PropTypes.object,
+  hasNavBar: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string
 };

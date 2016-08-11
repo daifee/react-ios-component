@@ -6,7 +6,7 @@ import Badge from '../../src/components/badge';
 
 
 describe('Badge 组件', () => {
-  const wrapper = shallow(<Badge bgColor="red">badge</Badge>);
+  const wrapper = shallow(<Badge bgColor='red'>badge</Badge>);
 
   it('test bgColor', () => {
     expect(wrapper.hasClass(`${namespace}bg-red`)).to.equal(true);

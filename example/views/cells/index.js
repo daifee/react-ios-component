@@ -25,14 +25,14 @@ import {
   Slider
 } from 'component';
 
-export default class SegmentedPage extends Component {
+export default class CellsPage extends Component {
 
   constructor(props, context) {
     super(props, context);
 
     this.state = {
       stepValue: 0,
-      sliderValue: 0,
+      sliderValue: 0
     };
   }
 
@@ -47,8 +47,8 @@ export default class SegmentedPage extends Component {
 
     return (
       <Layout
-        className="rc-ios-tabbar-fixed"
-        title="cells"
+        className='rc-ios-tabbar-fixed'
+        title='cells'
         history={history}
       >
         <CellsTitle>cells</CellsTitle>
@@ -56,17 +56,17 @@ export default class SegmentedPage extends Component {
           <Cell>label</Cell>
           <Cell>
             <CellHeader>
-              <Icon value="settings"></Icon>
+              <Icon value='settings' />
             </CellHeader>
             <CellBody>body</CellBody>
             <CellFooter>footer</CellFooter>
           </Cell>
-          <Cell component="a">
+          <Cell component='a'>
             <CellHeader>icon</CellHeader>
             <CellBody>body</CellBody>
             <CellFooter>footer</CellFooter>
           </Cell>
-          <Cell component="a">
+          <Cell component='a'>
             <CellHeader>icon</CellHeader>
             <CellBody>
               <span>Changes</span>
@@ -88,7 +88,7 @@ export default class SegmentedPage extends Component {
                 onChange={(current, preValue, step) => {
                   this.setState({
                     stepValue: current
-                  })
+                  });
                 }}
               />
             </CellFooter>
@@ -100,22 +100,22 @@ export default class SegmentedPage extends Component {
           <Cell>
             <CellHeader>我是{sliderValue}</CellHeader>
             <CellBody>
-              <Slider 
-                value={sliderValue} 
+              <Slider
+                value={sliderValue}
                 onChange={(value) => {
                   this.setState({sliderValue: parseInt(value)});
-                }}/>
+                }}
+              />
             </CellBody>
           </Cell>
           <Cell>
             <CellHeader>我是20</CellHeader>
             <CellBody>
-              <Slider 
-                value={20} 
-                disabled={true}
-                onChange={(value) => {
-                  
-                }}/>
+              <Slider
+                value={20}
+                disabled
+                onChange={(value) => {}}
+              />
             </CellBody>
           </Cell>
         </Cells>
@@ -132,15 +132,15 @@ export default class SegmentedPage extends Component {
 
         <CellsTitle>checkbox</CellsTitle>
         <Cells>
-          <Cell component="label" htmlFor="checkbox1">
+          <Cell component='label' htmlFor='checkbox1'>
             <CellHeader>
-              <Checkbox id="checkbox1" name="checkbox" defaultChecked/>
+              <Checkbox id='checkbox1' name='checkbox' defaultChecked />
             </CellHeader>
             <CellBody>我是标题</CellBody>
           </Cell>
-          <Cell component="label" htmlFor="checkbox2">
+          <Cell component='label' htmlFor='checkbox2'>
             <CellHeader>
-              <Checkbox id="checkbox2" name="checkbox" />
+              <Checkbox id='checkbox2' name='checkbox' />
             </CellHeader>
             <CellBody>我是标题</CellBody>
           </Cell>
@@ -148,15 +148,15 @@ export default class SegmentedPage extends Component {
 
         <CellsTitle>radio</CellsTitle>
         <Cells>
-          <Cell component="label">
+          <Cell component='label'>
             <CellHeader>
-              <Radio name="radio" defaultChecked/>
+              <Radio name='radio' defaultChecked />
             </CellHeader>
             <CellBody>我是标题</CellBody>
           </Cell>
-          <Cell component="label">
+          <Cell component='label'>
             <CellHeader>
-              <Radio name="radio" />
+              <Radio name='radio' />
             </CellHeader>
             <CellBody>我是标题</CellBody>
           </Cell>
@@ -167,7 +167,7 @@ export default class SegmentedPage extends Component {
           <Cell>
             <CellHeader>手机号码</CellHeader>
             <CellBody>
-              <Input placeholder="请输入手机号码" />
+              <Input placeholder='请输入手机号码' />
             </CellBody>
           </Cell>
         </Cells>
@@ -176,12 +176,15 @@ export default class SegmentedPage extends Component {
         <Cells>
           <Cell>
             <CellBody>
-              <Textarea placeholder="请输入手机号码" />
+              <Textarea placeholder='请输入手机号码' />
             </CellBody>
           </Cell>
         </Cells>
       </Layout>
     );
   }
-
 }
+
+CellsPage.propTypes = {
+  history: PropTypes.object
+};

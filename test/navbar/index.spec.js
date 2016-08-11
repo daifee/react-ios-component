@@ -3,8 +3,7 @@
  */
 
 import {
-  NavBar,
-  NavbarItem
+  NavBar
 } from '../../src/components/navbar';
 
 

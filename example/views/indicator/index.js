@@ -19,7 +19,7 @@ export default class IndicatorPage extends Component {
 
     this.state = {
       visible: true
-    }
+    };
   }
 
   render() {
@@ -31,10 +31,9 @@ export default class IndicatorPage extends Component {
     } = this.state;
 
     return (
-      <Layout title="indicator" history={history}>
-        <br/>
-
-        <Button size="lg" onClick={() => {
+      <Layout title='indicator' history={history}>
+        <br />
+        <Button size='lg' onClick={() => {
           Indicator.show({
             icon: 'loading',
             content: '加载中...',
@@ -43,17 +42,20 @@ export default class IndicatorPage extends Component {
         }}>
           API 调用 Indicator
         </Button>
-        
-        <br/>
+        <br />
         {/**/}
-        <Button size="lg" onClick={() => {
-            this.setState({visible: !visible});
-          }}
+        <Button size='lg' onClick={() => {
+          this.setState({visible: !visible});
+        }}
         >
           只有文案
         </Button>
-        <Indicator icon="loading" visible={visible}>加载中...</Indicator>
+        <Indicator icon='loading' visible={visible}>加载中...</Indicator>
       </Layout>
     );
   }
 }
+
+IndicatorPage.propTypes = {
+  history: PropTypes.object
+};

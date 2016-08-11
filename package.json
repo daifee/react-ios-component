@@ -10,7 +10,7 @@
     "lint:test": "eslint test/",
     "lint:example": "eslint example/",
     "doc": "esdoc -c esdoc.json",
-    "test": "npm run lint && mocha --opts mocha.opts",
+    "test": "npm run lint && mocha --opts test/mocha.opts",
     "test:watch": "mocha -w --opts mocha.opts"
   },
   "keywords": [

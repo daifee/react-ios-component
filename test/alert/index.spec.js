@@ -12,25 +12,27 @@ import {
 describe('Alert 组件', () => {
   let firstNum = 0;
   let secondNum = 0;
-  const alert = (<Alert 
-    visible={true}
-    title="my title" 
-    body="测试 body"
-    buttons={[
-      {
-        children: 'first btn',
-        onClick: () => {
-          firstNum++;
+  const alert = (
+    <Alert
+      visible
+      title='my title'
+      body='测试 body'
+      buttons={[
+        {
+          children: 'first btn',
+          onClick: () => {
+            firstNum++;
+          }
+        },
+        {
+          children: 'second btn',
+          onClick: () => {
+            secondNum++;
+          }
         }
-      },
-      {
-        children: 'second btn',
-        onClick: () => {
-          secondNum++;
-        }
-      }
-    ]}
-  />);
+      ]}
+    />
+  );
 
   it('test title and body', () => {
     const wrapper = shallow(alert);
@@ -54,17 +56,19 @@ describe('Alert 组件', () => {
 describe('Confirm 组件', () => {
   let okNum = 0;
   let cancelNum = 0;
-  const wrapper = mount(<Confirm 
-    visible={true}
-    title="my confirm" 
-    body="confirm body"
-    onConfirm={() => {
-      okNum++;
-    }}
-    onCancel={() => {
-      cancelNum++;
-    }}
-  />);
+  const wrapper = mount(
+    <Confirm
+      visible
+      title='my confirm'
+      body='confirm body'
+      onConfirm={() => {
+        okNum++;
+      }}
+      onCancel={() => {
+        cancelNum++;
+      }}
+    />
+  );
   const alertWrapper = wrapper.find('Alert').at(0);
 
   it('test title and body', () => {
@@ -91,18 +95,20 @@ describe('Confirm 组件', () => {
 
 describe('Prompt 组件', () => {
   let value = 'initial value';
-  const wrapper = mount(<Prompt 
-    visible={true}
-    title="my Prompt" 
-    body="Prompt body"
-    inputProps={{
-      value: value,
-      placeholder: 'haha',
-      onChange: (e) => {
-        value = e.target.value;
-      }
-    }}
-  />);
+  const wrapper = mount(
+    <Prompt
+      visible
+      title='my Prompt'
+      body='Prompt body'
+      inputProps={{
+        value: value,
+        placeholder: 'haha',
+        onChange: (e) => {
+          value = e.target.value;
+        }
+      }}
+    />
+  );
 
   it('test input value change', () => {
     const inputWrapper = wrapper.find('input');
@@ -111,6 +117,6 @@ describe('Prompt 组件', () => {
     input.value = 'last value';
     inputWrapper.simulate('change');
     expect(value).to.equal('last value');
-    expect(wrapper.state('value')).to.equal('last value')
+    expect(wrapper.state('value')).to.equal('last value');
   });
 });

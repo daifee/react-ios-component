@@ -14,7 +14,6 @@ import {
 
 
 describe('Form 表单系列组件', () => {
-
   it('test Checkbox class', () => {
     // let bool = false;
     // const wrapper = mount(
@@ -85,16 +84,13 @@ describe('Form 表单系列组件', () => {
   it('test Slider', () => {
     let sliderValue = 20;
     const wrapper = mount(
-      <Slider 
-        value={sliderValue} 
-        onChange={(value) => {
-          
-        }}
+      <Slider
+        value={sliderValue}
+        onChange={(value) => {}}
       />
     );
 
     wrapper.setProps({disabled: true});
     expect(wrapper.find('div').at(0).hasClass('disabled')).to.equal(true);
   });
-
 });

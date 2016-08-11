@@ -21,17 +21,17 @@ describe('Cell 系列组件', () => {
     <Cells>
       <Cell>
         <CellHeader>
-          <Icon value="settings"></Icon>
+          <Icon value='settings' />
         </CellHeader>
         <CellBody>body</CellBody>
         <CellFooter>footer</CellFooter>
       </Cell>
-      <Cell hasArrow={true}>
+      <Cell hasArrow>
         <CellHeader>icon</CellHeader>
         <CellBody>body</CellBody>
         <CellFooter>footer</CellFooter>
       </Cell>
-      <Cell component="a">
+      <Cell component='a'>
         <CellHeader>icon</CellHeader>
         <CellBody>
           <span>Changes</span>
@@ -54,7 +54,7 @@ describe('Cell 系列组件', () => {
   });
 
   it('test Cell is hasArrow', () => {
-    const clazz =  `${namespace}cell-arrow`;
+    const clazz = `${namespace}cell-arrow`;
     const cellWrappers = wrapper.find('Cell');
 
     expect(cellWrappers.at(0).find('div').at(0).hasClass(clazz)).to.equal(false);
@@ -63,14 +63,14 @@ describe('Cell 系列组件', () => {
   });
 
   it('test CellHeader class', () => {
-    const clazz =  `${namespace}cell-header`;
+    const clazz = `${namespace}cell-header`;
     const headerWrapper = wrapper.find('Cell').at(2).find('CellHeader');
 
     expect(headerWrapper.find('div').hasClass(clazz)).to.equal(true);
   });
 
   it('test CellBody and CellDesc class', () => {
-    const clazz =  `${namespace}cell-body`;
+    const clazz = `${namespace}cell-body`;
     const bodyWrapper = wrapper.find('Cell').at(2).find('CellBody');
 
     expect(bodyWrapper.find('div').at(0).hasClass(clazz)).to.equal(true);
@@ -78,7 +78,7 @@ describe('Cell 系列组件', () => {
   });
 
   it('test CellFooter class', () => {
-    const clazz =  `${namespace}cell-footer`;
+    const clazz = `${namespace}cell-footer`;
     const footerWrapper = wrapper.find('Cell').at(2).find('CellFooter');
 
     expect(footerWrapper.find('div').hasClass(clazz)).to.equal(true);

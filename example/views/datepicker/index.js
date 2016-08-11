@@ -20,7 +20,7 @@ export default class DatePickerPage extends Component {
 
     this.state = {
       selectedDate: new Date()
-    }
+    };
   }
 
   render() {
@@ -33,10 +33,9 @@ export default class DatePickerPage extends Component {
     console.log(selectedDate);
 
     return (
-      <Layout title="datepicker" history={history}>
-        <br/>
-        
-        <InlineDatePicker 
+      <Layout title='datepicker' history={history}>
+        <br />
+        <InlineDatePicker
           maxDate={new Date('2020-10-10')}
           minDate={new Date('1970-01-01')}
           selectedDate={selectedDate}
@@ -44,10 +43,8 @@ export default class DatePickerPage extends Component {
             this.setState({selectedDate});
           }}
         />
-        
-        <br/>
-
-        <Button size="lg" onClick={() => {
+        <br />
+        <Button size='lg' onClick={() => {
           DatePicker.show({
             maxDate: new Date('2020-10-10'),
             minDate: new Date('1970-01-01'),
@@ -59,8 +56,11 @@ export default class DatePickerPage extends Component {
         }}>
           API 调用 Picker
         </Button>
-        
       </Layout>
     );
   }
 }
+
+DatePickerPage.propTypes = {
+  history: PropTypes.object
+};

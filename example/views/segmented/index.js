@@ -33,12 +33,12 @@ export default class SegmentedPage extends Component {
 
     return (
       <Layout
-        className="rc-ios-tabbar-fixed"
-        title="segmented"
+        className='rc-ios-tabbar-fixed'
+        title='segmented'
         history={history}
       >
-        <Segmented 
-          color="red" 
+        <Segmented
+          color='red'
           elements={[
             {
               active: index === 0,
@@ -81,8 +81,8 @@ export default class SegmentedPage extends Component {
         <br />
         <br />
         <div>更小的</div>
-        <Segmented 
-          size="small"
+        <Segmented
+          size='small'
           elements={[
             {
               active: smallIndex === 0,
@@ -123,5 +123,8 @@ export default class SegmentedPage extends Component {
       </Layout>
     );
   }
-
 }
+
+SegmentedPage.propTypes = {
+  history: PropTypes.object
+};

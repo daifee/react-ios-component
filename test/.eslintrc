@@ -1,0 +1,13 @@
+{
+  "globals": {
+    "describe": false,
+    "it": false,
+    "React": false,
+    "expect": false,
+    "shallow": false,
+    "mount": false,
+    "render": false,
+    "namespace": false,
+    "require": false,
+  }
+}

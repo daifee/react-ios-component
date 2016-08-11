@@ -19,9 +19,9 @@ export default class ActionSheetPage extends Component {
 
     this.state = {
       visible: false
-    }
+    };
   }
-  
+
   render() {
     const {
       history
@@ -31,12 +31,12 @@ export default class ActionSheetPage extends Component {
     } = this.state;
 
     return (
-      <Layout title="actionsheet" history={history}>
-        <br/>
+      <Layout title='actionsheet' history={history}>
+        <br />
 
-        <Button size="lg" onClick={() => {
+        <Button size='lg' onClick={() => {
           ActionSheet.show({
-            description: "title title title title title title title title title", 
+            description: 'title title title title title title title title title',
             buttons: [
               {
                 children: 'first btn'
@@ -54,15 +54,15 @@ export default class ActionSheetPage extends Component {
         }}>
           API 调用 Alert
         </Button>
-        
-        <br/>
+
+        <br />
         {/**/}
-        <Button size="lg" onClick={() => {
-            this.setState({visible: !visible});
-          }}>alert</Button>
-        <ActionSheet 
+        <Button size='lg' onClick={() => {
+          this.setState({visible: !visible});
+        }}>alert</Button>
+        <ActionSheet
           visible={visible}
-          description="title title title title title title title title title" 
+          description='title title title title title title title title title'
           buttons={[
             {
               children: 'ok btn',
@@ -82,3 +82,7 @@ export default class ActionSheetPage extends Component {
     );
   }
 }
+
+ActionSheetPage.propTypes = {
+  history: PropTypes.object
+};

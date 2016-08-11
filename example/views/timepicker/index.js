@@ -20,7 +20,7 @@ export default class TimePickerPage extends Component {
 
     this.state = {
       selectedTime: '12:12:12'
-    }
+    };
   }
 
   render() {
@@ -33,10 +33,9 @@ export default class TimePickerPage extends Component {
     console.log(selectedTime);
 
     return (
-      <Layout title="timepicker" history={history}>
-        <br/>
-        
-        <InlineTimePicker 
+      <Layout title='timepicker' history={history}>
+        <br />
+        <InlineTimePicker
           maxTime={'23:59:59'}
           minTime={'00:00:00'}
           selectedTime={selectedTime}
@@ -44,10 +43,10 @@ export default class TimePickerPage extends Component {
             this.setState({selectedTime});
           }}
         />
-        
-        <br/>
 
-        <Button size="lg" onClick={() => {
+        <br />
+
+        <Button size='lg' onClick={() => {
           TimePicker.show({
             selectedTime: selectedTime,
             onConfirm: (selectedTime, e) => {
@@ -57,8 +56,11 @@ export default class TimePickerPage extends Component {
         }}>
           API 调用 Picker
         </Button>
-        
       </Layout>
     );
   }
 }
+
+TimePickerPage.propTypes = {
+  history: PropTypes.object
+};

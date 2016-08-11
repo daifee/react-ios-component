@@ -43,7 +43,7 @@ export default class PickerPage extends Component {
 
     this.state = {
       address: [0, 1, 0]
-    }
+    };
   }
 
   render() {
@@ -53,27 +53,23 @@ export default class PickerPage extends Component {
     const {
       address
     } = this.state;
-  console.log(address);
 
     return (
-      <Layout title="picker" history={history}>
-        <br/>
-        
-        <InlinePicker 
+      <Layout title='picker' history={history}>
+        <br />
+        <InlinePicker
           labelName={'name'}
           nextName={'childs'}
           selectedList={address}
-          optionsList={this.addressList} 
+          optionsList={this.addressList}
           onChange={(selectedList) => {
             this.setState({
               address: selectedList
             });
           }}
         />
-        
-        <br/>
-
-        <Button size="lg" onClick={() => {
+        <br />
+        <Button size='lg' onClick={() => {
           Picker.show({
             selectedList: address,
             optionsList: this.addressList,
@@ -86,8 +82,11 @@ export default class PickerPage extends Component {
         }}>
           API 调用 Picker
         </Button>
-        
       </Layout>
     );
   }
 }
+
+PickerPage.propTypes = {
+  history: PropTypes.object
+};
