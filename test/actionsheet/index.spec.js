@@ -2,19 +2,7 @@
  * @author haw
  */
 
-import React from 'react';
-import {
-	expect
-} from 'chai';
-import {
-	shallow,
-	mount
-} from 'enzyme';
 import ActionSheet from '../../src/components/actionsheet';
-import config from '../../src/components/util/config';
-const {
-  namespace
-} = config;
 
 
 describe('ActionSheet 组件', () => {

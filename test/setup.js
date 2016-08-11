@@ -1,10 +1,31 @@
 
+import React from 'react';
+import {
+	expect
+} from 'chai';
+import {
+	shallow,
+	mount,
+	render
+} from 'enzyme';
 import {
 	jsdom
 } from 'jsdom';
+import config from '../src/components/util/config';
+const {
+  namespace
+} = config;
 const exposedProps = ['window', 'navigator', 'document'];
 const extensions = ['.css', '.scss', '.gif', '.jpeg', '.jpg', '.png', '.svg', '.eot', '.ttf', '.woff'];
 const noop = () => {};
+
+// for convenient usage
+global.React = React;
+global.expect = expect;
+global.shallow = shallow;
+global.mount = mount;
+global.render = render;
+global.namespace = namespace;
 
 // ignore other resources
 extensions.forEach(ext => {
