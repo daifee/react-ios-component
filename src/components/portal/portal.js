@@ -3,16 +3,16 @@
  */
 
 import React, {
-	PropTypes,
-	Component,
-	cloneElement
+  PropTypes,
+  Component,
+  cloneElement
 } from 'react';
-import ReactDom, {
-	render
+import {
+  render
 } from 'react-dom';
 import {
-	createPortalEl,
-	getContainer
+  createPortalEl,
+  getContainer
 } from '../util/dom';
 
 /**
@@ -20,47 +20,47 @@ import {
  */
 export default class Portal extends Component {
 
-	/**
-	 * 构造函数
-	 * @param {Object} props 组件所使用的属性
-	 * @param {boolean} props.visible 是否显示弹窗
-	 * @param {Object} context
-	 */
-	constructor(props, context) {
-		super(props, context);
+  /**
+   * 构造函数
+   * @param {Object} props 组件所使用的属性
+   * @param {boolean} props.visible 是否显示弹窗
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
 
-		this.state = {
-			visible: props.visible
-		};
-	}
+    this.state = {
+      visible: props.visible
+    };
+  }
 
-	componentWillReceiveProps(nextProps) {
-		this._setVisible(nextProps.visible);
-	}
+  componentWillReceiveProps(nextProps) {
+    this._setVisible(nextProps.visible);
+  }
 
-	close() {
-		this._setVisible(false);
-	}
+  _close = () => {
+    this._setVisible(false);
+  }
 
-	_setVisible(visible) {
-		this.setState({
-			visible
-		});
-	}
+  _setVisible(visible) {
+    this.setState({
+      visible
+    });
+  }
 
-	render() {
-		let {
-			children
-		} = this.props;
+  render() {
+    let {
+      children
+    } = this.props;
 
-		if(children) {
-			children = cloneElement(children, {
-				visible: this.state.visible,
-				close: this.close.bind(this)
-			});
-		}
-		return children || null;
-	}
+    if (children) {
+      children = cloneElement(children, {
+        visible: this.state.visible,
+        close: this._close
+      });
+    }
+    return children || null;
+  }
 }
 
 /**
@@ -70,22 +70,21 @@ export default class Portal extends Component {
  * @param  {Node} container 弹窗的容器节点
  */
 Portal.show = (Component, props, container) => {
-	container = getContainer(container);
-	Component.portalEl = Component.portalEl || createPortalEl(container);
+  container = getContainer(container);
+  Component.portalEl = Component.portalEl || createPortalEl(container);
 
-	return render((
-		<Portal 
-			visible={true}
-		>
-			<Component {...props} />
-		</Portal>
-	), Component.portalEl);
+  return render((
+    <Portal visible>
+      <Component {...props} />
+    </Portal>
+  ), Component.portalEl);
 };
 
 Portal.propTypes = {
-	visible: PropTypes.bool
+  visible: PropTypes.bool,
+  children: PropTypes.node
 };
 
 Portal.defaultProps = {
-	visible: false
+  visible: false
 };

@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,16 +101,16 @@
  */
 
 import React, {
-	PropTypes,
-	Component,
-	cloneElement
+  PropTypes,
+  Component,
+  cloneElement
 } from &apos;react&apos;;
-import ReactDom, {
-	render
+import {
+  render
 } from &apos;react-dom&apos;;
 import {
-	createPortalEl,
-	getContainer
+  createPortalEl,
+  getContainer
 } from &apos;../util/dom&apos;;
 
 /**
@@ -118,47 +118,47 @@ import {
  */
 export default class Portal extends Component {
 
-	/**
-	 * &#x6784;&#x9020;&#x51FD;&#x6570;
-	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
-	 * @param {boolean} props.visible &#x662F;&#x5426;&#x663E;&#x793A;&#x5F39;&#x7A97;
-	 * @param {Object} context
-	 */
-	constructor(props, context) {
-		super(props, context);
+  /**
+   * &#x6784;&#x9020;&#x51FD;&#x6570;
+   * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+   * @param {boolean} props.visible &#x662F;&#x5426;&#x663E;&#x793A;&#x5F39;&#x7A97;
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
 
-		this.state = {
-			visible: props.visible
-		};
-	}
+    this.state = {
+      visible: props.visible
+    };
+  }
 
-	componentWillReceiveProps(nextProps) {
-		this._setVisible(nextProps.visible);
-	}
+  componentWillReceiveProps(nextProps) {
+    this._setVisible(nextProps.visible);
+  }
 
-	close() {
-		this._setVisible(false);
-	}
+  _close = () =&gt; {
+    this._setVisible(false);
+  }
 
-	_setVisible(visible) {
-		this.setState({
-			visible
-		});
-	}
+  _setVisible(visible) {
+    this.setState({
+      visible
+    });
+  }
 
-	render() {
-		let {
-			children
-		} = this.props;
+  render() {
+    let {
+      children
+    } = this.props;
 
-		if(children) {
-			children = cloneElement(children, {
-				visible: this.state.visible,
-				close: this.close.bind(this)
-			});
-		}
-		return children || null;
-	}
+    if (children) {
+      children = cloneElement(children, {
+        visible: this.state.visible,
+        close: this._close
+      });
+    }
+    return children || null;
+  }
 }
 
 /**
@@ -168,25 +168,25 @@ export default class Portal extends Component {
  * @param  {Node} container &#x5F39;&#x7A97;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
  */
 Portal.show = (Component, props, container) =&gt; {
-	container = getContainer(container);
-	Component.portalEl = Component.portalEl || createPortalEl(container);
+  container = getContainer(container);
+  Component.portalEl = Component.portalEl || createPortalEl(container);
 
-	return render((
-		&lt;Portal 
-			visible={true}
-		&gt;
-			&lt;Component {...props} /&gt;
-		&lt;/Portal&gt;
-	), Component.portalEl);
+  return render((
+    &lt;Portal visible&gt;
+      &lt;Component {...props} /&gt;
+    &lt;/Portal&gt;
+  ), Component.portalEl);
 };
 
 Portal.propTypes = {
-	visible: PropTypes.bool
+  visible: PropTypes.bool,
+  children: PropTypes.node
 };
 
 Portal.defaultProps = {
-	visible: false
-};</code></pre>
+  visible: false
+};
+</code></pre>
 
 </div>
 

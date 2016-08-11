@@ -9,66 +9,66 @@ $lg-height: 2.2rem;
 
 
 .#{$namespace}button {
-	display: inline-block;
-	height: $height;
-	padding: 0 .5rem;
-	line-height: $height - .1rem;
-	color: $primaryColor;
-	font-size: .7rem;
-	text-align: center;
-	text-decoration: none;
-	background-color: $white;
-	border: .05rem solid $primaryColor;
-	border-radius: .25rem;
-	cursor: pointer;
-	appearance: none;
-	// transition: opacity, background .3s;
+  display: inline-block;
+  height: $height;
+  padding: 0 .5rem;
+  line-height: $height - .1rem;
+  color: $primaryColor;
+  font-size: .7rem;
+  text-align: center;
+  text-decoration: none;
+  background-color: $white;
+  border: .05rem solid $primaryColor;
+  border-radius: .25rem;
+  cursor: pointer;
+  appearance: none;
+  // transition: opacity, background .3s;
 
-	&.#{$namespace}button-lg {
-		display: block;
-		height: $lg-height;
-		line-height: $lg-height - .1rem;
-		font-size: 1rem;
-	}
+  &.#{$namespace}button-lg {
+    display: block;
+    height: $lg-height;
+    line-height: $lg-height - .1rem;
+    font-size: 1rem;
+  }
 
-	@each $name, $value in $colors {
-		&.#{$namespace}button-#{$name} {
-			color: $value;
-			border-color: $value;
+  @each $name, $value in $colors {
+    &.#{$namespace}button-#{$name} {
+      color: $value;
+      border-color: $value;
 
-			&:active {
-		    background: rgba(red($value), green($value), blue($value), .1);
-			}
+      &:active {
+        background: rgba(red($value), green($value), blue($value), .1);
+      }
 
-			&.#{$namespace}button-fill,
-			&.active {
-				color: #fff;
-				background-color: $value;
-			}
-		}
-	}
+      &.#{$namespace}button-fill,
+      &.active {
+        color: #fff;
+        background-color: $value;
+      }
+    }
+  }
 
-	&:active {
+  &:active {
     background: rgba(red($primaryColor), green($primaryColor), blue($primaryColor), .1);
-	}
+  }
 
-	&.#{$namespace}button-disabled {
-		cursor: not-allowed;
-	}
+  &.#{$namespace}button-disabled {
+    cursor: not-allowed;
+  }
 
-	&.#{$namespace}button-fill,
-	&.active {
-		color: #fff;
-		background-color: $primaryColor;
-	}
+  &.#{$namespace}button-fill,
+  &.active {
+    color: #fff;
+    background-color: $primaryColor;
+  }
 
-	&.#{$namespace}button-fill {
-		&:active {
-			opacity: .8;
-		}
-		&.#{$namespace}button-disabled {
-			color: hsla(0,0%,100%,.6);
-			opacity: 1;
-		}
-	}
+  &.#{$namespace}button-fill {
+    &:active {
+      opacity: .8;
+    }
+    &.#{$namespace}button-disabled {
+      color: hsla(0,0%,100%,.6);
+      opacity: 1;
+    }
+  }
 }

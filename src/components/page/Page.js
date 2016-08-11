@@ -3,7 +3,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
@@ -18,32 +18,32 @@ const prefix = 'page';
  * @param {string} [props.timingFunction='ease'] 页面过场动画的过渡函数
  */
 export default function Page(props) {
-	const {
-		hasNavBar,
-		hasTabBar,
-		duration,
-		timingFunction,
-		className,
-		style,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		'navbar-fixed': hasNavBar,
-		'tabbar-fixed': hasTabBar,
-		[className]: className
-	});
-	let newStyle = {
-		style,
-		transitionDuration: `${duration}ms`,
-		transitionTimingFunction: timingFunction
-	};
+  const {
+    hasNavBar,
+    hasTabBar,
+    duration,
+    timingFunction,
+    className,
+    style,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    'navbar-fixed': hasNavBar,
+    'tabbar-fixed': hasTabBar,
+    [className]: className
+  });
+  let newStyle = {
+    style,
+    transitionDuration: `${duration}ms`,
+    transitionTimingFunction: timingFunction
+  };
 
-	return (
-		<div className={clazz} style={newStyle} {...rest}>
-			{children}
-		</div>
-	);
+  return (
+    <div className={clazz} style={newStyle} {...rest}>
+      {children}
+    </div>
+  );
 }
 
 /**
@@ -55,15 +55,18 @@ export default function Page(props) {
  * timingFunction: 页面过场动画的过渡函数，默认值为 `ease`
  */
 Page.propTypes = {
-	hasNavBar: PropTypes.bool,
-	hasTabBar: PropTypes.bool,
-	duration: PropTypes.number,
-	timingFunction: PropTypes.string
+  hasNavBar: PropTypes.bool,
+  hasTabBar: PropTypes.bool,
+  duration: PropTypes.number,
+  timingFunction: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  children: PropTypes.node
 };
 
 Page.defaultProps = {
-	hasNavBar: false,
-	hasTabBar: false,
-	duration: 300,
-	timingFunction: 'ease'
+  hasNavBar: false,
+  hasTabBar: false,
+  duration: 300,
+  timingFunction: 'ease'
 };

@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -102,8 +102,8 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes,
+  Component
 } from &apos;react&apos;;
 import {classNames} from &apos;../util&apos;;
 
@@ -114,139 +114,136 @@ const prefix = &apos;searchbar-input&apos;;
  */
 export default class SearchBarInput extends Component {
 
-	/**
-	 * &#x6784;&#x9020;&#x51FD;&#x6570;
-	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
-	 * @param {string} [props.type=&apos;text&apos;] &#x8F93;&#x5165;&#x6846;&#x7C7B;&#x578B;
-	 * @param {boolean} [props.hasFooter=true] &#x662F;&#x5426;&#x6709;&#x5C3E;&#x90E8;
-	 * @param {boolean} [props.hasClear=true] &#x662F;&#x5426;&#x6709;&#x6E05;&#x9664;&#x56FE;&#x6807;
-	 * @param {string} [props.placeholder] &#x8F93;&#x5165;&#x6846; placeholder
-	 * @param {function} [props.onBlur] &#x8F93;&#x5165;&#x6846;&#x5931;&#x7126;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
-	 * @param {function} [props.onFocus] &#x8F93;&#x5165;&#x6846;&#x6FC0;&#x6D3B;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
-	 * @param {function} [props.onChange] &#x8F93;&#x5165;&#x6846;&#x503C;&#x6539;&#x53D8;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
-	 * @param {function} [props.onClear] &#x6E05;&#x695A;&#x8F93;&#x5165;&#x6846;&#x5185;&#x5BB9;&#x7684;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
-	 * @param {Object} context
-	 */
-	constructor(props, context) {
-		super(props, context);
+  /**
+   * &#x6784;&#x9020;&#x51FD;&#x6570;
+   * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+   * @param {string} [props.type=&apos;text&apos;] &#x8F93;&#x5165;&#x6846;&#x7C7B;&#x578B;
+   * @param {boolean} [props.hasFooter=true] &#x662F;&#x5426;&#x6709;&#x5C3E;&#x90E8;
+   * @param {boolean} [props.hasClear=true] &#x662F;&#x5426;&#x6709;&#x6E05;&#x9664;&#x56FE;&#x6807;
+   * @param {string} [props.placeholder] &#x8F93;&#x5165;&#x6846; placeholder
+   * @param {function} [props.onBlur] &#x8F93;&#x5165;&#x6846;&#x5931;&#x7126;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
+   * @param {function} [props.onFocus] &#x8F93;&#x5165;&#x6846;&#x6FC0;&#x6D3B;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
+   * @param {function} [props.onChange] &#x8F93;&#x5165;&#x6846;&#x503C;&#x6539;&#x53D8;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
+   * @param {function} [props.onClear] &#x6E05;&#x695A;&#x8F93;&#x5165;&#x6846;&#x5185;&#x5BB9;&#x7684;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
 
-		/**
-		 * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
-		 * @type {Object}
-		 * @property {boolean} state.active &#x5F53;&#x524D;&#x8F93;&#x5165;&#x6846;&#x662F;&#x5426;&#x662F;&#x6FC0;&#x6D3B;&#x72B6;&#x6001;
-		 */
-		this.state = {
-			active: false
-		};
-	}
+    /**
+     * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
+     * @type {Object}
+     * @property {boolean} state.active &#x5F53;&#x524D;&#x8F93;&#x5165;&#x6846;&#x662F;&#x5426;&#x662F;&#x6FC0;&#x6D3B;&#x72B6;&#x6001;
+     */
+    this.state = {
+      active: false
+    };
+  }
 
-	onBlur(e) {
-		const {onBlur} = this.props;
+  onBlur(e) {
+    const {onBlur} = this.props;
 
-		onBlur &amp;&amp; onBlur(e);
-		this.setState({
-			active: false
-		});
-	}
+    onBlur &amp;&amp; onBlur(e);
+    this.setState({
+      active: false
+    });
+  }
 
-	onFocus(e) {
-		const {onFocus} = this.props;
+  onFocus(e) {
+    const {onFocus} = this.props;
 
-		onFocus &amp;&amp; onFocus(e);
-		this.setState({
-			active: true
-		});
-	}
+    onFocus &amp;&amp; onFocus(e);
+    this.setState({
+      active: true
+    });
+  }
 
-	onChange(e) {
-		const {onChange} = this.props;
-		const innerValue = e.target.value;
+  onChange(e) {
+    const {onChange} = this.props;
+    const innerValue = e.target.value;
 
-		onChange &amp;&amp; onChange(e, innerValue);
-	}
+    onChange &amp;&amp; onChange(e, innerValue);
+  }
 
-	onClear(e) {
-		const {onClear} = this.props;
-		const input = this.refs.input;
+  onClear(e) {
+    const {onClear} = this.props;
+    const input = this.refs.input;
 
-		input.focus();
-		onClear &amp;&amp; onClear(e, &apos;&apos;);
-	}
+    input.focus();
+    onClear &amp;&amp; onClear(e, &apos;&apos;);
+  }
 
-	render() {
-		let {
-			placeholder,
-			hasFooter,
-			hasClear,
-			onBlur,
-			onFocus,
-			onChange,
-			onClear,
-			children,
-			className,
-			value,
-			...rest
-		} = this.props;
-		const {active} = this.state;
-		let clazz = classNames(prefix, {
-			[className]: className,
-			&apos;active&apos;: active || value ? &apos;active&apos; : false,
-			&apos;has-footer&apos;: hasFooter ? &apos;has-footer&apos; : false
-		});
-		let placeHolderClazz = classNames(&apos;searchbar-placeholder&apos;);
+  render() {
+    let {
+      placeholder,
+      hasFooter,
+      hasClear,
+      className,
+      value,
+      ...rest
+    } = this.props;
+    const {active} = this.state;
+    let clazz = classNames(prefix, {
+      [className]: className,
+      &apos;active&apos;: active || value ? &apos;active&apos; : false,
+      &apos;has-footer&apos;: hasFooter ? &apos;has-footer&apos; : false
+    });
+    let placeHolderClazz = classNames(&apos;searchbar-placeholder&apos;);
+    delete rest.onClear;
 
-		return (
-			&lt;div className={clazz}&gt;
-				&lt;input 
-					{...rest} 
-					ref=&quot;input&quot;
-					value={value}
-					onBlur={e =&gt; {
-						this.onBlur(e);
-					}} 
-					onFocus={e =&gt; {
-						this.onFocus(e);
-					}}
-					onChange={e =&gt; {
-						this.onChange(e);
-					}}
-				/&gt;
-				&lt;div className={placeHolderClazz}&gt;
-					&lt;i&gt;&lt;/i&gt;
-					{value ? null : (
-						&lt;span&gt;{placeholder}&lt;/span&gt;
-					)}
-				&lt;/div&gt;
-				{hasClear ? (
-					&lt;a 
-						className={value ? &apos;active&apos; : &apos;&apos;} 
-						onClick={e =&gt; {
-							this.onClear(e);
-						}}&gt;
-					&lt;/a&gt;
-				) : null}
-			&lt;/div&gt;
-		);
-	}
+    return (
+      &lt;div className={clazz}&gt;
+        &lt;input
+          {...rest}
+          ref=&apos;input&apos;
+          value={value}
+          onBlur={e =&gt; {
+            this.onBlur(e);
+          }}
+          onFocus={e =&gt; {
+            this.onFocus(e);
+          }}
+          onChange={e =&gt; {
+            this.onChange(e);
+          }}
+        /&gt;
+        &lt;div className={placeHolderClazz}&gt;
+          &lt;i&gt;&lt;/i&gt;
+          {value ? null : (
+            &lt;span&gt;{placeholder}&lt;/span&gt;
+          )}
+        &lt;/div&gt;
+        {hasClear ? (
+          &lt;a
+            className={value ? &apos;active&apos; : &apos;&apos;}
+            onClick={e =&gt; {
+              this.onClear(e);
+            }}&gt;
+          &lt;/a&gt;
+        ) : null}
+      &lt;/div&gt;
+    );
+  }
 }
 
 SearchBarInput.propTypes = {
-	type: PropTypes.string,
-	hasFooter: PropTypes.bool,
-	hasClear: PropTypes.bool,
-	placeholder: PropTypes.string,
-	onBlur: PropTypes.func,
-	onFocus: PropTypes.func,
-	onChange: PropTypes.func,
-	onClear: PropTypes.func
+  type: PropTypes.string,
+  hasFooter: PropTypes.bool,
+  hasClear: PropTypes.bool,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  onChange: PropTypes.func,
+  onClear: PropTypes.func,
+  className: PropTypes.string
 };
 
 SearchBarInput.defaultProps = {
-	type: &apos;text&apos;,
-	hasFooter: true,
-	hasClear: true
+  type: &apos;text&apos;,
+  hasFooter: true,
+  hasClear: true
 };
-
 </code></pre>
 
 </div>

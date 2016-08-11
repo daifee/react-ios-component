@@ -4,7 +4,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
@@ -16,23 +16,25 @@ const prefix = 'navbar-item';
  * @param {string} [props.label] 导航条子项显示的内容
  */
 export default function NavBarItem(props) {
-	const {
-		label,
-		children,
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
+  const {
+    label,
+    children,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
 
-	return (
-		<div className={clazz} {...rest}>
-			{children || label}
-		</div>
-	);
+  return (
+    <div className={clazz} {...rest}>
+      {children || label}
+    </div>
+  );
 }
 
 NavBarItem.propTypes = {
-	label: PropTypes.string
+  label: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node
 };

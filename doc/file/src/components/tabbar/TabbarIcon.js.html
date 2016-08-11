@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -102,7 +102,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import config from &apos;../util/config&apos;;
 import {classNames} from &apos;../util&apos;;
@@ -119,43 +119,46 @@ const prefix = &apos;tabbar-icon&apos;;
  * @param {string} [props.badgeColor=&apos;red&apos;] &#x5FBD;&#x7AE0;&#x7684;&#x80CC;&#x666F;&#x989C;&#x8272;
  */
 export default function TabBarIcon(props) {
-	const {
-		icon,
-		badge,
-		badgeColor,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
+  const {
+    icon,
+    badge,
+    badgeColor,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
 
-	return (
-		&lt;div className={clazz} {...rest}&gt;
-			{icon ? (
-				&lt;Icon value={icon}&gt;
-					{badge ? (
-						&lt;Badge bgColor={badgeColor}&gt;{badge}&lt;/Badge&gt;
-					) : null}
-				&lt;/Icon&gt;
-			) : children}
-		&lt;/div&gt;
-	);
+  return (
+    &lt;div className={clazz} {...rest}&gt;
+      {icon ? (
+        &lt;Icon value={icon}&gt;
+          {badge ? (
+            &lt;Badge bgColor={badgeColor}&gt;{badge}&lt;/Badge&gt;
+          ) : null}
+        &lt;/Icon&gt;
+      ) : children}
+    &lt;/div&gt;
+  );
 }
 
 TabBarIcon.propTypes = {
-	icon: PropTypes.string,
-	badge: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string
-	]),
-	badgeColor: PropTypes.oneOf(config.colors)
-}
+  icon: PropTypes.string,
+  badge: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
+  badgeColor: PropTypes.oneOf(config.colors),
+  className: PropTypes.string,
+  children: PropTypes.node
+};
 
 TabBarIcon.defaultProps = {
-	badgeColor: &apos;red&apos;
-};</code></pre>
+  badgeColor: &apos;red&apos;
+};
+</code></pre>
 
 </div>
 

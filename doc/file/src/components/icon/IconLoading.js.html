@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,7 +101,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import {classNames, px2rem} from &apos;../util&apos;;
 
@@ -109,55 +109,58 @@ const prefix = &apos;icon-loading&apos;;
 const defaultSize = 34;
 
 export default function IconLoading(props) {
-	const {
-		size,
-		className,
-		style,
-		...rest
-	} = props;
-	const loadingLeafs = createLeafs(prefix);
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	let rem = px2rem(size);
-	let scale = size / defaultSize;
-	let scaleStyle = {
-		transform: (`scale(${scale})`)
-	};
-	let newStyle = {
-		...style,
-		width: `${rem}rem`,
-		height: `${rem}rem`
-	};
+  const {
+    size,
+    className,
+    style,
+    ...rest
+  } = props;
+  const loadingLeafs = createLeafs(prefix);
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  let rem = px2rem(size);
+  let scale = size / defaultSize;
+  let scaleStyle = {
+    transform: (`scale(${scale})`)
+  };
+  let newStyle = {
+    ...style,
+    width: `${rem}rem`,
+    height: `${rem}rem`
+  };
 
-	return (
-		&lt;div className={clazz} style={newStyle} {...rest}&gt;
-			&lt;div style={scaleStyle}&gt;{loadingLeafs}&lt;/div&gt;
-		&lt;/div&gt;
-	);
+  return (
+    &lt;div className={clazz} style={newStyle} {...rest}&gt;
+      &lt;div style={scaleStyle}&gt;{loadingLeafs}&lt;/div&gt;
+    &lt;/div&gt;
+  );
 }
 
 IconLoading.propTypes = {
-	size: PropTypes.number
+  size: PropTypes.number,
+  style: PropTypes.object,
+  className: PropTypes.string
 };
 
 IconLoading.defaultProps = {
-	size: defaultSize
+  size: defaultSize
 };
 
 function createLeafs(prefix) {
-	const count = 12;
-	const leafPrefix = `${prefix}-leaf`;
-	const leafs = [];
-	let className;
+  const count = 12;
+  const leafPrefix = `${prefix}-leaf`;
+  const leafs = [];
+  let className;
 
-	for(let i = 0; i &lt; count; i++) {
-		className = classNames(leafPrefix, `${leafPrefix}-${i}`);
-		leafs.push(&lt;i className={className} key={i}&gt;&lt;/i&gt;);
-	}
+  for (let i = 0; i &lt; count; i++) {
+    className = classNames(leafPrefix, `${leafPrefix}-${i}`);
+    leafs.push(&lt;i className={className} key={i}&gt;&lt;/i&gt;);
+  }
 
-	return leafs;
-}</code></pre>
+  return leafs;
+}
+</code></pre>
 
 </div>
 

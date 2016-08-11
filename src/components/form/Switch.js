@@ -3,7 +3,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
@@ -14,19 +14,23 @@ const prefix = 'switch';
  * @param {Object} props 组件所使用的属性
  */
 export default function Switch(props) {
-	const {
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
+  const {
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
 
-	return (
-		<input 
-			className={clazz} 
-			type="checkbox"
-			{...rest}
-		/>
-	);
+  return (
+    <input
+      className={clazz}
+      type='checkbox'
+      {...rest}
+    />
+  );
 }
+
+Switch.propTypes = {
+  className: PropTypes.string
+};

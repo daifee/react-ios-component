@@ -1,7 +1,7 @@
 /**
  * @author haw
  */
-import '../base'; 
+import '../base';
 import './style';
 import './self-style';
 

@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,16 +101,14 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes,
+  Component
 } from &apos;react&apos;;
 import {
-	IconLoading
+  IconLoading
 } from &apos;../icon&apos;;
-import Popup from &apos;../popup&apos;;
 import Portal from &apos;../portal&apos;;
 import {classNames} from &apos;../util&apos;;
-import config from &apos;../util/config&apos;;
 
 const prefix = &apos;indicator&apos;;
 
@@ -119,80 +117,85 @@ const prefix = &apos;indicator&apos;;
  */
 export default class Indicator extends Component {
 
-	/**
-	 * &#x6784;&#x9020;&#x51FD;&#x6570;
-	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
-	 * @param {PropTypes.node} [props.icon] &#x6307;&#x793A;&#x5668;&#x8981;&#x663E;&#x793A;&#x7684;&#x56FE;&#x6807;
-	 * @param {PropTypes.node} [props.content] &#x6307;&#x793A;&#x5668;&#x8981;&#x663E;&#x793A;&#x7684;&#x5185;&#x5BB9;
-	 * @param {boolean} [props.visible] &#x6D3B;&#x52A8;&#x6307;&#x793A;&#x5668;&#x662F;&#x5426;&#x663E;&#x793A;
-	 * @param {number} [props.timeout] &#x6D3B;&#x52A8;&#x6307;&#x793A;&#x5668;&#x81EA;&#x52A8;&#x5173;&#x95ED;&#x7684;&#x65F6;&#x95F4;
-	 * @param {function} props.close &#x5173;&#x95ED;&#x6307;&#x793A;&#x5668;&#x7684;&#x56DE;&#x8C03;&#xFF08;&#x914D;&#x5408; API &#x8C03;&#x7528;&#x6765;&#x4F7F;&#x7528;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x7528;&#x624B;&#x52A8;&#x4F20;&#xFF09;
-	 * @param {Object} context
-	 */
-	constructor(props, context) {
-		super(props, context);
+  /**
+   * &#x6784;&#x9020;&#x51FD;&#x6570;
+   * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+   * @param {PropTypes.node} [props.icon] &#x6307;&#x793A;&#x5668;&#x8981;&#x663E;&#x793A;&#x7684;&#x56FE;&#x6807;
+   * @param {PropTypes.node} [props.content] &#x6307;&#x793A;&#x5668;&#x8981;&#x663E;&#x793A;&#x7684;&#x5185;&#x5BB9;
+   * @param {boolean} [props.visible] &#x6D3B;&#x52A8;&#x6307;&#x793A;&#x5668;&#x662F;&#x5426;&#x663E;&#x793A;
+   * @param {number} [props.timeout] &#x6D3B;&#x52A8;&#x6307;&#x793A;&#x5668;&#x81EA;&#x52A8;&#x5173;&#x95ED;&#x7684;&#x65F6;&#x95F4;
+   * @param {function} props.close &#x5173;&#x95ED;&#x6307;&#x793A;&#x5668;&#x7684;&#x56DE;&#x8C03;&#xFF08;&#x914D;&#x5408; API &#x8C03;&#x7528;&#x6765;&#x4F7F;&#x7528;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x7528;&#x624B;&#x52A8;&#x4F20;&#xFF09;
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
 
-		this.timer = null;
-	}
+    this.timer = null;
+  }
 
-	componentDidMount() {
-		this._delayClose();
-	}
+  componentDidMount() {
+    this._delayClose();
+  }
 
-	componentDidUpdate(){
-		this._delayClose();
-	}
+  componentDidUpdate() {
+    this._delayClose();
+  }
 
-	_delayClose() {
-		const {
-			visible, 
-			timeout,
-			close
-		} = this.props;
+  _delayClose() {
+    const {
+      visible,
+      timeout,
+      close,
+      onClose
+    } = this.props;
 
-		if(visible &amp;&amp; timeout) {
-			clearTimeout(this.timer);
-			this.timer = setTimeout(() =&gt; {
-				close &amp;&amp; close();
-			}, timeout);
-		}
-	}
+    if (visible &amp;&amp; timeout) {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() =&gt; {
+        onClose &amp;&amp; onClose();
+        close &amp;&amp; close();
+      }, timeout);
+    }
+  }
 
-	render() {
-		const {
-			icon,
-			content,
-			visible,
-			timeout,
-			close,
-			className,
-			children,
-			...rest
-		} = this.props;
-		let clazz = classNames(prefix, {
-			[className]: className
-		});
+  render() {
+    const {
+      icon,
+      content,
+      visible,
+      timeout,
+      close,
+      className,
+      children,
+      ...rest
+    } = this.props;
+    let clazz = classNames(prefix, {
+      [className]: className
+    });
 
-		if(!visible) {
-			return null;
-		}
-		return (
-			&lt;div className={clazz} {...rest}&gt;
-				{icon ? (
-					&lt;div&gt;&lt;IconLoading /&gt;&lt;/div&gt;
-				) : null}
-				&lt;p&gt;{content || children}&lt;/p&gt;
-			&lt;/div&gt;
-		);
-	}
+    if (!visible) {
+      return null;
+    }
+    return (
+      &lt;div className={clazz} {...rest}&gt;
+        {icon ? (
+          &lt;div&gt;&lt;IconLoading /&gt;&lt;/div&gt;
+        ) : null}
+        &lt;p&gt;{content || children}&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
 }
 
 Indicator.propTypes = {
-	icon: PropTypes.node,
-	content: PropTypes.node,
-	visible: PropTypes.bool,
-	timeout: PropTypes.number,
-	close: PropTypes.func
+  icon: PropTypes.node,
+  content: PropTypes.node,
+  visible: PropTypes.bool,
+  timeout: PropTypes.number,
+  close: PropTypes.func,
+  onClose: PropTypes.func,
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 /**
@@ -201,9 +204,10 @@ Indicator.propTypes = {
  * @param  {Node} container &#x6D3B;&#x52A8;&#x6307;&#x793A;&#x5668;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
  */
 Indicator.show = (props, container) =&gt; {
-	props.timeout = props.timeout || 1500;
-	Portal.show(Indicator, props, container);
-};</code></pre>
+  props.timeout = props.timeout || 1500;
+  Portal.show(Indicator, props, container);
+};
+</code></pre>
 
 </div>
 

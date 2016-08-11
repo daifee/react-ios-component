@@ -9,15 +9,15 @@ $mask-bg: rgba(0, 0, 0, .2);
 $mask-bg-transparent: rgba(0, 0, 0, 0);
 
 #{$selector} {
-	z-index: $z-index-mask;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: $mask-bg;
+  z-index: $z-index-mask;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $mask-bg;
 
-	&-transparent {
-		background-color: $mask-bg-transparent;
-	}
+  &-transparent {
+    background-color: $mask-bg-transparent;
+  }
 }

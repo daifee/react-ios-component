@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -102,7 +102,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import config from &apos;../util/config&apos;;
 import {classNames} from &apos;../util&apos;;
@@ -119,50 +119,53 @@ const prefix = &apos;button&apos;;
  * @param {boolean} [props.color] &#x6309;&#x94AE;&#x6587;&#x6848;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E3B;&#x9898;&#x989C;&#x8272;
  */
 export default function Button(props) {
-	const {
-		component,
-		size,
-		fill,
-		color,
-		active,
-		disabled,
-		className,
-		children,
-		...rest
-	} = props;
-	const Component = component;
-	let clazz = classNames(prefix, {
-		[`${prefix}-${size}`]: !!size,
-		[`${prefix}-fill`]: fill,
-		[`${prefix}-${color}`]: !!color,
-		[`${prefix}-disabled`]: disabled,
-		[className]: className,
-		active: active ? &apos;active&apos; : false
-	});
+  const {
+    component,
+    size,
+    fill,
+    color,
+    active,
+    disabled,
+    className,
+    children,
+    ...rest
+  } = props;
+  const Component = component;
+  let clazz = classNames(prefix, {
+    [`${prefix}-${size}`]: !!size,
+    [`${prefix}-fill`]: fill,
+    [`${prefix}-${color}`]: !!color,
+    [`${prefix}-disabled`]: disabled,
+    [className]: className,
+    active: active ? &apos;active&apos; : false
+  });
 
-	return (
-		&lt;Component className={clazz} {...rest}&gt;
-			{children}
-		&lt;/Component&gt;
-	);
+  return (
+    &lt;Component className={clazz} {...rest}&gt;
+      {children}
+    &lt;/Component&gt;
+  );
 }
 
 Button.propTypes = {
-	component: PropTypes.oneOf([&apos;a&apos;, &apos;button&apos;]),
-	size: PropTypes.oneOf([&apos;&apos;, &apos;lg&apos;]),
-	fill: PropTypes.bool,
-	disabled: PropTypes.bool,
-	color: PropTypes.oneOf(config.colors)
+  component: PropTypes.oneOf([&apos;a&apos;, &apos;button&apos;]),
+  size: PropTypes.oneOf([&apos;&apos;, &apos;lg&apos;]),
+  fill: PropTypes.bool,
+  disabled: PropTypes.bool,
+  color: PropTypes.oneOf(config.colors),
+  active: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 Button.defaultProps = {
-	component: &apos;a&apos;,
-	size: &apos;&apos;,
-	fill: false,
-	disabled: false,
-	color: &apos;&apos;
+  component: &apos;a&apos;,
+  size: &apos;&apos;,
+  fill: false,
+  disabled: false,
+  color: &apos;&apos;,
+  active: false
 };
-
 </code></pre>
 
 </div>

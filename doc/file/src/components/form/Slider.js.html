@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,11 +101,11 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes,
+  Component
 } from &apos;react&apos;;
 import {
-	classNames
+  classNames
 } from &apos;../util&apos;;
 
 const prefix = &apos;slider&apos;;
@@ -115,172 +115,174 @@ const prefix = &apos;slider&apos;;
  */
 export default class Slider extends Component {
 
-	/**
-	 * &#x6784;&#x9020;&#x51FD;&#x6570;
-	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
-	 * @param {number} [props.value=0] &#x6ED1;&#x5757;&#x7684;&#x503C;
-	 * @param {number} [props.min=0] &#x6ED1;&#x5757;&#x7684;&#x6700;&#x5C0F;&#x503C;
-	 * @param {number} [props.max=100] &#x6ED1;&#x5757;&#x7684;&#x6700;&#x5927;&#x503C;
-	 * @param {PropTypes.node} [minLabel=0] &#x6700;&#x5C0F;&#x503C;&#x7684;&#x663E;&#x793A;&#x6587;&#x6848;
-	 * @param {PropTypes.node} [maxLabel=0] &#x6700;&#x5927;&#x503C;&#x7684;&#x663E;&#x793A;&#x6587;&#x6848;
-	 * @param {boolean} [props.disabled=false] &#x662F;&#x5426;&#x4E0D;&#x53EF;&#x7528;
-	 * @param {function} [props.onChange] &#x6ED1;&#x5757;&#x6ED1;&#x52A8;&#x6539;&#x53D8;&#x503C;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
-	 * @param {Object} context 
-	 */
-	constructor(props, context) {
-		super(props, context);
+  /**
+   * &#x6784;&#x9020;&#x51FD;&#x6570;
+   * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+   * @param {number} [props.value=0] &#x6ED1;&#x5757;&#x7684;&#x503C;
+   * @param {number} [props.min=0] &#x6ED1;&#x5757;&#x7684;&#x6700;&#x5C0F;&#x503C;
+   * @param {number} [props.max=100] &#x6ED1;&#x5757;&#x7684;&#x6700;&#x5927;&#x503C;
+   * @param {PropTypes.node} [minLabel=0] &#x6700;&#x5C0F;&#x503C;&#x7684;&#x663E;&#x793A;&#x6587;&#x6848;
+   * @param {PropTypes.node} [maxLabel=0] &#x6700;&#x5927;&#x503C;&#x7684;&#x663E;&#x793A;&#x6587;&#x6848;
+   * @param {boolean} [props.disabled=false] &#x662F;&#x5426;&#x4E0D;&#x53EF;&#x7528;
+   * @param {function} [props.onChange] &#x6ED1;&#x5757;&#x6ED1;&#x52A8;&#x6539;&#x53D8;&#x503C;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
 
-		this.isInSliding = false;
-		this.start = 0;
+    this.isInSliding = false;
+    this.start = 0;
 
-		/**
-		 * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
-		 * @type {Object}
-		 * @property {number} state.percent &#x5F53;&#x524D;&#x503C;&#x5360;&#x6ED1;&#x5757;&#x7684;&#x767E;&#x5206;&#x6BD4;
-		 */
-		this.state = {
-			percent: this.caclInitPosition(this.props.value)
-		};
-	}
+    /**
+     * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
+     * @type {Object}
+     * @property {number} state.percent &#x5F53;&#x524D;&#x503C;&#x5360;&#x6ED1;&#x5757;&#x7684;&#x767E;&#x5206;&#x6BD4;
+     */
+    this.state = {
+      percent: this.caclInitPosition(this.props.value)
+    };
+  }
 
-	componentWillReceiveProps({value}) {
-		if(!this.isInSliding) {
-			this.state = {
-				percent: this.caclInitPosition(value)
-			};
-		}
-	}
+  componentWillReceiveProps({value}) {
+    if (!this.isInSliding) {
+      this.state = {
+        percent: this.caclInitPosition(value)
+      };
+    }
+  }
 
-	_startSlide = (e) =&gt; {
-		const targetTouch = e.targetTouches[0];
+  _startSlide = (e) =&gt; {
+    const targetTouch = e.targetTouches[0];
 
-		this.start = targetTouch.clientX;
-		this.isInSliding = true;
-	};
+    this.start = targetTouch.clientX;
+    this.isInSliding = true;
+  };
 
-	_sliding = (e) =&gt; {
-		const changedTouch = e.changedTouches[0];
-		this.calcPosition(changedTouch.clientX);
-	};
+  _sliding = (e) =&gt; {
+    const changedTouch = e.changedTouches[0];
 
-	_endSlide = (e) =&gt; {
-		const changedTouch = e.changedTouches[0];
-		this.calcPosition(changedTouch.clientX);
-		
-		this.isInSliding = false;
-	};
+    e.stopPropagation();
+    e.preventDefault();
+    this.calcPosition(changedTouch.clientX);
+  };
 
-	calcPosition(clientX) {
-		const {
-			onChange
-		} = this.props;
-		const sliderBar = this.refs.sliderBar;
-		const offsetWidth = sliderBar.offsetWidth;
-		const offsetLeft = this.state.percent * offsetWidth;
-		const diff = clientX - this.start;
-		const distance = offsetLeft + diff;
-		let percent = distance / offsetWidth;
+  _endSlide = (e) =&gt; {
+    const changedTouch = e.changedTouches[0];
 
-		percent = percent &lt; 0 ? 0 : percent;
-		percent = percent &gt; 1 ? 1 : percent;
-		this.start = clientX;
-		this.setState({percent});
+    this.calcPosition(changedTouch.clientX);
+    this.isInSliding = false;
+  };
 
-		const value = this.caclValue(percent);
-		onChange &amp;&amp; onChange(value);
-	}
+  calcPosition(clientX) {
+    const {
+      onChange
+    } = this.props;
+    const sliderBar = this.refs.sliderBar;
+    const offsetWidth = sliderBar.offsetWidth;
+    const offsetLeft = this.state.percent * offsetWidth;
+    const diff = clientX - this.start;
+    const distance = offsetLeft + diff;
+    let percent = distance / offsetWidth;
 
-	caclInitPosition(value) {
-		const {
-			min,
-			max
-		} = this.props;
-		const percent = (value - min) / (max - min);
+    percent = percent &lt; 0 ? 0 : percent;
+    percent = percent &gt; 1 ? 1 : percent;
+    this.start = clientX;
+    this.setState({percent});
 
-		return percent;
-	}
+    const value = this.caclValue(percent);
+    onChange &amp;&amp; onChange(value);
+  }
 
-	caclValue(percent) {
-		const {
-			min,
-			max
-		} = this.props;
+  caclInitPosition(value) {
+    const {
+      min,
+      max
+    } = this.props;
+    const percent = (value - min) / (max - min);
 
-		return percent * (max - min);
-	}
+    return percent;
+  }
 
-	render() {
-		const {
-			min,
-			max,
-			minLabel,
-			maxLabel,
-			disabled,
-			onChange,
-			className,
-			...rest
-		} = this.props;
-		const {
-			percent
-		} = this.state;
-		const width = `${percent * 100}%`;
-		let clazz = classNames(prefix, {
-			[className]: className,
-			disabled: disabled ? &apos;disabled&apos; : &apos;&apos;
-		});
-		let leftClazz = classNames(`${prefix}-left`);
-		let rightClazz = classNames(`${prefix}-right`);
-		let barClazz = classNames(`${prefix}-bar`);
+  caclValue(percent) {
+    const {
+      min,
+      max
+    } = this.props;
 
-		return (
-			&lt;div className={clazz} {...rest}&gt;
-				&lt;div className={leftClazz}&gt;{minLabel}&lt;/div&gt;
-				&lt;div className={barClazz} ref=&quot;sliderBar&quot;&gt;
-					{disabled ? (
-						&lt;a 
-							style={{
-								left: width
-							}}
-						/&gt;
-					) : (
-						&lt;a 
-							style={{
-								left: width
-							}}
-							onTouchStart={this._startSlide}
-							onTouchMove={this._sliding}
-							onTouchEnd={this._endSlide}
-						/&gt;
-					)}
-					&lt;span style={{
-						width: width
-					}}/&gt;
-				&lt;/div&gt;
-				&lt;span/&gt;
-				&lt;div className={rightClazz}&gt;{maxLabel}&lt;/div&gt;
-			&lt;/div&gt;
-		);
-	}
+    return percent * (max - min);
+  }
+
+  render() {
+    const {
+      minLabel,
+      maxLabel,
+      disabled,
+      className,
+      ...rest
+    } = this.props;
+    const {
+      percent
+    } = this.state;
+    const width = `${percent * 100}%`;
+    let clazz = classNames(prefix, {
+      [className]: className,
+      disabled: disabled ? &apos;disabled&apos; : &apos;&apos;
+    });
+    let leftClazz = classNames(`${prefix}-left`);
+    let rightClazz = classNames(`${prefix}-right`);
+    let barClazz = classNames(`${prefix}-bar`);
+
+    return (
+      &lt;div className={clazz} {...rest}&gt;
+        &lt;div className={leftClazz}&gt;{minLabel}&lt;/div&gt;
+        &lt;div className={barClazz} ref=&apos;sliderBar&apos;&gt;
+          {disabled ? (
+            &lt;a
+              style={{
+                left: width
+              }}
+            /&gt;
+          ) : (
+            &lt;a
+              style={{
+                left: width
+              }}
+              onTouchStart={this._startSlide}
+              onTouchMove={this._sliding}
+              onTouchEnd={this._endSlide}
+            /&gt;
+          )}
+          &lt;span style={{
+            width: width
+          }} /&gt;
+        &lt;/div&gt;
+        &lt;span /&gt;
+        &lt;div className={rightClazz}&gt;{maxLabel}&lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
 }
 
 Slider.propTypes = {
-	value: PropTypes.number,
-	min: PropTypes.number,
-	max: PropTypes.number,
-	minLabel: PropTypes.node,
-	maxLabel: PropTypes.node,
-	disabled: PropTypes.bool,
-	onChange: PropTypes.func
+  value: PropTypes.number,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  minLabel: PropTypes.node,
+  maxLabel: PropTypes.node,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
+  className: PropTypes.string
 };
 
 Slider.defaultProps = {
-	value: 0,
-	min: 0,
-	max: 100,
-	minLabel: 0,
-	maxLabel: 100,
-	disabled: false
-};</code></pre>
+  value: 0,
+  min: 0,
+  max: 100,
+  minLabel: 0,
+  maxLabel: 100,
+  disabled: false
+};
+</code></pre>
 
 </div>
 

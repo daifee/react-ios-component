@@ -3,7 +3,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
@@ -15,26 +15,27 @@ const prefix = 'textarea';
  * @param {string} [props.defaultValue=undefined] 多行文本输入框的默认值
  */
 export default function Textarea(props) {
-	const {
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
+  const {
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
 
-	return (
-		<textarea 
-			className={clazz} 
-			{...rest}
-		></textarea>
-	);
+  return (
+    <textarea
+      className={clazz}
+      {...rest}
+    ></textarea>
+  );
 }
 
 Textarea.propTypes = {
-	defaultValue: PropTypes.string
+  defaultValue: PropTypes.string,
+  className: PropTypes.node
 };
 
 Textarea.defaultProps = {
-	defaultValue: undefined
+  defaultValue: undefined
 };

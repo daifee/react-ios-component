@@ -3,7 +3,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
@@ -17,33 +17,35 @@ const prefix = 'cell';
  * @param {string} [props.component='div'] 列表项的 `html` 标签，可选的有 `['a', 'label', 'div']`
  */
 export default function Cell(props) {
-	const {
-		hasArrow,
-		href,
-		component,
-		className,
-		children,
-		...rest
-	} = props;
-	let Component = href ? 'a' : component;
-	let clazz = classNames(prefix, {
-		[`${prefix}-arrow`]: Component === 'a' || hasArrow,
-		[className]: className
-	});
+  const {
+    hasArrow,
+    href,
+    component,
+    className,
+    children,
+    ...rest
+  } = props;
+  let Component = href ? 'a' : component;
+  let clazz = classNames(prefix, {
+    [`${prefix}-arrow`]: Component === 'a' || hasArrow,
+    [className]: className
+  });
 
-	return (
-		<Component className={clazz} {...rest}>
-			{children}
-		</Component>
-	);
+  return (
+    <Component className={clazz} {...rest}>
+      {children}
+    </Component>
+  );
 }
 
 Cell.propTypes = {
-	hasArrow: PropTypes.bool,
-	href: PropTypes.string,
-	component: PropTypes.oneOf(['a', 'label', 'div'])
+  hasArrow: PropTypes.bool,
+  href: PropTypes.string,
+  component: PropTypes.oneOf(['a', 'label', 'div']),
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 Cell.defaultProps = {
-	component: 'div'
+  component: 'div'
 };

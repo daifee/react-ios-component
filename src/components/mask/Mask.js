@@ -3,33 +3,35 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
 const prefix = 'mask';
 
 export default function Mask(props) {
-	const {
-		transparent,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[`${prefix}-transparent`]: transparent,
-		className: className
-	});
+  const {
+    transparent,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [`${prefix}-transparent`]: transparent,
+    className: className
+  });
 
-	return (
-		<div className={clazz} {...rest}>{children}</div>
-	);
+  return (
+    <div className={clazz} {...rest}>{children}</div>
+  );
 }
 
 Mask.propTypes = {
-	transparent: PropTypes.bool
+  transparent: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 Mask.defaultProps = {
-	transparent: false
+  transparent: false
 };

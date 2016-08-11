@@ -6,13 +6,13 @@
 @import "../util/variables";
 
 @each $name, $value in $colors {
-	.#{$namespace}color-#{$name} {
-		color: $value !important;
-	}
+  .#{$namespace}color-#{$name} {
+    color: $value !important;
+  }
 
-	.#{$namespace}bg-#{$name} {
-		background-color: $value !important;
-	}
+  .#{$namespace}bg-#{$name} {
+    background-color: $value !important;
+  }
 }
 
 

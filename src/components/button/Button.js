@@ -4,7 +4,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import config from '../util/config';
 import {classNames} from '../util';
@@ -21,47 +21,50 @@ const prefix = 'button';
  * @param {boolean} [props.color] 按钮文案的颜色，默认为主题颜色
  */
 export default function Button(props) {
-	const {
-		component,
-		size,
-		fill,
-		color,
-		active,
-		disabled,
-		className,
-		children,
-		...rest
-	} = props;
-	const Component = component;
-	let clazz = classNames(prefix, {
-		[`${prefix}-${size}`]: !!size,
-		[`${prefix}-fill`]: fill,
-		[`${prefix}-${color}`]: !!color,
-		[`${prefix}-disabled`]: disabled,
-		[className]: className,
-		active: active ? 'active' : false
-	});
+  const {
+    component,
+    size,
+    fill,
+    color,
+    active,
+    disabled,
+    className,
+    children,
+    ...rest
+  } = props;
+  const Component = component;
+  let clazz = classNames(prefix, {
+    [`${prefix}-${size}`]: !!size,
+    [`${prefix}-fill`]: fill,
+    [`${prefix}-${color}`]: !!color,
+    [`${prefix}-disabled`]: disabled,
+    [className]: className,
+    active: active ? 'active' : false
+  });
 
-	return (
-		<Component className={clazz} {...rest}>
-			{children}
-		</Component>
-	);
+  return (
+    <Component className={clazz} {...rest}>
+      {children}
+    </Component>
+  );
 }
 
 Button.propTypes = {
-	component: PropTypes.oneOf(['a', 'button']),
-	size: PropTypes.oneOf(['', 'lg']),
-	fill: PropTypes.bool,
-	disabled: PropTypes.bool,
-	color: PropTypes.oneOf(config.colors)
+  component: PropTypes.oneOf(['a', 'button']),
+  size: PropTypes.oneOf(['', 'lg']),
+  fill: PropTypes.bool,
+  disabled: PropTypes.bool,
+  color: PropTypes.oneOf(config.colors),
+  active: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 Button.defaultProps = {
-	component: 'a',
-	size: '',
-	fill: false,
-	disabled: false,
-	color: ''
+  component: 'a',
+  size: '',
+  fill: false,
+  disabled: false,
+  color: '',
+  active: false
 };
-

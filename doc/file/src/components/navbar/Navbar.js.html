@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -102,7 +102,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import {classNames} from &apos;../util&apos;;
 import NavBarItem from &apos;./NavbarItem&apos;;
@@ -117,37 +117,40 @@ const prefix = &apos;navbar&apos;;
  * @param {PropTypes.node} [props.rightElement] &#x5BFC;&#x822A;&#x6761;&#x53F3;&#x8FB9;&#x4F4D;&#x7F6E;&#x7684;&#x5185;&#x5BB9;
  */
 export default function NavBar(props) {
-	const {
-		leftElement,
-		rightElement,
-		centerElement,
-		children,
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	let nodes;
+  const {
+    leftElement,
+    rightElement,
+    centerElement,
+    children,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  let nodes;
 
-	if(!children) {
-		nodes = [leftElement, centerElement, rightElement].map((el, i) =&gt; {
-			return &lt;NavBarItem key={i} /&gt;;
-		})
-	}
+  if (!children) {
+    nodes = [leftElement, centerElement, rightElement].map((el, i) =&gt; {
+      return &lt;NavBarItem key={i}&gt;{el}&lt;/NavBarItem&gt;;
+    });
+  }
 
-	return (
-		&lt;div className={clazz} {...rest}&gt;
-			{children || nodes}
-		&lt;/div&gt;
-	);
+  return (
+    &lt;div className={clazz} {...rest}&gt;
+      {children || nodes}
+    &lt;/div&gt;
+  );
 }
 
 NavBar.propTypes = {
-	leftElement: PropTypes.node,
-	centerElement: PropTypes.node,
-	rightElement: PropTypes.node
-};</code></pre>
+  leftElement: PropTypes.node,
+  centerElement: PropTypes.node,
+  rightElement: PropTypes.node,
+  className: PropTypes.string,
+  children: PropTypes.node
+};
+</code></pre>
 
 </div>
 

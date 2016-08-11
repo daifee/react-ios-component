@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,14 +101,14 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes,
+  Component
 } from &apos;react&apos;;
 import Options from &apos;./Options&apos;;
 import {
-	classNames,
-	generateOptions,
-	indexOfOptions
+  classNames,
+  generateOptions,
+  indexOfOptions
 } from &apos;../util&apos;;
 
 const prefix = &apos;picker-body&apos;;
@@ -116,187 +116,183 @@ let now = new Date();
 
 /**
  * &#x5167;&#x8054;&#x65E5;&#x671F;&#x9009;&#x62E9;&#x5668;
+ * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+ * @param {Date} [props.selectedDate=new Date()] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
+ * @param {Date} [props.minDate=new Date()] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+ * @param {Date} [props.maxDate=new Date()] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+ * @param {string} [props.yearUnit=&apos;&apos;] &#x5E74;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+ * @param {string} [props.monthUnit=&apos;&apos;] &#x6708;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+ * @param {string} [props.dateUnit=&apos;&apos;] &#x5929;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+ * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+ * @param {Object} context
  */
 export default class InlineDatePicker extends Component {
 
-	/**
-	 * &#x6784;&#x9020;&#x51FD;&#x6570;
-	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
-	 * @param {Date} [props.selectedDate=new Date()] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
-	 * @param {Date} [props.minDate=new Date()] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
-	 * @param {Date} [props.maxDate=new Date()] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
-	 * @param {string} [props.yearUnit=&apos;&apos;] &#x5E74;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {string} [props.monthUnit=&apos;&apos;] &#x6708;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {string} [props.dateUnit=&apos;&apos;] &#x5929;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
-	 * @param {Object} context
-	 */
-	constructor(props, context) {
-		super(props, context);
-	}
+  _setYear(yearOptions, selectedIndex) {
+    const {
+      selectedDate
+    } = this.props;
+    const year = yearOptions[selectedIndex].value;
+    const month = selectedDate.getMonth();
+    const newDate = copyDate(selectedDate);
 
-	_setYear(yearOptions, selectedIndex) {
-		const {
-			selectedDate
-		} = this.props;
-		const year = yearOptions[selectedIndex].value;
-		const month = selectedDate.getMonth();
-		const newDate = copyDate(selectedDate);
+    newDate.setFullYear(year);
+    this.onChange(adjustDate(newDate, month));
+  }
 
-		newDate.setFullYear(year);
-		this.onChange(adjustDate(newDate, month));
-	}
+  _setMonth(monthOptions, selectedIndex) {
+    const {
+      selectedDate
+    } = this.props;
+    const month = monthOptions[selectedIndex].value - 1;
+    const newDate = copyDate(selectedDate);
 
-	_setMonth(monthOptions, selectedIndex) {
-		const {
-			selectedDate
-		} = this.props;
-		const month = monthOptions[selectedIndex].value - 1;
-		const newDate = copyDate(selectedDate);
+    newDate.setMonth(month);
+    this.onChange(adjustDate(newDate, month));
+  }
 
-		newDate.setMonth(month);
-		this.onChange(adjustDate(newDate, month));
-	}
+  _setDate(dateOptions, selectedIndex) {
+    const {
+      selectedDate
+    } = this.props;
+    const date = dateOptions[selectedIndex].value;
+    const newDate = copyDate(selectedDate);
 
-	_setDate(dateOptions, selectedIndex) {
-		const {
-			selectedDate
-		} = this.props;
-		const date = dateOptions[selectedIndex].value;
-		const newDate = copyDate(selectedDate);
+    newDate.setDate(date);
+    this.onChange(newDate);
+  }
 
-		newDate.setDate(date);
-		this.onChange(newDate);
-	}
+  onChange(newDate) {
+    const {
+      onChange
+    } = this.props;
 
-	onChange(newDate) {
-		const {
-			onChange
-		} = this.props;
+    onChange &amp;&amp; onChange(newDate);
+  }
 
-		onChange &amp;&amp; onChange(newDate);
-	}
+  render() {
+    const {
+      selectedDate,
+      minDate,
+      maxDate,
+      yearUnit,
+      monthUnit,
+      dateUnit,
+      className,
+      ...rest
+    } = this.props;
+    const clazz = classNames(prefix, {
+      [className]: className
+    });
+    const yearOptions = createYearOptions(maxDate, minDate, yearUnit);
+    const monthOptions = createMonthOptions(maxDate, minDate, selectedDate, monthUnit);
+    const dateOptions = createDateOptions(maxDate, minDate, selectedDate, dateUnit);
+    const yearIndex = indexOfOptions(selectedDate.getFullYear(), yearOptions);
+    const monthIndex = indexOfOptions(getMonth(selectedDate), monthOptions);
+    const dateIndex = indexOfOptions(selectedDate.getDate(), dateOptions);
 
-	render() {
-		const {
-			selectedDate,
-			minDate,
-			maxDate,
-			yearUnit,
-			monthUnit,
-			dateUnit,
-			onChange,
-			className,
-			...rest
-		} = this.props;
-		const clazz = classNames(prefix);
-		const yearOptions = createYearOptions(maxDate, minDate, yearUnit);
-		const monthOptions = createMonthOptions(maxDate, minDate, selectedDate, monthUnit);
-		const dateOptions = createDateOptions(maxDate, minDate, selectedDate, dateUnit);
-		const yearIndex = indexOfOptions(selectedDate.getFullYear(), yearOptions);
-		const monthIndex = indexOfOptions(getMonth(selectedDate), monthOptions);
-		const dateIndex = indexOfOptions(selectedDate.getDate(), dateOptions);
-
-		return (
-			&lt;div className={clazz} {...rest}&gt;
-				&lt;Options 
-					selectedIndex={yearIndex}
-					options={yearOptions} 
-					key={&apos;year&apos;} 
-					onChange={this._setYear.bind(this, yearOptions)}
-				/&gt;
-				&lt;Options 
-					selectedIndex={monthIndex}
-					options={monthOptions} 
-					key={&apos;month&apos;} 
-					onChange={this._setMonth.bind(this, monthOptions)}
-				/&gt;
-				&lt;Options 
-					selectedIndex={dateIndex}
-					options={dateOptions} 
-					key={&apos;date&apos;} 
-					onChange={this._setDate.bind(this, dateOptions)}
-				/&gt;
-			&lt;/div&gt;
-		);
-	}
+    return (
+      &lt;div className={clazz} {...rest}&gt;
+        &lt;Options
+          selectedIndex={yearIndex}
+          options={yearOptions}
+          key={&apos;year&apos;}
+          onChange={this._setYear.bind(this, yearOptions)}
+        /&gt;
+        &lt;Options
+          selectedIndex={monthIndex}
+          options={monthOptions}
+          key={&apos;month&apos;}
+          onChange={this._setMonth.bind(this, monthOptions)}
+        /&gt;
+        &lt;Options
+          selectedIndex={dateIndex}
+          options={dateOptions}
+          key={&apos;date&apos;}
+          onChange={this._setDate.bind(this, dateOptions)}
+        /&gt;
+      &lt;/div&gt;
+    );
+  }
 }
 
 function adjustDate(newDate, month) {
-	if(newDate.getMonth() &gt; month) {
-		newDate.setMonth(month);
-		newDate.setDate(getTotalDateOfMonth(newDate));
-	}
+  if (newDate.getMonth() &gt; month) {
+    newDate.setMonth(month);
+    newDate.setDate(getTotalDateOfMonth(newDate));
+  }
 
-	return newDate;
+  return newDate;
 }
 
 function copyDate(date) {
-	return new Date(date.getTime());
+  return new Date(date.getTime());
 }
 
 function createYearOptions(maxDate, minDate, yearUnit) {
-	const max = maxDate.getFullYear();
-	const min = minDate.getFullYear();
+  const max = maxDate.getFullYear();
+  const min = minDate.getFullYear();
 
-	return generateOptions(max, min, yearUnit);
+  return generateOptions(max, min, yearUnit);
 }
 
 function createMonthOptions(maxDate, minDate, selectedDate, monthUnit) {
-	let max = isEqualYear(maxDate, selectedDate) ? getMonth(maxDate) : 12;
-	let min = isEqualYear(minDate, selectedDate) ? getMonth(minDate) : 1;
+  let max = isEqualYear(maxDate, selectedDate) ? getMonth(maxDate) : 12;
+  let min = isEqualYear(minDate, selectedDate) ? getMonth(minDate) : 1;
 
-	return generateOptions(max, min, monthUnit);
+  return generateOptions(max, min, monthUnit);
 }
 
 function createDateOptions(maxDate, minDate, selectedDate, dateUnit) {
-	let max = isEqualYearMonth(maxDate, selectedDate) ? maxDate.getDate() : 
-		getTotalDateOfMonth(selectedDate);
-	let min = isEqualYearMonth(minDate, selectedDate) ? minDate.getDate() : 1;
+  let max = isEqualYearMonth(maxDate, selectedDate) ? maxDate.getDate()
+    : getTotalDateOfMonth(selectedDate);
+  let min = isEqualYearMonth(minDate, selectedDate) ? minDate.getDate() : 1;
 
-	return generateOptions(max, min, dateUnit);
+  return generateOptions(max, min, dateUnit);
 }
 
 function getMonth(date) {
-	return date.getMonth() + 1;
+  return date.getMonth() + 1;
 }
 
 function getTotalDateOfMonth(date) {
-	let newDate = new Date(date.getTime());
+  let newDate = new Date(date.getTime());
 
-	newDate.setDate(1);
-	newDate.setMonth(getMonth(newDate));
-	newDate.setDate(0);
+  newDate.setDate(1);
+  newDate.setMonth(getMonth(newDate));
+  newDate.setDate(0);
 
-	return newDate.getDate();
+  return newDate.getDate();
 }
 
 function isEqualYear(d1, d2) {
-	return d1.getFullYear() === d2.getFullYear();
+  return d1.getFullYear() === d2.getFullYear();
 }
 
 function isEqualYearMonth(d1, d2) {
-	return isEqualYear(d1, d2) &amp;&amp; (getMonth(d1) === getMonth(d2));
+  return isEqualYear(d1, d2) &amp;&amp; (getMonth(d1) === getMonth(d2));
 }
 
 InlineDatePicker.propTypes = {
-	selectedDate: PropTypes.instanceOf(Date),
-	minDate: PropTypes.instanceOf(Date),
-	maxDate: PropTypes.instanceOf(Date),
-	yearUnit: PropTypes.string,
-	monthUnit: PropTypes.string,
-	dateUnit: PropTypes.string,
-	onChange: PropTypes.func
+  selectedDate: PropTypes.instanceOf(Date),
+  minDate: PropTypes.instanceOf(Date),
+  maxDate: PropTypes.instanceOf(Date),
+  yearUnit: PropTypes.string,
+  monthUnit: PropTypes.string,
+  dateUnit: PropTypes.string,
+  onChange: PropTypes.func,
+  className: PropTypes.string
 };
 
 InlineDatePicker.defaultProps = {
-	selectedDate: now,
-	maxDate: now,
-	minDate: now,
-	yearUnit: &apos;&apos;,
-	monthUnit: &apos;&apos;,
-	dateUnit: &apos;&apos;
-};</code></pre>
+  selectedDate: now,
+  maxDate: now,
+  minDate: now,
+  yearUnit: &apos;&apos;,
+  monthUnit: &apos;&apos;,
+  dateUnit: &apos;&apos;
+};
+</code></pre>
 
 </div>
 

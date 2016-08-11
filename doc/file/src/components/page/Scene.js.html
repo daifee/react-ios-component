@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,15 +101,14 @@
  */
 
 import React, {
-	PropTypes,
-	cloneElement
+  PropTypes
 } from &apos;react&apos;;
 import {classNames} from &apos;../util&apos;;
 import ReactCSSTransitionGroup from &apos;react-addons-css-transition-group&apos;;
 
 const prefix = &apos;scene&apos;;
-const animations = [&apos;push&apos;, &apos;pop&apos;, &apos;replace&apos;, 
-	&apos;PUSH&apos;, &apos;POP&apos;, &apos;REPLACE&apos;];
+const animations = [&apos;push&apos;, &apos;pop&apos;, &apos;replace&apos;,
+  &apos;PUSH&apos;, &apos;POP&apos;, &apos;REPLACE&apos;];
 
 /**
  * Scene &#x9875;&#x9762;&#x5207;&#x6362;&#x7684;&#x52A8;&#x753B;&#x573A;&#x666F;
@@ -118,27 +117,27 @@ const animations = [&apos;push&apos;, &apos;pop&apos;, &apos;replace&apos;,
  * @param {number} [props.timeout] &#x573A;&#x666F;&#x5207;&#x6362;&#x65F6;&#x52A8;&#x753B;&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;
  */
 export default function Scene(props) {
-	let {
-		animation,
-		timeout,
-		children,
-		...rest
-	} = props;
-	const clazz = classNames(prefix);
-	const transitionName = classNames(`${prefix}-${animation.toLowerCase()}`);
+  let {
+    animation,
+    timeout,
+    children,
+    ...rest
+  } = props;
+  const clazz = classNames(prefix);
+  const transitionName = classNames(`${prefix}-${animation.toLowerCase()}`);
 
-	return (
-		&lt;ReactCSSTransitionGroup
-			component=&quot;div&quot;
-			transitionName={transitionName}
-			transitionEnterTimeout={timeout}
-			transitionLeaveTimeout={timeout}
-			className={clazz}
-			{...rest}
-		&gt;
-			{children}
-		&lt;/ReactCSSTransitionGroup&gt;
-	);
+  return (
+    &lt;ReactCSSTransitionGroup
+      component=&apos;div&apos;
+      transitionName={transitionName}
+      transitionEnterTimeout={timeout}
+      transitionLeaveTimeout={timeout}
+      className={clazz}
+      {...rest}
+    &gt;
+      {children}
+    &lt;/ReactCSSTransitionGroup&gt;
+  );
 }
 
 /**
@@ -148,12 +147,14 @@ export default function Scene(props) {
  * timeout: &#x573A;&#x666F;&#x5207;&#x6362;&#x65F6;&#x52A8;&#x753B;&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; `400` &#xFF08;&#x5355;&#x4F4D;&#x662F;&#x6BEB;&#x79D2;&#xFF09;
  */
 Scene.propTypes = {
-	animation: PropTypes.oneOf(animations),
-	timeout: PropTypes.number
+  animation: PropTypes.oneOf(animations),
+  timeout: PropTypes.number,
+  children: PropTypes.node
 };
 Scene.defaultProps = {
-	timeout: 400
-};</code></pre>
+  timeout: 400
+};
+</code></pre>
 
 </div>
 

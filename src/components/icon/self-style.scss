@@ -15,11 +15,11 @@ $rotateDeg: 30;
 $opacityUnit: 0.04;
 
 #{$selector} {
-	display: inline-flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-	width: 1.7rem;
-	height: 1.7rem;
+  width: 1.7rem;
+  height: 1.7rem;
   vertical-align: middle;
 
   & > div {
@@ -29,7 +29,7 @@ $opacityUnit: 0.04;
     overflow: hidden;
   }
 
-	&-leaf {
+  &-leaf {
     position: absolute;
     top: 50%;
     right: 0;
@@ -41,13 +41,13 @@ $opacityUnit: 0.04;
     transform-origin: -7px 0;
 
     @for $i from 0 to $count {
-			&-#{$i} {
-				transform: rotate(#{$i * $rotateDeg}deg);
-				opacity: (1 - $i * $opacityUnit);
-  			animation: #{$keyframes-loading}#{$i} 1.25s linear infinite;
-			}
-		}
-	}
+      &-#{$i} {
+        transform: rotate(#{$i * $rotateDeg}deg);
+        opacity: (1 - $i * $opacityUnit);
+        animation: #{$keyframes-loading}#{$i} 1.25s linear infinite;
+      }
+    }
+  }
 }
 
 // animation

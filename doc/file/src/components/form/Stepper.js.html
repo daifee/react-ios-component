@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,7 +101,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import {classNames} from &apos;../util&apos;;
 
@@ -117,59 +117,61 @@ const prefix = &apos;stepper&apos;;
  * @param {function} [props.onChange] &#x6B65;&#x8FDB;&#x5668;&#x6539;&#x53D8;&#x503C;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
  */
 export default function Stepper(props) {
-	const {
-		value,
-		min,
-		max,
-		step,
-		onChange,
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	let cutClazz = classNames(`${prefix}-cut`, {
-		disabled: value === min ? &apos;disabled&apos; : &apos;&apos;
-	});
-	let addClazz = classNames(`${prefix}-add`, {
-		disabled: value === max ? &apos;disabled&apos; : &apos;&apos;
-	});
+  const {
+    value,
+    min,
+    max,
+    step,
+    onChange,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  let cutClazz = classNames(`${prefix}-cut`, {
+    disabled: value === min ? &apos;disabled&apos; : &apos;&apos;
+  });
+  let addClazz = classNames(`${prefix}-add`, {
+    disabled: value === max ? &apos;disabled&apos; : &apos;&apos;
+  });
 
-	return (
-		&lt;div className={clazz} {...rest}&gt;
-			&lt;a className={cutClazz} onClick={() =&gt; {
-				let current = value - step;
+  return (
+    &lt;div className={clazz} {...rest}&gt;
+      &lt;a className={cutClazz} onClick={() =&gt; {
+        let current = value - step;
 
-				if(current &gt;= min) {
-					onChange &amp;&amp; onChange(current, value, step);
-				}
-			}}&gt;&lt;/a&gt;
-			&lt;a className={addClazz}  onClick={() =&gt; {
-				let current = value + step;
+        if (current &gt;= min) {
+          onChange &amp;&amp; onChange(current, value, step);
+        }
+      }}&gt;&lt;/a&gt;
+      &lt;a className={addClazz} onClick={() =&gt; {
+        let current = value + step;
 
-				if(current &lt;= max) {
-					onChange &amp;&amp; onChange(current, value, step);
-				}
-			}}&gt;&lt;/a&gt;
-		&lt;/div&gt;
-	);
+        if (current &lt;= max) {
+          onChange &amp;&amp; onChange(current, value, step);
+        }
+      }}&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  );
 }
 
 Stepper.propTypes = {
-	value: PropTypes.number,
-	min: PropTypes.number,
-	max: PropTypes.number,
-	step: PropTypes.number,
-	onChange: PropTypes.func
+  value: PropTypes.number,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  onChange: PropTypes.func,
+  className: PropTypes.string
 };
 
 Stepper.defaultProps = {
-	value: 0,
-	step: 1,
-	min: -Infinity,
-	max: Infinity
-};</code></pre>
+  value: 0,
+  step: 1,
+  min: -Infinity,
+  max: Infinity
+};
+</code></pre>
 
 </div>
 

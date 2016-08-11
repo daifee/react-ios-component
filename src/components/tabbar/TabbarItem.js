@@ -4,7 +4,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import config from '../util/config';
 import {classNames} from '../util';
@@ -25,65 +25,68 @@ const prefix = 'tabbar-item';
  * @param {string} [props.active=false] 标签项是否激活
  */
 export default function TabBarItem(props) {
-	const {
-		icon,
-		badge,
-		label,
-		active,
-		linkColor,
-		activeColor,
-		badgeColor,
-		component,
-		className,
-		children,
-		...rest
-	} = props;
-	const Component = component;
-	const theme = active ? activeColor : linkColor;
-	let clazz = classNames(prefix, {
-		[`color-${theme}`]: !!theme,
-		[className]: className
-	});
-	let labelClazz = classNames('tabbar-label');
+  const {
+    icon,
+    badge,
+    label,
+    active,
+    linkColor,
+    activeColor,
+    badgeColor,
+    component,
+    className,
+    children,
+    ...rest
+  } = props;
+  const Component = component;
+  const theme = active ? activeColor : linkColor;
+  let clazz = classNames(prefix, {
+    [`color-${theme}`]: !!theme,
+    [className]: className
+  });
+  let labelClazz = classNames('tabbar-label');
 
-	return (
-		<Component className={clazz} {...rest}>
-			{icon ? (
-				<TabbarIcon 
-					icon={icon}
-					badge={badge}
-					badgeColor={badgeColor}
-				/>
-			) : null}
-			{label ? (
-				<TabbarLabel>{label}</TabbarLabel>
-			) : null}
-			{!icon && !label ? children : null}
-		</Component>
-	);
+  return (
+    <Component className={clazz} {...rest}>
+      {icon ? (
+        <TabbarIcon
+          icon={icon}
+          badge={badge}
+          badgeColor={badgeColor}
+        />
+      ) : null}
+      {label ? (
+        <TabbarLabel className={labelClazz}>{label}</TabbarLabel>
+      ) : null}
+      {!icon && !label ? children : null}
+    </Component>
+  );
 }
 
 TabBarItem.propTypes = {
-	component: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element,
-		PropTypes.func
-	]),
-	icon: PropTypes.string,
-	badge: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string
-	]),
-	linkColor: PropTypes.oneOf(config.colors),
-	badgeColor: PropTypes.oneOf(config.colors),
-	activeColor: PropTypes.oneOf(config.colors),
-	active: PropTypes.bool
+  component: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
+  icon: PropTypes.string,
+  badge: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
+  label: PropTypes.node,
+  linkColor: PropTypes.oneOf(config.colors),
+  badgeColor: PropTypes.oneOf(config.colors),
+  activeColor: PropTypes.oneOf(config.colors),
+  active: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 TabBarItem.defaultProps = {
-	component: 'a',
-	linkColor: 'gray',
-	badgeColor: 'red',
-	activeColor: '',
-	active: false
+  component: 'a',
+  linkColor: 'gray',
+  badgeColor: 'red',
+  activeColor: '',
+  active: false
 };

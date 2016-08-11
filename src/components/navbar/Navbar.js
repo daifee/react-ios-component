@@ -4,7 +4,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 import NavBarItem from './NavbarItem';
@@ -19,34 +19,36 @@ const prefix = 'navbar';
  * @param {PropTypes.node} [props.rightElement] 导航条右边位置的内容
  */
 export default function NavBar(props) {
-	const {
-		leftElement,
-		rightElement,
-		centerElement,
-		children,
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	let nodes;
+  const {
+    leftElement,
+    rightElement,
+    centerElement,
+    children,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  let nodes;
 
-	if(!children) {
-		nodes = [leftElement, centerElement, rightElement].map((el, i) => {
-			return <NavBarItem key={i} />;
-		})
-	}
+  if (!children) {
+    nodes = [leftElement, centerElement, rightElement].map((el, i) => {
+      return <NavBarItem key={i}>{el}</NavBarItem>;
+    });
+  }
 
-	return (
-		<div className={clazz} {...rest}>
-			{children || nodes}
-		</div>
-	);
+  return (
+    <div className={clazz} {...rest}>
+      {children || nodes}
+    </div>
+  );
 }
 
 NavBar.propTypes = {
-	leftElement: PropTypes.node,
-	centerElement: PropTypes.node,
-	rightElement: PropTypes.node
+  leftElement: PropTypes.node,
+  centerElement: PropTypes.node,
+  rightElement: PropTypes.node,
+  className: PropTypes.string,
+  children: PropTypes.node
 };

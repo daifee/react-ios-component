@@ -2,7 +2,7 @@
  * @author haw
  */
 
-import '../base'; 
+import '../base';
 import './style';
 
 export SearchBar from './SearchBar';

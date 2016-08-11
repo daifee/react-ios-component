@@ -4,7 +4,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
@@ -16,22 +16,24 @@ const prefix = 'searchbar';
  * @param {string} [props.theme] 搜索栏的主题，默认为灰色，可选有 `white`
  */
 export default function SearchBar(props) {
-	const {
-		theme,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className,
-		[theme]: theme
-	});
+  const {
+    theme,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className,
+    [theme]: theme
+  });
 
-	return (
-		<form className={clazz} {...rest}>{children}</form>
-	);
+  return (
+    <form className={clazz} {...rest}>{children}</form>
+  );
 }
 
 SearchBar.propTypes = {
-	theme: PropTypes.string
+  theme: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node
 };

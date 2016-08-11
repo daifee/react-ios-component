@@ -4,7 +4,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import config from '../util/config';
 import {classNames} from '../util';
@@ -21,40 +21,42 @@ const prefix = 'tabbar-icon';
  * @param {string} [props.badgeColor='red'] 徽章的背景颜色
  */
 export default function TabBarIcon(props) {
-	const {
-		icon,
-		badge,
-		badgeColor,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
+  const {
+    icon,
+    badge,
+    badgeColor,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
 
-	return (
-		<div className={clazz} {...rest}>
-			{icon ? (
-				<Icon value={icon}>
-					{badge ? (
-						<Badge bgColor={badgeColor}>{badge}</Badge>
-					) : null}
-				</Icon>
-			) : children}
-		</div>
-	);
+  return (
+    <div className={clazz} {...rest}>
+      {icon ? (
+        <Icon value={icon}>
+          {badge ? (
+            <Badge bgColor={badgeColor}>{badge}</Badge>
+          ) : null}
+        </Icon>
+      ) : children}
+    </div>
+  );
 }
 
 TabBarIcon.propTypes = {
-	icon: PropTypes.string,
-	badge: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string
-	]),
-	badgeColor: PropTypes.oneOf(config.colors)
-}
+  icon: PropTypes.string,
+  badge: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
+  badgeColor: PropTypes.oneOf(config.colors),
+  className: PropTypes.string,
+  children: PropTypes.node
+};
 
 TabBarIcon.defaultProps = {
-	badgeColor: 'red'
+  badgeColor: 'red'
 };

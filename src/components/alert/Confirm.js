@@ -3,8 +3,7 @@
  */
 
 import React, {
-	PropTypes,
-	cloneElement
+  PropTypes
 } from 'react';
 import Alert from './Alert';
 import {classNames} from '../util';
@@ -12,30 +11,30 @@ import {classNames} from '../util';
 const prefix = 'alert-confirm';
 
 function decorateProps(props) {
-	const {
-		onConfirm = () => {},
-		onCancel = () => {},
-		confirmText = '确定',
-		cancelText = '取消',
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	let buttons = [{
-		children: cancelText,
-		onClick: onCancel
-	}, {
-		children: confirmText,
-		onClick: onConfirm
-	}];
+  const {
+    onConfirm = () => {},
+    onCancel = () => {},
+    confirmText = '确定',
+    cancelText = '取消',
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  let buttons = [{
+    children: cancelText,
+    onClick: onCancel
+  }, {
+    children: confirmText,
+    onClick: onConfirm
+  }];
 
-	return {
-		className: clazz,
-		buttons: buttons,
-		...rest
-	};
+  return {
+    className: clazz,
+    buttons: buttons,
+    ...rest
+  };
 }
 
 /**
@@ -50,18 +49,18 @@ function decorateProps(props) {
  * @param {PropTypes.node} [props.cancelText='取消'] 取消按钮的文案
  */
 export default function Confirm(props) {
-	const {
-		children,
-		...alertProps
-	} = decorateProps(props);
+  const {
+    children,
+    ...alertProps
+  } = decorateProps(props);
 
-	return (
-		<Alert 
-			{...alertProps}
-		>
-			{children}
-		</Alert>
-	);
+  return (
+    <Alert
+      {...alertProps}
+    >
+      {children}
+    </Alert>
+  );
 }
 
 /**
@@ -70,23 +69,17 @@ export default function Confirm(props) {
  * @param  {Node} container 确认对话框的容器节点
  */
 Confirm.show = (props) => {
-	const alertProps = decorateProps(props);
+  const alertProps = decorateProps(props);
 
-	Alert.show(alertProps);
+  Alert.show(alertProps);
 };
 
 Confirm.propTypes = {
-	visible: PropTypes.bool,
-	title: PropTypes.node,
-	body: PropTypes.node,
-	onConfirm: PropTypes.func,
-	onCancel: PropTypes.func,
-	confirmText: PropTypes.node,
-	cancelText: PropTypes.node
+  visible: PropTypes.bool,
+  title: PropTypes.node,
+  body: PropTypes.node,
+  onConfirm: PropTypes.func,
+  onCancel: PropTypes.func,
+  confirmText: PropTypes.node,
+  cancelText: PropTypes.node
 };
-// Confirm.defaultProps = {
-// 	onConfirm: () => {},
-// 	onCancel: () => {},
-// 	confirmText: '确定',
-// 	cancelText: '取消'
-// };

@@ -1,7 +1,7 @@
 /**
  * @author haw
  */
-import '../base'; 
+import '../base';
 import './style';
 
 export NavBar from './Navbar';

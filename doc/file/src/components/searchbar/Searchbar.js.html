@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -102,7 +102,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import {classNames} from &apos;../util&apos;;
 
@@ -114,24 +114,26 @@ const prefix = &apos;searchbar&apos;;
  * @param {string} [props.theme] &#x641C;&#x7D22;&#x680F;&#x7684;&#x4E3B;&#x9898;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x7070;&#x8272;&#xFF0C;&#x53EF;&#x9009;&#x6709; `white`
  */
 export default function SearchBar(props) {
-	const {
-		theme,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className,
-		[theme]: theme
-	});
+  const {
+    theme,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className,
+    [theme]: theme
+  });
 
-	return (
-		&lt;form className={clazz} {...rest}&gt;{children}&lt;/form&gt;
-	);
+  return (
+    &lt;form className={clazz} {...rest}&gt;{children}&lt;/form&gt;
+  );
 }
 
 SearchBar.propTypes = {
-	theme: PropTypes.string
+  theme: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 </code></pre>
 

@@ -4,7 +4,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
@@ -16,21 +16,23 @@ const prefix = 'tabbar-label';
  * @param {string} [props.label] 标签项的文案
  */
 export default function TabBarLabel(props) {
-	const {
-		label,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
+  const {
+    label,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
 
-	return (
-		<div className={clazz} {...rest}>{children || label}</div>
-	);
+  return (
+    <div className={clazz} {...rest}>{children || label}</div>
+  );
 }
 
 TabBarLabel.propTypes = {
-	label: PropTypes.string
-}
+  label: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node
+};

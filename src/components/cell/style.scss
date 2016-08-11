@@ -9,74 +9,74 @@ $selector-cells: '.#{$namespace}cells';
 $selector-cell: '.#{$namespace}cell';
 
 #{$selector-cells} {
-	position: relative;
+  position: relative;
 
-	@include hairline-top();
-	@include hairline-bottom();
+  @include hairline-top();
+  @include hairline-bottom();
 
-	&-title {
-		margin: 1.75rem .75rem .5rem;
-		color: $gray;
-		line-height: 1;
-		font-size: .7rem;
-	}
+  &-title {
+    margin: 1.75rem .75rem .5rem;
+    color: $gray;
+    line-height: 1;
+    font-size: .7rem;
+  }
 }
 
 #{$selector-cell} {
-	position: relative;
-	display: flex;
-	align-items: center;
-	min-height: 2.2rem;
-	// padding: .5rem .75rem;
-	padding: .3rem .75rem;
-	color: $black;
-	font-size: .85rem;
-	// line-height: 1.41176471;
-	line-height: 1.17647059;
-	background-color: $white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 2.2rem;
+  // padding: .5rem .75rem;
+  padding: .3rem .75rem;
+  color: $black;
+  font-size: .85rem;
+  // line-height: 1.41176471;
+  line-height: 1.17647059;
+  background-color: $white;
 
-	@at-root a#{&}:active,
-	label#{&}:active {
-		background-color: rgba(0, 0, 0, .1);
-	}
+  @at-root a#{&}:active,
+  label#{&}:active {
+    background-color: rgba(0, 0, 0, .1);
+  }
 
-	&:not(:last-child) {
-		@include hairline-bottom();
+  &:not(:last-child) {
+    @include hairline-bottom();
 
-		&:after {
-			left: .75rem;
-		}
-	}
+    &:after {
+      left: .75rem;
+    }
+  }
 
-	&-header,
-	&-footer {
-		display: flex;
-		align-items: center;
-	}
+  &-header,
+  &-footer {
+    display: flex;
+    align-items: center;
+  }
 
-	&-header {
-		margin-right: .5rem;
-	}
-	
-	&-body {
-		flex-grow: 1;
-		width: 0;
-	}
+  &-header {
+    margin-right: .5rem;
+  }
+  
+  &-body {
+    flex-grow: 1;
+    width: 0;
+  }
 
-	&-footer {
-		color: $gray;
-		text-align: right;
-	}
+  &-footer {
+    color: $gray;
+    text-align: right;
+  }
 
-	&-desc {
-		color: $gray;
-		font-size: .7rem;
-		@include text-ellipsis();
-	}
+  &-desc {
+    color: $gray;
+    font-size: .7rem;
+    @include text-ellipsis();
+  }
 }
 
 #{$selector-cell}-arrow {
-	#{$selector-cell}-footer {
-		@include arrow-right();
-	}
+  #{$selector-cell}-footer {
+    @include arrow-right();
+  }
 }

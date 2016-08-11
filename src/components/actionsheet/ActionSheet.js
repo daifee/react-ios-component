@@ -3,8 +3,7 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes
 } from 'react';
 import Popup from '../popup';
 import Portal from '../portal';
@@ -16,23 +15,23 @@ const prefix = 'actionsheet';
 /**
  * Button 操作列表组件（`ActionSheet`）里面的操作按钮组件
  * @param {Object} props 组件所使用的属性
- * @param {string} [props.color]	按钮文案的颜色，默认为主题颜色
+ * @param {string} [props.color]  按钮文案的颜色，默认为主题颜色
  */
 function Button(props) {
-	const {
-		color,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(`${prefix}-button`, {
-		[className]: className,
-		[`color-${color}`]: !!color
-	});
+  const {
+    color,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(`${prefix}-button`, {
+    [className]: className,
+    [`color-${color}`]: !!color
+  });
 
-	return (
-		<a className={clazz} {...rest}>{children}</a>
-	);
+  return (
+    <a className={clazz} {...rest}>{children}</a>
+  );
 }
 
 /**
@@ -41,16 +40,18 @@ function Button(props) {
  * color: 按钮文案的颜色，默认为主题颜色
  */
 Button.propTypes = {
-	color: PropTypes.oneOf(config.colors)
+  color: PropTypes.oneOf(config.colors),
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 Button.defaultProps = {
-	color: ''
+  color: ''
 };
 
 /**
  * ActionSheet 操作列表
  * @param {Object} props 组件所使用的属性
- * @param {boolean} props.visible	是否显示操作列表
+ * @param {boolean} props.visible 是否显示操作列表
  * @param {number|string|Object|Array} props.description 操作列表头部的描述组件
  * @param {Object[]} props.buttons 操作按钮配置列表
  * @param {boolean} [props.hasCancelButton=true] 是否有取消按钮
@@ -59,57 +60,56 @@ Button.defaultProps = {
  * @param {function} props.close 关闭操作列表的回调（配合 API 调用来使用，一般不用手动传）
  */
 export default function ActionSheet(props) {
-	const {
-		visible,
-		description,
-		buttons,
-		hasCancelButton,
-		onCancel,
-		cancelText,
-		close,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	let buttonsClazz = classNames(`${prefix}-buttons`);
-	let descClazz = classNames(`${prefix}-desc`);
-	let buttonEls = buttons.map((btnProps, i) => {
-		const onClick = btnProps.onClick;
+  const {
+    visible,
+    description,
+    buttons,
+    hasCancelButton,
+    onCancel,
+    cancelText,
+    close,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  let buttonsClazz = classNames(`${prefix}-buttons`);
+  let descClazz = classNames(`${prefix}-desc`);
+  let buttonEls = buttons.map((btnProps, i) => {
+    const onClick = btnProps.onClick;
 
-		btnProps.onClick = (e) => {
-			onClick && onClick(e);
-			close && close(e);
-		}
-		return <Button {...btnProps} key={i}/>
-	});
+    btnProps.onClick = (e) => {
+      onClick && onClick(e);
+      close && close(e);
+    };
+    return <Button {...btnProps} key={i} />;
+  });
 
-	return (
-		<Popup 
-			visible={visible} 
-			close={close} 
-			position="bottom"
-		>
-			<div className={clazz} {...rest}>
-				<div className={buttonsClazz}>
-					{description ? (
-						<span className={descClazz}>{description}</span>
-					) : null}
-					{buttonEls}
-				</div>
-				{hasCancelButton ? (
-					<div className={buttonsClazz}>
-						<Button onClick={(e) => {
-							onCancel && onCancel(e);
-							close && close();
-						}}>{cancelText}</Button>
-					</div>
-				) : null}
-			</div>
-		</Popup>
-	);
+  return (
+    <Popup
+      visible={visible}
+      close={close}
+      position='bottom'
+    >
+      <div className={clazz} {...rest}>
+        <div className={buttonsClazz}>
+          {description ? (
+            <span className={descClazz}>{description}</span>
+          ) : null}
+          {buttonEls}
+        </div>
+        {hasCancelButton ? (
+          <div className={buttonsClazz}>
+            <Button onClick={(e) => {
+              onCancel && onCancel(e);
+              close && close();
+            }}>{cancelText}</Button>
+          </div>
+        ) : null}
+      </div>
+    </Popup>
+  );
 }
 
 /**
@@ -117,19 +117,20 @@ export default function ActionSheet(props) {
  * @type {Object}
  */
 ActionSheet.propTypes = {
-	visible: PropTypes.bool,
-	description: PropTypes.node,
-	buttons: PropTypes.arrayOf(PropTypes.object).isRequired,
-	hasCancelButton: PropTypes.bool,
-	onCancel: PropTypes.func,
-	cancelText: PropTypes.node,
-	close: PropTypes.func
+  visible: PropTypes.bool,
+  description: PropTypes.node,
+  buttons: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hasCancelButton: PropTypes.bool,
+  onCancel: PropTypes.func,
+  cancelText: PropTypes.node,
+  close: PropTypes.func,
+  className: PropTypes.string
 };
 
 ActionSheet.defaultProps = {
-	hasCancelButton: true,
-	onCancel: () => {},
-	cancelText: '取消'
+  hasCancelButton: true,
+  onCancel: () => {},
+  cancelText: '取消'
 };
 
 /**
@@ -138,5 +139,5 @@ ActionSheet.defaultProps = {
  * @param  {Node} container 操作列表的容器节点
  */
 ActionSheet.show = (props, container) => {
-	Portal.show(ActionSheet, props, container);
+  Portal.show(ActionSheet, props, container);
 };

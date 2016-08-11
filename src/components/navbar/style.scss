@@ -8,49 +8,49 @@ $navbar-bg: #f9f9f9;
 $navbar-height: 2.2rem;
 
 .#{$namespace}navbar {
-	z-index: $z-index-navbar;
-	position: absolute;
-	top: 0;
-	left: 0;
-	// display: flex;
-	// justify-content: space-between;
-	width: 100%;
-	height: $navbar-height;
-	// padding: 0 8px;
-	font-size: .85rem;
-	background-color: $navbar-bg;
+  z-index: $z-index-navbar;
+  position: absolute;
+  top: 0;
+  left: 0;
+  // display: flex;
+  // justify-content: space-between;
+  width: 100%;
+  height: $navbar-height;
+  // padding: 0 8px;
+  font-size: .85rem;
+  background-color: $navbar-bg;
 
-	.#{$namespace}navbar-item {
-		z-index: 2;
-		position: relative;
-		display: flex;
-		align-items: center;
-		height: $navbar-height;
+  .#{$namespace}navbar-item {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: $navbar-height;
 
-		& > :not(:first-child) {
-			margin-left: 10px;
-		}
+    & > :not(:first-child) {
+      margin-left: 10px;
+    }
 
-		&:first-child {
-			float: left;
-			justify-content: flex-start;
-			margin-left: 8px;
-		}
-		&:nth-child(2) {
-			z-index: 1;
-			position: absolute;
-			width: 100%;
-			justify-content: center;
-			text-align: center;
-		}
-		&:last-child {
-			float: right;
-			justify-content: flex-end;
-			margin-right: 8px;
-		}
-	}
+    &:first-child {
+      float: left;
+      justify-content: flex-start;
+      margin-left: 8px;
+    }
+    &:nth-child(2) {
+      z-index: 1;
+      position: absolute;
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+    &:last-child {
+      float: right;
+      justify-content: flex-end;
+      margin-right: 8px;
+    }
+  }
 
-	// & + .#{$namespace}content {
-	// 	margin-top: $navbar-height;
-	// }
+  // & + .#{$namespace}content {
+  //   margin-top: $navbar-height;
+  // }
 }

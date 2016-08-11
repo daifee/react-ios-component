@@ -3,9 +3,7 @@
  */
 
 import React, {
-	PropTypes,
-	Component,
-	cloneElement
+  PropTypes
 } from 'react';
 import Popup from '../popup';
 import Portal from '../portal';
@@ -14,7 +12,6 @@ import AlertBody from './AlertBody';
 import AlertFooter from './AlertFooter';
 import AlertButton from './AlertButton';
 import {classNames} from '../util';
-import {render} from 'react-dom';
 
 const prefix = 'alert';
 
@@ -28,50 +25,50 @@ const prefix = 'alert';
  * @param {function} props.close 关闭警告框的回调（配合 API 调用来使用，一般不用手动传）
  */
 export default function Alert(props) {
-	const {
-		visible,
-		title,
-		body,
-		buttons,
-		close,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	const buttonEls = buttons.map((btnProps, i) => {
-		const onClick = btnProps.onClick;
+  const {
+    visible,
+    title,
+    body,
+    buttons,
+    close,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  const buttonEls = buttons.map((btnProps, i) => {
+    const onClick = btnProps.onClick;
 
-		btnProps.onClick = (e) => {
-			const bool = onClick && onClick(e);
+    btnProps.onClick = (e) => {
+      const bool = onClick && onClick(e);
 
-			if(!bool) {
-				close && close();
-			}
-		}
-		return (
-			<AlertButton {...btnProps} key={i} />
-		);
-	});
+      if (!bool) {
+        close && close();
+      }
+    };
+    return (
+      <AlertButton {...btnProps} key={i} />
+    );
+  });
 
-	return (
-		<Popup visible={visible}>
-			<div className={clazz} {...rest}>
-				{title ? (
-					<AlertHeader>{title}</AlertHeader>
-				) : null}
-				{body ? (
-					<AlertBody>{body}</AlertBody>
-				) : null}
-				{children}
-				<AlertFooter>
-					{buttonEls}
-				</AlertFooter>
-			</div>
-		</Popup>
-	);
+  return (
+    <Popup visible={visible}>
+      <div className={clazz} {...rest}>
+        {title ? (
+          <AlertHeader>{title}</AlertHeader>
+        ) : null}
+        {body ? (
+          <AlertBody>{body}</AlertBody>
+        ) : null}
+        {children}
+        <AlertFooter>
+          {buttonEls}
+        </AlertFooter>
+      </div>
+    </Popup>
+  );
 }
 
 /**
@@ -80,13 +77,15 @@ export default function Alert(props) {
  * @param  {Node} container 警告框的容器节点
  */
 Alert.show = (props, container) => {
-	Portal.show(Alert, props, container);
+  Portal.show(Alert, props, container);
 };
 
 Alert.propTypes = {
-	visible: PropTypes.bool,
-	title: PropTypes.node,
-	body: PropTypes.node,
-	buttons: PropTypes.arrayOf(PropTypes.object),
-	close: PropTypes.func
+  visible: PropTypes.bool,
+  title: PropTypes.node,
+  body: PropTypes.node,
+  buttons: PropTypes.arrayOf(PropTypes.object),
+  close: PropTypes.func,
+  className: PropTypes.string,
+  children: PropTypes.node
 };

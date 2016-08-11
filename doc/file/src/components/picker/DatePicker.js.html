@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,16 +101,16 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes,
+  Component
 } from &apos;react&apos;;
 import Portal from &apos;../portal&apos;;
 import Popup from &apos;../popup&apos;;
 import InlineDatePicker from &apos;./InlineDatePicker&apos;;
 import {
-	classNames, 
-	date2str
-	} from &apos;../util&apos;;
+  classNames,
+  date2str
+  } from &apos;../util&apos;;
 
 const prefix = &apos;picker&apos;;
 
@@ -119,119 +119,119 @@ const prefix = &apos;picker&apos;;
  */
 export default class DatePicker extends Component {
 
-	/**
-	 * &#x6784;&#x9020;&#x51FD;&#x6570;
-	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
-	 * @param {Date} [props.selectedDate=new Date()] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
-	 * @param {Date} [props.minDate=new Date()] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
-	 * @param {Date} [props.maxDate=new Date()] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
-	 * @param {string} [props.yearUnit=&apos;&apos;] &#x5E74;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {string} [props.monthUnit=&apos;&apos;] &#x6708;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {string} [props.dateUnit=&apos;&apos;] &#x5929;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {boolean} [props.visible] &#x9009;&#x62E9;&#x5668;&#x662F;&#x5426;&#x663E;&#x793A;
-	 * @param {PropTypes.node} [props.title] &#x9009;&#x62E9;&#x5668;&#x6807;&#x9898;
-	 * @param {PropTypes.node} [props.confirmText=&apos;&#x786E;&#x5B9A;&apos;] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x6587;&#x6848;
-	 * @param {PropTypes.node} [props.cancelText=&apos;&#x53D6;&#x6D88;&apos;] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x6587;&#x6848;
-	 * @param {function} [props.onConfirm] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
-	 * @param {function} [props.onCancel] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
-	 * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
-	 * @param {Object} context
-	 */
-	constructor(props, context) {
-		super(props, context);
+  /**
+   * &#x6784;&#x9020;&#x51FD;&#x6570;
+   * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+   * @param {Date} [props.selectedDate=new Date()] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
+   * @param {Date} [props.minDate=new Date()] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+   * @param {Date} [props.maxDate=new Date()] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+   * @param {string} [props.yearUnit=&apos;&apos;] &#x5E74;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {string} [props.monthUnit=&apos;&apos;] &#x6708;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {string} [props.dateUnit=&apos;&apos;] &#x5929;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {boolean} [props.visible] &#x9009;&#x62E9;&#x5668;&#x662F;&#x5426;&#x663E;&#x793A;
+   * @param {PropTypes.node} [props.title] &#x9009;&#x62E9;&#x5668;&#x6807;&#x9898;
+   * @param {PropTypes.node} [props.confirmText=&apos;&#x786E;&#x5B9A;&apos;] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x6587;&#x6848;
+   * @param {PropTypes.node} [props.cancelText=&apos;&#x53D6;&#x6D88;&apos;] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x6587;&#x6848;
+   * @param {function} [props.onConfirm] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
+   * @param {function} [props.onCancel] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
+   * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
 
-		/**
-		 * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
-		 * @type {Object}
-		 * @property {Date} state.selectedDate &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
-		 */
-		this.state = {
-			selectedDate: props.selectedDate
-		};
-	}
+    /**
+     * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
+     * @type {Object}
+     * @property {Date} state.selectedDate &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
+     */
+    this.state = {
+      selectedDate: props.selectedDate
+    };
+  }
 
-	componentWillReceiveProps({selectedDate}) {
-		this.setState({selectedDate})
-	}
+  componentWillReceiveProps({selectedDate}) {
+    this.setState({selectedDate});
+  }
 
-	_onCancel = (e) =&gt; {
-		const {
-			close,
-			onCancel
-		} = this.props;
+  _onCancel = (e) =&gt; {
+    const {
+      close,
+      onCancel
+    } = this.props;
 
-		close &amp;&amp; close();
-		onCancel &amp;&amp; onCancel(this.state.selectedDate, e);
-	};
+    close &amp;&amp; close();
+    onCancel &amp;&amp; onCancel(this.state.selectedDate, e);
+  };
 
-	_onChange = (selectedDate) =&gt; {
-		const {
-			onChange
-		} = this.props;
+  _onChange = (selectedDate) =&gt; {
+    const {
+      onChange
+    } = this.props;
 
-		this.setState({selectedDate});
-		onChange &amp;&amp; onChange(selectedDate);
-	};
+    this.setState({selectedDate});
+    onChange &amp;&amp; onChange(selectedDate);
+  };
 
-	_onConfirm = (e) =&gt; {
-		const {
-			close,
-			onConfirm
-		} = this.props;
+  _onConfirm = (e) =&gt; {
+    const {
+      close,
+      onConfirm
+    } = this.props;
 
-		close &amp;&amp; close()
-		onConfirm &amp;&amp; onConfirm(this.state.selectedDate, e);
-	};
+    close &amp;&amp; close();
+    onConfirm &amp;&amp; onConfirm(this.state.selectedDate, e);
+  };
 
-	render() {
-		let {
-			visible,
-			title = date2str(this.state.selectedDate),
-			confirmText,
-			cancelText,
-			onConfirm,
-			onCancel,
-			selectedDate,
-			minDate,
-			maxDate,
-			yearUnit,
-			monthUnit,
-			dateUnit,
-			onChange,
-			close,
-			className,
-			...rest
-		} = this.props;
-		const clazz = classNames(prefix, {
-			[className]: className
-		});
-		const headerClazz = classNames(`${prefix}-header`);
+  render() {
+    let {
+      visible,
+      title = date2str(this.state.selectedDate),
+      confirmText,
+      cancelText,
+      onConfirm,
+      onCancel,
+      selectedDate,
+      minDate,
+      maxDate,
+      yearUnit,
+      monthUnit,
+      dateUnit,
+      onChange,
+      close,
+      className,
+      ...rest
+    } = this.props;
+    const clazz = classNames(prefix, {
+      [className]: className
+    });
+    const headerClazz = classNames(`${prefix}-header`);
 
-		return (
-			&lt;Popup 
-				visible={visible}
-				close={close} 
-				position=&quot;bottom&quot;
-			&gt;
-				&lt;div className={clazz} {...rest}&gt;
-					&lt;div className={headerClazz}&gt;
-						&lt;a onClick={this._onCancel}&gt;{cancelText}&lt;/a&gt;
-						&lt;span&gt;{title}&lt;/span&gt;
-						&lt;a onClick={this._onConfirm}&gt;{confirmText}&lt;/a&gt;
-					&lt;/div&gt;
-					&lt;InlineDatePicker 
-						selectedDate={this.state.selectedDate}
-						minDate={minDate}
-						maxDate={maxDate}
-						yearUnit={yearUnit}
-						monthUnit={monthUnit}
-						dateUnit={dateUnit}
-						onChange={this._onChange}
-					/&gt;
-				&lt;/div&gt;
-			&lt;/Popup&gt;
-		);
-	}
+    return (
+      &lt;Popup
+        visible={visible}
+        close={close}
+        position=&apos;bottom&apos;
+      &gt;
+        &lt;div className={clazz} {...rest}&gt;
+          &lt;div className={headerClazz}&gt;
+            &lt;a onClick={this._onCancel}&gt;{cancelText}&lt;/a&gt;
+            &lt;span&gt;{title}&lt;/span&gt;
+            &lt;a onClick={this._onConfirm}&gt;{confirmText}&lt;/a&gt;
+          &lt;/div&gt;
+          &lt;InlineDatePicker
+            selectedDate={this.state.selectedDate}
+            minDate={minDate}
+            maxDate={maxDate}
+            yearUnit={yearUnit}
+            monthUnit={monthUnit}
+            dateUnit={dateUnit}
+            onChange={this._onChange}
+          /&gt;
+        &lt;/div&gt;
+      &lt;/Popup&gt;
+    );
+  }
 }
 
 /**
@@ -240,30 +240,32 @@ export default class DatePicker extends Component {
  * @param  {Node} container &#x65E5;&#x671F;&#x5F39;&#x7A97;&#x9009;&#x62E9;&#x5668;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
  */
 DatePicker.show = (props, container) =&gt; {
-	Portal.show(DatePicker, props, container);
+  Portal.show(DatePicker, props, container);
 };
 
 DatePicker.propTypes = {
-	selectedDate: PropTypes.instanceOf(Date),
-	minDate: PropTypes.instanceOf(Date),
-	maxDate: PropTypes.instanceOf(Date),
-	yearUnit: PropTypes.string,
-	monthUnit: PropTypes.string,
-	dateUnit: PropTypes.string,
-	onChange: PropTypes.func,
-	visible: PropTypes.bool,
-	title: PropTypes.node,
-	confirmText: PropTypes.node,
-	cancelText: PropTypes.node,
-	onConfirm: PropTypes.func,
-	onCancel: PropTypes.func,
-	onChange: PropTypes.func
+  selectedDate: PropTypes.instanceOf(Date),
+  minDate: PropTypes.instanceOf(Date),
+  maxDate: PropTypes.instanceOf(Date),
+  yearUnit: PropTypes.string,
+  monthUnit: PropTypes.string,
+  dateUnit: PropTypes.string,
+  visible: PropTypes.bool,
+  title: PropTypes.node,
+  confirmText: PropTypes.node,
+  cancelText: PropTypes.node,
+  onConfirm: PropTypes.func,
+  onCancel: PropTypes.func,
+  onChange: PropTypes.func,
+  className: PropTypes.string,
+  close: PropTypes.func
 };
 
 DatePicker.defaultProps = {
-	confirmText: &apos;&#x786E;&#x5B9A;&apos;,
-	cancelText: &apos;&#x53D6;&#x6D88;&apos;
-};</code></pre>
+  confirmText: &apos;&#x786E;&#x5B9A;&apos;,
+  cancelText: &apos;&#x53D6;&#x6D88;&apos;
+};
+</code></pre>
 
 </div>
 

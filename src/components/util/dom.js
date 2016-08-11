@@ -3,16 +3,16 @@
  */
 
 export function getContainer(container = document.body) {
-	if(typeof container === 'function') {
-		container = container();
-	}
-	return container;
+  if (typeof container === 'function') {
+    container = container();
+  }
+  return container;
 }
 
 export function createPortalEl(container) {
-	const portalEl = document.createElement('div');
+  const portalEl = document.createElement('div');
 
-	container.appendChild(portalEl);
-	return portalEl;
+  container.appendChild(portalEl);
+  return portalEl;
 }
 

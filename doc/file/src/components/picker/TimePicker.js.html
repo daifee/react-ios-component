@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,14 +101,14 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes,
+  Component
 } from &apos;react&apos;;
 import InlineTimePicker from &apos;./InlineTimePicker&apos;;
 import Popup from &apos;../popup&apos;;
 import Portal from &apos;../portal&apos;;
 import {
-	classNames
+  classNames
 } from &apos;../util&apos;;
 
 const prefix = &apos;picker&apos;;
@@ -118,119 +118,118 @@ const prefix = &apos;picker&apos;;
  */
 export default class TimePicker extends Component {
 
-	/**
-	 * &#x6784;&#x9020;&#x51FD;&#x6570;
-	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
-	 * @param {string} [props.selectedTime] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
-	 * @param {string} [props.minDate=&apos;00:00:00&apos;] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
-	 * @param {string} [props.maxDate=&apos;23:59:59&apos;] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
-	 * @param {string} [props.hourUnit=&apos;&apos;] &#x5C0F;&#x65F6;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {string} [props.minuteUnit=&apos;&apos;] &#x5206;&#x949F;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {string} [props.secondUnit=&apos;&apos;] &#x79D2;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {boolean} [props.visible] &#x9009;&#x62E9;&#x5668;&#x662F;&#x5426;&#x663E;&#x793A;
-	 * @param {PropTypes.node} [props.title] &#x9009;&#x62E9;&#x5668;&#x6807;&#x9898;
-	 * @param {PropTypes.node} [props.confirmText=&apos;&#x786E;&#x5B9A;&apos;] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x6587;&#x6848;
-	 * @param {PropTypes.node} [props.cancelText=&apos;&#x53D6;&#x6D88;&apos;] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x6587;&#x6848;
-	 * @param {function} [props.onConfirm] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
-	 * @param {function} [props.onCancel] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
-	 * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
-	 * @param {Object} context
-	 */
-	constructor(props, context) {
-		super(props, context);
+  /**
+   * &#x6784;&#x9020;&#x51FD;&#x6570;
+   * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+   * @param {string} [props.selectedTime] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
+   * @param {string} [props.minDate=&apos;00:00:00&apos;] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+   * @param {string} [props.maxDate=&apos;23:59:59&apos;] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+   * @param {string} [props.hourUnit=&apos;&apos;] &#x5C0F;&#x65F6;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {string} [props.minuteUnit=&apos;&apos;] &#x5206;&#x949F;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {string} [props.secondUnit=&apos;&apos;] &#x79D2;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {boolean} [props.visible] &#x9009;&#x62E9;&#x5668;&#x662F;&#x5426;&#x663E;&#x793A;
+   * @param {PropTypes.node} [props.title] &#x9009;&#x62E9;&#x5668;&#x6807;&#x9898;
+   * @param {PropTypes.node} [props.confirmText=&apos;&#x786E;&#x5B9A;&apos;] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x6587;&#x6848;
+   * @param {PropTypes.node} [props.cancelText=&apos;&#x53D6;&#x6D88;&apos;] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x6587;&#x6848;
+   * @param {function} [props.onConfirm] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
+   * @param {function} [props.onCancel] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;
+   * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
 
-		/**
-		 * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
-		 * @type {Object}
-		 * @property {Date} state.selectedTime &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65F6;&#x95F4;
-		 */
-		this.state = {
-			selectedTime: props.selectedTime
-		};
-	}
+    /**
+     * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
+     * @type {Object}
+     * @property {Date} state.selectedTime &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65F6;&#x95F4;
+     */
+    this.state = {
+      selectedTime: props.selectedTime
+    };
+  }
 
-	componentWillReceiveProps({selectedTime}) {
-		this.setState({selectedTime});
-	}
+  componentWillReceiveProps({selectedTime}) {
+    this.setState({selectedTime});
+  }
 
-	_onChange = (selectedTime) =&gt; {
-		const {
-			onChange
-		} = this.props;
+  _onChange = (selectedTime) =&gt; {
+    const {
+      onChange
+    } = this.props;
 
-		this.setState({selectedTime});
-		onChange &amp;&amp; onChange(selectedTime);
-	};
+    this.setState({selectedTime});
+    onChange &amp;&amp; onChange(selectedTime);
+  };
 
-	_onCancel = (e) =&gt; {
-		const {
-			close,
-			onCancel
-		} = this.props;
+  _onCancel = (e) =&gt; {
+    const {
+      close,
+      onCancel
+    } = this.props;
 
-		close &amp;&amp; close();
-		onCancel &amp;&amp; onCancel(this.state.selectedTime, e);
-	};
+    close &amp;&amp; close();
+    onCancel &amp;&amp; onCancel(this.state.selectedTime, e);
+  };
 
-	_onConfirm = (e) =&gt; {
-		const {
-			close,
-			onConfirm
-		} = this.props;
+  _onConfirm = (e) =&gt; {
+    const {
+      close,
+      onConfirm
+    } = this.props;
 
-		close &amp;&amp; close();
-		onConfirm &amp;&amp; onConfirm(this.state.selectedTime, e);
-	};
+    close &amp;&amp; close();
+    onConfirm &amp;&amp; onConfirm(this.state.selectedTime, e);
+  };
 
-	render() {
-		const {
-			visible,
-			title = this.state.selectedTime,
-			confirmText,
-			cancelText,
-			onConfirm,
-			onCancel,
-			selectedTime,
-			maxTime,
-			minTime,
-			hourUnit,
-			minuteUnit,
-			secondUnit,
-			onChange,
-			close,
-			className,
-			...rest
-		} = this.props;
-		const clazz = classNames(prefix, {
-			[className]: className
-		});
-		const headerClazz = classNames(`${prefix}-header`);
+  render() {
+    const {
+      visible,
+      title = this.state.selectedTime,
+      selectedTime,
+      onConfirm,
+      onCancel,
+      confirmText,
+      cancelText,
+      maxTime,
+      minTime,
+      hourUnit,
+      minuteUnit,
+      secondUnit,
+      close,
+      className,
+      ...rest
+    } = this.props;
+    const clazz = classNames(prefix, {
+      [className]: className
+    });
+    const headerClazz = classNames(`${prefix}-header`);
 
-		return (
-			&lt;Popup 
-				visible={visible}
-				close={close} 
-				position=&quot;bottom&quot;
-			&gt;
-				&lt;div className={clazz} {...rest}&gt;
-					&lt;div className={headerClazz}&gt;
-						&lt;a onClick={this._onCancel}&gt;{cancelText}&lt;/a&gt;
-						&lt;span&gt;{title}&lt;/span&gt;
-						&lt;a onClick={this._onConfirm}&gt;{confirmText}&lt;/a&gt;
-					&lt;/div&gt;
-					&lt;InlineTimePicker 
-						selectedTime={this.state.selectedTime}
-						minTime={minTime}
-						maxTime={maxTime}
-						hourUnit={hourUnit}
-						minuteUnit={minuteUnit}
-						secondUnit={secondUnit}
-						onChange={this._onChange}
-					/&gt;
-				&lt;/div&gt;
-			&lt;/Popup&gt;
-		);
-	}
+    return (
+      &lt;Popup
+        visible={visible}
+        close={close}
+        position=&apos;bottom&apos;
+      &gt;
+        &lt;div className={clazz} {...rest}&gt;
+          &lt;div className={headerClazz}&gt;
+            &lt;a onClick={this._onCancel}&gt;{cancelText}&lt;/a&gt;
+            &lt;span&gt;{title}&lt;/span&gt;
+            &lt;a onClick={this._onConfirm}&gt;{confirmText}&lt;/a&gt;
+          &lt;/div&gt;
+          &lt;InlineTimePicker
+            selectedTime={this.state.selectedTime}
+            minTime={minTime}
+            maxTime={maxTime}
+            hourUnit={hourUnit}
+            minuteUnit={minuteUnit}
+            secondUnit={secondUnit}
+            onChange={this._onChange}
+          /&gt;
+        &lt;/div&gt;
+      &lt;/Popup&gt;
+    );
+  }
 }
 
 /**
@@ -239,30 +238,32 @@ export default class TimePicker extends Component {
  * @param  {Node} container &#x65F6;&#x95F4;&#x5F39;&#x7A97;&#x9009;&#x62E9;&#x5668;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
  */
 TimePicker.show = (props, container) =&gt; {
-	Portal.show(TimePicker, props, container);
-}
+  Portal.show(TimePicker, props, container);
+};
 
 TimePicker.propTypes = {
-	selectedTime: PropTypes.string,
-	minTime: PropTypes.string,
-	maxTime: PropTypes.string,
-	hourUnit: PropTypes.string,
-	minuteUnit: PropTypes.string,
-	secondUnit: PropTypes.string,
-	onChange: PropTypes.func,
-	visible: PropTypes.bool,
-	title: PropTypes.node,
-	confirmText: PropTypes.node,
-	cancelText: PropTypes.node,
-	onConfirm: PropTypes.func,
-	onCancel: PropTypes.func,
-	onChange: PropTypes.func
+  selectedTime: PropTypes.string,
+  minTime: PropTypes.string,
+  maxTime: PropTypes.string,
+  hourUnit: PropTypes.string,
+  minuteUnit: PropTypes.string,
+  secondUnit: PropTypes.string,
+  visible: PropTypes.bool,
+  title: PropTypes.node,
+  confirmText: PropTypes.node,
+  cancelText: PropTypes.node,
+  onConfirm: PropTypes.func,
+  onCancel: PropTypes.func,
+  onChange: PropTypes.func,
+  close: PropTypes.func,
+  className: PropTypes.string
 };
 
 TimePicker.defaultProps = {
-	confirmText: &apos;&#x786E;&#x5B9A;&apos;,
-	cancelText: &apos;&#x53D6;&#x6D88;&apos;
-};</code></pre>
+  confirmText: &apos;&#x786E;&#x5B9A;&apos;,
+  cancelText: &apos;&#x53D6;&#x6D88;&apos;
+};
+</code></pre>
 
 </div>
 

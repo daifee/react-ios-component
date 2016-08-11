@@ -8,39 +8,39 @@
 $tabbar-height: 2.45rem;
 
 .#{$namespace}tabbar {
-	z-index: $z-index-tabbar;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	display: flex;
-	height: $tabbar-height;
-	background-color: #f9f9f9;
+  z-index: $z-index-tabbar;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  height: $tabbar-height;
+  background-color: #f9f9f9;
 
-	@include hairline-top();
+  @include hairline-top();
 
-	.#{$namespace}tabbar-item {
-		flex: 1;
-		padding-top: .2rem;
-		padding-bottom: .2rem;
-		text-align: center;
-	}
-	
-	[class*="#{$namespace}icon"] {
-		position: relative;
-		height: 1.5rem;
-		font-size: 1.25rem;
-	}
+  .#{$namespace}tabbar-item {
+    flex: 1;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+    text-align: center;
+  }
+  
+  [class*="#{$namespace}icon"] {
+    position: relative;
+    height: 1.5rem;
+    font-size: 1.25rem;
+  }
 
-	.#{$namespace}badge {
-		position: absolute;
-		top: -.1rem;
-		left: 100%;
-		margin-left: -.5rem;
-	}
+  .#{$namespace}badge {
+    position: absolute;
+    top: -.1rem;
+    left: 100%;
+    margin-left: -.5rem;
+  }
 
-	.#{$namespace}tabbar-label {
-		line-height: 1;
-		font-size: .5rem;
-	}
+  .#{$namespace}tabbar-label {
+    line-height: 1;
+    font-size: .5rem;
+  }
 }

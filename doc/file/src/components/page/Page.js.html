@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,7 +101,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import {classNames} from &apos;../util&apos;;
 
@@ -116,32 +116,32 @@ const prefix = &apos;page&apos;;
  * @param {string} [props.timingFunction=&apos;ease&apos;] &#x9875;&#x9762;&#x8FC7;&#x573A;&#x52A8;&#x753B;&#x7684;&#x8FC7;&#x6E21;&#x51FD;&#x6570;
  */
 export default function Page(props) {
-	const {
-		hasNavBar,
-		hasTabBar,
-		duration,
-		timingFunction,
-		className,
-		style,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		&apos;navbar-fixed&apos;: hasNavBar,
-		&apos;tabbar-fixed&apos;: hasTabBar,
-		[className]: className
-	});
-	let newStyle = {
-		style,
-		transitionDuration: `${duration}ms`,
-		transitionTimingFunction: timingFunction
-	};
+  const {
+    hasNavBar,
+    hasTabBar,
+    duration,
+    timingFunction,
+    className,
+    style,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    &apos;navbar-fixed&apos;: hasNavBar,
+    &apos;tabbar-fixed&apos;: hasTabBar,
+    [className]: className
+  });
+  let newStyle = {
+    style,
+    transitionDuration: `${duration}ms`,
+    transitionTimingFunction: timingFunction
+  };
 
-	return (
-		&lt;div className={clazz} style={newStyle} {...rest}&gt;
-			{children}
-		&lt;/div&gt;
-	);
+  return (
+    &lt;div className={clazz} style={newStyle} {...rest}&gt;
+      {children}
+    &lt;/div&gt;
+  );
 }
 
 /**
@@ -153,18 +153,22 @@ export default function Page(props) {
  * timingFunction: &#x9875;&#x9762;&#x8FC7;&#x573A;&#x52A8;&#x753B;&#x7684;&#x8FC7;&#x6E21;&#x51FD;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; `ease`
  */
 Page.propTypes = {
-	hasNavBar: PropTypes.bool,
-	hasTabBar: PropTypes.bool,
-	duration: PropTypes.number,
-	timingFunction: PropTypes.string
+  hasNavBar: PropTypes.bool,
+  hasTabBar: PropTypes.bool,
+  duration: PropTypes.number,
+  timingFunction: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  children: PropTypes.node
 };
 
 Page.defaultProps = {
-	hasNavBar: false,
-	hasTabBar: false,
-	duration: 300,
-	timingFunction: &apos;ease&apos;
-};</code></pre>
+  hasNavBar: false,
+  hasTabBar: false,
+  duration: 300,
+  timingFunction: &apos;ease&apos;
+};
+</code></pre>
 
 </div>
 

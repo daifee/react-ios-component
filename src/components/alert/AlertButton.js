@@ -3,7 +3,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
@@ -14,18 +14,23 @@ const prefix = 'alert-button';
  * @param {Object} props 组件所使用的属性
  */
 export default function AlertButton(props) {
-	const {
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
+  const {
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
 
-	return (
-		<a className={clazz} {...rest}>
-			{children}
-		</a>
-	);
-} 
+  return (
+    <a className={clazz} {...rest}>
+      {children}
+    </a>
+  );
+}
+
+AlertButton.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+};

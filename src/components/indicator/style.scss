@@ -8,24 +8,24 @@
 $selector: ".#{$namespace}indicator";
 
 #{$selector} {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	max-width: 8rem;
-	min-width: 6.5rem;
-	padding: .8rem .4rem;
-	text-align: center;
-	background-color: rgba(0, 0, 0, .6);
-	border-radius: .25rem;
-	transform: translate3d(-50%, -50%, 0);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 8rem;
+  min-width: 6.5rem;
+  padding: .8rem .4rem;
+  text-align: center;
+  background-color: rgba(0, 0, 0, .6);
+  border-radius: .25rem;
+  transform: translate3d(-50%, -50%, 0);
 
-	& > div {
-		margin-bottom: .8rem;
-	}
+  & > div {
+    margin-bottom: .8rem;
+  }
 
-	& > p {
-		color: $white;
-		line-height: 1;
-		font-size: .8rem;
-	}
+  & > p {
+    color: $white;
+    line-height: 1;
+    font-size: .8rem;
+  }
 }

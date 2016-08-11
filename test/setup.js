@@ -1,15 +1,15 @@
 
 import React from 'react';
 import {
-	expect
+  expect
 } from 'chai';
 import {
-	shallow,
-	mount,
-	render
+  shallow,
+  mount,
+  render
 } from 'enzyme';
 import {
-	jsdom
+  jsdom
 } from 'jsdom';
 import config from '../src/components/util/config';
 const {
@@ -29,18 +29,18 @@ global.namespace = namespace;
 
 // ignore other resources
 extensions.forEach(ext => {
-	require.extensions[ext] = noop;
+  require.extensions[ext] = noop;
 });
 
 // 模拟浏览器环境
 global.document = jsdom('');
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach(prop => {
-	if(typeof global[prop] === 'undefined') {
-		exposedProps.push(prop);
+  if(typeof global[prop] === 'undefined') {
+    exposedProps.push(prop);
     global[prop] = document.defaultView[prop];
-	}
+  }
 });
 global.navigator = {
-	userAgent: 'node.js'
+  userAgent: 'node.js'
 };

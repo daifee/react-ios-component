@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,8 +101,8 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes,
+  Component
 } from &apos;react&apos;;
 import Confirm from &apos;./Confirm&apos;;
 import Portal from &apos;../portal&apos;;
@@ -115,68 +115,68 @@ const prefix = &apos;alert-prompt&apos;;
  */
 export default class Prompt extends Component {
 
-	/**
-	 * &#x6784;&#x9020;&#x51FD;&#x6570;
-	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
-	 * @param {boolean} props.visible &#x662F;&#x5426;&#x663E;&#x793A;&#x786E;&#x8BA4;&#x5BF9;&#x8BDD;&#x6846;
-	 * @param {PropTypes.node} props.title &#x786E;&#x8BA4;&#x5BF9;&#x8BDD;&#x6846;&#x6807;&#x9898;
-	 * @param {PropTypes.node} props.body &#x786E;&#x8BA4;&#x5BF9;&#x8BDD;&#x6846;&#x5185;&#x5BB9;
-	 * @param {Object} props.inputProps &#x8F93;&#x5165;&#x6846;&#x7684;&#x5C5E;&#x6027;&#x5BF9;&#x8C61;
-	 * @param {function} [props.onConfirm] &#x70B9;&#x51FB;&#x786E;&#x8BA4;&#x6309;&#x94AE;&#x89E6;&#x53D1;&#x7684;&#x4E8B;&#x4EF6;
-	 * @param {function} [props.onCancel] &#x70B9;&#x51FB;&#x53D6;&#x6D88;&#x6309;&#x94AE;&#x89E6;&#x53D1;&#x7684;&#x4E8B;&#x4EF6;
-	 * @param {PropTypes.node} [props.confirmText=&apos;&#x786E;&#x5B9A;&apos;] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x7684;&#x6587;&#x6848;
-	 * @param {PropTypes.node} [props.cancelText=&apos;&#x53D6;&#x6D88;&apos;] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x7684;&#x6587;&#x6848;
-	 * @param {Object} context
-	 */
-	constructor(props, context) {
-		super(props, context);
+  /**
+   * &#x6784;&#x9020;&#x51FD;&#x6570;
+   * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+   * @param {boolean} props.visible &#x662F;&#x5426;&#x663E;&#x793A;&#x786E;&#x8BA4;&#x5BF9;&#x8BDD;&#x6846;
+   * @param {PropTypes.node} props.title &#x786E;&#x8BA4;&#x5BF9;&#x8BDD;&#x6846;&#x6807;&#x9898;
+   * @param {PropTypes.node} props.body &#x786E;&#x8BA4;&#x5BF9;&#x8BDD;&#x6846;&#x5185;&#x5BB9;
+   * @param {Object} props.inputProps &#x8F93;&#x5165;&#x6846;&#x7684;&#x5C5E;&#x6027;&#x5BF9;&#x8C61;
+   * @param {function} [props.onConfirm] &#x70B9;&#x51FB;&#x786E;&#x8BA4;&#x6309;&#x94AE;&#x89E6;&#x53D1;&#x7684;&#x4E8B;&#x4EF6;
+   * @param {function} [props.onCancel] &#x70B9;&#x51FB;&#x53D6;&#x6D88;&#x6309;&#x94AE;&#x89E6;&#x53D1;&#x7684;&#x4E8B;&#x4EF6;
+   * @param {PropTypes.node} [props.confirmText=&apos;&#x786E;&#x5B9A;&apos;] &#x786E;&#x8BA4;&#x6309;&#x94AE;&#x7684;&#x6587;&#x6848;
+   * @param {PropTypes.node} [props.cancelText=&apos;&#x53D6;&#x6D88;&apos;] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x7684;&#x6587;&#x6848;
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
 
-		/**
-		 * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
-		 * @type {Object}
-		 * @property {string} state.value &#x8F93;&#x5165;&#x6846;&#x5F53;&#x524D;&#x7684;&#x503C;
-		 */
-		this.state = {
-			value: props.inputProps.value || &apos;&apos;
-		};
-	}
+    /**
+     * &#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x503C;
+     * @type {Object}
+     * @property {string} state.value &#x8F93;&#x5165;&#x6846;&#x5F53;&#x524D;&#x7684;&#x503C;
+     */
+    this.state = {
+      value: props.inputProps.value || &apos;&apos;
+    };
+  }
 
-	onChange(e) {
-		const onChange = this.props.inputProps.onChange;
-		const value = e.target.value;
+  onChange(e) {
+    const onChange = this.props.inputProps.onChange;
+    const value = e.target.value;
 
-		onChange &amp;&amp; onChange(e, value);
-		this.setState({value});
-	}
-	
-	render() {
-		const {
-			className,
-			inputProps,
-			...rest
-		} = this.props;
-		const {value} = this.state;
-		let clazz = classNames(prefix, {
-			[className]: className
-		});
+    onChange &amp;&amp; onChange(e, value);
+    this.setState({value});
+  }
 
-		return (
-			&lt;Confirm 
-				className={clazz}
-				{...rest}
-			&gt;
-				&lt;div className={classNames(&apos;alert-input&apos;)}&gt;
-					&lt;input 
-						{...inputProps} 
-						value={value} 
-						onChange={(e) =&gt; {
-							this.onChange(e);
-						}}
-					/&gt;
-				&lt;/div&gt;
-			&lt;/Confirm&gt;
-		);
-	}
+  render() {
+    const {
+      className,
+      inputProps,
+      ...rest
+    } = this.props;
+    const {value} = this.state;
+    let clazz = classNames(prefix, {
+      [className]: className
+    });
+
+    return (
+      &lt;Confirm
+        className={clazz}
+        {...rest}
+      &gt;
+        &lt;div className={classNames(&apos;alert-input&apos;)}&gt;
+          &lt;input
+            {...inputProps}
+            value={value}
+            onChange={(e) =&gt; {
+              this.onChange(e);
+            }}
+          /&gt;
+        &lt;/div&gt;
+      &lt;/Confirm&gt;
+    );
+  }
 }
 
 /**
@@ -185,22 +185,23 @@ export default class Prompt extends Component {
  * @param  {Node} container &#x63D0;&#x793A;&#x8F93;&#x5165;&#x6846;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
  */
 Prompt.show = (props, container) =&gt; {
-	Portal.show(Prompt, props, container);
+  Portal.show(Prompt, props, container);
 };
 
 Prompt.propTypes = {
-	visible: PropTypes.bool,
-	title: PropTypes.node,
-	body: PropTypes.node,
-	inputProps: PropTypes.object,
-	onConfirm: PropTypes.func,
-	onCancel: PropTypes.func,
-	confirmText: PropTypes.node,
-	cancelText: PropTypes.node
+  visible: PropTypes.bool,
+  title: PropTypes.node,
+  body: PropTypes.node,
+  inputProps: PropTypes.object,
+  onConfirm: PropTypes.func,
+  onCancel: PropTypes.func,
+  confirmText: PropTypes.node,
+  cancelText: PropTypes.node,
+  className: PropTypes.string
 };
 
 Prompt.defaultProps = {
-	inputProps: {}
+  inputProps: {}
 };
 </code></pre>
 

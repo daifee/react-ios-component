@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,8 +101,7 @@
  */
 
 import React, {
-	PropTypes,
-	cloneElement
+  PropTypes
 } from &apos;react&apos;;
 import Alert from &apos;./Alert&apos;;
 import {classNames} from &apos;../util&apos;;
@@ -110,30 +109,30 @@ import {classNames} from &apos;../util&apos;;
 const prefix = &apos;alert-confirm&apos;;
 
 function decorateProps(props) {
-	const {
-		onConfirm = () =&gt; {},
-		onCancel = () =&gt; {},
-		confirmText = &apos;&#x786E;&#x5B9A;&apos;,
-		cancelText = &apos;&#x53D6;&#x6D88;&apos;,
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	let buttons = [{
-		children: cancelText,
-		onClick: onCancel
-	}, {
-		children: confirmText,
-		onClick: onConfirm
-	}];
+  const {
+    onConfirm = () =&gt; {},
+    onCancel = () =&gt; {},
+    confirmText = &apos;&#x786E;&#x5B9A;&apos;,
+    cancelText = &apos;&#x53D6;&#x6D88;&apos;,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  let buttons = [{
+    children: cancelText,
+    onClick: onCancel
+  }, {
+    children: confirmText,
+    onClick: onConfirm
+  }];
 
-	return {
-		className: clazz,
-		buttons: buttons,
-		...rest
-	};
+  return {
+    className: clazz,
+    buttons: buttons,
+    ...rest
+  };
 }
 
 /**
@@ -148,18 +147,18 @@ function decorateProps(props) {
  * @param {PropTypes.node} [props.cancelText=&apos;&#x53D6;&#x6D88;&apos;] &#x53D6;&#x6D88;&#x6309;&#x94AE;&#x7684;&#x6587;&#x6848;
  */
 export default function Confirm(props) {
-	const {
-		children,
-		...alertProps
-	} = decorateProps(props);
+  const {
+    children,
+    ...alertProps
+  } = decorateProps(props);
 
-	return (
-		&lt;Alert 
-			{...alertProps}
-		&gt;
-			{children}
-		&lt;/Alert&gt;
-	);
+  return (
+    &lt;Alert
+      {...alertProps}
+    &gt;
+      {children}
+    &lt;/Alert&gt;
+  );
 }
 
 /**
@@ -168,26 +167,21 @@ export default function Confirm(props) {
  * @param  {Node} container &#x786E;&#x8BA4;&#x5BF9;&#x8BDD;&#x6846;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
  */
 Confirm.show = (props) =&gt; {
-	const alertProps = decorateProps(props);
+  const alertProps = decorateProps(props);
 
-	Alert.show(alertProps);
+  Alert.show(alertProps);
 };
 
 Confirm.propTypes = {
-	visible: PropTypes.bool,
-	title: PropTypes.node,
-	body: PropTypes.node,
-	onConfirm: PropTypes.func,
-	onCancel: PropTypes.func,
-	confirmText: PropTypes.node,
-	cancelText: PropTypes.node
+  visible: PropTypes.bool,
+  title: PropTypes.node,
+  body: PropTypes.node,
+  onConfirm: PropTypes.func,
+  onCancel: PropTypes.func,
+  confirmText: PropTypes.node,
+  cancelText: PropTypes.node
 };
-// Confirm.defaultProps = {
-// 	onConfirm: () =&gt; {},
-// 	onCancel: () =&gt; {},
-// 	confirmText: &apos;&#x786E;&#x5B9A;&apos;,
-// 	cancelText: &apos;&#x53D6;&#x6D88;&apos;
-// };</code></pre>
+</code></pre>
 
 </div>
 

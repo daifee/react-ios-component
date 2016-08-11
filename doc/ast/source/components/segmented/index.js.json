@@ -8,8 +8,8 @@
       "column": 0
     },
     "end": {
-      "line": 9,
-      "column": 25
+      "line": 10,
+      "column": 0
     }
   },
   "sourceType": "module",
@@ -73,8 +73,8 @@
     },
     {
       "type": "ImportDeclaration",
-      "start": 42,
-      "end": 59,
+      "start": 41,
+      "end": 58,
       "loc": {
         "start": {
           "line": 5,
@@ -88,8 +88,8 @@
       "specifiers": [],
       "source": {
         "type": "Literal",
-        "start": 49,
-        "end": 58,
+        "start": 48,
+        "end": 57,
         "loc": {
           "start": {
             "line": 5,
@@ -107,8 +107,8 @@
     },
     {
       "type": "ImportDeclaration",
-      "start": 61,
-      "end": 97,
+      "start": 60,
+      "end": 96,
       "loc": {
         "start": {
           "line": 7,
@@ -122,8 +122,8 @@
       "specifiers": [
         {
           "type": "ImportDefaultSpecifier",
-          "start": 68,
-          "end": 77,
+          "start": 67,
+          "end": 76,
           "loc": {
             "start": {
               "line": 7,
@@ -136,8 +136,8 @@
           },
           "local": {
             "type": "Identifier",
-            "start": 68,
-            "end": 77,
+            "start": 67,
+            "end": 76,
             "loc": {
               "start": {
                 "line": 7,
@@ -155,8 +155,8 @@
       "importKind": "value",
       "source": {
         "type": "Literal",
-        "start": 83,
-        "end": 96,
+        "start": 82,
+        "end": 95,
         "loc": {
           "start": {
             "line": 7,
@@ -174,8 +174,8 @@
     },
     {
       "type": "ExportDefaultDeclaration",
-      "start": 99,
-      "end": 124,
+      "start": 98,
+      "end": 123,
       "loc": {
         "start": {
           "line": 9,
@@ -188,8 +188,8 @@
       },
       "declaration": {
         "type": "Identifier",
-        "start": 114,
-        "end": 123,
+        "start": 113,
+        "end": 122,
         "loc": {
           "start": {
             "line": 9,

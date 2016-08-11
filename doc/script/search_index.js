@@ -60,9 +60,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "react-ios-component/src/components/cell/celldesc.js~cellbody",
-    "function/index.html#static-function-CellBody",
-    "<span>CellBody</span> <span class=\"search-result-import-path\">react-ios-component/src/components/cell/CellDesc.js</span>",
+    "react-ios-component/src/components/cell/celldesc.js~celldesc",
+    "function/index.html#static-function-CellDesc",
+    "<span>CellDesc</span> <span class=\"search-result-import-path\">react-ios-component/src/components/cell/CellDesc.js</span>",
     "function"
   ],
   [
@@ -1092,12 +1092,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/components/picker/inlinedatepicker.js~inlinedatepicker#constructor",
-    "class/src/components/picker/InlineDatePicker.js~InlineDatePicker.html#instance-constructor-constructor",
-    "src/components/picker/InlineDatePicker.js~InlineDatePicker#constructor",
-    "method"
-  ],
-  [
     "src/components/picker/inlinedatepicker.js~inlinedatepicker#onchange",
     "class/src/components/picker/InlineDatePicker.js~InlineDatePicker.html#instance-method-onChange",
     "src/components/picker/InlineDatePicker.js~InlineDatePicker#onChange",
@@ -1282,12 +1276,6 @@ window.esdocSearchIndex = [
     "file/src/components/portal/Portal.js.html",
     "src/components/portal/Portal.js",
     "file"
-  ],
-  [
-    "src/components/portal/portal.js~portal#close",
-    "class/src/components/portal/Portal.js~Portal.html#instance-method-close",
-    "src/components/portal/Portal.js~Portal#close",
-    "method"
   ],
   [
     "src/components/portal/portal.js~portal#componentwillreceiveprops",

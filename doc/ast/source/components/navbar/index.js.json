@@ -8,8 +8,8 @@
       "column": 0
     },
     "end": {
-      "line": 8,
-      "column": 38
+      "line": 9,
+      "column": 0
     }
   },
   "sourceType": "module",
@@ -73,8 +73,8 @@
     },
     {
       "type": "ImportDeclaration",
-      "start": 42,
-      "end": 59,
+      "start": 41,
+      "end": 58,
       "loc": {
         "start": {
           "line": 5,
@@ -88,8 +88,8 @@
       "specifiers": [],
       "source": {
         "type": "Literal",
-        "start": 49,
-        "end": 58,
+        "start": 48,
+        "end": 57,
         "loc": {
           "start": {
             "line": 5,
@@ -107,8 +107,8 @@
     },
     {
       "type": "ExportNamedDeclaration",
-      "start": 61,
-      "end": 91,
+      "start": 60,
+      "end": 90,
       "loc": {
         "start": {
           "line": 7,
@@ -122,8 +122,8 @@
       "specifiers": [
         {
           "type": "Identifier",
-          "start": 68,
-          "end": 74,
+          "start": 67,
+          "end": 73,
           "loc": {
             "start": {
               "line": 7,
@@ -136,8 +136,8 @@
           },
           "exported": {
             "type": "Identifier",
-            "start": 68,
-            "end": 74,
+            "start": 67,
+            "end": 73,
             "loc": {
               "start": {
                 "line": 7,
@@ -154,8 +154,8 @@
       ],
       "source": {
         "type": "Literal",
-        "start": 80,
-        "end": 90,
+        "start": 79,
+        "end": 89,
         "loc": {
           "start": {
             "line": 7,
@@ -173,8 +173,8 @@
     },
     {
       "type": "ExportNamedDeclaration",
-      "start": 92,
-      "end": 130,
+      "start": 91,
+      "end": 129,
       "loc": {
         "start": {
           "line": 8,
@@ -188,8 +188,8 @@
       "specifiers": [
         {
           "type": "Identifier",
-          "start": 99,
-          "end": 109,
+          "start": 98,
+          "end": 108,
           "loc": {
             "start": {
               "line": 8,
@@ -202,8 +202,8 @@
           },
           "exported": {
             "type": "Identifier",
-            "start": 99,
-            "end": 109,
+            "start": 98,
+            "end": 108,
             "loc": {
               "start": {
                 "line": 8,
@@ -220,8 +220,8 @@
       ],
       "source": {
         "type": "Literal",
-        "start": 115,
-        "end": 129,
+        "start": 114,
+        "end": 128,
         "loc": {
           "start": {
             "line": 8,

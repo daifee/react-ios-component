@@ -3,7 +3,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import {classNames} from '../util';
 
@@ -16,29 +16,31 @@ const prefix = 'input';
  * @param {string} [props.defaultValue=undefined] 文本框的默认值
  */
 export default function Input(props) {
-	const {
-		type,
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
+  const {
+    type,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
 
-	return (
-		<input 
-			className={clazz} 
-			{...rest}
-		/>
-	);
+  return (
+    <input
+      className={clazz}
+      type={type}
+      {...rest}
+    />
+  );
 }
 
 Input.propTypes = {
-	type: PropTypes.string,
-	defaultValue: PropTypes.string
+  type: PropTypes.string,
+  defaultValue: PropTypes.string,
+  className: PropTypes.string
 };
 
 Input.defaultProps = {
-	type: 'text',
-	defaultValue: undefined
+  type: 'text',
+  defaultValue: undefined
 };

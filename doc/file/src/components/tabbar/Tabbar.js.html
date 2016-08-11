@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -102,7 +102,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import config from &apos;../util/config&apos;;
 import {classNames} from &apos;../util&apos;;
@@ -118,51 +118,54 @@ const prefix = &apos;tabbar&apos;;
  * @param {string} [props.activeColor=&apos;&apos;] &#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x680F;&#x9879;&#x88AB;&#x6FC0;&#x6D3B;&#x65F6;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E3B;&#x9898;&#x989C;&#x8272;
  */
 export default function TabBar(props) {
-	const {
-		linkColor,
-		activeColor,
-		tabs,
-		children,
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	const nodes = tabs &amp;&amp; tabs.map((tab, i) =&gt; {
-		return (
-			&lt;TabbarItem 
-				linkColor={linkColor}
-				activeColor={activeColor}
-				{...tab} 
-				key={i}
-			/&gt;
-		);
-	});
-	const childrens = children &amp;&amp; React.Children.map(children, (child, i) =&gt; {
-		return React.cloneElement(child, {
-			linkColor,
-			activeColor
-		});
-	})
+  const {
+    linkColor,
+    activeColor,
+    tabs,
+    children,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  const nodes = tabs &amp;&amp; tabs.map((tab, i) =&gt; {
+    return (
+      &lt;TabbarItem
+        linkColor={linkColor}
+        activeColor={activeColor}
+        {...tab}
+        key={i}
+      /&gt;
+    );
+  });
+  const childrens = children &amp;&amp; React.Children.map(children, (child, i) =&gt; {
+    return React.cloneElement(child, {
+      linkColor,
+      activeColor
+    });
+  });
 
-	return (
-		&lt;div className={clazz} {...rest}&gt;
-			{tabs &amp;&amp; tabs.length &gt; 0 ? nodes : childrens}
-		&lt;/div&gt;
-	);
+  return (
+    &lt;div className={clazz} {...rest}&gt;
+      {tabs &amp;&amp; tabs.length &gt; 0 ? nodes : childrens}
+    &lt;/div&gt;
+  );
 }
 
 TabBar.propTypes = {
-	tabs: PropTypes.arrayOf(PropTypes.object),
-	linkColor: PropTypes.oneOf(config.colors),	// &#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x680F;&#x9879;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;
-	activeColor: PropTypes.oneOf(config.colors)	// &#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x680F;&#x9879;&#x88AB;&#x6FC0;&#x6D3B;&#x65F6;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;
+  tabs: PropTypes.arrayOf(PropTypes.object),
+  linkColor: PropTypes.oneOf(config.colors),  // &#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x680F;&#x9879;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;
+  activeColor: PropTypes.oneOf(config.colors),  // &#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x680F;&#x9879;&#x88AB;&#x6FC0;&#x6D3B;&#x65F6;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 TabBar.defaultProps = {
-	linkColor: &apos;gray&apos;,
-	activeColor: &apos;&apos;
-};</code></pre>
+  linkColor: &apos;gray&apos;,
+  activeColor: &apos;&apos;
+};
+</code></pre>
 
 </div>
 

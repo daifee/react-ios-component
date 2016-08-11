@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,7 +101,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import ReactCSSTransitionGroup from &apos;react-addons-css-transition-group&apos;;
 import {classNames} from &apos;../util&apos;;
@@ -123,80 +123,84 @@ function ChildContainer(props) {
  * @param {string|function} [props.transitionName] &#x52A8;&#x753B;&#x8FC7;&#x5EA6;&#x540D;&#x79F0;&#xFF0C;&#x4F20;&#x7ED9;`ReactCSSTransitionGroup` &#x4F7F;&#x7528;
  */
 export default function Popup(props) {
-	let {
-		visible,
-		close,
-		position,
-		duration,
-		timingFunction,
-		transitionName,
-		className,
-		style,
-		onClick,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(`${prefix}-content`, {
-		[`${prefix}-${position}`]: !!position,
-		className: className
-	});
-	let newStyle = {
-		transitionDuration: `${duration}ms`,
-		transitionTimingFunction: timingFunction
-	};
-	const newTransitionName = classNames(transitionName || `${prefix}`);
-	const onPopupClick = (e) =&gt; {
-		onClick &amp;&amp; onClick(e);
-		e.stopPropagation();
-	};
+  let {
+    visible,
+    close,
+    position,
+    duration,
+    timingFunction,
+    transitionName,
+    className,
+    style,
+    onClick,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(`${prefix}-content`, {
+    [`${prefix}-${position}`]: !!position,
+    className: className
+  });
+  let newStyle = {
+    transitionDuration: `${duration}ms`,
+    transitionTimingFunction: timingFunction
+  };
+  const newTransitionName = classNames(transitionName || `${prefix}`);
+  const onPopupClick = (e) =&gt; {
+    onClick &amp;&amp; onClick(e);
+    e.stopPropagation();
+  };
 
-	return (
-		&lt;ReactCSSTransitionGroup
-			component={ChildContainer}
-			transitionAppearTimeout={duration}
-			transitionEnterTimeout={duration}
-			transitionLeaveTimeout={duration}
-			transitionName={newTransitionName}
-			transitionAppear={true}
-		&gt;
-			{visible ? (
-				&lt;div
-					className={classNames(prefix)}
-					style={newStyle}
-					key={&apos;popup&apos;}
-					onClick={close}
-				&gt;
-					&lt;div 
-						className={clazz} 
-						style={{...newStyle, ...style}}
-						onClick={onPopupClick}
-						{...rest}
-					&gt;
-						{children}
-					&lt;/div&gt;
-				&lt;/div&gt;
-			) : null}
-		&lt;/ReactCSSTransitionGroup&gt;
-	);
+  return (
+    &lt;ReactCSSTransitionGroup
+      component={ChildContainer}
+      transitionAppearTimeout={duration}
+      transitionEnterTimeout={duration}
+      transitionLeaveTimeout={duration}
+      transitionName={newTransitionName}
+      transitionAppear
+    &gt;
+      {visible ? (
+        &lt;div
+          className={classNames(prefix)}
+          style={newStyle}
+          key={&apos;popup&apos;}
+          onClick={close}
+        &gt;
+          &lt;div
+            className={clazz}
+            style={{...newStyle, ...style}}
+            onClick={onPopupClick}
+            {...rest}
+          &gt;
+            {children}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      ) : null}
+    &lt;/ReactCSSTransitionGroup&gt;
+  );
 }
 
 Popup.propTypes = {
-	visible: PropTypes.bool,
-	close: PropTypes.func,
-	position: PropTypes.oneOf([&apos;center&apos;, &apos;top&apos;, &apos;right&apos;, &apos;bottom&apos;, &apos;left&apos;]),
-	duration: PropTypes.number,
-	timingFunction: PropTypes.string,
-	transitionName: PropTypes.oneOf([
-		PropTypes.string,
-		PropTypes.func
-	])
+  visible: PropTypes.bool,
+  close: PropTypes.func,
+  position: PropTypes.oneOf([&apos;center&apos;, &apos;top&apos;, &apos;right&apos;, &apos;bottom&apos;, &apos;left&apos;]),
+  duration: PropTypes.number,
+  timingFunction: PropTypes.string,
+  transitionName: PropTypes.oneOf([
+    PropTypes.string,
+    PropTypes.func
+  ]),
+  className: PropTypes.string,
+  style: PropTypes.object,
+  onClick: PropTypes.func,
+  children: PropTypes.node
 };
 
 Popup.defaultProps = {
-	visible: false,
-	position: &apos;center&apos;,
-	duration: 400,
-	timingFunction: &apos;ease&apos;
+  visible: false,
+  position: &apos;center&apos;,
+  duration: 400,
+  timingFunction: &apos;ease&apos;
 };
 </code></pre>
 

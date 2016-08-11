@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,7 +101,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import {classNames} from &apos;../util&apos;;
 
@@ -114,32 +114,35 @@ const prefix = &apos;input&apos;;
  * @param {string} [props.defaultValue=undefined] &#x6587;&#x672C;&#x6846;&#x7684;&#x9ED8;&#x8BA4;&#x503C;
  */
 export default function Input(props) {
-	const {
-		type,
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
+  const {
+    type,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
 
-	return (
-		&lt;input 
-			className={clazz} 
-			{...rest}
-		/&gt;
-	);
+  return (
+    &lt;input
+      className={clazz}
+      type={type}
+      {...rest}
+    /&gt;
+  );
 }
 
 Input.propTypes = {
-	type: PropTypes.string,
-	defaultValue: PropTypes.string
+  type: PropTypes.string,
+  defaultValue: PropTypes.string,
+  className: PropTypes.string
 };
 
 Input.defaultProps = {
-	type: &apos;text&apos;,
-	defaultValue: undefined
-};</code></pre>
+  type: &apos;text&apos;,
+  defaultValue: undefined
+};
+</code></pre>
 
 </div>
 

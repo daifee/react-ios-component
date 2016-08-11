@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,14 +101,14 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes,
+  Component
 } from &apos;react&apos;;
 import Options from &apos;./Options&apos;;
 import {
-	classNames,
-	generateOptions,
-	indexOfOptions
+  classNames,
+  generateOptions,
+  indexOfOptions
 } from &apos;../util&apos;;
 
 const prefix = &apos;picker-body&apos;;
@@ -118,168 +118,170 @@ const prefix = &apos;picker-body&apos;;
  */
 export default class InlineTimePicker extends Component {
 
-	/**
-	 * &#x6784;&#x9020;&#x51FD;&#x6570;
-	 * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
-	 * @param {string} [props.selectedTime] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
-	 * @param {string} [props.minDate=&apos;00:00:00&apos;] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
-	 * @param {string} [props.maxDate=&apos;23:59:59&apos;] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
-	 * @param {string} [props.hourUnit=&apos;&apos;] &#x5C0F;&#x65F6;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {string} [props.minuteUnit=&apos;&apos;] &#x5206;&#x949F;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {string} [props.secondUnit=&apos;&apos;] &#x79D2;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
-	 * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
-	 * @param {Object} context
-	 */
-	constructor(props, context) {
-		super(props, context);
-	}
+  /**
+   * &#x6784;&#x9020;&#x51FD;&#x6570;
+   * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+   * @param {string} [props.selectedTime] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
+   * @param {string} [props.minDate=&apos;00:00:00&apos;] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+   * @param {string} [props.maxDate=&apos;23:59:59&apos;] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+   * @param {string} [props.hourUnit=&apos;&apos;] &#x5C0F;&#x65F6;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {string} [props.minuteUnit=&apos;&apos;] &#x5206;&#x949F;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {string} [props.secondUnit=&apos;&apos;] &#x79D2;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
+  }
 
-	_setHours = (hourOptions, selectedIndex) =&gt; {
-		const value = hourOptions[selectedIndex].value;
+  _setHours = (hourOptions, selectedIndex) =&gt; {
+    const value = hourOptions[selectedIndex].value;
 
-		this.onChange(value, &apos;hours&apos;);
-	};
+    this.onChange(value, &apos;hours&apos;);
+  };
 
-	_setMinutes = (minuteOptions, selectedIndex) =&gt; {
-		const value = minuteOptions[selectedIndex].value;
+  _setMinutes = (minuteOptions, selectedIndex) =&gt; {
+    const value = minuteOptions[selectedIndex].value;
 
-		this.onChange(value, &apos;minutes&apos;);
-	};
+    this.onChange(value, &apos;minutes&apos;);
+  };
 
-	_setSeconds = (secondOptions, selectedIndex) =&gt; {
-		const value = secondOptions[selectedIndex].value;
+  _setSeconds = (secondOptions, selectedIndex) =&gt; {
+    const value = secondOptions[selectedIndex].value;
 
-		this.onChange(value, &apos;seconds&apos;);
-	};
+    this.onChange(value, &apos;seconds&apos;);
+  };
 
-	onChange(value, key) {
-		const {
-			onChange,
-			selectedTime
-		} = this.props;
-		let time = parseTime(selectedTime);
-		time[key] = value;
-		const newTime = formatTime(time);
+  onChange(value, key) {
+    const {
+      onChange,
+      selectedTime
+    } = this.props;
+    let time = parseTime(selectedTime);
+    time[key] = value;
+    const newTime = formatTime(time);
 
-		onChange &amp;&amp; onChange(newTime);
-	}
+    onChange &amp;&amp; onChange(newTime);
+  }
 
-	render() {
-		let {
-			selectedTime,
-			maxTime,
-			minTime,
-			hourUnit,
-			minuteUnit,
-			secondUnit,
-			className,
-			...rest
-		} = this.props;
-		const clazz = classNames(prefix, {
-			[className]: className
-		});
-		const selectedTimeObj = parseTime(selectedTime);
-		const maxTimeObj = parseTime(maxTime);
-		const minTimeObj = parseTime(minTime);
-		const hourOptions = createHourOptions(maxTimeObj, minTimeObj, hourUnit);
-		const minuteOptions = createMinuteOptions(maxTimeObj, minTimeObj, 
-			selectedTimeObj, hourUnit);
-		const secondOptions = createSecondOptions(maxTimeObj, minTimeObj, 
-			selectedTimeObj, hourUnit);
-		const hoursIndex = indexOfOptions(selectedTimeObj.hours, hourOptions);
-		const minutesIndex = indexOfOptions(selectedTimeObj.minutes, minuteOptions);
-		const secondsIndex = indexOfOptions(selectedTimeObj.seconds, secondOptions);
+  render() {
+    let {
+      selectedTime,
+      maxTime,
+      minTime,
+      hourUnit,
+      minuteUnit,
+      secondUnit,
+      className,
+      ...rest
+    } = this.props;
+    const clazz = classNames(prefix, {
+      [className]: className
+    });
+    const selectedTimeObj = parseTime(selectedTime);
+    const maxTimeObj = parseTime(maxTime);
+    const minTimeObj = parseTime(minTime);
+    const hourOptions = createHourOptions(maxTimeObj, minTimeObj, hourUnit);
+    const minuteOptions = createMinuteOptions(maxTimeObj, minTimeObj,
+      selectedTimeObj, minuteUnit);
+    const secondOptions = createSecondOptions(maxTimeObj, minTimeObj,
+      selectedTimeObj, secondUnit);
+    const hoursIndex = indexOfOptions(selectedTimeObj.hours, hourOptions);
+    const minutesIndex = indexOfOptions(selectedTimeObj.minutes, minuteOptions);
+    const secondsIndex = indexOfOptions(selectedTimeObj.seconds, secondOptions);
 
-		return (
-			&lt;div className={clazz} {...rest}&gt;
-				&lt;Options 
-					selectedIndex={hoursIndex}
-					options={hourOptions} 
-					key={&apos;hours&apos;} 
-					onChange={this._setHours.bind(this, hourOptions)}
-				/&gt;
-				&lt;Options 
-					selectedIndex={minutesIndex}
-					options={minuteOptions} 
-					key={&apos;minutes&apos;} 
-					onChange={this._setMinutes.bind(this, minuteOptions)}
-				/&gt;
-				&lt;Options 
-					selectedIndex={secondsIndex}
-					options={secondOptions} 
-					key={&apos;seconds&apos;} 
-					onChange={this._setSeconds.bind(this, secondOptions)}
-				/&gt;
-			&lt;/div&gt;
-		);
-	}
+    return (
+      &lt;div className={clazz} {...rest}&gt;
+        &lt;Options
+          selectedIndex={hoursIndex}
+          options={hourOptions}
+          key={&apos;hours&apos;}
+          onChange={this._setHours.bind(this, hourOptions)}
+        /&gt;
+        &lt;Options
+          selectedIndex={minutesIndex}
+          options={minuteOptions}
+          key={&apos;minutes&apos;}
+          onChange={this._setMinutes.bind(this, minuteOptions)}
+        /&gt;
+        &lt;Options
+          selectedIndex={secondsIndex}
+          options={secondOptions}
+          key={&apos;seconds&apos;}
+          onChange={this._setSeconds.bind(this, secondOptions)}
+        /&gt;
+      &lt;/div&gt;
+    );
+  }
 }
 
 function formatTime(timeObj) {
-	let hours = add0(timeObj.hours);
-	let minutes = add0(timeObj.minutes);
-	let seconds = add0(timeObj.seconds);
-	
-	return `${hours}:${minutes}:${seconds}`;
+  let hours = add0(timeObj.hours);
+  let minutes = add0(timeObj.minutes);
+  let seconds = add0(timeObj.seconds);
+
+  return `${hours}:${minutes}:${seconds}`;
 }
 
 function add0(value) {
-	return value &lt; 10 ? `0${value}` : value;
+  return value &lt; 10 ? `0${value}` : value;
 }
 
 function createHourOptions(maxTimeObj, minTimeObj, hourUnit) {
-	return generateOptions(maxTimeObj.hours, minTimeObj.hours, hourUnit);
+  return generateOptions(maxTimeObj.hours, minTimeObj.hours, hourUnit);
 }
 
 function createMinuteOptions(maxTimeObj, minTimeObj, selectedTimeObj, minuteUnit) {
-	const max = isEqualHour(maxTimeObj, selectedTimeObj) ? maxTimeObj.minutes : 59;
-	const min = isEqualHour(minTimeObj, selectedTimeObj) ? minTimeObj.minutes : 0;
+  const max = isEqualHour(maxTimeObj, selectedTimeObj) ? maxTimeObj.minutes : 59;
+  const min = isEqualHour(minTimeObj, selectedTimeObj) ? minTimeObj.minutes : 0;
 
-	return generateOptions(max, min, minuteUnit);
+  return generateOptions(max, min, minuteUnit);
 }
 
 function createSecondOptions(maxTimeObj, minTimeObj, selectedTimeObj, secondUnit) {
-	const max = isEqualHourMinute(maxTimeObj, selectedTimeObj) ? maxTimeObj.minutes : 59;
-	const min = isEqualHourMinute(minTimeObj, selectedTimeObj) ? minTimeObj.minutes : 0;
+  const max = isEqualHourMinute(maxTimeObj, selectedTimeObj) ? maxTimeObj.minutes : 59;
+  const min = isEqualHourMinute(minTimeObj, selectedTimeObj) ? minTimeObj.minutes : 0;
 
-	return generateOptions(max, min, secondUnit);
+  return generateOptions(max, min, secondUnit);
 }
 
 function isEqualHour(t1, t2) {
-	return t1.hours === t2.hours;
+  return t1.hours === t2.hours;
 }
 
 function isEqualHourMinute(t1, t2) {
-	return isEqualHour(t1, t2) &amp;&amp; t1.minutes === t2.minutes;
+  return isEqualHour(t1, t2) &amp;&amp; t1.minutes === t2.minutes;
 }
 
 function parseTime(time) {
-	const times = time.split(&apos;:&apos;);
+  const times = time.split(&apos;:&apos;);
 
-	return {
-		hours: parseInt(times[0]),
-		minutes: parseInt(times[1]),
-		seconds: parseInt(times[2])
-	};
+  return {
+    hours: parseInt(times[0]),
+    minutes: parseInt(times[1]),
+    seconds: parseInt(times[2])
+  };
 }
 
 InlineTimePicker.propTypes = {
-	selectedTime: PropTypes.string.isRequired,
-	minTime: PropTypes.string,
-	maxTime: PropTypes.string,
-	hourUnit: PropTypes.string,
-	minuteUnit: PropTypes.string,
-	secondUnit: PropTypes.string,
-	onChange: PropTypes.func
+  selectedTime: PropTypes.string.isRequired,
+  minTime: PropTypes.string,
+  maxTime: PropTypes.string,
+  hourUnit: PropTypes.string,
+  minuteUnit: PropTypes.string,
+  secondUnit: PropTypes.string,
+  onChange: PropTypes.func,
+  className: PropTypes.string
 };
 
 InlineTimePicker.defaultProps = {
-	minTime: &apos;00:00:00&apos;,
-	maxTime: &apos;23:59:59&apos;,
-	hourUnit: &apos;&apos;,
-	minuteUnit: &apos;&apos;,
-	secondUnit: &apos;&apos;
-};</code></pre>
+  minTime: &apos;00:00:00&apos;,
+  maxTime: &apos;23:59:59&apos;,
+  hourUnit: &apos;&apos;,
+  minuteUnit: &apos;&apos;,
+  secondUnit: &apos;&apos;
+};
+</code></pre>
 
 </div>
 

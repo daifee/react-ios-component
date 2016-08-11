@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,51 +101,54 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import {classNames} from &apos;../util&apos;;
 
 const prefix = &apos;icon-&apos;;
 
 export default function Icon(props) {
-	const {
-		value,
-		size,
-		prefix,
-		children, 
-		className,
-		...rest
-	} = props;
-	let clazz = {
-		[prefix + value]: true,
-		[className]: className
-	};
-	let style = {};
+  const {
+    value,
+    size,
+    prefix,
+    children,
+    className,
+    ...rest
+  } = props;
+  let clazz = {
+    [prefix + value]: true,
+    [className]: className
+  };
+  let style = {};
 
-	if(size) {
-		style = {
-			width: size,
-			height: size,
-			fontSize: size
-		};
-	}
+  if (size) {
+    style = {
+      width: size,
+      height: size,
+      fontSize: size
+    };
+  }
 
-	return (
-		&lt;i className={classNames(clazz)} style={style} {...rest}&gt;
-			{children}
-		&lt;/i&gt;
-	);
+  return (
+    &lt;i className={classNames(clazz)} style={style} {...rest}&gt;
+      {children}
+    &lt;/i&gt;
+  );
 }
 
 Icon.propTypes = {
-	value: PropTypes.string.isRequired,
-	size: PropTypes.string,
-	prefix: PropTypes.string
+  value: PropTypes.string.isRequired,
+  size: PropTypes.string,
+  prefix: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 Icon.defaultProps = {
-	prefix: prefix
-};</code></pre>
+  prefix: prefix
+};
+</code></pre>
 
 </div>
 

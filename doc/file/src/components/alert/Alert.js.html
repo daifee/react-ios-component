@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,9 +101,7 @@
  */
 
 import React, {
-	PropTypes,
-	Component,
-	cloneElement
+  PropTypes
 } from &apos;react&apos;;
 import Popup from &apos;../popup&apos;;
 import Portal from &apos;../portal&apos;;
@@ -112,7 +110,6 @@ import AlertBody from &apos;./AlertBody&apos;;
 import AlertFooter from &apos;./AlertFooter&apos;;
 import AlertButton from &apos;./AlertButton&apos;;
 import {classNames} from &apos;../util&apos;;
-import {render} from &apos;react-dom&apos;;
 
 const prefix = &apos;alert&apos;;
 
@@ -126,50 +123,50 @@ const prefix = &apos;alert&apos;;
  * @param {function} props.close &#x5173;&#x95ED;&#x8B66;&#x544A;&#x6846;&#x7684;&#x56DE;&#x8C03;&#xFF08;&#x914D;&#x5408; API &#x8C03;&#x7528;&#x6765;&#x4F7F;&#x7528;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x7528;&#x624B;&#x52A8;&#x4F20;&#xFF09;
  */
 export default function Alert(props) {
-	const {
-		visible,
-		title,
-		body,
-		buttons,
-		close,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	const buttonEls = buttons.map((btnProps, i) =&gt; {
-		const onClick = btnProps.onClick;
+  const {
+    visible,
+    title,
+    body,
+    buttons,
+    close,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  const buttonEls = buttons.map((btnProps, i) =&gt; {
+    const onClick = btnProps.onClick;
 
-		btnProps.onClick = (e) =&gt; {
-			const bool = onClick &amp;&amp; onClick(e);
+    btnProps.onClick = (e) =&gt; {
+      const bool = onClick &amp;&amp; onClick(e);
 
-			if(!bool) {
-				close &amp;&amp; close();
-			}
-		}
-		return (
-			&lt;AlertButton {...btnProps} key={i} /&gt;
-		);
-	});
+      if (!bool) {
+        close &amp;&amp; close();
+      }
+    };
+    return (
+      &lt;AlertButton {...btnProps} key={i} /&gt;
+    );
+  });
 
-	return (
-		&lt;Popup visible={visible}&gt;
-			&lt;div className={clazz} {...rest}&gt;
-				{title ? (
-					&lt;AlertHeader&gt;{title}&lt;/AlertHeader&gt;
-				) : null}
-				{body ? (
-					&lt;AlertBody&gt;{body}&lt;/AlertBody&gt;
-				) : null}
-				{children}
-				&lt;AlertFooter&gt;
-					{buttonEls}
-				&lt;/AlertFooter&gt;
-			&lt;/div&gt;
-		&lt;/Popup&gt;
-	);
+  return (
+    &lt;Popup visible={visible}&gt;
+      &lt;div className={clazz} {...rest}&gt;
+        {title ? (
+          &lt;AlertHeader&gt;{title}&lt;/AlertHeader&gt;
+        ) : null}
+        {body ? (
+          &lt;AlertBody&gt;{body}&lt;/AlertBody&gt;
+        ) : null}
+        {children}
+        &lt;AlertFooter&gt;
+          {buttonEls}
+        &lt;/AlertFooter&gt;
+      &lt;/div&gt;
+    &lt;/Popup&gt;
+  );
 }
 
 /**
@@ -178,16 +175,19 @@ export default function Alert(props) {
  * @param  {Node} container &#x8B66;&#x544A;&#x6846;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
  */
 Alert.show = (props, container) =&gt; {
-	Portal.show(Alert, props, container);
+  Portal.show(Alert, props, container);
 };
 
 Alert.propTypes = {
-	visible: PropTypes.bool,
-	title: PropTypes.node,
-	body: PropTypes.node,
-	buttons: PropTypes.arrayOf(PropTypes.object),
-	close: PropTypes.func
-};</code></pre>
+  visible: PropTypes.bool,
+  title: PropTypes.node,
+  body: PropTypes.node,
+  buttons: PropTypes.arrayOf(PropTypes.object),
+  close: PropTypes.func,
+  className: PropTypes.string,
+  children: PropTypes.node
+};
+</code></pre>
 
 </div>
 

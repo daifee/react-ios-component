@@ -1,15 +1,15 @@
 {
   "type": "Program",
   "start": 0,
-  "end": 124,
+  "end": 125,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 10,
-      "column": 25
+      "line": 11,
+      "column": 0
     }
   },
   "sourceType": "module",

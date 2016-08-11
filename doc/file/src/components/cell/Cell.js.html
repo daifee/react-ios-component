@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,7 +101,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from &apos;react&apos;;
 import {classNames} from &apos;../util&apos;;
 
@@ -115,36 +115,39 @@ const prefix = &apos;cell&apos;;
  * @param {string} [props.component=&apos;div&apos;] &#x5217;&#x8868;&#x9879;&#x7684; `html` &#x6807;&#x7B7E;&#xFF0C;&#x53EF;&#x9009;&#x7684;&#x6709; `[&apos;a&apos;, &apos;label&apos;, &apos;div&apos;]`
  */
 export default function Cell(props) {
-	const {
-		hasArrow,
-		href,
-		component,
-		className,
-		children,
-		...rest
-	} = props;
-	let Component = href ? &apos;a&apos; : component;
-	let clazz = classNames(prefix, {
-		[`${prefix}-arrow`]: Component === &apos;a&apos; || hasArrow,
-		[className]: className
-	});
+  const {
+    hasArrow,
+    href,
+    component,
+    className,
+    children,
+    ...rest
+  } = props;
+  let Component = href ? &apos;a&apos; : component;
+  let clazz = classNames(prefix, {
+    [`${prefix}-arrow`]: Component === &apos;a&apos; || hasArrow,
+    [className]: className
+  });
 
-	return (
-		&lt;Component className={clazz} {...rest}&gt;
-			{children}
-		&lt;/Component&gt;
-	);
+  return (
+    &lt;Component className={clazz} {...rest}&gt;
+      {children}
+    &lt;/Component&gt;
+  );
 }
 
 Cell.propTypes = {
-	hasArrow: PropTypes.bool,
-	href: PropTypes.string,
-	component: PropTypes.oneOf([&apos;a&apos;, &apos;label&apos;, &apos;div&apos;])
+  hasArrow: PropTypes.bool,
+  href: PropTypes.string,
+  component: PropTypes.oneOf([&apos;a&apos;, &apos;label&apos;, &apos;div&apos;]),
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 Cell.defaultProps = {
-	component: &apos;div&apos;
-};</code></pre>
+  component: &apos;div&apos;
+};
+</code></pre>
 
 </div>
 

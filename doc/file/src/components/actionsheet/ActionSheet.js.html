@@ -44,7 +44,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/button</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Button">Button</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/cell</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cell">Cell</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellBody">CellBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellDesc">CellDesc</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellFooter">CellFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CellHeader">CellHeader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Cells">Cells</a></span></span></li>
@@ -101,8 +101,7 @@
  */
 
 import React, {
-	PropTypes,
-	Component
+  PropTypes
 } from &apos;react&apos;;
 import Popup from &apos;../popup&apos;;
 import Portal from &apos;../portal&apos;;
@@ -114,23 +113,23 @@ const prefix = &apos;actionsheet&apos;;
 /**
  * Button &#x64CD;&#x4F5C;&#x5217;&#x8868;&#x7EC4;&#x4EF6;&#xFF08;`ActionSheet`&#xFF09;&#x91CC;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#x6309;&#x94AE;&#x7EC4;&#x4EF6;
  * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
- * @param {string} [props.color]	&#x6309;&#x94AE;&#x6587;&#x6848;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E3B;&#x9898;&#x989C;&#x8272;
+ * @param {string} [props.color]  &#x6309;&#x94AE;&#x6587;&#x6848;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E3B;&#x9898;&#x989C;&#x8272;
  */
 function Button(props) {
-	const {
-		color,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(`${prefix}-button`, {
-		[className]: className,
-		[`color-${color}`]: !!color
-	});
+  const {
+    color,
+    className,
+    children,
+    ...rest
+  } = props;
+  let clazz = classNames(`${prefix}-button`, {
+    [className]: className,
+    [`color-${color}`]: !!color
+  });
 
-	return (
-		&lt;a className={clazz} {...rest}&gt;{children}&lt;/a&gt;
-	);
+  return (
+    &lt;a className={clazz} {...rest}&gt;{children}&lt;/a&gt;
+  );
 }
 
 /**
@@ -139,16 +138,18 @@ function Button(props) {
  * color: &#x6309;&#x94AE;&#x6587;&#x6848;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E3B;&#x9898;&#x989C;&#x8272;
  */
 Button.propTypes = {
-	color: PropTypes.oneOf(config.colors)
+  color: PropTypes.oneOf(config.colors),
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 Button.defaultProps = {
-	color: &apos;&apos;
+  color: &apos;&apos;
 };
 
 /**
  * ActionSheet &#x64CD;&#x4F5C;&#x5217;&#x8868;
  * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
- * @param {boolean} props.visible	&#x662F;&#x5426;&#x663E;&#x793A;&#x64CD;&#x4F5C;&#x5217;&#x8868;
+ * @param {boolean} props.visible &#x662F;&#x5426;&#x663E;&#x793A;&#x64CD;&#x4F5C;&#x5217;&#x8868;
  * @param {number|string|Object|Array} props.description &#x64CD;&#x4F5C;&#x5217;&#x8868;&#x5934;&#x90E8;&#x7684;&#x63CF;&#x8FF0;&#x7EC4;&#x4EF6;
  * @param {Object[]} props.buttons &#x64CD;&#x4F5C;&#x6309;&#x94AE;&#x914D;&#x7F6E;&#x5217;&#x8868;
  * @param {boolean} [props.hasCancelButton=true] &#x662F;&#x5426;&#x6709;&#x53D6;&#x6D88;&#x6309;&#x94AE;
@@ -157,57 +158,56 @@ Button.defaultProps = {
  * @param {function} props.close &#x5173;&#x95ED;&#x64CD;&#x4F5C;&#x5217;&#x8868;&#x7684;&#x56DE;&#x8C03;&#xFF08;&#x914D;&#x5408; API &#x8C03;&#x7528;&#x6765;&#x4F7F;&#x7528;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x7528;&#x624B;&#x52A8;&#x4F20;&#xFF09;
  */
 export default function ActionSheet(props) {
-	const {
-		visible,
-		description,
-		buttons,
-		hasCancelButton,
-		onCancel,
-		cancelText,
-		close,
-		className,
-		children,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[className]: className
-	});
-	let buttonsClazz = classNames(`${prefix}-buttons`);
-	let descClazz = classNames(`${prefix}-desc`);
-	let buttonEls = buttons.map((btnProps, i) =&gt; {
-		const onClick = btnProps.onClick;
+  const {
+    visible,
+    description,
+    buttons,
+    hasCancelButton,
+    onCancel,
+    cancelText,
+    close,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className
+  });
+  let buttonsClazz = classNames(`${prefix}-buttons`);
+  let descClazz = classNames(`${prefix}-desc`);
+  let buttonEls = buttons.map((btnProps, i) =&gt; {
+    const onClick = btnProps.onClick;
 
-		btnProps.onClick = (e) =&gt; {
-			onClick &amp;&amp; onClick(e);
-			close &amp;&amp; close(e);
-		}
-		return &lt;Button {...btnProps} key={i}/&gt;
-	});
+    btnProps.onClick = (e) =&gt; {
+      onClick &amp;&amp; onClick(e);
+      close &amp;&amp; close(e);
+    };
+    return &lt;Button {...btnProps} key={i} /&gt;;
+  });
 
-	return (
-		&lt;Popup 
-			visible={visible} 
-			close={close} 
-			position=&quot;bottom&quot;
-		&gt;
-			&lt;div className={clazz} {...rest}&gt;
-				&lt;div className={buttonsClazz}&gt;
-					{description ? (
-						&lt;span className={descClazz}&gt;{description}&lt;/span&gt;
-					) : null}
-					{buttonEls}
-				&lt;/div&gt;
-				{hasCancelButton ? (
-					&lt;div className={buttonsClazz}&gt;
-						&lt;Button onClick={(e) =&gt; {
-							onCancel &amp;&amp; onCancel(e);
-							close &amp;&amp; close();
-						}}&gt;{cancelText}&lt;/Button&gt;
-					&lt;/div&gt;
-				) : null}
-			&lt;/div&gt;
-		&lt;/Popup&gt;
-	);
+  return (
+    &lt;Popup
+      visible={visible}
+      close={close}
+      position=&apos;bottom&apos;
+    &gt;
+      &lt;div className={clazz} {...rest}&gt;
+        &lt;div className={buttonsClazz}&gt;
+          {description ? (
+            &lt;span className={descClazz}&gt;{description}&lt;/span&gt;
+          ) : null}
+          {buttonEls}
+        &lt;/div&gt;
+        {hasCancelButton ? (
+          &lt;div className={buttonsClazz}&gt;
+            &lt;Button onClick={(e) =&gt; {
+              onCancel &amp;&amp; onCancel(e);
+              close &amp;&amp; close();
+            }}&gt;{cancelText}&lt;/Button&gt;
+          &lt;/div&gt;
+        ) : null}
+      &lt;/div&gt;
+    &lt;/Popup&gt;
+  );
 }
 
 /**
@@ -215,19 +215,20 @@ export default function ActionSheet(props) {
  * @type {Object}
  */
 ActionSheet.propTypes = {
-	visible: PropTypes.bool,
-	description: PropTypes.node,
-	buttons: PropTypes.arrayOf(PropTypes.object).isRequired,
-	hasCancelButton: PropTypes.bool,
-	onCancel: PropTypes.func,
-	cancelText: PropTypes.node,
-	close: PropTypes.func
+  visible: PropTypes.bool,
+  description: PropTypes.node,
+  buttons: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hasCancelButton: PropTypes.bool,
+  onCancel: PropTypes.func,
+  cancelText: PropTypes.node,
+  close: PropTypes.func,
+  className: PropTypes.string
 };
 
 ActionSheet.defaultProps = {
-	hasCancelButton: true,
-	onCancel: () =&gt; {},
-	cancelText: &apos;&#x53D6;&#x6D88;&apos;
+  hasCancelButton: true,
+  onCancel: () =&gt; {},
+  cancelText: &apos;&#x53D6;&#x6D88;&apos;
 };
 
 /**
@@ -236,8 +237,9 @@ ActionSheet.defaultProps = {
  * @param  {Node} container &#x64CD;&#x4F5C;&#x5217;&#x8868;&#x7684;&#x5BB9;&#x5668;&#x8282;&#x70B9;
  */
 ActionSheet.show = (props, container) =&gt; {
-	Portal.show(ActionSheet, props, container);
-};</code></pre>
+  Portal.show(ActionSheet, props, container);
+};
+</code></pre>
 
 </div>
 

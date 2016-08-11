@@ -8,73 +8,77 @@
 $alertSelector: ".#{$namespace}alert";
 
 #{$alertSelector} {
-	width: 72%;
-	margin: 0 auto;
-	line-height: 1.2;
-	text-align: center;
-	background-color: $white;
-	border-radius: .5rem;
-	overflow: hidden;
+  width: 72%;
+  margin: 0 auto;
+  line-height: 1.2;
+  text-align: center;
+  background-color: $white;
+  border-radius: .5rem;
+  overflow: hidden;
 
-	&-header {
-		padding: 1rem .75rem .4rem;
-		font-size: .85rem;
-	}
+  &-header {
+    padding: 1rem .75rem .4rem;
+    font-size: .85rem;
+  }
 
-	&-body {
-		padding: 0 .75rem 1rem;
-		font-size: .65rem;
-	}
+  &-body {
+    padding: 0 .75rem 1rem;
+    font-size: .65rem;
+  }
 
-	&-footer {
-		position: relative;
-		display: flex;
-		flex-direction: column;
+  &-footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
 
-		@include hairline-top();
-	}
+    @include hairline-top();
+  }
 
-	&-button {
-		position: relative;
-		flex: 1;
-		padding: .6rem .75rem;
-		color: $primaryColor;
-		font-size: .85rem;
+  &-button {
+    position: relative;
+    flex: 1;
+    padding: .6rem .75rem;
+    color: $primaryColor;
+    font-size: .85rem;
 
-		&:not(:first-child) {
-			@include hairline-top();
-		}
+    &:not(:first-child) {
+      @include hairline-top();
+    }
 
-		&:active {
-			background-color: rgba(0, 0, 0, .1);
-		}
-	}
+    &:active {
+      background-color: rgba(0, 0, 0, .1);
+    }
+  }
 
-	&-confirm {
+  &-confirm {
 
-		#{$alertSelector}-footer {
-			flex-direction: row;
-		}
+    #{$alertSelector}-footer {
+      flex-direction: row;
+    }
 
-		#{$alertSelector}-button:not(:first-child) {
-			@include hairline-left();
-		}
-	}
+    #{$alertSelector}-button:not(:first-child) {
+      @include hairline-left();
 
-	&-prompt {
-		#{$alertSelector}-input {
-			padding-left: .2rem;
-			margin: 0 .75rem .6rem;
-			font-size: .65rem;
-			border: 1px solid rgba(77,77,77,0.78);
+      &:before {
+        height: auto;
+      }
+    }
+  }
 
-			input {
-				width: 100%;
-				height: 1.2rem;
-				background-color: $white;
-				border: 0;
-				-webkit-appearance: none;
-			}
-		}
-	}
+  &-prompt {
+    #{$alertSelector}-input {
+      padding-left: .2rem;
+      margin: 0 .75rem .6rem;
+      font-size: .65rem;
+      border: 1px solid rgba(77,77,77,0.78);
+
+      input {
+        width: 100%;
+        height: 1.2rem;
+        background-color: $white;
+        border: 0;
+        -webkit-appearance: none;
+      }
+    }
+  }
 }

@@ -4,7 +4,7 @@
  */
 
 import React, {
-	PropTypes
+  PropTypes
 } from 'react';
 import config from '../util/config';
 import {classNames} from '../util';
@@ -17,27 +17,30 @@ const prefix = 'badge';
  * @param {string} [props.bgColor] 徽章的背景颜色，默认为主题颜色
  */
 export default function Badge(props) {
-	const {
-		bgColor,
-		children,
-		className,
-		...rest
-	} = props;
-	let clazz = classNames(prefix, {
-		[`bg-${bgColor}`]: !!bgColor
-	});
+  const {
+    bgColor,
+    children,
+    className,
+    ...rest
+  } = props;
+  let clazz = classNames(prefix, {
+    [className]: className,
+    [`bg-${bgColor}`]: !!bgColor
+  });
 
-	return (
-		<span className={clazz} {...rest}>
-			{children}
-		</span>
-	);
+  return (
+    <span className={clazz} {...rest}>
+      {children}
+    </span>
+  );
 }
 
 Badge.propTypes = {
-	bgColor: PropTypes.oneOf(config.colors)
+  bgColor: PropTypes.oneOf(config.colors),
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 Badge.defaultProps = {
-	bgColor: ''
+  bgColor: ''
 };
