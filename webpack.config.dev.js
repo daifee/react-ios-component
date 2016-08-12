@@ -19,7 +19,8 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel'
-      }, {
+      },
+      {
         test: /\.scss$/,
         loader: 'style!css!postcss!sass'
         // loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')

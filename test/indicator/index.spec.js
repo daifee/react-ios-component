@@ -2,7 +2,19 @@
  * @author haw
  */
 
+import React from 'react';
+import {
+  expect
+} from 'chai';
+import {
+  shallow,
+  mount
+} from 'enzyme';
 import Indicator from '../../src/components/indicator';
+import config from '../../src/components/util/config';
+const {
+  namespace
+} = config;
 
 
 describe('Indicator 组件', () => {

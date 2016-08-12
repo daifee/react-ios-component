@@ -2,11 +2,23 @@
  * @author haw
  */
 
+import React from 'react';
+import {
+  expect
+} from 'chai';
+import {
+  shallow,
+  mount
+} from 'enzyme';
 import {
   Alert,
   Confirm,
   Prompt
 } from '../../src/components/alert';
+import config from '../../src/components/util/config';
+const {
+  namespace
+} = config;
 
 
 describe('Alert 组件', () => {

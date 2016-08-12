@@ -67,6 +67,7 @@ export default class Indicator extends Component {
       visible,
       timeout,
       close,
+      onClose,
       className,
       children,
       ...rest

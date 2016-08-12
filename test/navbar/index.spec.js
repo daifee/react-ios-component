@@ -2,9 +2,21 @@
  * @author haw
  */
 
+import React from 'react';
+import {
+  expect
+} from 'chai';
+import {
+  shallow,
+  mount
+} from 'enzyme';
 import {
   NavBar
 } from '../../src/components/navbar';
+import config from '../../src/components/util/config';
+const {
+  namespace
+} = config;
 
 
 describe('NavBar 组件', () => {

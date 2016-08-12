@@ -2,6 +2,14 @@
  * @author haw
  */
 
+import React from 'react';
+import {
+  expect
+} from 'chai';
+import {
+  shallow,
+  mount
+} from 'enzyme';
 import {
   Cells,
   CellsTitle,
@@ -14,6 +22,10 @@ import {
 import {
   Icon
 } from '../../src/components/icon';
+import config from '../../src/components/util/config';
+const {
+  namespace
+} = config;
 
 
 describe('Cell 系列组件', () => {

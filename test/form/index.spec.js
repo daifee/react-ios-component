@@ -2,6 +2,14 @@
  * @author haw
  */
 
+import React from 'react';
+import {
+  expect
+} from 'chai';
+import {
+  shallow,
+  mount
+} from 'enzyme';
 import {
   Checkbox,
   Radio,
@@ -11,6 +19,10 @@ import {
   Stepper,
   Slider
 } from '../../src/components/form';
+import config from '../../src/components/util/config';
+const {
+  namespace
+} = config;
 
 
 describe('Form 表单系列组件', () => {
