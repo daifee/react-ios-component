@@ -10,7 +10,11 @@
     "doc": "esdoc -c esdoc.json",
     "test": "npm run lint && mocha --opts test/mocha.opts",
     "test:watch": "mocha -w --opts mocha.opts",
-    "test:karma": "npm run lint && karma start"
+    "test:karma": "npm run lint && karma start",
+    "clear": "rm -rf ./dist",
+    "build:dev": "NODE_ENV=development webpack --progress --colors --config webpack.config.prod.js",
+    "build:prod": "NODE_ENV=production webpack -p --progress --colors --config webpack.config.prod.js",
+    "build": "npm run clear && npm run build:dev && npm run build:prod"
   },
   "keywords": [
     "react",
