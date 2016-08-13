@@ -4,6 +4,11 @@
 
 sketch : [ios9-uikit](https://github.com/philipamour/ios9-uikit)
 
+### 安装
+```
+npm install --save react-ios-component
+```
+
 ### 开发
 
 ```
