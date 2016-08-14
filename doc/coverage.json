@@ -1,7 +1,7 @@
 {
-  "coverage": "57.01%",
-  "expectCount": 114,
-  "actualCount": 65,
+  "coverage": "57.39%",
+  "expectCount": 115,
+  "actualCount": 66,
   "files": {
     "src/components/actionsheet/ActionSheet.js": {
       "expectCount": 1,
@@ -121,11 +121,11 @@
       ]
     },
     "src/components/picker/InlineDatePicker.js": {
-      "expectCount": 3,
-      "actualCount": 1,
+      "expectCount": 4,
+      "actualCount": 2,
       "undocumentLines": [
-        67,
-        75
+        74,
+        82
       ]
     },
     "src/components/picker/InlinePicker.js": {
@@ -196,7 +196,7 @@
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/components/portal/Portal.js": {
+    "src/components/portal/portal.js": {
       "expectCount": 5,
       "actualCount": 2,
       "undocumentLines": [
@@ -223,7 +223,7 @@
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/components/searchbar/SearchBar.js": {
+    "src/components/searchbar/Searchbar.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []

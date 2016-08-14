@@ -19,7 +19,7 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
-  
+  <a data-ice="repoURL" href="https://github.com/maiwenan/react-ios-component.git" class="repo-url-github">Repository</a>
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -72,11 +72,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/picker/Picker.js~Picker.html">Picker</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/picker/TimePicker.js~TimePicker.html">TimePicker</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/popup</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Popup">Popup</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/portal</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/portal/Portal.js~Portal.html">Portal</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/portal</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/portal/portal.js~Portal.html">Portal</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/searchbar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/searchbar/SearchBarInput.js~SearchBarInput.html">SearchBarInput</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SearchBar">SearchBar</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SearchBarFooter">SearchBarFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SearchBarHeader">SearchBarHeader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SearchBar">SearchBar</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/segmented</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Segmented">Segmented</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/tabbar</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TabBar">TabBar</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TabBarIcon">TabBarIcon</a></span></span></li>
@@ -98,6 +98,42 @@
 <div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p>#React-Ios-Component</p>
 <p>&#x4E00;&#x5957;&#x6839;&#x636E; ios9 &#x7684;&#x98CE;&#x683C;&#xFF0C;&#x4F7F;&#x7528; React &#x5BF9;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#x4EE5;&#x4FBF;&#x53EF;&#x4EE5;&#x91CD;&#x7528;&#x7684;&#x7EC4;&#x4EF6;</p>
 <p>sketch : <a href="https://github.com/philipamour/ios9-uikit">ios9-uikit</a></p>
+<h3 id="-">&#x5B89;&#x88C5;</h3>
+<pre><code><code class="source-code prettyprint">npm install --save react-ios-component</code>
+</code></pre><p><code>react-ios-component</code> &#x4F9D;&#x8D56;&#x4E00;&#x4E0B; <code>npm</code> &#x5305; :</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/react">React</a></li>
+<li><a href="https://www.npmjs.com/package/react-dom">ReactDOM</a></li>
+<li><a href="https://www.npmjs.com/package/react-addons-css-transition-group">ReactCSSTransitionGroup</a></li>
+<li><a href="https://www.npmjs.com/package/iscroll">IScroll</a></li>
+</ul>
+<h3 id="examples">Examples</h3>
+<p>&#x5B8C;&#x6574;&#x7684;&#x7EC4;&#x4EF6;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE; <a href="http://maiwenan.github.io/react-ios-component/website/demos/">react-ios-component examples</a>&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50; :</p>
+<pre><code><code class="source-code prettyprint">import {
+  InlineDatePicker,
+  DatePicker
+} from &apos;react-ios-component&apos;
+
+// &#x5167;&#x8054;&#x65E5;&#x671F;&#x9009;&#x62E9;&#x7EC4;&#x4EF6;&#x7684;&#x7528;&#x6CD5;
+ReactDom.render(&lt;InlineDatePicker 
+  maxDate={new Date(&apos;2020-10-10&apos;)}
+  minDate={new Date(&apos;1970-01-01&apos;)}
+  selectedDate={new Date()}
+  onChange={(selectedDate) =&gt; {
+    console.log(&apos;&#x4F60;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;&#x4E3A; : &apos;, selectedDate);
+  }}
+/&gt;, document.getElementById(&apos;app-container&apos;));
+
+// &#x65E5;&#x671F;&#x9009;&#x62E9;&#x7EC4;&#x4EF6; API &#x8C03;&#x7528;&#x7528;&#x6CD5;
+DatePicker.show({
+  maxDate: new Date(&apos;2020-10-10&apos;),
+  minDate: new Date(&apos;1970-01-01&apos;),
+  selectedDate: new Date(),
+  onConfirm: selectedDate =&gt; {
+    console.log(&apos;&#x4F60;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;&#x4E3A; : &apos;, selectedDate);
+  }
+});</code>
+</code></pre><p>&#x66F4;&#x591A;&#x7EC4;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x7528;&#x6CD5;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x6587;&#x6863; : <a href="http://maiwenan.github.io/react-ios-component/doc/">react-ios-component &#x6587;&#x6863;</a></p>
 <h3 id="-">&#x5F00;&#x53D1;</h3>
 <pre><code><code class="source-code prettyprint">git clone https://github.com/maiwenan/react-ios-component
 cd react-ios-component

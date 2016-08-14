@@ -2878,7 +2878,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport {\n  IconLoading\n} from '../icon';\nimport Portal from '../portal';\nimport {classNames} from '../util';\n\nconst prefix = 'indicator';\n\n/**\n * 活动指示器\n */\nexport default class Indicator extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {PropTypes.node} [props.icon] 指示器要显示的图标\n   * @param {PropTypes.node} [props.content] 指示器要显示的内容\n   * @param {boolean} [props.visible] 活动指示器是否显示\n   * @param {number} [props.timeout] 活动指示器自动关闭的时间\n   * @param {function} props.close 关闭指示器的回调（配合 API 调用来使用，一般不用手动传）\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n\n    this.timer = null;\n  }\n\n  componentDidMount() {\n    this._delayClose();\n  }\n\n  componentDidUpdate() {\n    this._delayClose();\n  }\n\n  _delayClose() {\n    const {\n      visible,\n      timeout,\n      close,\n      onClose\n    } = this.props;\n\n    if (visible && timeout) {\n      clearTimeout(this.timer);\n      this.timer = setTimeout(() => {\n        onClose && onClose();\n        close && close();\n      }, timeout);\n    }\n  }\n\n  render() {\n    const {\n      icon,\n      content,\n      visible,\n      timeout,\n      close,\n      className,\n      children,\n      ...rest\n    } = this.props;\n    let clazz = classNames(prefix, {\n      [className]: className\n    });\n\n    if (!visible) {\n      return null;\n    }\n    return (\n      <div className={clazz} {...rest}>\n        {icon ? (\n          <div><IconLoading /></div>\n        ) : null}\n        <p>{content || children}</p>\n      </div>\n    );\n  }\n}\n\nIndicator.propTypes = {\n  icon: PropTypes.node,\n  content: PropTypes.node,\n  visible: PropTypes.bool,\n  timeout: PropTypes.number,\n  close: PropTypes.func,\n  onClose: PropTypes.func,\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n\n/**\n * 活动指示器组件的 API 调用方法\n * @param  {Object} props     @see Indicator 组件属性\n * @param  {Node} container 活动指示器的容器节点\n */\nIndicator.show = (props, container) => {\n  props.timeout = props.timeout || 1500;\n  Portal.show(Indicator, props, container);\n};\n"
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport {\n  IconLoading\n} from '../icon';\nimport Portal from '../portal';\nimport {classNames} from '../util';\n\nconst prefix = 'indicator';\n\n/**\n * 活动指示器\n */\nexport default class Indicator extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {PropTypes.node} [props.icon] 指示器要显示的图标\n   * @param {PropTypes.node} [props.content] 指示器要显示的内容\n   * @param {boolean} [props.visible] 活动指示器是否显示\n   * @param {number} [props.timeout] 活动指示器自动关闭的时间\n   * @param {function} props.close 关闭指示器的回调（配合 API 调用来使用，一般不用手动传）\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n\n    this.timer = null;\n  }\n\n  componentDidMount() {\n    this._delayClose();\n  }\n\n  componentDidUpdate() {\n    this._delayClose();\n  }\n\n  _delayClose() {\n    const {\n      visible,\n      timeout,\n      close,\n      onClose\n    } = this.props;\n\n    if (visible && timeout) {\n      clearTimeout(this.timer);\n      this.timer = setTimeout(() => {\n        onClose && onClose();\n        close && close();\n      }, timeout);\n    }\n  }\n\n  render() {\n    const {\n      icon,\n      content,\n      visible,\n      timeout,\n      close,\n      onClose,\n      className,\n      children,\n      ...rest\n    } = this.props;\n    let clazz = classNames(prefix, {\n      [className]: className\n    });\n\n    if (!visible) {\n      return null;\n    }\n    return (\n      <div className={clazz} {...rest}>\n        {icon ? (\n          <div><IconLoading /></div>\n        ) : null}\n        <p>{content || children}</p>\n      </div>\n    );\n  }\n}\n\nIndicator.propTypes = {\n  icon: PropTypes.node,\n  content: PropTypes.node,\n  visible: PropTypes.bool,\n  timeout: PropTypes.number,\n  close: PropTypes.func,\n  onClose: PropTypes.func,\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n\n/**\n * 活动指示器组件的 API 调用方法\n * @param  {Object} props     @see Indicator 组件属性\n * @param  {Node} container 活动指示器的容器节点\n */\nIndicator.show = (props, container) => {\n  props.timeout = props.timeout || 1500;\n  Portal.show(Indicator, props, container);\n};\n"
   },
   {
     "__docId__": 106,
@@ -3942,7 +3942,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport Options from './Options';\nimport {\n  classNames,\n  generateOptions,\n  indexOfOptions\n} from '../util';\n\nconst prefix = 'picker-body';\nlet now = new Date();\n\n/**\n * 內联日期选择器\n * @param {Object} props 组件所使用的属性\n * @param {Date} [props.selectedDate=new Date()] 当前选中的日期\n * @param {Date} [props.minDate=new Date()] 最小可选择的日期\n * @param {Date} [props.maxDate=new Date()] 最大可选择的日期\n * @param {string} [props.yearUnit=''] 年份的单位文案\n * @param {string} [props.monthUnit=''] 月份的单位文案\n * @param {string} [props.dateUnit=''] 天的单位文案\n * @param {function} props.onChange 选中某一个项时触发的函数回调\n * @param {Object} context\n */\nexport default class InlineDatePicker extends Component {\n\n  _setYear(yearOptions, selectedIndex) {\n    const {\n      selectedDate\n    } = this.props;\n    const year = yearOptions[selectedIndex].value;\n    const month = selectedDate.getMonth();\n    const newDate = copyDate(selectedDate);\n\n    newDate.setFullYear(year);\n    this.onChange(adjustDate(newDate, month));\n  }\n\n  _setMonth(monthOptions, selectedIndex) {\n    const {\n      selectedDate\n    } = this.props;\n    const month = monthOptions[selectedIndex].value - 1;\n    const newDate = copyDate(selectedDate);\n\n    newDate.setMonth(month);\n    this.onChange(adjustDate(newDate, month));\n  }\n\n  _setDate(dateOptions, selectedIndex) {\n    const {\n      selectedDate\n    } = this.props;\n    const date = dateOptions[selectedIndex].value;\n    const newDate = copyDate(selectedDate);\n\n    newDate.setDate(date);\n    this.onChange(newDate);\n  }\n\n  onChange(newDate) {\n    const {\n      onChange\n    } = this.props;\n\n    onChange && onChange(newDate);\n  }\n\n  render() {\n    const {\n      selectedDate,\n      minDate,\n      maxDate,\n      yearUnit,\n      monthUnit,\n      dateUnit,\n      className,\n      ...rest\n    } = this.props;\n    const clazz = classNames(prefix, {\n      [className]: className\n    });\n    const yearOptions = createYearOptions(maxDate, minDate, yearUnit);\n    const monthOptions = createMonthOptions(maxDate, minDate, selectedDate, monthUnit);\n    const dateOptions = createDateOptions(maxDate, minDate, selectedDate, dateUnit);\n    const yearIndex = indexOfOptions(selectedDate.getFullYear(), yearOptions);\n    const monthIndex = indexOfOptions(getMonth(selectedDate), monthOptions);\n    const dateIndex = indexOfOptions(selectedDate.getDate(), dateOptions);\n\n    return (\n      <div className={clazz} {...rest}>\n        <Options\n          selectedIndex={yearIndex}\n          options={yearOptions}\n          key={'year'}\n          onChange={this._setYear.bind(this, yearOptions)}\n        />\n        <Options\n          selectedIndex={monthIndex}\n          options={monthOptions}\n          key={'month'}\n          onChange={this._setMonth.bind(this, monthOptions)}\n        />\n        <Options\n          selectedIndex={dateIndex}\n          options={dateOptions}\n          key={'date'}\n          onChange={this._setDate.bind(this, dateOptions)}\n        />\n      </div>\n    );\n  }\n}\n\nfunction adjustDate(newDate, month) {\n  if (newDate.getMonth() > month) {\n    newDate.setMonth(month);\n    newDate.setDate(getTotalDateOfMonth(newDate));\n  }\n\n  return newDate;\n}\n\nfunction copyDate(date) {\n  return new Date(date.getTime());\n}\n\nfunction createYearOptions(maxDate, minDate, yearUnit) {\n  const max = maxDate.getFullYear();\n  const min = minDate.getFullYear();\n\n  return generateOptions(max, min, yearUnit);\n}\n\nfunction createMonthOptions(maxDate, minDate, selectedDate, monthUnit) {\n  let max = isEqualYear(maxDate, selectedDate) ? getMonth(maxDate) : 12;\n  let min = isEqualYear(minDate, selectedDate) ? getMonth(minDate) : 1;\n\n  return generateOptions(max, min, monthUnit);\n}\n\nfunction createDateOptions(maxDate, minDate, selectedDate, dateUnit) {\n  let max = isEqualYearMonth(maxDate, selectedDate) ? maxDate.getDate()\n    : getTotalDateOfMonth(selectedDate);\n  let min = isEqualYearMonth(minDate, selectedDate) ? minDate.getDate() : 1;\n\n  return generateOptions(max, min, dateUnit);\n}\n\nfunction getMonth(date) {\n  return date.getMonth() + 1;\n}\n\nfunction getTotalDateOfMonth(date) {\n  let newDate = new Date(date.getTime());\n\n  newDate.setDate(1);\n  newDate.setMonth(getMonth(newDate));\n  newDate.setDate(0);\n\n  return newDate.getDate();\n}\n\nfunction isEqualYear(d1, d2) {\n  return d1.getFullYear() === d2.getFullYear();\n}\n\nfunction isEqualYearMonth(d1, d2) {\n  return isEqualYear(d1, d2) && (getMonth(d1) === getMonth(d2));\n}\n\nInlineDatePicker.propTypes = {\n  selectedDate: PropTypes.instanceOf(Date),\n  minDate: PropTypes.instanceOf(Date),\n  maxDate: PropTypes.instanceOf(Date),\n  yearUnit: PropTypes.string,\n  monthUnit: PropTypes.string,\n  dateUnit: PropTypes.string,\n  onChange: PropTypes.func,\n  className: PropTypes.string\n};\n\nInlineDatePicker.defaultProps = {\n  selectedDate: now,\n  maxDate: now,\n  minDate: now,\n  yearUnit: '',\n  monthUnit: '',\n  dateUnit: ''\n};\n"
+    "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport Options from './Options';\nimport {\n  classNames,\n  generateOptions,\n  indexOfOptions\n} from '../util';\n\nconst prefix = 'picker-body';\nlet now = new Date();\n\n/**\n * 內联日期选择器\n */\nexport default class InlineDatePicker extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {Date} [props.selectedDate=new Date()] 当前选中的日期\n   * @param {Date} [props.minDate=new Date()] 最小可选择的日期\n   * @param {Date} [props.maxDate=new Date()] 最大可选择的日期\n   * @param {string} [props.yearUnit=''] 年份的单位文案\n   * @param {string} [props.monthUnit=''] 月份的单位文案\n   * @param {string} [props.dateUnit=''] 天的单位文案\n   * @param {function} props.onChange 选中某一个项时触发的函数回调\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n  }\n\n  _setYear(yearOptions, selectedIndex) {\n    const {\n      selectedDate\n    } = this.props;\n    const year = yearOptions[selectedIndex].value;\n    const month = selectedDate.getMonth();\n    const newDate = copyDate(selectedDate);\n\n    newDate.setFullYear(year);\n    this.onChange(adjustDate(newDate, month));\n  }\n\n  _setMonth(monthOptions, selectedIndex) {\n    const {\n      selectedDate\n    } = this.props;\n    const month = monthOptions[selectedIndex].value - 1;\n    const newDate = copyDate(selectedDate);\n\n    newDate.setMonth(month);\n    this.onChange(adjustDate(newDate, month));\n  }\n\n  _setDate(dateOptions, selectedIndex) {\n    const {\n      selectedDate\n    } = this.props;\n    const date = dateOptions[selectedIndex].value;\n    const newDate = copyDate(selectedDate);\n\n    newDate.setDate(date);\n    this.onChange(newDate);\n  }\n\n  onChange(newDate) {\n    const {\n      onChange\n    } = this.props;\n\n    onChange && onChange(newDate);\n  }\n\n  render() {\n    const {\n      selectedDate,\n      minDate,\n      maxDate,\n      yearUnit,\n      monthUnit,\n      dateUnit,\n      className,\n      ...rest\n    } = this.props;\n    const clazz = classNames(prefix, {\n      [className]: className\n    });\n    const yearOptions = createYearOptions(maxDate, minDate, yearUnit);\n    const monthOptions = createMonthOptions(maxDate, minDate, selectedDate, monthUnit);\n    const dateOptions = createDateOptions(maxDate, minDate, selectedDate, dateUnit);\n    const yearIndex = indexOfOptions(selectedDate.getFullYear(), yearOptions);\n    const monthIndex = indexOfOptions(getMonth(selectedDate), monthOptions);\n    const dateIndex = indexOfOptions(selectedDate.getDate(), dateOptions);\n\n    return (\n      <div className={clazz} {...rest}>\n        <Options\n          selectedIndex={yearIndex}\n          options={yearOptions}\n          key={'year'}\n          onChange={this._setYear.bind(this, yearOptions)}\n        />\n        <Options\n          selectedIndex={monthIndex}\n          options={monthOptions}\n          key={'month'}\n          onChange={this._setMonth.bind(this, monthOptions)}\n        />\n        <Options\n          selectedIndex={dateIndex}\n          options={dateOptions}\n          key={'date'}\n          onChange={this._setDate.bind(this, dateOptions)}\n        />\n      </div>\n    );\n  }\n}\n\nfunction adjustDate(newDate, month) {\n  if (newDate.getMonth() > month) {\n    newDate.setMonth(month);\n    newDate.setDate(getTotalDateOfMonth(newDate));\n  }\n\n  return newDate;\n}\n\nfunction copyDate(date) {\n  return new Date(date.getTime());\n}\n\nfunction createYearOptions(maxDate, minDate, yearUnit) {\n  const max = maxDate.getFullYear();\n  const min = minDate.getFullYear();\n\n  return generateOptions(max, min, yearUnit);\n}\n\nfunction createMonthOptions(maxDate, minDate, selectedDate, monthUnit) {\n  let max = isEqualYear(maxDate, selectedDate) ? getMonth(maxDate) : 12;\n  let min = isEqualYear(minDate, selectedDate) ? getMonth(minDate) : 1;\n\n  return generateOptions(max, min, monthUnit);\n}\n\nfunction createDateOptions(maxDate, minDate, selectedDate, dateUnit) {\n  let max = isEqualYearMonth(maxDate, selectedDate) ? maxDate.getDate()\n    : getTotalDateOfMonth(selectedDate);\n  let min = isEqualYearMonth(minDate, selectedDate) ? minDate.getDate() : 1;\n\n  return generateOptions(max, min, dateUnit);\n}\n\nfunction getMonth(date) {\n  return date.getMonth() + 1;\n}\n\nfunction getTotalDateOfMonth(date) {\n  let newDate = new Date(date.getTime());\n\n  newDate.setDate(1);\n  newDate.setMonth(getMonth(newDate));\n  newDate.setDate(0);\n\n  return newDate.getDate();\n}\n\nfunction isEqualYear(d1, d2) {\n  return d1.getFullYear() === d2.getFullYear();\n}\n\nfunction isEqualYearMonth(d1, d2) {\n  return isEqualYear(d1, d2) && (getMonth(d1) === getMonth(d2));\n}\n\nInlineDatePicker.propTypes = {\n  selectedDate: PropTypes.instanceOf(Date),\n  minDate: PropTypes.instanceOf(Date),\n  maxDate: PropTypes.instanceOf(Date),\n  yearUnit: PropTypes.string,\n  monthUnit: PropTypes.string,\n  dateUnit: PropTypes.string,\n  onChange: PropTypes.func,\n  className: PropTypes.string\n};\n\nInlineDatePicker.defaultProps = {\n  selectedDate: now,\n  maxDate: now,\n  minDate: now,\n  yearUnit: '',\n  monthUnit: '',\n  dateUnit: ''\n};\n"
   },
   {
     "__docId__": 143,
@@ -3999,7 +3999,23 @@
     "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
     "importStyle": "InlineDatePicker",
     "description": "內联日期选择器",
-    "lineNumber": 31,
+    "lineNumber": 22,
+    "interface": false,
+    "extends": [
+      "react~Component"
+    ]
+  },
+  {
+    "__docId__": 146,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/components/picker/InlineDatePicker.js~InlineDatePicker",
+    "longname": "src/components/picker/InlineDatePicker.js~InlineDatePicker#constructor",
+    "access": null,
+    "description": "构造函数",
+    "lineNumber": 36,
     "params": [
       {
         "nullable": null,
@@ -4104,13 +4120,10 @@
         "description": ""
       }
     ],
-    "interface": false,
-    "extends": [
-      "react~Component"
-    ]
+    "generator": false
   },
   {
-    "__docId__": 146,
+    "__docId__": 147,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4119,7 +4132,7 @@
     "longname": "src/components/picker/InlineDatePicker.js~InlineDatePicker#_setYear",
     "access": null,
     "description": null,
-    "lineNumber": 33,
+    "lineNumber": 40,
     "undocument": true,
     "params": [
       {
@@ -4138,7 +4151,7 @@
     "generator": false
   },
   {
-    "__docId__": 147,
+    "__docId__": 148,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4147,7 +4160,7 @@
     "longname": "src/components/picker/InlineDatePicker.js~InlineDatePicker#_setMonth",
     "access": null,
     "description": null,
-    "lineNumber": 45,
+    "lineNumber": 52,
     "undocument": true,
     "params": [
       {
@@ -4166,7 +4179,7 @@
     "generator": false
   },
   {
-    "__docId__": 148,
+    "__docId__": 149,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4175,7 +4188,7 @@
     "longname": "src/components/picker/InlineDatePicker.js~InlineDatePicker#_setDate",
     "access": null,
     "description": null,
-    "lineNumber": 56,
+    "lineNumber": 63,
     "undocument": true,
     "params": [
       {
@@ -4194,7 +4207,7 @@
     "generator": false
   },
   {
-    "__docId__": 149,
+    "__docId__": 150,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4203,7 +4216,7 @@
     "longname": "src/components/picker/InlineDatePicker.js~InlineDatePicker#onChange",
     "access": null,
     "description": null,
-    "lineNumber": 67,
+    "lineNumber": 74,
     "undocument": true,
     "params": [
       {
@@ -4216,7 +4229,7 @@
     "generator": false
   },
   {
-    "__docId__": 150,
+    "__docId__": 151,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4225,7 +4238,7 @@
     "longname": "src/components/picker/InlineDatePicker.js~InlineDatePicker#render",
     "access": null,
     "description": null,
-    "lineNumber": 75,
+    "lineNumber": 82,
     "undocument": true,
     "params": [],
     "return": {
@@ -4236,7 +4249,7 @@
     "generator": false
   },
   {
-    "__docId__": 151,
+    "__docId__": 152,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -4248,7 +4261,7 @@
     "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 121,
+    "lineNumber": 128,
     "undocument": true,
     "params": [
       {
@@ -4272,7 +4285,7 @@
     "generator": false
   },
   {
-    "__docId__": 152,
+    "__docId__": 153,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -4284,7 +4297,7 @@
     "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 130,
+    "lineNumber": 137,
     "undocument": true,
     "params": [
       {
@@ -4302,7 +4315,7 @@
     "generator": false
   },
   {
-    "__docId__": 153,
+    "__docId__": 154,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -4314,7 +4327,7 @@
     "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 134,
+    "lineNumber": 141,
     "undocument": true,
     "params": [
       {
@@ -4344,7 +4357,7 @@
     "generator": false
   },
   {
-    "__docId__": 154,
+    "__docId__": 155,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -4356,7 +4369,7 @@
     "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 141,
+    "lineNumber": 148,
     "undocument": true,
     "params": [
       {
@@ -4392,7 +4405,7 @@
     "generator": false
   },
   {
-    "__docId__": 155,
+    "__docId__": 156,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -4404,7 +4417,7 @@
     "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 148,
+    "lineNumber": 155,
     "undocument": true,
     "params": [
       {
@@ -4440,7 +4453,7 @@
     "generator": false
   },
   {
-    "__docId__": 156,
+    "__docId__": 157,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -4452,37 +4465,7 @@
     "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 156,
-    "undocument": true,
-    "params": [
-      {
-        "name": "date",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 157,
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "getTotalDateOfMonth",
-    "memberof": "src/components/picker/InlineDatePicker.js",
-    "longname": "src/components/picker/InlineDatePicker.js~getTotalDateOfMonth",
-    "access": null,
-    "export": false,
-    "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 160,
+    "lineNumber": 163,
     "undocument": true,
     "params": [
       {
@@ -4504,25 +4487,19 @@
     "kind": "function",
     "static": true,
     "variation": null,
-    "name": "isEqualYear",
+    "name": "getTotalDateOfMonth",
     "memberof": "src/components/picker/InlineDatePicker.js",
-    "longname": "src/components/picker/InlineDatePicker.js~isEqualYear",
+    "longname": "src/components/picker/InlineDatePicker.js~getTotalDateOfMonth",
     "access": null,
     "export": false,
     "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 170,
+    "lineNumber": 167,
     "undocument": true,
     "params": [
       {
-        "name": "d1",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "d2",
+        "name": "date",
         "types": [
           "*"
         ]
@@ -4540,15 +4517,15 @@
     "kind": "function",
     "static": true,
     "variation": null,
-    "name": "isEqualYearMonth",
+    "name": "isEqualYear",
     "memberof": "src/components/picker/InlineDatePicker.js",
-    "longname": "src/components/picker/InlineDatePicker.js~isEqualYearMonth",
+    "longname": "src/components/picker/InlineDatePicker.js~isEqualYear",
     "access": null,
     "export": false,
     "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 174,
+    "lineNumber": 177,
     "undocument": true,
     "params": [
       {
@@ -4573,6 +4550,42 @@
   },
   {
     "__docId__": 160,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "isEqualYearMonth",
+    "memberof": "src/components/picker/InlineDatePicker.js",
+    "longname": "src/components/picker/InlineDatePicker.js~isEqualYearMonth",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/picker/InlineDatePicker.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 181,
+    "undocument": true,
+    "params": [
+      {
+        "name": "d1",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "d2",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 161,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -4585,7 +4598,7 @@
     "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport Options from './Options';\nimport {classNames} from '../util';\n\nconst prefix = 'picker-body';\n\n/**\n * 內联选择器\n */\nexport default class InlinePicker extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {Object[]|string[]|number[]} props.optionsList 进行选择的数据列表\n   * @param {string} [props.labelName='name'] 当可选择的数据列表的项是对象(obj)时，`obj[labelName]` 就是选择器显示的文案\n   * @param {string} [props.nextName='childs'] 某个列表项的下一个选择列表数据多对应的 `key`\n   * @param {number[]} [props.selectedList] 当前选中的数据列表项下标组成的数组\n   * @param {function} props.onChange 选中某一个项时触发的函数回调\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n  }\n\n  _onChange(selectedIndex, i) {\n    const {\n      selectedList,\n      onChange\n    } = this.props;\n    let currentList = selectedList.map((value, index) => {\n      if (index > i) {\n        return 0;\n      }\n      return value;\n    });\n    currentList[i] = selectedIndex;\n    onChange && onChange(currentList);\n  }\n\n  render() {\n    const {\n      selectedList,\n      optionsList,\n      labelName,\n      nextName,\n      className,\n      ...rest\n    } = this.props;\n    const clazz = classNames(prefix, {\n      [className]: className\n    });\n    let options = optionsList;\n    const optionsNodes = selectedList.map((selectedIndex, i) => {\n      options = i === 0 ? options : options[selectedList[i - 1]][nextName];\n\n      if (!options) {\n        return null;\n      }\n      return (\n        <Options\n          selectedIndex={selectedIndex}\n          options={options}\n          key={i}\n          labelName={labelName}\n          onChange={(selectedIndex) => {\n            this._onChange(selectedIndex, i);\n          }}\n        />\n      );\n    });\n\n    return (\n      <div className={clazz} {...rest}>\n        {optionsNodes}\n      </div>\n    );\n  }\n}\n\nInlinePicker.propTypes = {\n  labelName: PropTypes.string,\n  nextName: PropTypes.string,\n  selectedList: PropTypes.array.isRequired,\n  optionsList: PropTypes.array.isRequired,\n  onChange: PropTypes.func,\n  className: PropTypes.string\n};\n\nInlinePicker.defaultProps = {\n  nextName: 'childs'\n};\n"
   },
   {
-    "__docId__": 161,
+    "__docId__": 162,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -4606,7 +4619,7 @@
     }
   },
   {
-    "__docId__": 162,
+    "__docId__": 163,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -4625,7 +4638,7 @@
     ]
   },
   {
-    "__docId__": 163,
+    "__docId__": 164,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -4716,7 +4729,7 @@
     "generator": false
   },
   {
-    "__docId__": 164,
+    "__docId__": 165,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4744,7 +4757,7 @@
     "generator": false
   },
   {
-    "__docId__": 165,
+    "__docId__": 166,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4764,7 +4777,7 @@
     "generator": false
   },
   {
-    "__docId__": 166,
+    "__docId__": 167,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -4777,7 +4790,7 @@
     "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport Options from './Options';\nimport {\n  classNames,\n  generateOptions,\n  indexOfOptions\n} from '../util';\n\nconst prefix = 'picker-body';\n\n/**\n * 內联时间选择器\n */\nexport default class InlineTimePicker extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {string} [props.selectedTime] 当前选中的日期\n   * @param {string} [props.minDate='00:00:00'] 最小可选择的日期\n   * @param {string} [props.maxDate='23:59:59'] 最大可选择的日期\n   * @param {string} [props.hourUnit=''] 小时的单位文案\n   * @param {string} [props.minuteUnit=''] 分钟的单位文案\n   * @param {string} [props.secondUnit=''] 秒的单位文案\n   * @param {function} props.onChange 选中某一个项时触发的函数回调\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n  }\n\n  _setHours = (hourOptions, selectedIndex) => {\n    const value = hourOptions[selectedIndex].value;\n\n    this.onChange(value, 'hours');\n  };\n\n  _setMinutes = (minuteOptions, selectedIndex) => {\n    const value = minuteOptions[selectedIndex].value;\n\n    this.onChange(value, 'minutes');\n  };\n\n  _setSeconds = (secondOptions, selectedIndex) => {\n    const value = secondOptions[selectedIndex].value;\n\n    this.onChange(value, 'seconds');\n  };\n\n  onChange(value, key) {\n    const {\n      onChange,\n      selectedTime\n    } = this.props;\n    let time = parseTime(selectedTime);\n    time[key] = value;\n    const newTime = formatTime(time);\n\n    onChange && onChange(newTime);\n  }\n\n  render() {\n    let {\n      selectedTime,\n      maxTime,\n      minTime,\n      hourUnit,\n      minuteUnit,\n      secondUnit,\n      className,\n      ...rest\n    } = this.props;\n    const clazz = classNames(prefix, {\n      [className]: className\n    });\n    const selectedTimeObj = parseTime(selectedTime);\n    const maxTimeObj = parseTime(maxTime);\n    const minTimeObj = parseTime(minTime);\n    const hourOptions = createHourOptions(maxTimeObj, minTimeObj, hourUnit);\n    const minuteOptions = createMinuteOptions(maxTimeObj, minTimeObj,\n      selectedTimeObj, minuteUnit);\n    const secondOptions = createSecondOptions(maxTimeObj, minTimeObj,\n      selectedTimeObj, secondUnit);\n    const hoursIndex = indexOfOptions(selectedTimeObj.hours, hourOptions);\n    const minutesIndex = indexOfOptions(selectedTimeObj.minutes, minuteOptions);\n    const secondsIndex = indexOfOptions(selectedTimeObj.seconds, secondOptions);\n\n    return (\n      <div className={clazz} {...rest}>\n        <Options\n          selectedIndex={hoursIndex}\n          options={hourOptions}\n          key={'hours'}\n          onChange={this._setHours.bind(this, hourOptions)}\n        />\n        <Options\n          selectedIndex={minutesIndex}\n          options={minuteOptions}\n          key={'minutes'}\n          onChange={this._setMinutes.bind(this, minuteOptions)}\n        />\n        <Options\n          selectedIndex={secondsIndex}\n          options={secondOptions}\n          key={'seconds'}\n          onChange={this._setSeconds.bind(this, secondOptions)}\n        />\n      </div>\n    );\n  }\n}\n\nfunction formatTime(timeObj) {\n  let hours = add0(timeObj.hours);\n  let minutes = add0(timeObj.minutes);\n  let seconds = add0(timeObj.seconds);\n\n  return `${hours}:${minutes}:${seconds}`;\n}\n\nfunction add0(value) {\n  return value < 10 ? `0${value}` : value;\n}\n\nfunction createHourOptions(maxTimeObj, minTimeObj, hourUnit) {\n  return generateOptions(maxTimeObj.hours, minTimeObj.hours, hourUnit);\n}\n\nfunction createMinuteOptions(maxTimeObj, minTimeObj, selectedTimeObj, minuteUnit) {\n  const max = isEqualHour(maxTimeObj, selectedTimeObj) ? maxTimeObj.minutes : 59;\n  const min = isEqualHour(minTimeObj, selectedTimeObj) ? minTimeObj.minutes : 0;\n\n  return generateOptions(max, min, minuteUnit);\n}\n\nfunction createSecondOptions(maxTimeObj, minTimeObj, selectedTimeObj, secondUnit) {\n  const max = isEqualHourMinute(maxTimeObj, selectedTimeObj) ? maxTimeObj.minutes : 59;\n  const min = isEqualHourMinute(minTimeObj, selectedTimeObj) ? minTimeObj.minutes : 0;\n\n  return generateOptions(max, min, secondUnit);\n}\n\nfunction isEqualHour(t1, t2) {\n  return t1.hours === t2.hours;\n}\n\nfunction isEqualHourMinute(t1, t2) {\n  return isEqualHour(t1, t2) && t1.minutes === t2.minutes;\n}\n\nfunction parseTime(time) {\n  const times = time.split(':');\n\n  return {\n    hours: parseInt(times[0]),\n    minutes: parseInt(times[1]),\n    seconds: parseInt(times[2])\n  };\n}\n\nInlineTimePicker.propTypes = {\n  selectedTime: PropTypes.string.isRequired,\n  minTime: PropTypes.string,\n  maxTime: PropTypes.string,\n  hourUnit: PropTypes.string,\n  minuteUnit: PropTypes.string,\n  secondUnit: PropTypes.string,\n  onChange: PropTypes.func,\n  className: PropTypes.string\n};\n\nInlineTimePicker.defaultProps = {\n  minTime: '00:00:00',\n  maxTime: '23:59:59',\n  hourUnit: '',\n  minuteUnit: '',\n  secondUnit: ''\n};\n"
   },
   {
-    "__docId__": 167,
+    "__docId__": 168,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -4798,7 +4811,7 @@
     }
   },
   {
-    "__docId__": 168,
+    "__docId__": 169,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -4817,7 +4830,7 @@
     ]
   },
   {
-    "__docId__": 169,
+    "__docId__": 170,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -4932,7 +4945,7 @@
     "generator": false
   },
   {
-    "__docId__": 170,
+    "__docId__": 171,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4960,7 +4973,7 @@
     "generator": false
   },
   {
-    "__docId__": 171,
+    "__docId__": 172,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4980,7 +4993,7 @@
     "generator": false
   },
   {
-    "__docId__": 172,
+    "__docId__": 173,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -5010,7 +5023,7 @@
     "generator": false
   },
   {
-    "__docId__": 173,
+    "__docId__": 174,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -5040,7 +5053,7 @@
     "generator": false
   },
   {
-    "__docId__": 174,
+    "__docId__": 175,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -5082,7 +5095,7 @@
     "generator": false
   },
   {
-    "__docId__": 175,
+    "__docId__": 176,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -5130,7 +5143,7 @@
     "generator": false
   },
   {
-    "__docId__": 176,
+    "__docId__": 177,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -5178,7 +5191,7 @@
     "generator": false
   },
   {
-    "__docId__": 177,
+    "__docId__": 178,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -5214,7 +5227,7 @@
     "generator": false
   },
   {
-    "__docId__": 178,
+    "__docId__": 179,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -5250,7 +5263,7 @@
     "generator": false
   },
   {
-    "__docId__": 179,
+    "__docId__": 180,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -5280,7 +5293,7 @@
     "generator": false
   },
   {
-    "__docId__": 180,
+    "__docId__": 181,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -5293,7 +5306,7 @@
     "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport IScroll from 'iscroll/build/iscroll-probe';\nimport {classNames} from '../util';\n\nconst prefix = 'options';\nconst optionHeight = 34;\n\n/**\n * 单选择器\n */\nexport default class Options extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {Object[]|string[]|number[]} props.options 进行选择的数据列表\n   * @param {string} [props.labelName='name'] 当可选择的数据列表的项是对象(obj)时，`obj[labelName]` 就是选择器显示的文案\n   * @param {number} [props.selectedIndex=0] 当前选中的数据列表项的下标\n   * @param {function} props.onChange 选中某一个项时触发的函数回调\n   * @param {Object} [props.iScrollOptions] `iscroll` 的配置对象\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n\n    this.iScroll = null;\n  }\n\n  componentDidMount() {\n    const {\n      onChange,\n      iScrollOptions\n    } = this.props;\n    const wraper = this.refs.wraper;\n\n    setTimeout(() => {\n      this.iScroll = new IScroll(wraper, {\n        probeType: 2,\n        ...iScrollOptions\n      });\n\n      this.iScroll.on('scrollEnd', () => {\n        const index = Math.round(-this.iScroll.y / optionHeight);\n\n        onChange && onChange(Math.abs(index));\n        // this.setPosition(index, 100);\n      });\n\n      this.setPosition();\n    }, 0);\n  }\n\n  componentDidUpdate() {\n    setTimeout(() => {\n      this.iScroll.refresh();\n      this.setPosition();\n    }, 0);\n  }\n\n  componentWillUnmount() {\n    this.iScroll.destroy();\n    this.iScroll = null;\n  }\n\n  setPosition(index, time = 0) {\n    const {selectedIndex} = this.props;\n\n    index = index || selectedIndex;\n    this.iScroll.scrollTo(0, -index * optionHeight, time);\n  }\n\n  render() {\n    const {\n      options,\n      labelName,\n      selectedIndex,\n      className,\n      ...rest\n    } = this.props;\n    const clazz = classNames(prefix, {\n      [className]: className\n    });\n    const maskClazz = classNames(`${prefix}-mask`);\n    const indicatorClazz = classNames(`${prefix}-indicator`);\n    let nodes = options.map((item, i) => {\n      const text = typeof item === 'object' ? item[labelName] : item;\n\n      return (\n        <li key={i + text}>{text}</li>\n      );\n    });\n\n    nodes.unshift(<li key='headholder'></li>);\n    nodes.push(<li key='postholder'></li>);\n\n    return (\n      <div\n        ref='wraper'\n        className={clazz}\n        {...rest}\n      >\n        <ul>{nodes}</ul>\n        <div className={maskClazz}></div>\n        <div className={indicatorClazz}></div>\n      </div>\n    );\n  }\n}\n\nOptions.propTypes = {\n  options: PropTypes.array.isRequired,\n  labelName: PropTypes.string,\n  selectedIndex: PropTypes.number,\n  onChange: PropTypes.func,\n  iScrollOptions: PropTypes.object,\n  className: PropTypes.string\n};\n\nOptions.defaultProps = {\n  labelName: 'name',\n  selectedIndex: 0\n};\n"
   },
   {
-    "__docId__": 181,
+    "__docId__": 182,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -5314,7 +5327,7 @@
     }
   },
   {
-    "__docId__": 182,
+    "__docId__": 183,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -5335,7 +5348,7 @@
     }
   },
   {
-    "__docId__": 183,
+    "__docId__": 184,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -5354,7 +5367,7 @@
     ]
   },
   {
-    "__docId__": 184,
+    "__docId__": 185,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -5445,7 +5458,7 @@
     "generator": false
   },
   {
-    "__docId__": 185,
+    "__docId__": 186,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -5463,7 +5476,7 @@
     }
   },
   {
-    "__docId__": 186,
+    "__docId__": 187,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -5478,7 +5491,7 @@
     "generator": false
   },
   {
-    "__docId__": 187,
+    "__docId__": 188,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -5496,7 +5509,7 @@
     }
   },
   {
-    "__docId__": 188,
+    "__docId__": 189,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -5511,7 +5524,7 @@
     "generator": false
   },
   {
-    "__docId__": 189,
+    "__docId__": 190,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -5526,7 +5539,7 @@
     "generator": false
   },
   {
-    "__docId__": 190,
+    "__docId__": 191,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -5544,7 +5557,7 @@
     }
   },
   {
-    "__docId__": 191,
+    "__docId__": 192,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -5575,7 +5588,7 @@
     "generator": false
   },
   {
-    "__docId__": 192,
+    "__docId__": 193,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -5595,7 +5608,7 @@
     "generator": false
   },
   {
-    "__docId__": 193,
+    "__docId__": 194,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -5608,7 +5621,7 @@
     "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport Portal from '../portal';\nimport Popup from '../popup';\nimport InlinePicker from './InlinePicker';\nimport {classNames} from '../util';\n\nconst prefix = 'picker';\n\n/**\n * 弹窗选择器\n */\nexport default class Picker extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {boolean} [props.visible] 弹窗选择器是否显示\n   * @param {Object[]|string[]|number[]} props.optionsList 进行选择的数据列表\n   * @param {number[]} [props.selectedList] 当前选中的数据列表项下标组成的数组\n   * @param {string} [props.labelName='name'] 当可选择的数据列表的项是对象(obj)时，`obj[labelName]` 就是选择器显示的文案\n   * @param {string} [props.nextName='childs'] 某个列表项的下一个选择列表数据多对应的 `key`\n   * @param {PropTypes.node} [props.title] 弹窗标题\n   * @param {PropTypes.node} [props.confirmText='确定'] 确认按钮文案\n   * @param {PropTypes.node} [props.cancelText='取消'] 取消按钮文案\n   * @param {function} props.onConfirm 确认按钮的函数回调\n   * @param {function} [props.onCancel] 取消按钮的函数回调\n   * @param {function} [props.onChange] 选中某一个项时触发的函数回调\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n\n    this.state = {\n      selectedList: props.selectedList\n    };\n  }\n\n  componentWillReceiveProps({selectedList}) {\n    this.setState({selectedList});\n  }\n\n  _onCancel = (e) => {\n    const {\n      close,\n      onCancel\n    } = this.props;\n\n    close && close();\n    onCancel && onCancel(e);\n  };\n\n  _onChange = (selectedList) => {\n    const {\n      onChange\n    } = this.props;\n\n    this.setState({selectedList});\n    onChange && onChange(selectedList);\n  }\n\n  _onConfirm = (e) => {\n    const {\n      close,\n      onConfirm\n    } = this.props;\n\n    close && close();\n    onConfirm && onConfirm(this.state.selectedList, e);\n  };\n\n  render() {\n    let {\n      visible,\n      title,\n      confirmText,\n      cancelText,\n      optionsList,\n      selectedList,\n      onConfirm,\n      onCancel,\n      labelName,\n      nextName,\n      close,\n      className,\n      ...rest\n    } = this.props;\n    const clazz = classNames(prefix, {\n      [className]: className\n    });\n    const headerClazz = classNames(`${prefix}-header`);\n\n    return (\n      <Popup\n        visible={visible}\n        close={close}\n        position='bottom'\n      >\n        <div className={clazz} {...rest}>\n          <div className={headerClazz}>\n            <a onClick={this._onCancel}>{cancelText}</a>\n            <span>{title}</span>\n            <a onClick={this._onConfirm}>{confirmText}</a>\n          </div>\n          <InlinePicker\n            labelName={labelName}\n            nextName={nextName}\n            selectedList={this.state.selectedList}\n            optionsList={optionsList}\n            onChange={this._onChange}\n          />\n        </div>\n      </Popup>\n    );\n  }\n}\n\n/**\n * 弹窗选择器组件的 API 调用方法\n * @param  {Object} props     @see Picker 组件属性\n * @param  {Node} container 弹窗选择器的容器节点\n */\nPicker.show = (props, container) => {\n  Portal.show(Picker, props, container);\n};\n\nPicker.propTypes = {\n  selectedList: PropTypes.array.isRequired,\n  optionsList: PropTypes.array.isRequired,\n  visible: PropTypes.bool,\n  title: PropTypes.node,\n  confirmText: PropTypes.node,\n  cancelText: PropTypes.node,\n  onConfirm: PropTypes.func,\n  onCancel: PropTypes.func,\n  onChange: PropTypes.func,\n  close: PropTypes.func,\n  labelName: PropTypes.string,\n  nextName: PropTypes.string,\n  className: PropTypes.string\n};\n\nPicker.defaultProps = {\n  confirmText: '确定',\n  cancelText: '取消'\n};\n"
   },
   {
-    "__docId__": 194,
+    "__docId__": 195,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -5629,7 +5642,7 @@
     }
   },
   {
-    "__docId__": 195,
+    "__docId__": 196,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -5648,7 +5661,7 @@
     ]
   },
   {
-    "__docId__": 196,
+    "__docId__": 197,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -5803,7 +5816,7 @@
     "generator": false
   },
   {
-    "__docId__": 197,
+    "__docId__": 198,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -5821,7 +5834,7 @@
     }
   },
   {
-    "__docId__": 198,
+    "__docId__": 199,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -5847,7 +5860,7 @@
     "generator": false
   },
   {
-    "__docId__": 199,
+    "__docId__": 200,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -5867,7 +5880,7 @@
     "generator": false
   },
   {
-    "__docId__": 200,
+    "__docId__": 201,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -5880,7 +5893,7 @@
     "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport InlineTimePicker from './InlineTimePicker';\nimport Popup from '../popup';\nimport Portal from '../portal';\nimport {\n  classNames\n} from '../util';\n\nconst prefix = 'picker';\n\n/**\n * 时间弹窗选择器\n */\nexport default class TimePicker extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {string} [props.selectedTime] 当前选中的日期\n   * @param {string} [props.minDate='00:00:00'] 最小可选择的日期\n   * @param {string} [props.maxDate='23:59:59'] 最大可选择的日期\n   * @param {string} [props.hourUnit=''] 小时的单位文案\n   * @param {string} [props.minuteUnit=''] 分钟的单位文案\n   * @param {string} [props.secondUnit=''] 秒的单位文案\n   * @param {boolean} [props.visible] 选择器是否显示\n   * @param {PropTypes.node} [props.title] 选择器标题\n   * @param {PropTypes.node} [props.confirmText='确定'] 确认按钮文案\n   * @param {PropTypes.node} [props.cancelText='取消'] 取消按钮文案\n   * @param {function} [props.onConfirm] 确认按钮的回调函数\n   * @param {function} [props.onCancel] 取消按钮的回调函数\n   * @param {function} props.onChange 选中某一个项时触发的函数回调\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n\n    /**\n     * 组件内部状态值\n     * @type {Object}\n     * @property {Date} state.selectedTime 当前选中的时间\n     */\n    this.state = {\n      selectedTime: props.selectedTime\n    };\n  }\n\n  componentWillReceiveProps({selectedTime}) {\n    this.setState({selectedTime});\n  }\n\n  _onChange = (selectedTime) => {\n    const {\n      onChange\n    } = this.props;\n\n    this.setState({selectedTime});\n    onChange && onChange(selectedTime);\n  };\n\n  _onCancel = (e) => {\n    const {\n      close,\n      onCancel\n    } = this.props;\n\n    close && close();\n    onCancel && onCancel(this.state.selectedTime, e);\n  };\n\n  _onConfirm = (e) => {\n    const {\n      close,\n      onConfirm\n    } = this.props;\n\n    close && close();\n    onConfirm && onConfirm(this.state.selectedTime, e);\n  };\n\n  render() {\n    const {\n      visible,\n      title = this.state.selectedTime,\n      selectedTime,\n      onConfirm,\n      onCancel,\n      confirmText,\n      cancelText,\n      maxTime,\n      minTime,\n      hourUnit,\n      minuteUnit,\n      secondUnit,\n      close,\n      className,\n      ...rest\n    } = this.props;\n    const clazz = classNames(prefix, {\n      [className]: className\n    });\n    const headerClazz = classNames(`${prefix}-header`);\n\n    return (\n      <Popup\n        visible={visible}\n        close={close}\n        position='bottom'\n      >\n        <div className={clazz} {...rest}>\n          <div className={headerClazz}>\n            <a onClick={this._onCancel}>{cancelText}</a>\n            <span>{title}</span>\n            <a onClick={this._onConfirm}>{confirmText}</a>\n          </div>\n          <InlineTimePicker\n            selectedTime={this.state.selectedTime}\n            minTime={minTime}\n            maxTime={maxTime}\n            hourUnit={hourUnit}\n            minuteUnit={minuteUnit}\n            secondUnit={secondUnit}\n            onChange={this._onChange}\n          />\n        </div>\n      </Popup>\n    );\n  }\n}\n\n/**\n * 时间弹窗选择器组件的 API 调用方法\n * @param  {Object} props     @see TimePicker 组件属性\n * @param  {Node} container 时间弹窗选择器的容器节点\n */\nTimePicker.show = (props, container) => {\n  Portal.show(TimePicker, props, container);\n};\n\nTimePicker.propTypes = {\n  selectedTime: PropTypes.string,\n  minTime: PropTypes.string,\n  maxTime: PropTypes.string,\n  hourUnit: PropTypes.string,\n  minuteUnit: PropTypes.string,\n  secondUnit: PropTypes.string,\n  visible: PropTypes.bool,\n  title: PropTypes.node,\n  confirmText: PropTypes.node,\n  cancelText: PropTypes.node,\n  onConfirm: PropTypes.func,\n  onCancel: PropTypes.func,\n  onChange: PropTypes.func,\n  close: PropTypes.func,\n  className: PropTypes.string\n};\n\nTimePicker.defaultProps = {\n  confirmText: '确定',\n  cancelText: '取消'\n};\n"
   },
   {
-    "__docId__": 201,
+    "__docId__": 202,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -5901,7 +5914,7 @@
     }
   },
   {
-    "__docId__": 202,
+    "__docId__": 203,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -5920,7 +5933,7 @@
     ]
   },
   {
-    "__docId__": 203,
+    "__docId__": 204,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -6099,7 +6112,7 @@
     "generator": false
   },
   {
-    "__docId__": 204,
+    "__docId__": 205,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6131,7 +6144,7 @@
     }
   },
   {
-    "__docId__": 205,
+    "__docId__": 206,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6157,7 +6170,7 @@
     "generator": false
   },
   {
-    "__docId__": 206,
+    "__docId__": 207,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6177,7 +6190,7 @@
     "generator": false
   },
   {
-    "__docId__": 207,
+    "__docId__": 208,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -6190,7 +6203,7 @@
     "content": "/**\n * @author haw\n */\n\nimport '../base';\nimport './style';\n\nexport Options from './Options';\nexport InlinePicker from './InlinePicker';\nexport Picker from './Picker';\n\nexport InlineDatePicker from './InlineDatePicker';\nexport DatePicker from './DatePicker';\n\nexport InlineTimePicker from './InlineTimePicker';\nexport TimePicker from './TimePicker';\n"
   },
   {
-    "__docId__": 208,
+    "__docId__": 209,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -6203,7 +6216,7 @@
     "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport ReactCSSTransitionGroup from 'react-addons-css-transition-group';\nimport {classNames} from '../util';\n\nconst prefix = 'popup';\n\nfunction ChildContainer(props) {\n  return props.children[0] ? props.children[0] : null;\n}\n\n/**\n * 弹窗组件，本身并不包含内容，但是其他弹窗相关的组件都依赖该组件和 `Portal` 组件实现弹窗效果\n * @param {Object} props 组件所使用的属性\n * @param {boolean} [props.visible=false] 弹窗是否显示\n * @param {function} [props.close] 控制弹窗关闭的函数，由 `Portal` 组件传进来，一般不用手动指定，不传的话点击弹窗组件阴影的地方不会自动关闭弹窗\n * @param {string} [props.position='center'] 弹窗里内容的位置\n * @param {number} [props.duration=400] 弹窗的动画持续时间\n * @param {string} [props.timingFunction='ease'] 动画过度函数\n * @param {string|function} [props.transitionName] 动画过度名称，传给`ReactCSSTransitionGroup` 使用\n */\nexport default function Popup(props) {\n  let {\n    visible,\n    close,\n    position,\n    duration,\n    timingFunction,\n    transitionName,\n    className,\n    style,\n    onClick,\n    children,\n    ...rest\n  } = props;\n  let clazz = classNames(`${prefix}-content`, {\n    [`${prefix}-${position}`]: !!position,\n    className: className\n  });\n  let newStyle = {\n    transitionDuration: `${duration}ms`,\n    transitionTimingFunction: timingFunction\n  };\n  const newTransitionName = classNames(transitionName || `${prefix}`);\n  const onPopupClick = (e) => {\n    onClick && onClick(e);\n    e.stopPropagation();\n  };\n\n  return (\n    <ReactCSSTransitionGroup\n      component={ChildContainer}\n      transitionAppearTimeout={duration}\n      transitionEnterTimeout={duration}\n      transitionLeaveTimeout={duration}\n      transitionName={newTransitionName}\n      transitionAppear\n    >\n      {visible ? (\n        <div\n          className={classNames(prefix)}\n          style={newStyle}\n          key={'popup'}\n          onClick={close}\n        >\n          <div\n            className={clazz}\n            style={{...newStyle, ...style}}\n            onClick={onPopupClick}\n            {...rest}\n          >\n            {children}\n          </div>\n        </div>\n      ) : null}\n    </ReactCSSTransitionGroup>\n  );\n}\n\nPopup.propTypes = {\n  visible: PropTypes.bool,\n  close: PropTypes.func,\n  position: PropTypes.oneOf(['center', 'top', 'right', 'bottom', 'left']),\n  duration: PropTypes.number,\n  timingFunction: PropTypes.string,\n  transitionName: PropTypes.oneOf([\n    PropTypes.string,\n    PropTypes.func\n  ]),\n  className: PropTypes.string,\n  style: PropTypes.object,\n  onClick: PropTypes.func,\n  children: PropTypes.node\n};\n\nPopup.defaultProps = {\n  visible: false,\n  position: 'center',\n  duration: 400,\n  timingFunction: 'ease'\n};\n"
   },
   {
-    "__docId__": 209,
+    "__docId__": 210,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -6224,7 +6237,7 @@
     }
   },
   {
-    "__docId__": 210,
+    "__docId__": 211,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -6254,7 +6267,7 @@
     "generator": false
   },
   {
-    "__docId__": 211,
+    "__docId__": 212,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -6356,7 +6369,7 @@
     "generator": false
   },
   {
-    "__docId__": 212,
+    "__docId__": 213,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -6369,29 +6382,42 @@
     "content": "/**\n * @author haw\n */\n\nimport '../base';\nimport './style';\n\nimport Popup from './Popup';\n\nexport default Popup;\n"
   },
   {
-    "__docId__": 213,
+    "__docId__": 214,
     "kind": "file",
     "static": true,
     "variation": null,
-    "name": "src/components/portal/Portal.js",
+    "name": "src/components/portal/index.js",
     "memberof": null,
-    "longname": "src/components/portal/Portal.js",
+    "longname": "src/components/portal/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n */\n\nimport Portal from './Portal';\n\nexport default Portal;\n"
+  },
+  {
+    "__docId__": 215,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/portal/portal.js",
+    "memberof": null,
+    "longname": "src/components/portal/portal.js",
     "access": null,
     "description": null,
     "lineNumber": 1,
     "content": "/**\n * @author haw\n */\n\nimport React, {\n  PropTypes,\n  Component,\n  cloneElement\n} from 'react';\nimport {\n  render\n} from 'react-dom';\nimport {\n  createPortalEl,\n  getContainer\n} from '../util/dom';\n\n/**\n * 为所有弹窗组件提供包裹容器，并控制是否显示\n */\nexport default class Portal extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {boolean} props.visible 是否显示弹窗\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n\n    this.state = {\n      visible: props.visible\n    };\n  }\n\n  componentWillReceiveProps(nextProps) {\n    this._setVisible(nextProps.visible);\n  }\n\n  _close = () => {\n    this._setVisible(false);\n  }\n\n  _setVisible(visible) {\n    this.setState({\n      visible\n    });\n  }\n\n  render() {\n    let {\n      children\n    } = this.props;\n\n    if (children) {\n      children = cloneElement(children, {\n        visible: this.state.visible,\n        close: this._close\n      });\n    }\n    return children || null;\n  }\n}\n\n/**\n * 显示弹窗的 API 调用方法\n * @param {PropTypes.element} Component 弹窗组件\n * @param  {Object} props     @see Component 组件属性\n * @param  {Node} container 弹窗的容器节点\n */\nPortal.show = (Component, props, container) => {\n  container = getContainer(container);\n  Component.portalEl = Component.portalEl || createPortalEl(container);\n\n  return render((\n    <Portal visible>\n      <Component {...props} />\n    </Portal>\n  ), Component.portalEl);\n};\n\nPortal.propTypes = {\n  visible: PropTypes.bool,\n  children: PropTypes.node\n};\n\nPortal.defaultProps = {\n  visible: false\n};\n"
   },
   {
-    "__docId__": 214,
+    "__docId__": 216,
     "kind": "class",
     "static": true,
     "variation": null,
     "name": "Portal",
-    "memberof": "src/components/portal/Portal.js",
-    "longname": "src/components/portal/Portal.js~Portal",
+    "memberof": "src/components/portal/portal.js",
+    "longname": "src/components/portal/portal.js~Portal",
     "access": null,
     "export": true,
-    "importPath": "react-ios-component/src/components/portal/Portal.js",
+    "importPath": "react-ios-component/src/components/portal/portal.js",
     "importStyle": "Portal",
     "description": "为所有弹窗组件提供包裹容器，并控制是否显示",
     "lineNumber": 21,
@@ -6401,13 +6427,13 @@
     ]
   },
   {
-    "__docId__": 215,
+    "__docId__": 217,
     "kind": "constructor",
     "static": false,
     "variation": null,
     "name": "constructor",
-    "memberof": "src/components/portal/Portal.js~Portal",
-    "longname": "src/components/portal/Portal.js~Portal#constructor",
+    "memberof": "src/components/portal/portal.js~Portal",
+    "longname": "src/components/portal/portal.js~Portal#constructor",
     "access": null,
     "description": "构造函数",
     "lineNumber": 29,
@@ -6446,13 +6472,13 @@
     "generator": false
   },
   {
-    "__docId__": 216,
+    "__docId__": 218,
     "kind": "member",
     "static": false,
     "variation": null,
     "name": "state",
-    "memberof": "src/components/portal/Portal.js~Portal",
-    "longname": "src/components/portal/Portal.js~Portal#state",
+    "memberof": "src/components/portal/portal.js~Portal",
+    "longname": "src/components/portal/portal.js~Portal#state",
     "access": null,
     "description": null,
     "lineNumber": 32,
@@ -6464,13 +6490,13 @@
     }
   },
   {
-    "__docId__": 217,
+    "__docId__": 219,
     "kind": "method",
     "static": false,
     "variation": null,
     "name": "componentWillReceiveProps",
-    "memberof": "src/components/portal/Portal.js~Portal",
-    "longname": "src/components/portal/Portal.js~Portal#componentWillReceiveProps",
+    "memberof": "src/components/portal/portal.js~Portal",
+    "longname": "src/components/portal/portal.js~Portal#componentWillReceiveProps",
     "access": null,
     "description": null,
     "lineNumber": 37,
@@ -6486,13 +6512,13 @@
     "generator": false
   },
   {
-    "__docId__": 218,
+    "__docId__": 220,
     "kind": "method",
     "static": false,
     "variation": null,
     "name": "_setVisible",
-    "memberof": "src/components/portal/Portal.js~Portal",
-    "longname": "src/components/portal/Portal.js~Portal#_setVisible",
+    "memberof": "src/components/portal/portal.js~Portal",
+    "longname": "src/components/portal/portal.js~Portal#_setVisible",
     "access": null,
     "description": null,
     "lineNumber": 45,
@@ -6508,13 +6534,13 @@
     "generator": false
   },
   {
-    "__docId__": 219,
+    "__docId__": 221,
     "kind": "method",
     "static": false,
     "variation": null,
     "name": "render",
-    "memberof": "src/components/portal/Portal.js~Portal",
-    "longname": "src/components/portal/Portal.js~Portal#render",
+    "memberof": "src/components/portal/portal.js~Portal",
+    "longname": "src/components/portal/portal.js~Portal#render",
     "access": null,
     "description": null,
     "lineNumber": 51,
@@ -6528,97 +6554,7 @@
     "generator": false
   },
   {
-    "__docId__": 220,
-    "kind": "file",
-    "static": true,
-    "variation": null,
-    "name": "src/components/portal/index.js",
-    "memberof": null,
-    "longname": "src/components/portal/index.js",
-    "access": null,
-    "description": null,
-    "lineNumber": 1,
-    "content": "/**\n * @author haw\n */\n\nimport Portal from './Portal';\n\nexport default Portal;\n"
-  },
-  {
-    "__docId__": 221,
-    "kind": "file",
-    "static": true,
-    "variation": null,
-    "name": "src/components/searchbar/SearchBar.js",
-    "memberof": null,
-    "longname": "src/components/searchbar/SearchBar.js",
-    "access": null,
-    "description": null,
-    "lineNumber": 1,
-    "content": "/**\n * @author haw\n * 搜索栏\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'searchbar';\n\n/**\n * 搜索栏\n * @param {Object} props 组件所使用的属性\n * @param {string} [props.theme] 搜索栏的主题，默认为灰色，可选有 `white`\n */\nexport default function SearchBar(props) {\n  const {\n    theme,\n    className,\n    children,\n    ...rest\n  } = props;\n  let clazz = classNames(prefix, {\n    [className]: className,\n    [theme]: theme\n  });\n\n  return (\n    <form className={clazz} {...rest}>{children}</form>\n  );\n}\n\nSearchBar.propTypes = {\n  theme: PropTypes.string,\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n"
-  },
-  {
     "__docId__": 222,
-    "kind": "variable",
-    "static": true,
-    "variation": null,
-    "name": "prefix",
-    "memberof": "src/components/searchbar/SearchBar.js",
-    "longname": "src/components/searchbar/SearchBar.js~prefix",
-    "access": null,
-    "export": false,
-    "importPath": "react-ios-component/src/components/searchbar/SearchBar.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
-    "type": {
-      "types": [
-        "string"
-      ]
-    }
-  },
-  {
-    "__docId__": 223,
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "SearchBar",
-    "memberof": "src/components/searchbar/SearchBar.js",
-    "longname": "src/components/searchbar/SearchBar.js~SearchBar",
-    "access": null,
-    "export": true,
-    "importPath": "react-ios-component/src/components/searchbar/SearchBar.js",
-    "importStyle": "SearchBar",
-    "description": "搜索栏",
-    "lineNumber": 18,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "Object"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "props",
-        "description": "组件所使用的属性"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "string"
-        ],
-        "spread": false,
-        "optional": true,
-        "name": "props.theme",
-        "description": "搜索栏的主题，默认为灰色，可选有 `white`"
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 224,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -6631,7 +6567,7 @@
     "content": "/**\n * @author haw\n * 搜索栏\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'searchbar-footer';\n\n/**\n * 搜索栏尾部内容\n * @param {Object} props 组件所使用的属性\n */\nexport default function SearchBarFooter(props) {\n  const {\n    children,\n    className,\n    ...rest\n  } = props;\n  let clazz = classNames(prefix, {\n    [className]: className\n  });\n\n  return (\n    <div className={clazz} {...rest}>{children}</div>\n  );\n}\n\nSearchBarFooter.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n"
   },
   {
-    "__docId__": 225,
+    "__docId__": 223,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -6652,7 +6588,7 @@
     }
   },
   {
-    "__docId__": 226,
+    "__docId__": 224,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -6685,7 +6621,7 @@
     "generator": false
   },
   {
-    "__docId__": 227,
+    "__docId__": 225,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -6698,7 +6634,7 @@
     "content": "/**\n * @author haw\n * 搜索栏\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'searchbar-header';\n\n/**\n * 搜索栏尾部头部\n * @param {Object} props 组件所使用的属性\n */\nexport default function SearchBarHeader(props) {\n  const {\n    children,\n    className,\n    ...rest\n  } = props;\n  let clazz = classNames(prefix, {\n    [className]: className\n  });\n\n  return (\n    <div className={clazz} {...rest}>{children}</div>\n  );\n}\n\nSearchBarHeader.propTypes = {\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n"
   },
   {
-    "__docId__": 228,
+    "__docId__": 226,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -6719,7 +6655,7 @@
     }
   },
   {
-    "__docId__": 229,
+    "__docId__": 227,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -6752,7 +6688,7 @@
     "generator": false
   },
   {
-    "__docId__": 230,
+    "__docId__": 228,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -6765,7 +6701,7 @@
     "content": "/**\n * @author haw\n * 搜索栏\n */\n\nimport React, {\n  PropTypes,\n  Component\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'searchbar-input';\n\n/**\n * 搜索栏输入框\n */\nexport default class SearchBarInput extends Component {\n\n  /**\n   * 构造函数\n   * @param {Object} props 组件所使用的属性\n   * @param {string} [props.type='text'] 输入框类型\n   * @param {boolean} [props.hasFooter=true] 是否有尾部\n   * @param {boolean} [props.hasClear=true] 是否有清除图标\n   * @param {string} [props.placeholder] 输入框 placeholder\n   * @param {function} [props.onBlur] 输入框失焦事件函数\n   * @param {function} [props.onFocus] 输入框激活事件函数\n   * @param {function} [props.onChange] 输入框值改变事件函数\n   * @param {function} [props.onClear] 清楚输入框内容的事件函数\n   * @param {Object} context\n   */\n  constructor(props, context) {\n    super(props, context);\n\n    /**\n     * 组件内部状态值\n     * @type {Object}\n     * @property {boolean} state.active 当前输入框是否是激活状态\n     */\n    this.state = {\n      active: false\n    };\n  }\n\n  onBlur(e) {\n    const {onBlur} = this.props;\n\n    onBlur && onBlur(e);\n    this.setState({\n      active: false\n    });\n  }\n\n  onFocus(e) {\n    const {onFocus} = this.props;\n\n    onFocus && onFocus(e);\n    this.setState({\n      active: true\n    });\n  }\n\n  onChange(e) {\n    const {onChange} = this.props;\n    const innerValue = e.target.value;\n\n    onChange && onChange(e, innerValue);\n  }\n\n  onClear(e) {\n    const {onClear} = this.props;\n    const input = this.refs.input;\n\n    input.focus();\n    onClear && onClear(e, '');\n  }\n\n  render() {\n    let {\n      placeholder,\n      hasFooter,\n      hasClear,\n      className,\n      value,\n      ...rest\n    } = this.props;\n    const {active} = this.state;\n    let clazz = classNames(prefix, {\n      [className]: className,\n      'active': active || value ? 'active' : false,\n      'has-footer': hasFooter ? 'has-footer' : false\n    });\n    let placeHolderClazz = classNames('searchbar-placeholder');\n    delete rest.onClear;\n\n    return (\n      <div className={clazz}>\n        <input\n          {...rest}\n          ref='input'\n          value={value}\n          onBlur={e => {\n            this.onBlur(e);\n          }}\n          onFocus={e => {\n            this.onFocus(e);\n          }}\n          onChange={e => {\n            this.onChange(e);\n          }}\n        />\n        <div className={placeHolderClazz}>\n          <i></i>\n          {value ? null : (\n            <span>{placeholder}</span>\n          )}\n        </div>\n        {hasClear ? (\n          <a\n            className={value ? 'active' : ''}\n            onClick={e => {\n              this.onClear(e);\n            }}>\n          </a>\n        ) : null}\n      </div>\n    );\n  }\n}\n\nSearchBarInput.propTypes = {\n  type: PropTypes.string,\n  hasFooter: PropTypes.bool,\n  hasClear: PropTypes.bool,\n  placeholder: PropTypes.string,\n  value: PropTypes.string,\n  onBlur: PropTypes.func,\n  onFocus: PropTypes.func,\n  onChange: PropTypes.func,\n  onClear: PropTypes.func,\n  className: PropTypes.string\n};\n\nSearchBarInput.defaultProps = {\n  type: 'text',\n  hasFooter: true,\n  hasClear: true\n};\n"
   },
   {
-    "__docId__": 231,
+    "__docId__": 229,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -6786,7 +6722,7 @@
     }
   },
   {
-    "__docId__": 232,
+    "__docId__": 230,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -6805,7 +6741,7 @@
     ]
   },
   {
-    "__docId__": 233,
+    "__docId__": 231,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -6926,7 +6862,7 @@
     "generator": false
   },
   {
-    "__docId__": 234,
+    "__docId__": 232,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -6958,7 +6894,7 @@
     }
   },
   {
-    "__docId__": 235,
+    "__docId__": 233,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -6980,7 +6916,7 @@
     "generator": false
   },
   {
-    "__docId__": 236,
+    "__docId__": 234,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7002,7 +6938,7 @@
     "generator": false
   },
   {
-    "__docId__": 237,
+    "__docId__": 235,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7024,7 +6960,7 @@
     "generator": false
   },
   {
-    "__docId__": 238,
+    "__docId__": 236,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7046,7 +6982,7 @@
     "generator": false
   },
   {
-    "__docId__": 239,
+    "__docId__": 237,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -7066,7 +7002,84 @@
     "generator": false
   },
   {
+    "__docId__": 238,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/searchbar/Searchbar.js",
+    "memberof": null,
+    "longname": "src/components/searchbar/Searchbar.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/**\n * @author haw\n * 搜索栏\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'searchbar';\n\n/**\n * 搜索栏\n * @param {Object} props 组件所使用的属性\n * @param {string} [props.theme] 搜索栏的主题，默认为灰色，可选有 `white`\n */\nexport default function SearchBar(props) {\n  const {\n    theme,\n    className,\n    children,\n    ...rest\n  } = props;\n  let clazz = classNames(prefix, {\n    [className]: className,\n    [theme]: theme\n  });\n\n  return (\n    <form className={clazz} {...rest}>{children}</form>\n  );\n}\n\nSearchBar.propTypes = {\n  theme: PropTypes.string,\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n"
+  },
+  {
+    "__docId__": 239,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "prefix",
+    "memberof": "src/components/searchbar/Searchbar.js",
+    "longname": "src/components/searchbar/Searchbar.js~prefix",
+    "access": null,
+    "export": false,
+    "importPath": "react-ios-component/src/components/searchbar/Searchbar.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
     "__docId__": 240,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "SearchBar",
+    "memberof": "src/components/searchbar/Searchbar.js",
+    "longname": "src/components/searchbar/Searchbar.js~SearchBar",
+    "access": null,
+    "export": true,
+    "importPath": "react-ios-component/src/components/searchbar/Searchbar.js",
+    "importStyle": "SearchBar",
+    "description": "搜索栏",
+    "lineNumber": 18,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "组件所使用的属性"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "props.theme",
+        "description": "搜索栏的主题，默认为灰色，可选有 `white`"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 241,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7079,7 +7092,7 @@
     "content": "/**\n * @author haw\n */\n\nimport '../base';\nimport './style';\n\nexport SearchBar from './SearchBar';\nexport SearchBarHeader from './SearchBarHeader';\nexport SearchBarInput from './SearchBarInput';\nexport SearchBarFooter from './SearchBarFooter';\n"
   },
   {
-    "__docId__": 241,
+    "__docId__": 242,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7092,7 +7105,7 @@
     "content": "/**\n * @author haw\n * 分段控件\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\nimport Button from '../button';\n\nconst prefix = 'segmented';\n\n/**\n * 分段控件\n * @param {Object} props 组件所使用的属性\n * @param {Object[]} [props.elements] 分段控件的元素项列表（每一项都应该是 `Button` 组件的 props）\n * @param {string} [props.color=''] 分段控件的样式，默认为主题颜色\n * @param {string} [props.size=''] 分段控件的大小，默认为正常的按钮大小\n */\nexport default function Segmented(props) {\n  const {\n    elements,\n    size,\n    color,\n    className,\n    children,\n    ...rest\n  } = props;\n  let renderNode = children;\n  let clazz = classNames(prefix, {\n    [`${prefix}-${size}`]: !!size,\n    [className]: className\n  });\n\n  if (elements) {\n    renderNode = elements.map((item, i) => {\n      const {\n        children,\n        ...rest\n      } = item;\n\n      return (\n        <Button {...rest} color={color} key={i}>\n          {children}\n        </Button>\n      );\n    });\n  }\n\n  return (\n    <div className={clazz} {...rest}>\n      {renderNode}\n    </div>\n  );\n}\n\nSegmented.propTypes = {\n  elements: PropTypes.arrayOf(PropTypes.object),\n  color: PropTypes.oneOf(config.colors),\n  size: PropTypes.oneOf(['', 'small']),\n  className: PropTypes.string,\n  children: PropTypes.node\n};\nSegmented.defaultProps = {\n  color: '',\n  size: ''\n};\n"
   },
   {
-    "__docId__": 242,
+    "__docId__": 243,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -7113,7 +7126,7 @@
     }
   },
   {
-    "__docId__": 243,
+    "__docId__": 244,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7180,7 +7193,7 @@
     "generator": false
   },
   {
-    "__docId__": 244,
+    "__docId__": 245,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7193,7 +7206,7 @@
     "content": "/**\n * @author haw\n */\nimport '../base';\nimport './style';\n\nimport Segmented from './Segmented';\n\nexport default Segmented;\n"
   },
   {
-    "__docId__": 245,
+    "__docId__": 246,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7206,7 +7219,7 @@
     "content": "/**\n * @author haw\n * 标签栏\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\nimport TabbarItem from './TabbarItem';\n\nconst prefix = 'tabbar';\n\n/**\n * 标签栏\n * @param {Object} props 组件所使用的属性\n * @param {Object[]} [props.tabs] 标签项组件的属性对象列表\n * @param {string} [props.linkColor='gray'] 每个标签栏项的字体颜色\n * @param {string} [props.activeColor=''] 每个标签栏项被激活时的字体颜色，默认为主题颜色\n */\nexport default function TabBar(props) {\n  const {\n    linkColor,\n    activeColor,\n    tabs,\n    children,\n    className,\n    ...rest\n  } = props;\n  let clazz = classNames(prefix, {\n    [className]: className\n  });\n  const nodes = tabs && tabs.map((tab, i) => {\n    return (\n      <TabbarItem\n        linkColor={linkColor}\n        activeColor={activeColor}\n        {...tab}\n        key={i}\n      />\n    );\n  });\n  const childrens = children && React.Children.map(children, (child, i) => {\n    return React.cloneElement(child, {\n      linkColor,\n      activeColor\n    });\n  });\n\n  return (\n    <div className={clazz} {...rest}>\n      {tabs && tabs.length > 0 ? nodes : childrens}\n    </div>\n  );\n}\n\nTabBar.propTypes = {\n  tabs: PropTypes.arrayOf(PropTypes.object),\n  linkColor: PropTypes.oneOf(config.colors),  // 每个标签栏项的字体颜色\n  activeColor: PropTypes.oneOf(config.colors),  // 每个标签栏项被激活时的字体颜色\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n\nTabBar.defaultProps = {\n  linkColor: 'gray',\n  activeColor: ''\n};\n"
   },
   {
-    "__docId__": 246,
+    "__docId__": 247,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -7227,7 +7240,7 @@
     }
   },
   {
-    "__docId__": 247,
+    "__docId__": 248,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7294,7 +7307,7 @@
     "generator": false
   },
   {
-    "__docId__": 248,
+    "__docId__": 249,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7307,7 +7320,7 @@
     "content": "/**\n * @author haw\n * 标签栏\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\nimport Badge from '../badge';\nimport {Icon} from '../icon';\n\nconst prefix = 'tabbar-icon';\n\n/**\n * 标签项图标\n * @param {Object} props 组件所使用的属性\n * @param {string} [props.icon] 标签项图标\n * @param {string} [props.badge] 徽章的文案\n * @param {string} [props.badgeColor='red'] 徽章的背景颜色\n */\nexport default function TabBarIcon(props) {\n  const {\n    icon,\n    badge,\n    badgeColor,\n    className,\n    children,\n    ...rest\n  } = props;\n  let clazz = classNames(prefix, {\n    [className]: className\n  });\n\n  return (\n    <div className={clazz} {...rest}>\n      {icon ? (\n        <Icon value={icon}>\n          {badge ? (\n            <Badge bgColor={badgeColor}>{badge}</Badge>\n          ) : null}\n        </Icon>\n      ) : children}\n    </div>\n  );\n}\n\nTabBarIcon.propTypes = {\n  icon: PropTypes.string,\n  badge: PropTypes.oneOfType([\n    PropTypes.number,\n    PropTypes.string\n  ]),\n  badgeColor: PropTypes.oneOf(config.colors),\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n\nTabBarIcon.defaultProps = {\n  badgeColor: 'red'\n};\n"
   },
   {
-    "__docId__": 249,
+    "__docId__": 250,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -7328,7 +7341,7 @@
     }
   },
   {
-    "__docId__": 250,
+    "__docId__": 251,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7393,7 +7406,7 @@
     "generator": false
   },
   {
-    "__docId__": 251,
+    "__docId__": 252,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7406,7 +7419,7 @@
     "content": "/**\n * @author haw\n * 标签栏\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport config from '../util/config';\nimport {classNames} from '../util';\nimport TabbarIcon from './TabbarIcon';\nimport TabbarLabel from './TabbarLabel';\n\nconst prefix = 'tabbar-item';\n\n/**\n * 标签项\n * @param {Object} props 组件所使用的属性\n * @param {string|PropTypes.element|function} [props.component='a'] 标签项的 `html` 包裹元素\n * @param {string} [props.icon] 标签项图标\n * @param {string} [props.badge] 徽章的文案\n * @param {string} [props.linkColor='gray'] 每个标签栏项的字体颜色\n * @param {string} [props.badgeColor='red'] 徽章的背景颜色\n * @param {string} [props.activeColor=''] 每个标签栏项被激活时的字体颜色，默认为主题颜色\n * @param {string} [props.active=false] 标签项是否激活\n */\nexport default function TabBarItem(props) {\n  const {\n    icon,\n    badge,\n    label,\n    active,\n    linkColor,\n    activeColor,\n    badgeColor,\n    component,\n    className,\n    children,\n    ...rest\n  } = props;\n  const Component = component;\n  const theme = active ? activeColor : linkColor;\n  let clazz = classNames(prefix, {\n    [`color-${theme}`]: !!theme,\n    [className]: className\n  });\n  let labelClazz = classNames('tabbar-label');\n\n  return (\n    <Component className={clazz} {...rest}>\n      {icon ? (\n        <TabbarIcon\n          icon={icon}\n          badge={badge}\n          badgeColor={badgeColor}\n        />\n      ) : null}\n      {label ? (\n        <TabbarLabel className={labelClazz}>{label}</TabbarLabel>\n      ) : null}\n      {!icon && !label ? children : null}\n    </Component>\n  );\n}\n\nTabBarItem.propTypes = {\n  component: PropTypes.oneOfType([\n    PropTypes.string,\n    PropTypes.element,\n    PropTypes.func\n  ]),\n  icon: PropTypes.string,\n  badge: PropTypes.oneOfType([\n    PropTypes.number,\n    PropTypes.string\n  ]),\n  label: PropTypes.node,\n  linkColor: PropTypes.oneOf(config.colors),\n  badgeColor: PropTypes.oneOf(config.colors),\n  activeColor: PropTypes.oneOf(config.colors),\n  active: PropTypes.bool,\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n\nTabBarItem.defaultProps = {\n  component: 'a',\n  linkColor: 'gray',\n  badgeColor: 'red',\n  activeColor: '',\n  active: false\n};\n"
   },
   {
-    "__docId__": 252,
+    "__docId__": 253,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -7427,7 +7440,7 @@
     }
   },
   {
-    "__docId__": 253,
+    "__docId__": 254,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7542,7 +7555,7 @@
     "generator": false
   },
   {
-    "__docId__": 254,
+    "__docId__": 255,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7555,7 +7568,7 @@
     "content": "/**\n * @author haw\n * 标签栏\n */\n\nimport React, {\n  PropTypes\n} from 'react';\nimport {classNames} from '../util';\n\nconst prefix = 'tabbar-label';\n\n/**\n * 标签项文案\n * @param {Object} props 组件所使用的属性\n * @param {string} [props.label] 标签项的文案\n */\nexport default function TabBarLabel(props) {\n  const {\n    label,\n    className,\n    children,\n    ...rest\n  } = props;\n  let clazz = classNames(prefix, {\n    [className]: className\n  });\n\n  return (\n    <div className={clazz} {...rest}>{children || label}</div>\n  );\n}\n\nTabBarLabel.propTypes = {\n  label: PropTypes.string,\n  className: PropTypes.string,\n  children: PropTypes.node\n};\n"
   },
   {
-    "__docId__": 255,
+    "__docId__": 256,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -7576,7 +7589,7 @@
     }
   },
   {
-    "__docId__": 256,
+    "__docId__": 257,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7619,7 +7632,7 @@
     "generator": false
   },
   {
-    "__docId__": 257,
+    "__docId__": 258,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7632,7 +7645,7 @@
     "content": "/**\n * @author haw\n */\nimport '../base';\nimport './style';\n\nexport TabBar from './Tabbar';\nexport TabBarItem from './TabbarItem';\nexport TabBarLabel from './TabbarLabel';\nexport TabBarIcon from './TabbarIcon';\n"
   },
   {
-    "__docId__": 258,
+    "__docId__": 259,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7645,7 +7658,7 @@
     "content": "/**\n * @author haw\n */\n\n/**\n * 项目默认的配置参数\n * @type {Object}  数据配置对象\n * @property {String}  config.namespace='rc-ios'  css 默认的命名空间\n */\nconst config = {\n  namespace: 'rc-ios-',\n  colors: [\n    '',\n    'blue',\n    'red',\n    'black',\n    'lightblue',\n    'yellow',\n    'orange',\n    'pink',\n    'green',\n    'gray'\n  ]\n};\n\nexport default config;\n"
   },
   {
-    "__docId__": 259,
+    "__docId__": 260,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -7682,7 +7695,7 @@
     }
   },
   {
-    "__docId__": 260,
+    "__docId__": 261,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7695,7 +7708,7 @@
     "content": "/**\n * @author haw\n */\n\nexport function getContainer(container = document.body) {\n  if (typeof container === 'function') {\n    container = container();\n  }\n  return container;\n}\n\nexport function createPortalEl(container) {\n  const portalEl = document.createElement('div');\n\n  container.appendChild(portalEl);\n  return portalEl;\n}\n\n"
   },
   {
-    "__docId__": 261,
+    "__docId__": 262,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7731,7 +7744,7 @@
     "generator": false
   },
   {
-    "__docId__": 262,
+    "__docId__": 263,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7761,7 +7774,7 @@
     "generator": false
   },
   {
-    "__docId__": 263,
+    "__docId__": 264,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -7774,7 +7787,7 @@
     "content": "/**\n * @author haw\n */\nimport config from './config';\n\nconst hasOwn = Object.hasOwnProperty;\nconst {\n  namespace\n} = config;\n\nexport function createClassNames(prename = namespace) {\n  return (...args) => {\n    let classes = [];\n\n    args.forEach(arg => {\n      let type = typeof arg;\n      let prop;\n\n      if (!arg || type === 'boolean') {\n        return;\n      }\n\n      switch (type) {\n        case 'string':\n        case 'number':\n          classes.push(`${prename}${arg}`);\n          break;\n        case 'object':\n          if (Array.isArray(arg)) {\n            classes.push(classNames.apply(null, arg));\n          } else {\n            for (prop in arg) {\n              if (!hasOwn.call(arg, prop) || !arg[prop]) {\n                continue;\n              }\n              if (arg[prop] === true) {\n                classes.push(`${prename}${prop}`);\n              } else {\n                classes.push(prop);\n              }\n            }\n          }\n          break;\n      }\n    });\n\n    return classes.join(' ');\n  };\n}\n\nexport const classNames = createClassNames();\n\nexport function px2rem(px) {\n  const base = 20;\n\n  return px / base;\n}\n\n// Options component\nexport function generateOptions(max, min, unit = '') {\n  let results = [];\n  let current = min;\n\n  while (current <= max) {\n    results.push({\n      name: `${current < 10 ? '0' + current : current}${unit}`,\n      value: current\n    });\n    current++;\n  }\n\n  return results;\n}\n\nexport function indexOfOptions(value, options) {\n  let len = options.length;\n\n  for (let i = 0; i < len; i++) {\n    if (options[i].value === value) {\n      return i;\n    }\n  }\n\n  return len;\n}\n\n// time related\nexport function date2str(date) {\n  const year = date.getFullYear();\n  const month = date.getMonth() + 1;\n  const d = date.getDate();\n\n  return `${year}-${month < 10 ? ('0' + month) : month}-${d < 10 ? ('0' + d) : d}`;\n}\n"
   },
   {
-    "__docId__": 264,
+    "__docId__": 265,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -7795,7 +7808,7 @@
     }
   },
   {
-    "__docId__": 265,
+    "__docId__": 266,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -7816,7 +7829,7 @@
     }
   },
   {
-    "__docId__": 266,
+    "__docId__": 267,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7849,7 +7862,7 @@
     "generator": false
   },
   {
-    "__docId__": 267,
+    "__docId__": 268,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -7870,7 +7883,7 @@
     }
   },
   {
-    "__docId__": 268,
+    "__docId__": 269,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7900,7 +7913,7 @@
     "generator": false
   },
   {
-    "__docId__": 269,
+    "__docId__": 270,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7945,7 +7958,7 @@
     "generator": false
   },
   {
-    "__docId__": 270,
+    "__docId__": 271,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -7981,7 +7994,7 @@
     "generator": false
   },
   {
-    "__docId__": 271,
+    "__docId__": 272,
     "kind": "function",
     "static": true,
     "variation": null,
@@ -8011,7 +8024,7 @@
     "generator": false
   },
   {
-    "__docId__": 272,
+    "__docId__": 273,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -8024,7 +8037,7 @@
     "content": "/**\n * @author haw\n */\n\nexport {\n  Page,\n  Scene\n} from './components/page';\nexport Badge from './components/badge';\nexport {\n  Icon,\n  IconLoading\n} from './components/icon';\nexport Button from './components/button';\nexport Segmented from './components/segmented';\nexport {NavBar, NavBarItem} from './components/navbar';\nexport {\n  TabBar,\n  TabBarItem,\n  TabBarLabel,\n  TabBarIcon\n} from './components/tabbar';\nexport {\n  SearchBar,\n  SearchBarHeader,\n  SearchBarInput,\n  SearchBarFooter\n} from './components/searchbar';\nexport {\n  CellsTitle,\n  Cells,\n  Cell,\n  CellHeader,\n  CellBody,\n  CellDesc,\n  CellFooter\n} from './components/cell';\nexport {\n  Checkbox,\n  Radio,\n  Input,\n  Switch,\n  Textarea,\n  Stepper,\n  Slider\n} from './components/form';\nexport Mask from './components/mask';\nexport {\n  Alert,\n  Confirm,\n  Prompt\n} from './components/alert';\nexport ActionSheet from './components/actionsheet';\nexport Indicator from './components/indicator';\nexport {\n  Options,\n  InlinePicker,\n  Picker,\n  InlineDatePicker,\n  DatePicker,\n  InlineTimePicker,\n  TimePicker\n} from './components/picker';\n"
   },
   {
-    "__docId__": 274,
+    "__docId__": 275,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8037,7 +8050,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 275,
+    "__docId__": 276,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8050,7 +8063,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 276,
+    "__docId__": 277,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8063,7 +8076,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 277,
+    "__docId__": 278,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8076,7 +8089,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 278,
+    "__docId__": 279,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8089,7 +8102,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 279,
+    "__docId__": 280,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8102,7 +8115,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 280,
+    "__docId__": 281,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8115,7 +8128,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 281,
+    "__docId__": 282,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8128,7 +8141,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 282,
+    "__docId__": 283,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8141,7 +8154,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 283,
+    "__docId__": 284,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8154,7 +8167,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 284,
+    "__docId__": 285,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8167,7 +8180,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 285,
+    "__docId__": 286,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8180,7 +8193,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 286,
+    "__docId__": 287,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8193,7 +8206,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 287,
+    "__docId__": 288,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8206,7 +8219,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 288,
+    "__docId__": 289,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8219,7 +8232,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 289,
+    "__docId__": 290,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8232,7 +8245,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 290,
+    "__docId__": 291,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8245,7 +8258,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 291,
+    "__docId__": 292,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8258,7 +8271,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 292,
+    "__docId__": 293,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8271,7 +8284,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 293,
+    "__docId__": 294,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8284,7 +8297,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 294,
+    "__docId__": 295,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8297,7 +8310,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 295,
+    "__docId__": 296,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8310,7 +8323,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 296,
+    "__docId__": 297,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8323,7 +8336,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 297,
+    "__docId__": 298,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8336,7 +8349,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 298,
+    "__docId__": 299,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8349,7 +8362,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 299,
+    "__docId__": 300,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8362,7 +8375,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 300,
+    "__docId__": 301,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8375,7 +8388,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 301,
+    "__docId__": 302,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8388,7 +8401,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 302,
+    "__docId__": 303,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8401,7 +8414,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 303,
+    "__docId__": 304,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8414,7 +8427,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 304,
+    "__docId__": 305,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8427,7 +8440,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 305,
+    "__docId__": 306,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8440,7 +8453,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 306,
+    "__docId__": 307,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8453,7 +8466,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 307,
+    "__docId__": 308,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8466,7 +8479,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 308,
+    "__docId__": 309,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8479,7 +8492,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 309,
+    "__docId__": 310,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8492,7 +8505,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 310,
+    "__docId__": 311,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8505,7 +8518,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 311,
+    "__docId__": 312,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8518,7 +8531,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 312,
+    "__docId__": 313,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8531,7 +8544,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 313,
+    "__docId__": 314,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8544,7 +8557,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 314,
+    "__docId__": 315,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8557,7 +8570,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 315,
+    "__docId__": 316,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8570,7 +8583,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 316,
+    "__docId__": 317,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8583,7 +8596,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 317,
+    "__docId__": 318,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8596,7 +8609,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 318,
+    "__docId__": 319,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8609,7 +8622,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 319,
+    "__docId__": 320,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8622,7 +8635,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 320,
+    "__docId__": 321,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8635,7 +8648,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 322,
+    "__docId__": 323,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8648,7 +8661,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 323,
+    "__docId__": 324,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8661,7 +8674,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 324,
+    "__docId__": 325,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8674,7 +8687,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 325,
+    "__docId__": 326,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8687,7 +8700,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 326,
+    "__docId__": 327,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8700,7 +8713,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 327,
+    "__docId__": 328,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8713,7 +8726,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 328,
+    "__docId__": 329,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -8726,7 +8739,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 329,
+    "__docId__": 330,
     "kind": "external",
     "static": true,
     "variation": null,

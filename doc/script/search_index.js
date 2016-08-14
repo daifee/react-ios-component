@@ -193,8 +193,8 @@ window.esdocSearchIndex = [
   ],
   [
     "react-ios-component/src/components/portal/portal.js~portal",
-    "class/src/components/portal/Portal.js~Portal.html",
-    "<span>Portal</span> <span class=\"search-result-import-path\">react-ios-component/src/components/portal/Portal.js</span>",
+    "class/src/components/portal/portal.js~Portal.html",
+    "<span>Portal</span> <span class=\"search-result-import-path\">react-ios-component/src/components/portal/portal.js</span>",
     "class"
   ],
   [
@@ -218,7 +218,7 @@ window.esdocSearchIndex = [
   [
     "react-ios-component/src/components/searchbar/searchbar.js~searchbar",
     "function/index.html#static-function-SearchBar",
-    "<span>SearchBar</span> <span class=\"search-result-import-path\">react-ios-component/src/components/searchbar/SearchBar.js</span>",
+    "<span>SearchBar</span> <span class=\"search-result-import-path\">react-ios-component/src/components/searchbar/Searchbar.js</span>",
     "function"
   ],
   [
@@ -1092,6 +1092,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/components/picker/inlinedatepicker.js~inlinedatepicker#constructor",
+    "class/src/components/picker/InlineDatePicker.js~InlineDatePicker.html#instance-constructor-constructor",
+    "src/components/picker/InlineDatePicker.js~InlineDatePicker#constructor",
+    "method"
+  ],
+  [
     "src/components/picker/inlinedatepicker.js~inlinedatepicker#onchange",
     "class/src/components/picker/InlineDatePicker.js~InlineDatePicker.html#instance-method-onChange",
     "src/components/picker/InlineDatePicker.js~InlineDatePicker#onChange",
@@ -1272,46 +1278,40 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/components/portal/portal.js",
-    "file/src/components/portal/Portal.js.html",
-    "src/components/portal/Portal.js",
-    "file"
-  ],
-  [
-    "src/components/portal/portal.js~portal#componentwillreceiveprops",
-    "class/src/components/portal/Portal.js~Portal.html#instance-method-componentWillReceiveProps",
-    "src/components/portal/Portal.js~Portal#componentWillReceiveProps",
-    "method"
-  ],
-  [
-    "src/components/portal/portal.js~portal#constructor",
-    "class/src/components/portal/Portal.js~Portal.html#instance-constructor-constructor",
-    "src/components/portal/Portal.js~Portal#constructor",
-    "method"
-  ],
-  [
-    "src/components/portal/portal.js~portal#render",
-    "class/src/components/portal/Portal.js~Portal.html#instance-method-render",
-    "src/components/portal/Portal.js~Portal#render",
-    "method"
-  ],
-  [
-    "src/components/portal/portal.js~portal#state",
-    "class/src/components/portal/Portal.js~Portal.html#instance-member-state",
-    "src/components/portal/Portal.js~Portal#state",
-    "member"
-  ],
-  [
     "src/components/portal/index.js",
     "file/src/components/portal/index.js.html",
     "src/components/portal/index.js",
     "file"
   ],
   [
-    "src/components/searchbar/searchbar.js",
-    "file/src/components/searchbar/SearchBar.js.html",
-    "src/components/searchbar/SearchBar.js",
+    "src/components/portal/portal.js",
+    "file/src/components/portal/portal.js.html",
+    "src/components/portal/portal.js",
     "file"
+  ],
+  [
+    "src/components/portal/portal.js~portal#componentwillreceiveprops",
+    "class/src/components/portal/portal.js~Portal.html#instance-method-componentWillReceiveProps",
+    "src/components/portal/portal.js~Portal#componentWillReceiveProps",
+    "method"
+  ],
+  [
+    "src/components/portal/portal.js~portal#constructor",
+    "class/src/components/portal/portal.js~Portal.html#instance-constructor-constructor",
+    "src/components/portal/portal.js~Portal#constructor",
+    "method"
+  ],
+  [
+    "src/components/portal/portal.js~portal#render",
+    "class/src/components/portal/portal.js~Portal.html#instance-method-render",
+    "src/components/portal/portal.js~Portal#render",
+    "method"
+  ],
+  [
+    "src/components/portal/portal.js~portal#state",
+    "class/src/components/portal/portal.js~Portal.html#instance-member-state",
+    "src/components/portal/portal.js~Portal#state",
+    "member"
   ],
   [
     "src/components/searchbar/searchbarfooter.js",
@@ -1372,6 +1372,12 @@ window.esdocSearchIndex = [
     "class/src/components/searchbar/SearchBarInput.js~SearchBarInput.html#instance-member-state",
     "src/components/searchbar/SearchBarInput.js~SearchBarInput#state",
     "member"
+  ],
+  [
+    "src/components/searchbar/searchbar.js",
+    "file/src/components/searchbar/Searchbar.js.html",
+    "src/components/searchbar/Searchbar.js",
+    "file"
   ],
   [
     "src/components/searchbar/index.js",

@@ -19,7 +19,7 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
-  
+  <a data-ice="repoURL" href="https://github.com/maiwenan/react-ios-component.git" class="repo-url-github">Repository</a>
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -72,11 +72,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/picker/Picker.js~Picker.html">Picker</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/picker/TimePicker.js~TimePicker.html">TimePicker</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/popup</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Popup">Popup</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/portal</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/portal/Portal.js~Portal.html">Portal</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/portal</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/portal/portal.js~Portal.html">Portal</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/searchbar</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/searchbar/SearchBarInput.js~SearchBarInput.html">SearchBarInput</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SearchBar">SearchBar</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SearchBarFooter">SearchBarFooter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SearchBarHeader">SearchBarHeader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SearchBar">SearchBar</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/segmented</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Segmented">Segmented</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/tabbar</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TabBar">TabBar</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TabBarIcon">TabBarIcon</a></span></span></li>
@@ -116,17 +116,24 @@ let now = new Date();
 
 /**
  * &#x5167;&#x8054;&#x65E5;&#x671F;&#x9009;&#x62E9;&#x5668;
- * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
- * @param {Date} [props.selectedDate=new Date()] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
- * @param {Date} [props.minDate=new Date()] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
- * @param {Date} [props.maxDate=new Date()] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
- * @param {string} [props.yearUnit=&apos;&apos;] &#x5E74;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
- * @param {string} [props.monthUnit=&apos;&apos;] &#x6708;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
- * @param {string} [props.dateUnit=&apos;&apos;] &#x5929;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
- * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
- * @param {Object} context
  */
 export default class InlineDatePicker extends Component {
+
+  /**
+   * &#x6784;&#x9020;&#x51FD;&#x6570;
+   * @param {Object} props &#x7EC4;&#x4EF6;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;
+   * @param {Date} [props.selectedDate=new Date()] &#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x65E5;&#x671F;
+   * @param {Date} [props.minDate=new Date()] &#x6700;&#x5C0F;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+   * @param {Date} [props.maxDate=new Date()] &#x6700;&#x5927;&#x53EF;&#x9009;&#x62E9;&#x7684;&#x65E5;&#x671F;
+   * @param {string} [props.yearUnit=&apos;&apos;] &#x5E74;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {string} [props.monthUnit=&apos;&apos;] &#x6708;&#x4EFD;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {string} [props.dateUnit=&apos;&apos;] &#x5929;&#x7684;&#x5355;&#x4F4D;&#x6587;&#x6848;
+   * @param {function} props.onChange &#x9009;&#x4E2D;&#x67D0;&#x4E00;&#x4E2A;&#x9879;&#x65F6;&#x89E6;&#x53D1;&#x7684;&#x51FD;&#x6570;&#x56DE;&#x8C03;
+   * @param {Object} context
+   */
+  constructor(props, context) {
+    super(props, context);
+  }
 
   _setYear(yearOptions, selectedIndex) {
     const {
