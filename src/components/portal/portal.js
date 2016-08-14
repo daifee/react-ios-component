@@ -16,7 +16,7 @@ import {
 } from '../util/dom';
 
 /**
- * 为所有弹窗组件提供包裹容器，并控制是否显示
+ * 为所有弹窗组件提供包裹容器，并控制弹窗是否显示
  */
 export default class Portal extends Component {
 
