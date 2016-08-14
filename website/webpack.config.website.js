@@ -10,7 +10,7 @@ module.exports = {
     app: './index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'demos'),
+    path: path.resolve(__dirname, 'example'),
     filename: '[name].js'
   },
   module: {
