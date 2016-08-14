@@ -11,7 +11,7 @@ import {
   Icon,
   NavBar,
   NavBarItem
-} from '../../src';
+} from 'component';
 
 export default function Layout(props) {
   const {

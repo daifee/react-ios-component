@@ -14,7 +14,14 @@
     "clear": "rm -rf ./dist",
     "build:dev": "NODE_ENV=development webpack --progress --colors --config webpack.config.prod.js",
     "build:prod": "NODE_ENV=production webpack -p --progress --colors --config webpack.config.prod.js",
-    "build": "npm run clear && npm run build:dev && npm run build:prod"
+    "build": "npm run clear && npm run build:dev && npm run build:prod",
+    "website": "sh website/build.sh",
+    "postpublish": "git push --all",
+    "preversion": "npm run test:karma && npm run build && npm run website && npm run npm run doc && git add ./dist ./website ./doc && git commit -m 'update version' ./dist ./website ./doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maiwenan/react-ios-component.git"
   },
   "keywords": [
     "react",

@@ -4,8 +4,8 @@ var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var isProdEnv = process.env.NODE_ENV === 'production';
 var target = {
-  js: isProdEnv ? 'index.min.js' : 'index.js',
-  css: isProdEnv ? 'index.min.css' : 'index.css'
+  js: isProdEnv ? 'react-ios-component.min.js' : 'react-ios-component.js',
+  css: isProdEnv ? 'react-ios-component.min.css' : 'react-ios-component.css'
 };
 
 module.exports = {

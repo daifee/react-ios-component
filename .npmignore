@@ -1,6 +1,7 @@
 doc
 example
 test
+website
 .babelrc
 .eslintignore
 esdoc.json
