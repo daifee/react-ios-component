@@ -16,7 +16,7 @@ npm install --save react-ios-component
 * [IScroll](https://www.npmjs.com/package/iscroll)
 
 ### Examples
-完整的组件例子可以访问 [react-ios-component examples](http://maiwenan.github.io/react-ios-component/website/demos/)，下面是一个简单的例子 :
+完整的组件例子可以访问 [react-ios-component example](http://maiwenan.github.io/react-ios-component/example/)，下面是一个简单的例子 :
 
 ```
 import {
