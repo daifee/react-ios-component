@@ -1,0 +1,373 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 210,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 11,
+      "column": 0
+    }
+  },
+  "sourceType": "module",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "start": 23,
+      "end": 40,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 17
+        }
+      },
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "start": 30,
+        "end": 39,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 7
+          },
+          "end": {
+            "line": 4,
+            "column": 16
+          }
+        },
+        "value": "../base",
+        "rawValue": "../base",
+        "raw": "'../base'",
+        "leadingComments": null
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * @author haw\n ",
+          "start": 0,
+          "end": 22,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 3
+            }
+          },
+          "range": [
+            0,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 41,
+      "end": 58,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 17
+        }
+      },
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "start": 48,
+        "end": 57,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 7
+          },
+          "end": {
+            "line": 5,
+            "column": 16
+          }
+        },
+        "value": "./style",
+        "rawValue": "./style",
+        "raw": "'./style'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 60,
+      "end": 90,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 30
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 67,
+          "end": 73,
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 7
+            },
+            "end": {
+              "line": 7,
+              "column": 13
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 67,
+            "end": 73,
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 7
+              },
+              "end": {
+                "line": 7,
+                "column": 13
+              }
+            },
+            "name": "TabBar"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 79,
+        "end": 89,
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 19
+          },
+          "end": {
+            "line": 7,
+            "column": 29
+          }
+        },
+        "value": "./Tabbar",
+        "rawValue": "./Tabbar",
+        "raw": "'./Tabbar'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 91,
+      "end": 129,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 38
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 98,
+          "end": 108,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 7
+            },
+            "end": {
+              "line": 8,
+              "column": 17
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 98,
+            "end": 108,
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 7
+              },
+              "end": {
+                "line": 8,
+                "column": 17
+              }
+            },
+            "name": "TabBarItem"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 114,
+        "end": 128,
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 23
+          },
+          "end": {
+            "line": 8,
+            "column": 37
+          }
+        },
+        "value": "./TabbarItem",
+        "rawValue": "./TabbarItem",
+        "raw": "'./TabbarItem'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 130,
+      "end": 170,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 40
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 137,
+          "end": 148,
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 7
+            },
+            "end": {
+              "line": 9,
+              "column": 18
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 137,
+            "end": 148,
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 7
+              },
+              "end": {
+                "line": 9,
+                "column": 18
+              }
+            },
+            "name": "TabBarLabel"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 154,
+        "end": 169,
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 24
+          },
+          "end": {
+            "line": 9,
+            "column": 39
+          }
+        },
+        "value": "./TabbarLabel",
+        "rawValue": "./TabbarLabel",
+        "raw": "'./TabbarLabel'"
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 171,
+      "end": 209,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 38
+        }
+      },
+      "specifiers": [
+        {
+          "type": "Identifier",
+          "start": 178,
+          "end": 188,
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 7
+            },
+            "end": {
+              "line": 10,
+              "column": 17
+            }
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 178,
+            "end": 188,
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 7
+              },
+              "end": {
+                "line": 10,
+                "column": 17
+              }
+            },
+            "name": "TabBarIcon"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 194,
+        "end": 208,
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 23
+          },
+          "end": {
+            "line": 10,
+            "column": 37
+          }
+        },
+        "value": "./TabbarIcon",
+        "rawValue": "./TabbarIcon",
+        "raw": "'./TabbarIcon'"
+      }
+    }
+  ]
+}

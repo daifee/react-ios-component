@@ -1,0 +1,209 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 131,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 11,
+      "column": 0
+    }
+  },
+  "sourceType": "module",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "start": 24,
+      "end": 41,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 17
+        }
+      },
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "start": 31,
+        "end": 40,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 7
+          },
+          "end": {
+            "line": 5,
+            "column": 16
+          }
+        },
+        "value": "../base",
+        "rawValue": "../base",
+        "raw": "'../base'",
+        "leadingComments": null
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * @author haw\n ",
+          "start": 0,
+          "end": 22,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 3
+            }
+          },
+          "range": [
+            0,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 42,
+      "end": 59,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 17
+        }
+      },
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "start": 49,
+        "end": 58,
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 7
+          },
+          "end": {
+            "line": 6,
+            "column": 16
+          }
+        },
+        "value": "./style",
+        "rawValue": "./style",
+        "raw": "'./style'"
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 61,
+      "end": 101,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 40
+        }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 68,
+          "end": 79,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 7
+            },
+            "end": {
+              "line": 8,
+              "column": 18
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 68,
+            "end": 79,
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 7
+              },
+              "end": {
+                "line": 8,
+                "column": 18
+              }
+            },
+            "name": "ActionSheet"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 85,
+        "end": 100,
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 24
+          },
+          "end": {
+            "line": 8,
+            "column": 39
+          }
+        },
+        "value": "./ActionSheet",
+        "rawValue": "./ActionSheet",
+        "raw": "'./ActionSheet'"
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "start": 103,
+      "end": 130,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 27
+        }
+      },
+      "declaration": {
+        "type": "Identifier",
+        "start": 118,
+        "end": 129,
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 15
+          },
+          "end": {
+            "line": 10,
+            "column": 26
+          }
+        },
+        "name": "ActionSheet",
+        "leadingComments": [],
+        "trailingComments": []
+      }
+    }
+  ]
+}
