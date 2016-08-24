@@ -1,20 +1,20 @@
-/**
+/*!
  * @author haw
  */
 
-@import "../util/variables";
-@import "../util/mixin";
+@import '../util/variables';
+@import '../util/mixin';
 
-$alertSelector: ".#{$namespace}alert";
+$alert-selector: '.#{$namespace}alert';
 
-#{$alertSelector} {
+#{$alert-selector} {
   width: 72%;
   margin: 0 auto;
+  overflow: hidden;
   line-height: 1.2;
   text-align: center;
   background-color: $white;
   border-radius: .5rem;
-  overflow: hidden;
 
   &-header {
     padding: 1rem .75rem .4rem;
@@ -27,22 +27,21 @@ $alertSelector: ".#{$namespace}alert";
   }
 
   &-footer {
+    @include hairline-top;
     position: relative;
     display: flex;
     flex-direction: column;
-
-    @include hairline-top();
   }
 
   &-button {
     position: relative;
     flex: 1;
     padding: .6rem .75rem;
-    color: $primaryColor;
     font-size: .85rem;
+    color: $primary-color;
 
     &:not(:first-child) {
-      @include hairline-top();
+      @include hairline-top;
     }
 
     &:active {
@@ -52,32 +51,34 @@ $alertSelector: ".#{$namespace}alert";
 
   &-confirm {
 
-    #{$alertSelector}-footer {
+    #{$alert-selector}-footer {
       flex-direction: row;
     }
 
-    #{$alertSelector}-button:not(:first-child) {
-      @include hairline-left();
+    #{$alert-selector}-button {
+      &:not(:first-child) {
+        @include hairline-left;
 
-      &:before {
-        height: auto;
+        &:before {
+          height: auto;
+        }
       }
     }
   }
 
   &-prompt {
-    #{$alertSelector}-input {
+    #{$alert-selector}-input {
       padding-left: .2rem;
       margin: 0 .75rem .6rem;
       font-size: .65rem;
-      border: 1px solid rgba(77,77,77,0.78);
+      border: 1px solid rgba(77, 77, 77, .78);
 
       input {
         width: 100%;
         height: 1.2rem;
         background-color: $white;
         border: 0;
-        -webkit-appearance: none;
+        appearance: none;
       }
     }
   }

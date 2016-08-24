@@ -1,11 +1,11 @@
-/**
+/*!
  * @author haw
  */
 
-@import "../util/variables";
-@import "../util/mixin";
+@import '../util/variables';
+@import '../util/mixin';
 
-$selector: ".#{$namespace}actionsheet";
+$selector: '.#{$namespace}actionsheet';
 
 #{$selector} {
   width: 100%;
@@ -21,24 +21,26 @@ $selector: ".#{$namespace}actionsheet";
   &-button {
     position: relative;
     display: block;
-    color: $gray;
-    line-height: 2.65rem;
     font-size: .65rem;
+    line-height: 2.65rem;
+    color: $gray;
     text-align: center;
   }
 
-  &-desc,
-  &-button:not(:last-child) {
-    @include hairline-bottom();
+  &-desc {
+    @include hairline-bottom;
   }
 
   &-button {
-    color: $primaryColor;
     font-size: 1rem;
+    color: $primary-color;
 
     &:active {
-      background-color: rgb(0, 0, 0);
       background-color: rgba(0, 0, 0, .1);
+    }
+
+    &:not(:last-child) {
+      @include hairline-bottom;
     }
   }
 }

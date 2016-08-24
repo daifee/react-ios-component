@@ -5,7 +5,6 @@
 import React, {
   PropTypes
 } from 'react';
-import './style';
 import {
   Page,
   Icon,

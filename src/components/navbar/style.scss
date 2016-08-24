@@ -1,17 +1,17 @@
-/**
+/*!
  * @author haw
  */
 
-@import "../util/variables";
+@import '../util/variables';
 
 $navbar-bg: #f9f9f9;
 $navbar-height: 2.2rem;
 
 .#{$namespace}navbar {
-  z-index: $z-index-navbar;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: $z-index-navbar;
   // display: flex;
   // justify-content: space-between;
   width: 100%;
@@ -21,8 +21,8 @@ $navbar-height: 2.2rem;
   background-color: $navbar-bg;
 
   .#{$namespace}navbar-item {
-    z-index: 2;
     position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     height: $navbar-height;
@@ -32,20 +32,22 @@ $navbar-height: 2.2rem;
     }
 
     &:first-child {
-      float: left;
       justify-content: flex-start;
+      float: left;
       margin-left: 8px;
     }
+
     &:nth-child(2) {
-      z-index: 1;
       position: absolute;
-      width: 100%;
+      z-index: 1;
       justify-content: center;
+      width: 100%;
       text-align: center;
     }
+
     &:last-child {
-      float: right;
       justify-content: flex-end;
+      float: right;
       margin-right: 8px;
     }
   }

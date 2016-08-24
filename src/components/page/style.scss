@@ -1,21 +1,21 @@
-/**
+/*!
  * @author haw
  */
-@import "../util/variables";
-@import "../util/mixin";
+@import '../util/variables';
+@import '../util/mixin';
 
-$pageSelector: '.#{$namespace}page';
-$sceneSelector: '.#{$namespace}scene';
+$page-selector: '.#{$namespace}page';
+$scene-selector: '.#{$namespace}scene';
 
-#{$pageSelector} {
+#{$page-selector} {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  transition-property: opacity, transform;
   overflow-x: hidden;
   overflow-y: auto;
+  transition-property: opacity, transform;
   -webkit-overflow-scrolling: touch;
 
   &.#{$namespace}navbar-fixed {
@@ -40,7 +40,7 @@ $sceneSelector: '.#{$namespace}scene';
   -webkit-overflow-scrolling: touch;
 }
 
-#{$sceneSelector} {
+#{$scene-selector} {
   position: relative;
   width: 100%;
   height: 100%;
@@ -54,10 +54,10 @@ $sceneSelector: '.#{$namespace}scene';
   }
 
   &-push-leave {
-    @include opacity-leave();
+    @include opacity-leave;
 
     &-active {
-      @include opacity-enter();
+      @include opacity-enter;
     }
   }
 
@@ -70,26 +70,26 @@ $sceneSelector: '.#{$namespace}scene';
   }
 
   &-pop-leave {
-    @include opacity-leave();
+    @include opacity-leave;
 
     &-active {
-      @include opacity-enter();
+      @include opacity-enter;
     }
   }
 
   &-replace-enter {
-    @include opacity-enter();
+    @include opacity-enter;
 
     &-active {
-      @include opacity-leave();
+      @include opacity-leave;
     }
   }
 
   &-replace-leave {
-    @include opacity-leave();
+    @include opacity-leave;
 
     &-active {
-      @include opacity-enter();
+      @include opacity-enter;
     }
   }
 }

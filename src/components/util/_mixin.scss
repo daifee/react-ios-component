@@ -1,27 +1,29 @@
-/**
+/*!
  * @author haw
  */
 
-@import "./variables";
+@import './variables';
 
 $hairline-color: #c4c4c4;
 
-/* 线条 */
-@mixin hairline-base() {
-  content: " ";
-  z-index: 20;
+/*!
+ * 线条
+ */
+@mixin hairline-base {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 20;
   display: block;
   background-color: $hairline-color;
+  content: ' ';
 }
 
 @mixin hairline-top($color: $hairline-color) {
   &:before {
-    @include hairline-base();
+    @include hairline-base;
     bottom: auto;
     height: .05rem;
     transform: scaleY(.5);
@@ -30,7 +32,7 @@ $hairline-color: #c4c4c4;
 
 @mixin hairline-right($color: $hairline-color) {
   &:after {
-    @include hairline-base();
+    @include hairline-base;
     left: auto;
     width: .05rem;
     transform: scaleX(.5);
@@ -39,7 +41,7 @@ $hairline-color: #c4c4c4;
 
 @mixin hairline-bottom($color: $hairline-color) {
   &:after {
-    @include hairline-base();
+    @include hairline-base;
     top: auto;
     height: .05rem;
     transform: scaleY(.5);
@@ -48,20 +50,18 @@ $hairline-color: #c4c4c4;
 
 @mixin hairline-left($color: $hairline-color) {
   &:before {
-    @include hairline-base();
+    @include hairline-base;
     right: auto;
     width: .05rem;
     transform: scaleX(.5);
   }
 }
-/* /线条 */
+/*! /线条 */
 
 
-/* listview 右箭头 */
-
-@mixin arrow-right() {
+/*! listview 右箭头 */
+@mixin arrow-right {
   &:after {
-    content: " ";
     position: relative;
     // top: -.05rem;
     display: inline-block;
@@ -70,30 +70,29 @@ $hairline-color: #c4c4c4;
     margin-left: .35rem;
     border-top: .1rem solid $gray;
     border-right: .1rem solid $gray;
+    content: ' ';
     transform: rotate(45deg);
   }
 }
 
-/* /listview 右箭头 */
+/*! /listview 右箭头 */
 
-/* text ellipsis */
-
-@mixin text-ellipsis() {
-  white-space: nowrap;
-  text-overflow: ellipsis;
+/*! text ellipsis */
+@mixin text-ellipsis {
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* /text ellipsis */
+/*! /text ellipsis */
 
-/* 动画 */
-
-@mixin opacity-enter() {
+/*! 动画 */
+@mixin opacity-enter {
   opacity: .01;
 }
-@mixin opacity-leave() {
+@mixin opacity-leave {
   opacity: 1;
 }
 
-/*/ /动画 */
+/*! /动画 */
 

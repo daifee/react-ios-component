@@ -1,0 +1,23 @@
+options:
+  config-file: node_modules/sass-lint-rules/.sass-lint.yml
+  merge-default-rules: false
+rules:
+  # Disallows
+  no-important: 0 # 建议只在功能选择器中使用
+  no-color-keywords: 0 # 为了适应颜色字典的表示
+  no-mergeable-selectors: 0 # @see issue#834
+  no-misspelled-properties:
+    - 2
+    -
+      extra-properties:
+        - 'touch-callout'
+        - 'overflow-scrolling'
+  no-vendor-prefixes:
+    - 2
+    -
+      excluded-identifiers: # 适应部分 webkit 属性
+        - 'webkit'
+    - ignore-non-standard: true
+
+  # Nesting
+  force-pseudo-nesting: 0 # 主要是为了方便定义图标的书写

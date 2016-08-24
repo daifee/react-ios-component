@@ -5788,7 +5788,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 	/**
-	 * 为所有弹窗组件提供包裹容器，并控制是否显示
+	 * 为所有弹窗组件提供包裹容器，并控制弹窗是否显示
 	 */
 
 	var Portal = function (_Component) {

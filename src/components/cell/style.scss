@@ -1,24 +1,23 @@
-/**
+/*!
  * @author haw
  */
 
-@import "../util/variables";
-@import "../util/mixin";
+@import '../util/variables';
+@import '../util/mixin';
 
 $selector-cells: '.#{$namespace}cells';
 $selector-cell: '.#{$namespace}cell';
 
 #{$selector-cells} {
+  @include hairline-top;
+  @include hairline-bottom;
   position: relative;
-
-  @include hairline-top();
-  @include hairline-bottom();
 
   &-title {
     margin: 1.75rem .75rem .5rem;
-    color: $gray;
-    line-height: 1;
     font-size: .7rem;
+    line-height: 1;
+    color: $gray;
   }
 }
 
@@ -29,19 +28,21 @@ $selector-cell: '.#{$namespace}cell';
   min-height: 2.2rem;
   // padding: .5rem .75rem;
   padding: .3rem .75rem;
-  color: $black;
   font-size: .85rem;
   // line-height: 1.41176471;
   line-height: 1.17647059;
+  color: $black;
   background-color: $white;
 
-  @at-root a#{&}:active,
-  label#{&}:active {
-    background-color: rgba(0, 0, 0, .1);
+  @at-root a#{&},
+  label#{&} {
+    &:active {
+      background-color: rgba(0, 0, 0, .1);
+    }
   }
 
   &:not(:last-child) {
-    @include hairline-bottom();
+    @include hairline-bottom;
 
     &:after {
       left: .75rem;
@@ -57,7 +58,7 @@ $selector-cell: '.#{$namespace}cell';
   &-header {
     margin-right: .5rem;
   }
-  
+
   &-body {
     flex-grow: 1;
     width: 0;
@@ -69,14 +70,14 @@ $selector-cell: '.#{$namespace}cell';
   }
 
   &-desc {
-    color: $gray;
+    @include text-ellipsis;
     font-size: .7rem;
-    @include text-ellipsis();
+    color: $gray;
   }
 }
 
 #{$selector-cell}-arrow {
   #{$selector-cell}-footer {
-    @include arrow-right();
+    @include arrow-right;
   }
 }

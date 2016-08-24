@@ -49,7 +49,7 @@ module.exports = {
     }),
     // new ExtractTextPlugin('app.css'),
     new OpenBrowserPlugin({
-      url: 'http://localhost:8088'
+      url: 'http://localhost:3000'
     })
   ],
   postcss: [autoprefixer],

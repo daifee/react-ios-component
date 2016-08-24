@@ -1,8 +1,8 @@
-/**
+/*!
  * @author haw
  */
 
-@import "../util/variables";
+@import '../util/variables';
 
 $checkbox: '.#{$namespace}checkbox';
 $radio: '.#{$namespace}radio';
@@ -15,22 +15,22 @@ $slider: '.#{$namespace}slider';
 // checkbox and radio style
 #{$checkbox},
 #{$radio} {
+  position: relative;
   width: 1.1rem;
   height: 1.1rem;
-  position: relative;
   background: transparent;
   appearance: none;
 
   &:after {
-    content: " ";
     position: absolute;
     top: 45%;
     left: 50%;
     display: none;
     width: .55rem;
     height: .25rem;
-    border-left: .1rem solid $white;
     border-bottom: .1rem solid $white;
+    border-left: .1rem solid $white;
+    content: ' ';
     transform: translate3d(-50%, -50%, 0) rotate(-45deg);
   }
 }
@@ -40,8 +40,8 @@ $slider: '.#{$namespace}slider';
   border-radius: 50%;
 
   &:checked {
-    background-color: $primaryColor;
-    border-color: $primaryColor;
+    background-color: $primary-color;
+    border-color: $primary-color;
 
     &:after {
       display: inline-block;
@@ -51,13 +51,13 @@ $slider: '.#{$namespace}slider';
 
 #{$radio} {
   border: 0;
-  
+
   &:checked {
     &:after {
       display: inline-block;
       width: .65rem;
       height: .25rem;
-      border-color: $primaryColor;
+      border-color: $primary-color;
     }
   }
 }
@@ -67,11 +67,11 @@ $slider: '.#{$namespace}slider';
 #{$input} {
   width: 100%;
   padding-left: .25rem;
-  line-height: 1.17647059;
   // line-height: 1.41176471;
   font-size: .85rem;
+  line-height: 1.17647059;
   background: none;
-  border: none;
+  border: 0;
   appearance: none;
 }
 
@@ -91,26 +91,26 @@ $slider: '.#{$namespace}slider';
 
   &:before,
   &:after {
-    content: " ";
     position: absolute;
     top: 0;
     left: 0;
     height: 1.5rem;
+    content: ' ';
     // box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.05), 0px 2px 2px 0px rgba(0,0,0,0.10), 0px 3px 3px 0px rgba(0,0,0,0.05);
     transition: transform .3s;
   }
 
   &:before {
     width: 2.5rem;
-    border-radius: .75rem;
     background-color: #fdfdfd;
+    border-radius: .75rem;
   }
 
   &:after {
     width: 1.5rem;
     background-color: $white;
     border-radius: 50%;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
   }
 
   &:checked {
@@ -132,19 +132,19 @@ $slider: '.#{$namespace}slider';
 #{$textarea} {
   width: 100%;
   // line-height: 1.17647059;
-  line-height: 1.41176471;
   font-size: .75rem;
+  line-height: 1.41176471;
   background: none;
-  border: none;
-  appearance: none;
+  border: 0;
   resize: none;
+  appearance: none;
 }
 
 
-// stepper style 
+// stepper style
 #{$stepper} {
   display: flex;
-  border: .05rem solid $primaryColor;
+  border: .05rem solid $primary-color;
   border-radius: .2rem;
 
   & > a {
@@ -153,7 +153,6 @@ $slider: '.#{$namespace}slider';
     height: 1.4rem;
 
     &:before {
-      content: " ";
       position: absolute;
       top: 50%;
       left: 50%;
@@ -161,21 +160,23 @@ $slider: '.#{$namespace}slider';
       height: .1rem;
       margin-top: -.05rem;
       margin-left: -.4rem;
-      background-color: $primaryColor;
+      background-color: $primary-color;
+      content: ' ';
     }
 
-    &.disabled:before {
-      background-color: $gray;
+    &.disabled {
+      &:before {
+        background-color: $gray;
+      }
     }
   }
 
   &-cut {
-    border-right: .05rem solid $primaryColor;
+    border-right: .05rem solid $primary-color;
   }
 
   &-add {
     &:after {
-      content: " ";
       position: absolute;
       top: 50%;
       left: 50%;
@@ -183,11 +184,14 @@ $slider: '.#{$namespace}slider';
       height: .8rem;
       margin-top: -.4rem;
       margin-left: -.05rem;
-      background-color: $primaryColor;
+      background-color: $primary-color;
+      content: ' ';
     }
 
-    &.disabled:after {
-      background-color: $gray;
+    &.disabled {
+      &:after {
+        background-color: $gray;
+      }
     }
   }
 }
@@ -224,10 +228,10 @@ $slider: '.#{$namespace}slider';
     border-radius: .2rem 0 0 .2rem;
 
     & > a {
-      z-index: 1;
       position: absolute;
       top: -.7rem;
       left: 0;
+      z-index: 1;
       width: 1.5rem;
       height: 1.5rem;
       background-color: $white;
@@ -241,8 +245,8 @@ $slider: '.#{$namespace}slider';
       top: 0;
       left: 0;
       height: .1rem;
-      background-color: $primaryColor;
-      border-radius: 4px 0px 0px 4px;
+      background-color: $primary-color;
+      border-radius: 4px 0 0 4px;
     }
   }
 }

@@ -1,11 +1,11 @@
-/**
+/*!
  * @author haw
  */
 
- @import "../util/variables";
-@import "../util/mixin";
+@import '../util/variables';
+@import '../util/mixin';
 
-$selector: ".#{$namespace}indicator";
+$selector: '.#{$namespace}indicator';
 
 #{$selector} {
   position: fixed;
@@ -24,8 +24,8 @@ $selector: ".#{$namespace}indicator";
   }
 
   & > p {
-    color: $white;
-    line-height: 1;
     font-size: .8rem;
+    line-height: 1;
+    color: $white;
   }
 }

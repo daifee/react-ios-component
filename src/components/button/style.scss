@@ -1,8 +1,8 @@
-/**
+/*!
  * @author haw
  */
 
-@import "../util/variables";
+@import '../util/variables';
 
 $height: 1.3rem;
 $lg-height: 2.2rem;
@@ -12,23 +12,23 @@ $lg-height: 2.2rem;
   display: inline-block;
   height: $height;
   padding: 0 .5rem;
-  line-height: $height - .1rem;
-  color: $primaryColor;
   font-size: .7rem;
+  line-height: $height - .1rem;
+  color: $primary-color;
   text-align: center;
   text-decoration: none;
-  background-color: $white;
-  border: .05rem solid $primaryColor;
-  border-radius: .25rem;
   cursor: pointer;
+  background-color: $white;
+  border: .05rem solid $primary-color;
+  border-radius: .25rem;
   appearance: none;
   // transition: opacity, background .3s;
 
   &.#{$namespace}button-lg {
     display: block;
     height: $lg-height;
-    line-height: $lg-height - .1rem;
     font-size: 1rem;
+    line-height: $lg-height - .1rem;
   }
 
   @each $name, $value in $colors {
@@ -49,7 +49,7 @@ $lg-height: 2.2rem;
   }
 
   &:active {
-    background: rgba(red($primaryColor), green($primaryColor), blue($primaryColor), .1);
+    background: rgba(red($primary-color), green($primary-color), blue($primary-color), .1);
   }
 
   &.#{$namespace}button-disabled {
@@ -59,15 +59,16 @@ $lg-height: 2.2rem;
   &.#{$namespace}button-fill,
   &.active {
     color: #fff;
-    background-color: $primaryColor;
+    background-color: $primary-color;
   }
 
   &.#{$namespace}button-fill {
     &:active {
       opacity: .8;
     }
+
     &.#{$namespace}button-disabled {
-      color: hsla(0,0%,100%,.6);
+      color: hsla(0, 0%, 100%, .6);
       opacity: 1;
     }
   }

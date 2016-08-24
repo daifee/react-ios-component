@@ -1,9 +1,9 @@
-/**
+/*!
  * @author haw
  * 常用颜色
  */
 
-@import "../util/variables";
+@import '../util/variables';
 
 @each $name, $value in $colors {
   .#{$namespace}color-#{$name} {

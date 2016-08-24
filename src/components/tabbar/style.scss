@@ -1,23 +1,22 @@
-/**
+/*!
  * @author haw
  */
 
-@import "../util/variables";
-@import "../util/mixin";
+@import '../util/variables';
+@import '../util/mixin';
 
 $tabbar-height: 2.45rem;
 
 .#{$namespace}tabbar {
-  z-index: $z-index-tabbar;
+  @include hairline-top;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: $z-index-tabbar;
   display: flex;
   height: $tabbar-height;
   background-color: #f9f9f9;
-
-  @include hairline-top();
 
   .#{$namespace}tabbar-item {
     flex: 1;
@@ -25,8 +24,8 @@ $tabbar-height: 2.45rem;
     padding-bottom: .2rem;
     text-align: center;
   }
-  
-  [class*="#{$namespace}icon"] {
+
+  [class*='#{$namespace}icon'] {
     position: relative;
     height: 1.5rem;
     font-size: 1.25rem;
@@ -40,7 +39,7 @@ $tabbar-height: 2.45rem;
   }
 
   .#{$namespace}tabbar-label {
-    line-height: 1;
     font-size: .5rem;
+    line-height: 1;
   }
 }
