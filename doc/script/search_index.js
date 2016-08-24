@@ -193,8 +193,8 @@ window.esdocSearchIndex = [
   ],
   [
     "react-ios-component/src/components/portal/portal.js~portal",
-    "class/src/components/portal/portal.js~Portal.html",
-    "<span>Portal</span> <span class=\"search-result-import-path\">react-ios-component/src/components/portal/portal.js</span>",
+    "class/src/components/portal/Portal.js~Portal.html",
+    "<span>Portal</span> <span class=\"search-result-import-path\">react-ios-component/src/components/portal/Portal.js</span>",
     "class"
   ],
   [
@@ -1278,40 +1278,40 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/components/portal/index.js",
-    "file/src/components/portal/index.js.html",
-    "src/components/portal/index.js",
-    "file"
-  ],
-  [
     "src/components/portal/portal.js",
-    "file/src/components/portal/portal.js.html",
-    "src/components/portal/portal.js",
+    "file/src/components/portal/Portal.js.html",
+    "src/components/portal/Portal.js",
     "file"
   ],
   [
     "src/components/portal/portal.js~portal#componentwillreceiveprops",
-    "class/src/components/portal/portal.js~Portal.html#instance-method-componentWillReceiveProps",
-    "src/components/portal/portal.js~Portal#componentWillReceiveProps",
+    "class/src/components/portal/Portal.js~Portal.html#instance-method-componentWillReceiveProps",
+    "src/components/portal/Portal.js~Portal#componentWillReceiveProps",
     "method"
   ],
   [
     "src/components/portal/portal.js~portal#constructor",
-    "class/src/components/portal/portal.js~Portal.html#instance-constructor-constructor",
-    "src/components/portal/portal.js~Portal#constructor",
+    "class/src/components/portal/Portal.js~Portal.html#instance-constructor-constructor",
+    "src/components/portal/Portal.js~Portal#constructor",
     "method"
   ],
   [
     "src/components/portal/portal.js~portal#render",
-    "class/src/components/portal/portal.js~Portal.html#instance-method-render",
-    "src/components/portal/portal.js~Portal#render",
+    "class/src/components/portal/Portal.js~Portal.html#instance-method-render",
+    "src/components/portal/Portal.js~Portal#render",
     "method"
   ],
   [
     "src/components/portal/portal.js~portal#state",
-    "class/src/components/portal/portal.js~Portal.html#instance-member-state",
-    "src/components/portal/portal.js~Portal#state",
+    "class/src/components/portal/Portal.js~Portal.html#instance-member-state",
+    "src/components/portal/Portal.js~Portal#state",
     "member"
+  ],
+  [
+    "src/components/portal/index.js",
+    "file/src/components/portal/index.js.html",
+    "src/components/portal/index.js",
+    "file"
   ],
   [
     "src/components/searchbar/searchbarfooter.js",

@@ -196,7 +196,7 @@
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/components/portal/portal.js": {
+    "src/components/portal/Portal.js": {
       "expectCount": 5,
       "actualCount": 2,
       "undocumentLines": [
