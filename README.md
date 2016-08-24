@@ -1,4 +1,4 @@
-#React-Ios-Component [![Build Status](https://travis-ci.org/maiwenan/react-ios-component.svg?branch=master)](https://travis-ci.org/maiwenan/react-ios-component)
+#React-Ios-Component [![npm version](https://badge.fury.io/js/react-ios-component.svg)](https://badge.fury.io/js/react-ios-component) [![Build Status](https://travis-ci.org/maiwenan/react-ios-component.svg?branch=master)](https://travis-ci.org/maiwenan/react-ios-component)
 
 一套根据 ios9 的风格，使用 React 对进行封装以便可以重用的组件
 
